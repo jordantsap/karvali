@@ -1,0 +1,17 @@
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+.ftpconfig
+.ftpquota
+.well-known/
+# Laravel 5 & Lumen specific
+public/storage
+storage/*.key
+.env
+/.vagrant
+bugs
+needs.dev
+
+adminlte/*
+policies.txt
