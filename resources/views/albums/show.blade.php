@@ -23,7 +23,7 @@
 
       </div>
       <div class="row text-center social-links">
-        <h3 class="col-xs-12">Διαδώστε το!: </h3>
+        <h3 class="col-xs-12">{{__('page.shareit')}}: </h3>
         <div class="sharethis-inline-share-buttons"></div>
       </div>
 

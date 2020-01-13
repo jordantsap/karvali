@@ -24,7 +24,7 @@
               </a>
             <div class="row">
               <div class="col-xs-12 text-center">
-                <h3><b>Περιγραφή:</b>
+                <h3><b>{{__('page.description')}}</b>
                 <div class="divider"></div>
                 <br>
                 {{ str_limit($album->description, 100) }}</h3>

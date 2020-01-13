@@ -25,7 +25,7 @@
               </a>
             <div class="row">
               <div class="col-xs-12 text-center">
-                <h3><b>Περιγραφή:</b>
+                <h3><b><?php echo e(__('page.description')); ?></b>
                 <div class="divider"></div>
                 <br>
                 <?php echo e(str_limit($album->description, 100)); ?></h3>
