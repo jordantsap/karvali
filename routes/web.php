@@ -1,7 +1,5 @@
 <?php
 
-Route::get('/', 'HomeController@homepage')->name('homepage');
-
 Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('search', 'SearchController@getresults')->name('searchresults');
@@ -65,3 +63,5 @@ Route::get('today-events', 'Client\EventDatesController@todayevents')->name('tod
 Route::get('week\'s-events', 'Client\EventDatesController@weekevents')->name('weekevents');
 Route::get('month-events', 'Client\EventDatesController@monthevents')->name('monthevents');
 Route::get('next-events', 'Client\EventDatesController@upcomingevents')->name('upcomingevents');
+
+Route::get('/', 'HomeController@homepage')->name('homepage');

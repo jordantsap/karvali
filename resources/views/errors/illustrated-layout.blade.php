@@ -485,7 +485,7 @@
             </div>
 
             <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2">
-                <img src="{{asset('images/errorpage.jpg')}}" width="100%" alt="">
+                <img src="@yield('image')" width="100%" alt="">
             </div>
         </div>
     </body>

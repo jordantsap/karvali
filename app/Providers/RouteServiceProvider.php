@@ -34,8 +34,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapWebRoutes();
         $this->mapApiRoutes();
+        $this->mapWebRoutes();
         $this->mapInformationRoutes();
         $this->mapManageRoutes();
         $this->mapSocialRoutes();
@@ -60,7 +60,6 @@ class RouteServiceProvider extends ServiceProvider
           require base_path('routes/web.php');
       });
     }
-    
     protected function mapManageRoutes()
     {
       $locale = Request::segment(1);

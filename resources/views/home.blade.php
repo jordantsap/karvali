@@ -13,16 +13,14 @@
     <title>@yield('title'){{__('head.homepagetitle')}}</title>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-{{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129494448-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129494448-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-129494448-1');
-</script> --}}
-
-
+</script>
     @yield('home-css')
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
@@ -49,11 +47,14 @@
 
   @include('home.about')
 
-  @include('home.packages')
-
   @include('home/popular')
 
-  @include('home/blog')
+  @include('home.services')
+
+  @include('home.packages')
+
+
+  {{-- @include('home/blog') --}}
 
   @include('partials.bottom')
 

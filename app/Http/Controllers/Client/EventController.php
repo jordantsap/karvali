@@ -46,7 +46,7 @@ class EventController extends Controller
     {
       $event = Event::whereTranslation('slug', $slug)
       ->with(['likes','comments'])
-      ->firstOrFail();
+      ->first();
       // $comments = Comment::all();
       return view('events.show', ['event' => $event]);
     }

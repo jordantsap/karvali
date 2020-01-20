@@ -7,8 +7,8 @@
     		<div class="simpleslide100-item bg-img1" style="background-image: url('<?php echo e(asset('images/akontisma.JPEG')); ?>');background-size: cover;"></div>
         <div class="simpleslide100-item bg-img1" style="background-image: url('<?php echo e(asset('images/paralia.JPEG')); ?>');background-size: 100% 100%;"></div>
 	    </div>
+      <?php echo $__env->make('home.advert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
       <?php echo $__env->make('home.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-      
     </div>
   </div>
 </section>

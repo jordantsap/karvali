@@ -24,7 +24,7 @@
               </a>
             <div class="row">
               <div class="col-xs-12 text-center">
-                <h3><b>{{__('page.description')}}</b>
+                <h3><b>{{__('page.description')}}:</b>
                 <div class="divider"></div>
                 <br>
                 {{ str_limit($album->description, 100) }}</h3>
@@ -35,7 +35,7 @@
 
         @endforeach @else
         <div class="col-xs-12 noresults">
-          <h1><b>Δεν υπάρχει τίποτα εδώ ακόμα!</b></h1>
+          <h1><b>{{__('page.noresults')}}!</b></h1>
         </div>
         @endif
 

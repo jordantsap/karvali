@@ -21,7 +21,8 @@ class PostController extends Controller
     public function show($slug)
     {
       $post = Post::whereTranslation('slug', $slug)
-      ->with(['category','likes','comments'])->firstOrFail();
+      ->with(['category','likes','comments'])->first();
+      
         return view('posts.show', compact('post'));
     }
     public function category($slug)
@@ -31,7 +32,7 @@ class PostController extends Controller
         ->with(['category','likes','comments'])
         ->active()
         ->orderBy('id', 'DESC')->paginate(6);
-
+        
         return view('posts.category', compact('posts', 'posttype'));
       }
 

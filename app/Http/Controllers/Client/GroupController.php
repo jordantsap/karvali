@@ -24,7 +24,7 @@ class GroupController extends Controller
   public function show($slug)
     {
       $group = Group::whereTranslation('slug', $slug)
-      ->with(['category','likes','comments'])->firstOrFail();
+      ->with(['category','likes','comments'])->first();
       return view('groups.show', compact('group'));
     }
 

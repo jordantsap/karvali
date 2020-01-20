@@ -7,7 +7,7 @@
         <div class="col-header text-center">
           <h3 class="page-header">Δωρεάν Πακέτο</h3>
           <h4>
-            <span class="big-number">Δωρεάν Διαφήμιση 30 ημερών</span>
+            <span class="big-number">Δωρεάν Διαφήμιση <br> 30 ημερών</span>
           </h4>
         </div>
         <div class="col-body">
@@ -17,15 +17,19 @@
             <li class="list-group-item">
               <i class="fa fa-building"></i> Δυνατότητα Δημιουργίας μίας Εταιρείας.</li>
             <li class="list-group-item">
-              <i class="fas fa-shopping-cart"></i> Δημιουργία Προϊόντων με Δυνατότητα Πωλήσεων και παραγγελιών.</li>
+              <i class="fas fa-shopping-cart"></i> Δημιουργία Προϊόντων με Δυνατότητα
+              Πωλήσεων και παραγγελιών.</li>
             <li class="list-group-item">
-              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση 15%/συναλλαγή.
+              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
+              15%/συναλλαγή.
             </li>
             <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Χωρίς δυνατότητα δημιουργίας Συλλόγου.
+              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
+              Συλλόγου.
             </li>
             <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Χωρίς δυνατότητα δημιουργίας Εκδήλωσης.
+              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
+              Εκδήλωσης.
             </li>
           </ul>
         </div>
@@ -54,15 +58,19 @@
             <li class="list-group-item">
               <i class="fa fa-building"></i> Δυνατότητα Δημιουργίας μίας Εταιρείας</li>
             <li class="list-group-item">
-              <i class="fas fa-shopping-cart"></i> Δημιουργία Προϊόντων με Δυνατότητα Πωλήσεων και παραγγελιών.</li>
+              <i class="fas fa-shopping-cart"></i> Δημιουργία Προϊόντων με Δυνατότητα
+              Πωλήσεων και παραγγελιών.</li>
             <li class="list-group-item">
-              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση 10%/συναλλαγή.
+              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
+              10%/συναλλαγή.
             </li>
             <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Χωρίς δυνατότητα δημιουργίας Συλλόγου.
+              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
+              Συλλόγου.
             </li>
             <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Χωρίς δυνατότητα δημιουργίας Εκδήλωσης.
+              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
+              Εκδήλωσης.
             </li>
           </ul>
         </div>
@@ -79,20 +87,23 @@
         <div class="col-header text-center">
           <h3 class="page-header">Μεσαίο Πακέτο</h3>
           <h4>
-                <span class="big-number">Διαφήμιση 30 ημερών με 20€/Μήνα</span>
+                <span class="big-number">Διαφήμιση 30 ημερών <br>με 20€/Μήνα</span>
               </h4>
         </div>
         <div class="col-body">
           <ul class="list-group">
             <li class="list-group-item">
-              <i class="fa fa-check-square"></i> Δυνατότητα ανανέωσης πακέτου κάθε μήνα.
+              <i class="fa fa-check-square"></i> Δυνατότητα ανανέωσης πακέτου κάθε
+              μήνα.
             </li>
             <li class="list-group-item">
               <i class="fa fa-building"></i> Δυνατότητα Δημιουργίας μίας Εταιρείας.</li>
             <li class="list-group-item">
-              <i class="fas fa-shopping-cart"></i> Δημιουργία Προϊόντων με Δυνατότητα Πωλήσεων και παραγγελιών.</li>
+              <i class="fas fa-shopping-cart"></i> Δημιουργία Προϊόντων με Δυνατότητα
+              Πωλήσεων και παραγγελιών.</li>
             <li class="list-group-item">
-              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση 5%/συναλλαγή.
+              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
+              5%/συναλλαγή.
             </li>
             <li class="list-group-item">
               <i class="fas fa-users"></i> Δυνατότητα Δημιουργίας Συλλόγου.</li>
@@ -119,15 +130,19 @@
         <div class="col-body">
           <ul class="list-group">
             <li class="list-group-item">
-              <i class="fa fa-check-square"></i> Δυνατότητα ανανέωσης πακέτου κάθε μήνα.
+              <i class="fa fa-check-square"></i> Δυνατότητα ανανέωσης πακέτου κάθε
+              μήνα.
             </li>
             <li class="list-group-item">
-              <i class="fa fa-building"></i> Δυνατότητα Δημιουργίας απεριορίστων Εταιρειών.
+              <i class="fa fa-building"></i> Δυνατότητα Δημιουργίας απεριορίστων
+              Εταιρειών.
             </li>
             <li class="list-group-item">
-              <i class="fas fa-shopping-cart"></i> Δημιουργία απεριορίστων Προϊόντων για πωλήσεις και παραγγελίες.</li>
+              <i class="fas fa-shopping-cart"></i> Δημιουργία απεριορίστων Προϊόντων
+              με Δυνατότητα Πωλήσεων και παραγγελιών.</li>
             <li class="list-group-item">
-              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες χωρίς χρέωση
+              <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες χωρίς εξτρα
+              χρέωση
             </li>
             <li class="list-group-item">
               <i class="fas fa-users"></i> Δημιουργία απεριορίστων Συλλόγων.</li>

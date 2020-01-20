@@ -28,7 +28,7 @@ class AlbumController extends Controller
      */
      public function show(Album $album)
      {
-         $album = Album::with('photos')->find($album->id)->first();
+         $album = Album::with('photos')->find($album->id);
          return view('albums.show', compact('album'));
      }
 }

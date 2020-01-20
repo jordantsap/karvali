@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 return [
     'homepagetitle' => 'Marketplace Guide, Product Orders, Community Clubs and Events | nea-karvali.gr',
@@ -20,10 +20,10 @@ return [
     'event' => 'Nea Karvali Event',
     'product' => 'Nea Karvali Product',
     'category' => 'Nea Karvali Category',
-    'groupcategory' => 'Groups in Nea Karvali',
-    'companycategory' => 'Companies and marketplaces in Nea Karvali',
-    'postcategory' => 'Posts and News in Nea Karvali',
-    'productcategory' => 'Products in Nea Karvali',
+    'companycategory' => 'καταστήματα και επιχειρήσεις στη Νέα Καρβάλη',
+    'groupcategory' => 'Σύλλογοι Νέας Καρβάλης',
+    'postcategory' => 'ειδήσεις στη Νέα Καρβάλη',
+    'productcategory' => 'προϊόντα στη Νέα Καρβάλη',
     'account' => 'Account',
     'user' => 'Advertiser',
     'customer' => 'Customer',

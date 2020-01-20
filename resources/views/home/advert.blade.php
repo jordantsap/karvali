@@ -1,4 +1,4 @@
-@if ( ! count($adverts) )
+{{-- @if ( ! count($adverts) )
 
   <div id="advert">
     <div class="container">
@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  @else
+  @else --}}
 
     <div id="advert">
       <div class="container">
@@ -41,17 +41,17 @@
               <div class="item active">
                 <div class="col-xs-4">
                   <a href="" title="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a href="" title="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a href="" title="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
               </div>
@@ -59,34 +59,34 @@
               <div class="item">
                 <div class="col-xs-4">
                   <a href="">
-                    <img width="100%" height="300px" src="{{asset('images/open.jpg')}}" alt="this is alt">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a href="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="this is alt">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a href="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="this is alt">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
               </div>
               <div class="item">
                 <div class="col-xs-4">
                   <a href="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="this is alt">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a href="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="this is alt">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a href="">
-                    <img width="100%" height="300px" src="{{asset('images/blogger.png')}}" alt="this is alt">
+                    <img width="100%" height="300px" src="{{asset('images/noimage.jpg')}}" alt="no image alt">
                   </a>
                 </div>
               </div>
@@ -95,4 +95,4 @@
         </div>
       </div>
     </div>
-@endif
+{{-- @endif --}}

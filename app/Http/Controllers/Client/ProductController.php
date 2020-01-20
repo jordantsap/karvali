@@ -23,7 +23,7 @@ class ProductController extends Controller
   public function show($slug)
   {
     $product = Product::whereTranslation('slug', $slug)
-    ->with(['company','category','likes','comments'])->firstOrFail();
+    ->with(['company','category','likes','comments'])->first();
 
       return view('products.show', compact('product'));
   }

@@ -487,7 +487,7 @@
             </div>
 
             <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2">
-                <img src="<?php echo e(asset('images/errorpage.jpg')); ?>" width="100%" alt="">
+                <img src="<?php echo $__env->yieldContent('image'); ?>" width="100%" alt="">
             </div>
         </div>
     </body>
