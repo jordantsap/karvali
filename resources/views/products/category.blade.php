@@ -43,7 +43,7 @@
                <div class="card-body">
                  <div class="card-title">
                    <a target="_blank" target="_blank" href="{{ route('product',$product->slug) }}">
-                   <h2>{{ str_limit($product->title, 30) }}</h2></a>
+                   <h2>{{ Str::limit($product->title, 30) }}</h2></a>
                  </div>
                  <div class="row" id="likecomment">
                    <div class="col-xs-6 text-center">
@@ -55,7 +55,7 @@
                  </div>
                    <div class="row col-xs-4 col-sm-12"><h3><b>{{ __('page.category') }}</b> <a href="{{ route('products-category', $product->category->slug)}}">{{$product->category->name}}</a></h3> </div>
                    <div class="row">
-                     <div class="col-xs-8"><h4><b>{{ __('page.company') }}</b> <a href="{{route('company',$product->company->slug)}}"><br>{{str_limit($product->company->title, 10)}}</a></h4></div>
+                     <div class="col-xs-8"><h4><b>{{ __('page.company') }}</b> <a href="{{route('company',$product->company->slug)}}"><br>{{Str::limit($product->company->title, 10)}}</a></h4></div>
                      <h4 class="col-xs-4"><b>{{ __('page.price') }}</b> <br>€ {{ $product->price }}</h4>
                    </div>
                    <div class="row">

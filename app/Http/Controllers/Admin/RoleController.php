@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Permission;
+use App\Models\Permission;
 use App\Http\Controllers\Controller;
-use App\Role;
+use App\Models\Role;
 
 class RoleController extends Controller
 {

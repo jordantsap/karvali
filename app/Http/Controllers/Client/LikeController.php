@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Like;
-use App\User;
-use App\Customer;
+use App\Models\Like;
+use App\Models\User;
+use App\Models\Customer;
 use Auth;
 use Illuminate\Http\Request;
 

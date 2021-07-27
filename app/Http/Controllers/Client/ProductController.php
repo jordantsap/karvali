@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ProductType;
-use App\Company;
-use App\Comment;
+use App\Models\ProductType;
+use App\Models\Company;
+use App\Models\Comment;
 class ProductController extends Controller
 {
   public function index()

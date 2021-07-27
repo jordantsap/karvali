@@ -36,9 +36,9 @@
           <div class="form-group">
             <label for="category">Category</label>
             <div class="form-control" name="category" id="category">
-              @if( ! empty($group->category)){{ $group->category->name }}
+              {{-- @if( ! empty($group->category)){{ $group->category->name }}
                   @else Null
-              @endif
+              @endif --}}
             </div>
           </div>
         </div>

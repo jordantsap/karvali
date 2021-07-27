@@ -46,7 +46,7 @@
             </div>
             <div class="card-body text-center">
               <h2 class="card-title">
-                  <a href="{{ route('news.show',$post->slug) }}">{{ str_limit($post->title, 30) }}</a>
+                  <a href="{{ route('news.show',$post->slug) }}">{{ Str::limit($post->title, 30) }}</a>
                 </h2>
               <div class="row">
                 <div class="col-xs-12">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-xs-12">
                   <h4><b>{{__('page.description')}}</b></h4>
-                  {!!str_limit($post->description, 50)!!}
+                  {!!Str::limit($post->description, 50)!!}
                 </div>
               </div>
             </div>

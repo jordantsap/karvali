@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Order;
+use App\Models\Order;
 use App\Mail\OrderPlaced;
 use Illuminate\Support\Facades\Mail;
 

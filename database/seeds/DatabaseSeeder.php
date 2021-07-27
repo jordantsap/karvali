@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+use App\Models\User;
 
 use Spatie\Permission\Models\Role;
-use App\Permission; //Spatie\Permission\Models\Permission;
+use App\Models\Permission; //Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {

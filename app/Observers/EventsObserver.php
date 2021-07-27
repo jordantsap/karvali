@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Event;
+use App\Models\Event;
 
 class EventsObserver
 {

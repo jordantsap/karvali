@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\PostType;
+use App\Models\Post;
+use App\Models\PostType;
 
 class PostController extends Controller
 {
@@ -22,7 +22,7 @@ class PostController extends Controller
     {
       $post = Post::whereTranslation('slug', $slug)
       ->with(['category','likes','comments'])->first();
-      
+
         return view('posts.show', compact('post'));
     }
     public function category($slug)
@@ -32,7 +32,7 @@ class PostController extends Controller
         ->with(['category','likes','comments'])
         ->active()
         ->orderBy('id', 'DESC')->paginate(6);
-        
+
         return view('posts.category', compact('posts', 'posttype'));
       }
 

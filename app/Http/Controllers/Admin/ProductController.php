@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-use App\Product;
+use App\Models\Product;
 use Image;
 use Auth;
 // use Illuminate\Http\File;

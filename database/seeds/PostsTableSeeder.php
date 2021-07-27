@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PostsTableSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
       DB::table('posts')->truncate();
-        $blogs = factory(\App\Post::class, 15)->create();
+        // $blogs = factory(Post::class, 15)->create();
+        Post::factory()->count(12)->create();
     }
 }

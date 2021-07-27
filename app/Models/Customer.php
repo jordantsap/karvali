@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -39,14 +39,14 @@ class Customer extends Authenticatable
   }
   public function orders()
   {
-    return $this->hasMany('App\Order');
+    return $this->hasMany('App\Models\Order');
   }
   public function comments()
     {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
   public function likes()
     {
-        return $this->morphMany('App\Like', 'likeable');
+        return $this->morphMany('App\Models\Like', 'likeable');
     }
 }

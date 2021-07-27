@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Album extends Model
 {
+    use HasFactory;
+
   public function getRouteKeyName()
   {
       return 'slug';
@@ -24,6 +27,6 @@ class Album extends Model
 
   public function photos()
   {
-      return $this->hasMany('App\AlbumPhoto');
+      return $this->hasMany('App\Models\AlbumPhoto');
   }
 }

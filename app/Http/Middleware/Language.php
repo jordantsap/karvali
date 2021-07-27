@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Arr;
 
 class Language
 {
@@ -18,7 +19,7 @@ class Language
             $segments = $request->segments();
 
             // Set the default language code as the first segment
-            $segments = array_prepend($segments, config('app.fallback_locale'));
+            $segments = Arr::prepend($segments, config('app.fallback_locale'));
 
             // Redirect to the correct url
             return redirect()->to(implode('/', $segments));

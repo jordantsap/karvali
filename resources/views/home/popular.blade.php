@@ -48,7 +48,7 @@
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                      <a href="{{ route('company',$company->slug) }}">{{ str_limit($company->title, 15) }}</a>
+                      <a href="{{ route('company',$company->slug) }}">{{ Str::limit($company->title, 15) }}</a>
                     </h4>
                   <div class="row" id="likecomment">
                     <div class="col-xs-6 text-center">
@@ -94,7 +94,7 @@
                         </div>
                         <div class="card-body">
                           <h4 class="card-title">
-                            <a href="{{ route('group',$group->slug) }}">{{ str_limit($group->title, 15) }}</a>
+                            <a href="{{ route('group',$group->slug) }}">{{ Str::limit($group->title, 15) }}</a>
                           </h4>
                           <div class="row" id="likecomment">
                             <div class="col-xs-6 text-center">
@@ -142,7 +142,7 @@
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                          <a href="{{ route('product',$product->slug) }}">{{ str_limit($product->title, 15) }}</a>
+                          <a href="{{ route('product',$product->slug) }}">{{ Str::limit($product->title, 15) }}</a>
                         </h4>
                   <div class="row" id="likecomment">
                     <div class="col-xs-6 text-center">
@@ -165,7 +165,7 @@
                   <div class="row">
                     <div class="col-xs-12"><b>{{ __('page.company') }}</b>
                       <a href="{{route('company', $product->company->slug)}}">
-                        {{str_limit($product->company->title, 10)}}</a>
+                        {{ Str::limit($product->company->title, 10) }}</a>
                     </div>
                   </div>
                   <br>
@@ -195,7 +195,7 @@
                         <img class="img-responsive img-fluid rounded" src="{{ asset('images/events/'.$event->logo) }}" style="width:100%;height:200px"
                           alt="{{$event->title}}">
                       </a>
-                      <h4 class="card-title"><a href="{{ route('event',$event->slug) }}">{{ str_limit($event->title, 15) }}</a></h4>
+                      <h4 class="card-title"><a href="{{ route('event',$event->slug) }}">{{ Str::limit($event->title, 15) }}</a></h4>
                       <div class="row" id="likecomment">
                         <div class="col-xs-6 text-center">
                           <i class="fas fa-2x fa-thumbs-up"></i>
@@ -208,7 +208,7 @@
                       </div>
                       <br>
 
-                      <div>{!!str_limit($event->description, 50) !!}</div>
+                      <div>{{Str::limit($event->description, 50) }}</div>
                       <br>
                       <a class="btn btn-primary btn-block" href="{{ route('event',$event->slug) }}">{{ __('page.viewevent') }}
                         <span class="glyphicon glyphicon-chevron-right"></span>

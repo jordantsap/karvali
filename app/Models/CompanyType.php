@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -28,6 +28,6 @@ class CompanyType extends Model implements TranslatableContract
 
     public function companies()
     {
-        return $this->hasMany('App\Company', 'company_type');
+        return $this->hasMany('App\Models\Company', 'company_type');
     }
 }

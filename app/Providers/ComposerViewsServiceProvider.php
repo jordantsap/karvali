@@ -4,18 +4,19 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use DB;
-use App\Company;
-use App\Group;
-use App\Event;
-use App\Product;
-use App\CompanyType;
-use App\GroupType;
-use App\ProductType;
-use App\PostType;
-use App\Post;
-use App\Advert;
-use App\User;
-use Cache;
+use App\Models\Company;
+use App\Models\Group;
+use App\Models\Event;
+use App\Models\Product;
+use App\Models\CompanyType;
+use App\Models\GroupType;
+use App\Models\ProductType;
+use App\Models\PostType;
+use App\Models\Post;
+use App\Models\Advert;
+use App\Models\User;
+use Illuminate\Support\Facades\Cache;
+
 class ComposerViewsServiceProvider extends ServiceProvider
 {
     /**

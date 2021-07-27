@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Event;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;

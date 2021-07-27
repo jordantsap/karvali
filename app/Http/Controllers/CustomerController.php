@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Session;
-use App\Customer;
-use App\Order;
-use App\OrderProduct;
+use App\Models\Customer;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Auth;
 use Image;
 

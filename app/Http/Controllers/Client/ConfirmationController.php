@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class ConfirmationController extends Controller
 {
@@ -14,7 +15,7 @@ class ConfirmationController extends Controller
      */
     public function index()
     {
-        if ( ! \Session::has('message')) {
+        if ( ! Session::has('message')) {
             return redirect('/');
         }
 

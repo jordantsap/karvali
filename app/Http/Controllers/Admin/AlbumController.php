@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Album;
-use App\AlbumPhoto;
+use App\Models\Album;
+use App\Models\AlbumPhoto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Str;
+
 use Image;
+
 class AlbumController extends Controller
 {
     /**
@@ -50,7 +53,7 @@ class AlbumController extends Controller
           ]);
       $album = new Album;
       $album->title = $request->title;
-      $album->slug = str_slug($album->title);
+      $album->slug = Str::slug($album->title);
       $album->meta_description = $request->input('meta_description');
       $album->meta_keywords = $request->input('meta_keywords');
       $album->cover_image = $request->cover_image;
@@ -124,7 +127,7 @@ class AlbumController extends Controller
      $album->meta_description = $request->input('meta_description');
      $album->meta_keywords = $request->input('meta_keywords');
      $album->alt = $request->alt;
-     $album->slug = str_slug($album->title);
+     $album->slug = Str::slug($album->title);
      $album->description = $request->description;
 
      if ($request->hasFile('cover_image')) {

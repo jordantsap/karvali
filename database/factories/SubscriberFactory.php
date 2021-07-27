@@ -1,9 +1,28 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Subscriber::class, function (Faker $faker) {
+use App\Models\Subscriber;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
+
+class SubscriberFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Subscriber::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
     return [
         //
     ];
-});
+}};

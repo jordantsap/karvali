@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Product;
-use Session;
+use App\Models\Product;
 
 class CartController extends Controller
 {

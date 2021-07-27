@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -26,6 +26,6 @@ class GroupType extends Model implements TranslatableContract
 
     public function groups()
     {
-        return $this->hasMany('App\Group', 'group_type');
+        return $this->hasMany('App\Models\Group', 'group_type');
     }
 }

@@ -43,9 +43,9 @@
                       @endforeach
                     </td>
                     <td>{{$user->active?"yes":'no'}}</td>
-                    <td>{{str_limit($user->fullname,10)}}</td>
-                    <td>{{str_limit($user->username,10)}}</td>
-                    <td>{{str_limit($user->email,10)}}</td>
+                    <td>{{Str::limit($user->fullname,10)}}</td>
+                    <td>{{Str::limit($user->username,10)}}</td>
+                    <td>{{Str::limit($user->email,10)}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>{{$user->email_verified_at}}</td>
                     <td>

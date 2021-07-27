@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-use App\Group;
-use Auth;
+use App\Models\Group;
+use App\Models\GroupType;
+use Illuminate\Support\Facades\Auth;
 use Image;
+use Str;
+
 class GroupController extends Controller
 {
     /**
@@ -30,7 +33,7 @@ class GroupController extends Controller
     public function create()
     {
       $this->authorize('create_groups', 'App\Group');
-      $grouptypes = \App\GroupType::all();
+      $grouptypes = GroupType::all();
         return view('admin.groups.create', compact('grouptypes'));
     }
 
@@ -73,7 +76,7 @@ class GroupController extends Controller
       $group->active = $request->active;
       $group->meta_description = $request->input('meta_description');
       $group->meta_keywords = $request->input('meta_keywords');
-      $group->slug = str_slug($request->title, '-');
+      $group->slug = Str::slug($request->title, '-');
       $group->header = $request->header;
       $group->logo = $request->logo;
       $group->image1 = $request->image1;
@@ -144,11 +147,11 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Group $group)
     {
       $this->authorize('view_groups', 'App\Group');
-      $categories = \App\GroupType::all();
-      $group = Group::find($id);
+      $categories = GroupType::all();
+      $group = Group::with('category')->find($group->id);
         return view('admin.groups.group', compact('group','categories'));
     }
 
@@ -161,7 +164,7 @@ class GroupController extends Controller
     public function edit($id)
     {
       $this->authorize('update_groups', 'App\Group');
-      $categories = \App\GroupType::all();
+      $categories = GroupType::all();
       $group = Group::find($id);
         return view('admin.groups.edit', compact('group', 'categories'));
     }
@@ -204,7 +207,7 @@ class GroupController extends Controller
        $group = Group::find($id);
        $group->user_id = Auth::user()->id;
        $group->title = $request->title;
-       $group->slug = str_slug($request->title, '-');
+       $group->slug = Str::slug($request->title, '-');
        $group->meta_description = $request->input('meta_description');
        $group->meta_keywords = $request->input('meta_keywords');
        $group->active = $request->active;

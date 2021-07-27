@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Subscriber;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
 class SubscriberController extends Controller

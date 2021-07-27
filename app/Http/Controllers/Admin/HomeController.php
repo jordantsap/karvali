@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use DB;
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller

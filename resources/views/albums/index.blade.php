@@ -17,7 +17,7 @@
         <div class="col-xs-12 col-sm-6 portfolio-item">
           <div class="card-body">
             <h2 class="card-title text-center">
-              {{ str_limit($album->title, 50) }}
+              {{ Str::limit($album->title, 50) }}
             </h2>
               <a href="{{ route('gallery',$album->slug) }}">
                 <img class="img-responsive img-fluid rounded" style="width:100%;height:250px;" src="{{ asset('images/albums/'.$album->cover_image) }}" alt="{{ $album->alt }}">
@@ -27,7 +27,7 @@
                 <h3><b>{{__('page.description')}}:</b>
                 <div class="divider"></div>
                 <br>
-                {{ str_limit($album->description, 100) }}</h3>
+                {{ Str::limit($album->description, 100) }}</h3>
               </div>
             </div>
           </div>

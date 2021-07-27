@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,10 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = 'manage/dashboard';
-    public function redirectTo(){
-      return route('dashboard');
-    }
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -38,30 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-
-    public function logout()
-    {
-        $cart = collect(session()->get('cart'));
-
-        $destination = \Auth::logout();
-
-        if (!config('cart.destroy_on_logout')) {
-            $cart->each(function($rows, $identifier) {
-                session()->put('cart.' . $identifier, $rows);
-            });
-        }
-
-        return redirect()->back();
-    }
-    /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showLoginForm()
-    {
-        return view('auth.login');
     }
 }

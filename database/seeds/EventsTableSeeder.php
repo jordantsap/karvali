@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Event;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class EventsTableSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class EventsTableSeeder extends Seeder
     public function run()
     {
       DB::table('events')->truncate();
-        $events = factory(App\Event::class, 15)->create();
+        // $events = factory(App\Models\Event::class, 15)->create();
+        Event::factory()->count(12)->create();
     }
 }

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Client;
 
 
-use App\Event;
-use App\Group;
-use App\Comment;
-use Auth;
+use App\Models\Event;
+use App\Models\Group;
+use App\Models\Comment;
 use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -100,7 +100,7 @@ class EventController extends Controller
          $event->group_id = $request->group_id;
          $event->user_id = Auth::user()->id;
          $event->title = $request->input('title');
-         $event->slug = str_slug($request->title, '-');
+         $event->slug = Str::slug($request->title, '-');
          $event->date = $request->date;
          $event->start_time = $request->start_time;
          $event->end_time = $request->end_time;

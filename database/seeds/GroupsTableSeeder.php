@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Group;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class GroupsTableSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
       DB::table('groups')->truncate();
-        $groups = factory(App\Group::class, 15)->create();
+        // $groups = factory(App\Models\Group::class, 15)->create();
+        Group::factory()->count(12)->create();
     }
 }

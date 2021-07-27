@@ -44,7 +44,7 @@
                       </td>
                       <td>{{$product->title}}</td>
                       <td><img width="150px" height="150px" src="{{asset('images/products/'.$product->logo)}}" alt="{{$product->title}}"></td>
-                      <td>{{str_limit($product->description, 20)}}</td>
+                      <td>{{Str::limit($product->description, 20)}}</td>
                       <td>
                         @can ('update_products', App\Product::class)
                           <a class="btn btn-primary" href="{{route('prod.edit', $product->id)}}">Edit</a> -

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
-use App\Company;
+use App\Models\User;
+use App\Models\Company;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CompanyPolicy

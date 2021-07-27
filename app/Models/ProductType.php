@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -26,6 +26,6 @@ class ProductType extends Model //implements TranslatableContract
 
   public function products()
   {
-    return $this->hasMany('App\Product', 'product_type');
+    return $this->hasMany('App\Models\Product', 'product_type');
   }
 }

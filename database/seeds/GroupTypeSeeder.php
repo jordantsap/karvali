@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\GroupType;
+use App\Models\GroupType;
+use Illuminate\Support\Facades\DB;
 
 class GroupTypeSeeder extends Seeder
 {

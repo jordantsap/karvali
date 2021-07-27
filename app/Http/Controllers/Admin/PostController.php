@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\PostType;
+use App\Models\Post;
+use App\Models\PostType;
 use Auth;
 use Image;
 

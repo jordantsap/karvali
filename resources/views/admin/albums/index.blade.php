@@ -42,7 +42,7 @@
                     </td> --}}
                     <td>{{$album->title}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/albums/'.$album->cover_image)}}" alt="{{$album->title}}"></td>
-                    <td>{{str_limit($album->description, 20)}}</td>
+                    <td>{{Str::limit($album->description, 20)}}</td>
                     <td>
                     @can ('update_albums', App\Album::class)
                       <a class="btn btn-primary" href="{{route('albums.edit', $album->id)}}">Edit</a> -

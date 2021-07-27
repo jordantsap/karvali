@@ -43,7 +43,7 @@
            </div>
              <div class="card-body text-center">
                <h2 class="card-title">
-                 <a href="{{ route('company',$company->slug) }}">{{ str_limit($company->title, 20) }}</a>
+                 <a href="{{ route('company',$company->slug) }}">{{ Str::limit($company->title, 20) }}</a>
                </h2>
                <div class="row" id="likecomment">
                  <div class="col-xs-6 text-center">

@@ -1,16 +1,36 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Album::class, function (Faker $faker) {
-    return [
-      'active'=> '1',
-      'title' => $faker->name,
-      'slug' =>$faker->slug,
-      'meta_description' => $faker->slug,
-      'meta_keywords' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-      'alt' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-      'cover_image' => 'noimage.jpg', //$faker->imageUrl($width = 640, $height = 480),
-      'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-    ];
-});
+use App\Models\Album;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
+
+class AlbumFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Album::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'active' => '1',
+            'title' => $this->faker->name,
+            'slug' => $this->faker->slug,
+            'meta_description' => $this->faker->slug,
+            'meta_keywords' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'alt' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'cover_image' => 'noimage.jpg', //$faker->imageUrl($width = 640, $height = 480),
+            'description' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
+        ];
+    }
+}

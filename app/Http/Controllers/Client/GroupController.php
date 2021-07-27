@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Group;
-use App\GroupType;
-use App\Comment;
+use App\Models\Group;
+use App\Models\GroupType;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

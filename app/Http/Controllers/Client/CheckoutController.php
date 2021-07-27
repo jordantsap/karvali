@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Order;
-use App\OrderProduct;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Http\Controllers\Controller;
 use Auth;
 use Session;

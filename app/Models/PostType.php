@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +11,7 @@ class PostType extends Model// implements TranslatableContract
 {
 
   use Translatable;
-  
+
   protected $fillable = ['name', 'slug'];
 
 
@@ -28,6 +28,6 @@ class PostType extends Model// implements TranslatableContract
 
   public function posts()
   {
-      return $this->hasMany('App\Post', 'post_type');
+      return $this->hasMany('App\Models\Post', 'post_type');
   }
 }

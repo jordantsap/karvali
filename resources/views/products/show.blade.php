@@ -28,7 +28,7 @@
               <li class="list-group-item bold">
                 <h2>{{__('single.company')}}
                   <a href="{{ route('company',$product->company->slug) }}">
-                    {{ str_limit($product->company->title, 200) }}</a></h2></li>
+                    {{ Str::limit($product->company->title, 200) }}</a></h2></li>
 
               <li class="list-group-item bold">
                 <h2>{{__('single.category')}}

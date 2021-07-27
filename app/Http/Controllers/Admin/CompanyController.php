@@ -6,7 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
-use App\Company;
+use App\Models\Company;
 use Auth;
 use Image;
 use Illuminate\Support\Facades\Storage;

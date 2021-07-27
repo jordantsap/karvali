@@ -1,36 +1,56 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Company::class, function (Faker $faker) {
+use App\Models\Company;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
+
+class CompanyFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Company::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
     return [
       'active'=> '1',
-      'title' => $faker->company,
-      'slug' =>$faker->slug,
-      'meta_description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-      'meta_keywords' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+      'title' => $this->faker->company,
+      'slug' =>$this->faker->slug,
+      'meta_description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+      'meta_keywords' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
       'company_type' => rand(1, 12),
-      'delivery' => $faker->randomElement($array = array ('No','Yes')),
-      'manager' => $faker->name,
+      'delivery' => $this->faker->randomElement($array = array ('No','Yes')),
+      'manager' => $this->faker->name,
       'header' => 'noimage.jpg',
       'logo' => 'logo.jpg',
       'image1' => 'noimage.jpg',
       'image2' => 'noimage.jpg',
       'image3' => 'noimage.jpg',
       'days' => '',
-      'morningtime' => $faker->time($format = 'H:i', $min = 'now'), // '20:49:42'
-      'afternoontime' => $faker->time($format = 'H:i', $min = 'now'),
+      'morningtime' => $this->faker->time($format = 'H:i', $min = 'now'), // '20:49:42'
+      'afternoontime' => $this->faker->time($format = 'H:i', $min = 'now'),
       'telephone' => '2510-867512',
-      'website' => $faker->domainName,
-      'email' => $faker->email,
-      'facebook' => $faker->domainName,
-      'twitter' => $faker->domainName,
-      // 'address' => $faker->address,
-      // 'lat' => $faker->latitude($min = 40.958023, $max = 40.97),
-      // 'lng' => $faker->longitude($min = 24.5050, $max = 24.5280),
-      'pos' => $faker->randomElement($array = array ('No','Yes')),
-      'creditcard' => $faker->randomElement($array = array ('Visa', 'Mastercard','American-Express')),
-      'description' => $faker->realText($maxNbChars = 300, $indexSize = 2),
+      'website' => $this->faker->domainName,
+      'email' => $this->faker->email,
+      'facebook' => $this->faker->domainName,
+      'twitter' => $this->faker->domainName,
+      // 'address' => $this->faker->address,
+      // 'lat' => $this->faker->latitude($min = 40.958023, $max = 40.97),
+      // 'lng' => $this->faker->longitude($min = 24.5050, $max = 24.5280),
+      'pos' => $this->faker->randomElement($array = array ('No','Yes')),
+      'creditcard' => $this->faker->randomElement($array = array ('Visa', 'Mastercard','American-Express')),
+      'description' => $this->faker->realText($maxNbChars = 300, $indexSize = 2),
       'user_id' => rand(1, 2),
     ];
-});
+}
+}

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('manage')->middleware(['auth', 'verified'])->group(function() {
   Route::get('/', 'Admin\HomeController@index')->name('dashboard');
   Route::get('dashboard', 'Admin\HomeController@index')->name('dashboard');

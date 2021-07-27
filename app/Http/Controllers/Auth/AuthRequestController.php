@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUserNotification;
 use Illuminate\Support\Facades\Hash;
-use App\User;
-use App\Role;
+use App\Models\User;
+use App\Models\Role;
+
 class AuthRequestController extends Controller
 {
     /**

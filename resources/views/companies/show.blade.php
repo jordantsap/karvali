@@ -143,13 +143,13 @@
             @foreach($company->products->where('active',1) as $company)
               <div class="col-xs-3">
                 <ul class="list-group">
-                  <li class="list-group-item"><h2>{{ str_limit($company->title, 20)}}</h2>
+                  <li class="list-group-item"><h2>{{ $company->title }}</h2>
                   </li>
                   <li class="list-group-item"><img src="{{ asset('images/products/'.$company->logo) }}" width="100%" height="100px" alt="{{$company->title}}" title"{{$company->title}}"></li>
                   {{-- <li class="list-group-item bold">Κατηγορία: <a href="{{ route('products-category', $company->producttype->id)}}">{{ $company->producttype->name }}</a></li> --}}
                   <li class="list-group-item"><h3>Τιμή: {{ $company->price }}</h3></li>
           <li class="list-group-item">
-            <h3>{!!str_limit($company->description, 20)!!}</h3>
+            <h3>{{ $company->description }}</h3>
           </li>
           <li class="list-group-item">
             <a href="{{route('product', $company->slug) }}" class="btn btn-default btn-block">Show</a>

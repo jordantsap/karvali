@@ -45,7 +45,7 @@
                     </td>
                     <td>{{$post->title}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/posts/'.$post->image)}}" alt="{{$post->title}}"></td>
-                    <td>{{str_limit($post->description, 20)}}</td>
+                    <td>{{Str::limit($post->description, 20)}}</td>
                     <td>
                     @can ('update_posts', App\Post::class)
                       <a class="btn btn-primary" href="{{route('posts.edit', $post->id)}}">Edit</a> -

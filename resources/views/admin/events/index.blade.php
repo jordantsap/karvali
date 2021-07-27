@@ -38,7 +38,7 @@
                     <td>{{$event->active?"yes":'no'}}</td>
                     <td>{{$event->title}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/events/'.$event->logo)}}" alt="{{$event->title}}"></td>
-                    <td>{{str_limit($event->description, 20)}}</td>
+                    <td>{{Str::limit($event->description, 20)}}</td>
                     <td>
                     @can ('update_events', App\Event::class)
                         <a class="btn btn-primary" href="{{route('events.edit', $event->id)}}">Edit</a> -

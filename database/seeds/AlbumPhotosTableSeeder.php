@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\AlbumPhoto;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AlbumPhotosTableSeeder extends Seeder
 {
@@ -12,6 +14,7 @@ class AlbumPhotosTableSeeder extends Seeder
     public function run()
     {
       DB::table('album_photos')->truncate();
-        $albums = factory(App\AlbumPhoto::class, 12)->create();
+        // $albums = factory(App\Models\AlbumPhoto::class, 12)->create();
+        AlbumPhoto::factory()->count(12)->create();
     }
 }

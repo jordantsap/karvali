@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Role;
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+
 class UserController extends Controller
 {
     /**

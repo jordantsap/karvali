@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use Illuminate\Http\Request;
-use App\Company;
+use App\Models\Company;
 
 class CompaniesObserver
 {

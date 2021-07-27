@@ -38,13 +38,13 @@
                     <td>{{$group->id}}</td>
                     <td>{{$group->active?"yes":'no'}}</td>
                     <td>
-                      @if( ! empty($group->category)){{ $group->category->name }}
+                      {{-- @if( ! empty($group->category)){{ $group->category->name }}
                       @else None
-                      @endif
+                      @endif --}}
                     </td>
                     <td>{{$group->title}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/groups/'.$group->logo)}}" alt="{{$group->title}}"></td>
-                    <td>{{str_limit($group->description, 20)}}</td>
+                    <td>{{Str::limit($group->description, 20)}}</td>
                     <td>
                     @can ('update_groups', App\Group::class)
                         <a class="btn btn-primary" href="{{route('group.edit', $group->id)}}">Edit</a> -

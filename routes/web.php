@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('search', 'SearchController@getresults')->name('searchresults');
@@ -65,3 +67,7 @@ Route::get('month-events', 'Client\EventDatesController@monthevents')->name('mon
 Route::get('next-events', 'Client\EventDatesController@upcomingevents')->name('upcomingevents');
 
 Route::get('/', 'HomeController@homepage')->name('homepage');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

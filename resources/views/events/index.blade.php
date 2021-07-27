@@ -23,8 +23,8 @@
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <h4 class="card-title"><a href="{{ route('event',$event->slug) }}">{{ str_limit($event->title, 15) }}</a></h4>
-              <p>{{ str_limit($event->description, 100) }}</p>
+              <h4 class="card-title"><a href="{{ route('event',$event->slug) }}">{{ Str::limit($event->title, 15) }}</a></h4>
+              <p>{{ Str::limit($event->description, 100) }}</p>
               <p>{{ __('page.date') }} {{ date('d-M-Y', strtotime($event->start_date))
                 }} - {{ __('page.from') }}:{{ $event->start_time }} - {{ __('page.until')
                 }}: {{$event->end_time}}</p>

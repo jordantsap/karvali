@@ -41,7 +41,7 @@
            </div>
              <div class="card-body text-center">
                <h2 class="card-title">
-                 <a href="{{ route('group',$group->slug) }}">{{ str_limit($group->title, 20) }}</a>
+                 <a href="{{ route('group',$group->slug) }}">{{ Str::limit($group->title, 20) }}</a>
                </h2>
                <div class="row" id="likecomment">
                  <div class="col-xs-12"><h3><b>{{ __('page.category') }}</b> <a href="{{ route('groups-category', $group->category->slug)}}">{{$group->category->name}}</a></h3></div>

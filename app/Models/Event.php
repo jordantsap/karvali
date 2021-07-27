@@ -1,14 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model //implements TranslatableContract
   {
-    use Translatable;
+    use Translatable, HasFactory;
 
     protected $translatedAttributes = [
       'title',
@@ -49,29 +50,29 @@ class Event extends Model //implements TranslatableContract
 
   public function group()
   {
-      return $this->belongsTo('App\Group');
+      return $this->belongsTo('App\Models\Group');
   }
 
 
   public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
 
   public function comments()
     {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
 
   public function likes()
     {
-        return $this->morphMany('App\Like', 'likeable');
+        return $this->morphMany('App\Models\Like', 'likeable');
     }
 
     public function adverts()
       {
-          return $this->morphMany('App\Advert', 'advertable');
+          return $this->morphMany('App\Models\Advert', 'advertable');
       }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -19,7 +19,7 @@ class Comment extends Model implements TranslatableContract
     'user_id',
   ];
 
-  
+
   public function commentable()
   {
       return $this->morphTo();

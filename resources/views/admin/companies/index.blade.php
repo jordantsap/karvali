@@ -42,7 +42,7 @@
                       @else None
                       @endif
                     </td>
-                    <td>{{str_limit($company->title,10)}}</td>
+                    <td>{{Str::limit($company->title,10)}}</td>
                     <td>{{$company->manager}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/companies/'.$company->logo)}}" alt="{{$company->title}}"></td>
                     <td>

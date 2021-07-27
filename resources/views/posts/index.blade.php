@@ -46,9 +46,9 @@
             </div>
             <div class="text-center">
               <h2 class="">
-                  <a href="{{ route('news.show',$post->slug) }}">{{ str_limit($post->title, 30) }}</a>
+                  <a href="{{ route('news.show',$post->slug) }}">{{ Str::limit($post->title, 30) }}</a>
                 </h2>
-               <div class="row"> 
+               <div class="row">
                 <div class="col-xs-12">
                   <h4><b>{{__('page.category')}}</b></h4>
                   <a href="{{ route('posts-category', $post->category->slug)}}">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-xs-12">
                   <h4><b>{{__('page.description')}}</b></h4>
-                  <p>{!!str_limit($post->description, 50)!!}</p>
+                  <p>{!!Str::limit($post->description, 50)!!}</p>
                 </div>
               </div>
             </div>
