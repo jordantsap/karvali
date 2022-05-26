@@ -3,14 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use ProtoneMedia\LaravelCrossEloquentSearch\Search;
+use App\Models\Product;
+use App\Models\Company;
 class SearchController extends Controller
 {
-    public function getresults()
+    public function getresults(Request $request)
     {
-      // return redirect()->back();
-      return response('search results page')
-      ->header("Refresh", "2;url=/");
 
+      if (!$request->input('query')) {
+        $notification = array(
+          'message' => 'Nothing found here, search better this time', 'Notice!',
+          'alert-type' => 'danger'
+          );
+        return redirect()->back()->with($notification);
+      } else {
+        $query = $request->input('query');
+        // return $query;
+        Search::new()
+        ->add(Product::class, 'title')
+        ->add(Company::class, 'title')
+        ->search('howto');
+          // ->paginate(10)
+
+        return view('searchresults', compact('results'));
+      }
+      
+      
     }
 }

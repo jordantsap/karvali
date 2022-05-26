@@ -57,6 +57,10 @@ switch(type){
     case 'error':
         toastr.error("{{ Session::get('message') }}");
         break;
+    case 'danger':
+        toastr.warning('We do have the Kapua suite available.', 'Turtle Bay Resort', 'dghsdfhsdhgd');
+        break;
+
 }
 @endif
 </script>
