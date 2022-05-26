@@ -89,7 +89,7 @@ class CheckoutController extends Controller
 
             return redirect()->route('confirmation.index')->with($notification);
 
-        } catch (CardErrorException $e) {
+        } catch (CartErrorException $e) {
             $this->addToOrdersTables($request, $e->getMessage());
             return back()->withErrors('Error! ' . $e->getMessage());
         }

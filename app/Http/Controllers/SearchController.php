@@ -23,7 +23,7 @@ class SearchController extends Controller
         Search::new()
         ->add(Product::class, 'title')
         ->add(Company::class, 'title')
-        ->search('howto');
+        ->get('howto');
           // ->paginate(10)
 
         return view('searchresults', compact('results'));
