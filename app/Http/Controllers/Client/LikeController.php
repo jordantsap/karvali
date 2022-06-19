@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Like;
 use App\Models\User;
 use App\Models\Customer;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller

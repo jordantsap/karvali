@@ -115,8 +115,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-      $share = Share::find($id);
-      $share->delete();
+      $role =  Role::find($id);
+      $role->delete();
       $notification = array(
       'message' => 'Role updated successfully',
       'alert-type' => 'info'

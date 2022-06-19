@@ -47,8 +47,8 @@
                   <div class="divider"></div>
                   <a target="_blank" href="{{route('company',$item->model->company->slug)}}">{{ $item->model->company->title }}</a>
                 </td>
-                <td>{{ str_limit($item->model->sku, 50) }}</td>
-                <td>{{ str_limit($item->model->description,50) }}</td>
+                <td>{{ Str::limit($item->model->sku, 50) }}</td>
+                <td>{{ Str::limit($item->model->description,50) }}</td>
                 <td class="text-center">
                   <select class="quantity" data-id="{{ $item->rowId }}">
                       <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
@@ -64,7 +64,8 @@
                   </select>
                 </td>
                 <td>{{ $item->subtotal }}€</td>
-                <td><a target="_blank" href="{{route('product',$item->model->slug) }}" class="btn btn-primary btn-block">{{__('cart.product')}}</a>
+                <td><a target="_blank" href="{{route('product',$item->model->slug) }}" class="btn btn-primary btn-block">
+                  {{__('cart.product')}}</a>
                   <br>
                   <form action="{{ route('cart.destroy', $item->rowId)}}" method="post">
                     {{ csrf_field() }}

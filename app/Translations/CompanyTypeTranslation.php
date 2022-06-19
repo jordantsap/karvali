@@ -8,8 +8,9 @@ class CompanyTypeTranslation extends Model
 {
     protected $fillable = ['name', 'slug'];
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    protected $translationForeignKey = 'event_id';
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -8,7 +8,7 @@
 					<div class="divider"></div>
 					<br>
 					<div class="col-xs-12">
-						<div class="col-xs-4 text-center">
+						<div class="col-xs-3 text-center">
               <div class="animated slideInLeft">
                 <h3>{{ __('page.companycategories') }}</h3>
               </div>
@@ -19,7 +19,7 @@
                 </li>
               @endforeach
             </div>
-						<div class="col-xs-4 text-center">
+						<div class="col-xs-3 text-center">
               <div class="scroll-animation-bounce">
                 <h3 class="animated slideInDown">{{ __('page.groupcategories') }}</h3>
               </div>
@@ -30,13 +30,23 @@
                 </li>
               @endforeach
             </div>
-            <div class="col-xs-4 text-center">
+            <div class="col-xs-3 text-center">
               <div class="animated slideInRight">
                 <h3>{{ __('page.productcategories') }}</h3>
               </div>
               @foreach ($producttypes as $category)
                 <li class="list-group-item">
                   <a href="{{ route('products-category', $category->slug)}}"> <h4 class="animated slideInUp">{{$category->name}}</h4> </a>
+                </li>
+              @endforeach
+            </div>
+            <div class="col-xs-3 text-center">
+              <div class="animated slideInRight">
+                <h3>{{ __('page.events') }}</h3>
+              </div>
+              @foreach ($events as $event)
+                <li class="list-group-item">
+                  <a href="{{ route('event', $event->slug)}}"> <h4 class="animated slideInUp">{{$event->title}}</h4> </a>
                 </li>
               @endforeach
             </div>

@@ -23,7 +23,7 @@ class CreateProductTranslationsTable extends Migration
             $table->string('slug')->unique();
             $table->string('meta_description');
             $table->string('meta_keywords');
-            $table->longText('description')->nullable()->unique();
+            $table->longText('description')->nullable();
 
             $table->unique(['product_id', 'locale']);
             $table->timestamps();

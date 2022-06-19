@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
-use Image;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -71,7 +73,7 @@ class EventController extends Controller
 
         $event->user_id = Auth::user()->id;
         $event->title = $request->title;
-        $event->slug = str_slug($request->title, '-');
+        $event->slug = Str::slug($request->title, '-');
         $event->active = $request->active;
         $event->meta_description = $request->input('meta_description');
         $event->meta_keywords = $request->input('meta_keywords');
@@ -210,7 +212,7 @@ class EventController extends Controller
            $event->title = $request->input('title');
            $event->meta_description = $request->input('meta_description');
            $event->meta_keywords = $request->input('meta_keywords');
-           $event->slug = str_slug($request->title, '-');
+           $event->slug = Str::slug($request->title, '-');
            $event->active = $request->active;
            $event->header = $request->header;
            $event->logo = $request->logo;
@@ -238,9 +240,9 @@ class EventController extends Controller
            $location = public_path("images/events/" . $filename);
            $oldfile = public_path("images/events/" . $event->header);
            // dd($oldfile);
-           if(\File::exists($oldfile))
+           if(File::exists($oldfile))
            {
-              \File::delete($oldfile);
+              File::delete($oldfile);
             }
             Image::make($header)->resize(800, 400)->save($location);
            $event->header = $filename;
@@ -253,9 +255,9 @@ class EventController extends Controller
              $location = public_path("images/events/" . $filename);
              $oldfile = public_path("images/events/" . $event->logo);
              // dd($oldfile);
-             if(\File::exists($oldfile))
+             if(File::exists($oldfile))
              {
-                \File::delete($oldfile);
+                File::delete($oldfile);
               }
               Image::make($logo)->resize(800, 400)->save($location);
              $event->logo = $filename;
@@ -268,9 +270,9 @@ class EventController extends Controller
              $location = public_path("images/events/" . $filename);
              $oldfile1 = public_path("images/events/" . $event->image1);
              // dd($oldfile);
-             if(\File::exists($oldfile1))
+             if(File::exists($oldfile1))
              {
-                \File::delete($oldfile1);
+                File::delete($oldfile1);
               }
               Image::make($image1)->resize(800, 400)->save($location);
              $event->image1 = $filename;
@@ -283,9 +285,9 @@ class EventController extends Controller
                $location = public_path("images/events/" . $filename);
                $oldfile2 = public_path("images/events/" . $event->image2);
                // dd($oldfile);
-               if(\File::exists($oldfile2))
+               if(File::exists($oldfile2))
                {
-                  \File::delete($oldfile2);
+                  File::delete($oldfile2);
                 }
                 Image::make($image2)->resize(800, 400)->save($location);
                $event->image2 = $filename;
@@ -298,9 +300,9 @@ class EventController extends Controller
                  $location = public_path("images/events/" . $filename);
                  $oldfile3 = public_path("images/events/" . $event->image3);
                  // dd($oldfile);
-                 if(\File::exists($oldfile3))
+                 if(File::exists($oldfile3))
                  {
-                    \File::delete($oldfile3);
+                    File::delete($oldfile3);
                   }
                   Image::make($image3)->resize(800, 400)->save($location);
                  $event->image3 = $filename;

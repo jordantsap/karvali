@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use Auth;
-use Image;
+use App\Models\CompanyType;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CompanyController extends Controller
 {
@@ -34,14 +37,14 @@ class CompanyController extends Controller
     public function create()
     {
       $this->authorize('create_companies', 'App\Company');
-      $companytypes = \App\CompanyType::all();
+      $companytypes = CompanyType::all();
       return view('admin.companies.create', compact('companytypes'));
     }
 
     /**
      * Store a newly created Company in storage.
      *
-     * @param  \App\Http\Requests\StoreCompaniesRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -79,7 +82,7 @@ class CompanyController extends Controller
          $company->user_id = Auth::user()->id;
          $company->title = $request->title;
          $company->active = $request->active;
-         $company->slug = str_slug($request->title, '-');
+         $company->slug = Str::slug($request->title, '-');
          $company->meta_description = $request->input('meta_description');
          $company->meta_keywords = $request->input('meta_keywords');
          $company->company_type = $request->company_type;
@@ -171,7 +174,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
       $this->authorize('update_companies', 'App\Company');
-      $categories = \App\CompanyType::all();
+      $categories = CompanyType::all();
       $company = Company::find($id);
       return view('admin.companies.edit', compact('company', 'categories'));
     }
@@ -179,7 +182,7 @@ class CompanyController extends Controller
     /**
      * Update Company in storage.
      *
-     * @param  \App\Http\Requests\UpdateCompaniesRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -219,7 +222,7 @@ class CompanyController extends Controller
 
          $company->user_id = Auth::user()->id;
          $company->title = $request->input('title');
-         $company->slug = str_slug($request->input('title'), '-');
+         $company->slug = Str::slug($request->input('title'), '-');
          $company->meta_description = $request->input('meta_description');
          $company->meta_keywords = $request->input('meta_keywords');
          $company->active = $request->active;
@@ -250,9 +253,9 @@ class CompanyController extends Controller
              $location = public_path("images/companies/" . $filename);
              $oldfile = public_path("images/companies/" . $company->header);
              // dd($oldfile);
-             if(\File::exists($oldfile))
+             if(File::exists($oldfile))
              {
-                \File::delete($oldfile);
+                File::delete($oldfile);
               }
               Image::make($header)->resize(800, 400)->save($location);
               $company->header = $filename;
@@ -265,9 +268,9 @@ class CompanyController extends Controller
          $location = public_path("images/companies/" . $filename);
          $oldfile = public_path("images/companies/" . $company->logo);
          // dd($oldfile);
-         if(\File::exists($oldfile))
+         if(File::exists($oldfile))
          {
-            \File::delete($oldfile);
+            File::delete($oldfile);
           }
           Image::make($logo)->resize(800, 400)->save($location);
           $company->logo = $filename;
@@ -280,9 +283,9 @@ class CompanyController extends Controller
            $location = public_path("images/companies/" . $filename);
            $oldfile1 = public_path("images/companies/" . $company->image1);
            // dd($oldfile);
-           if(\File::exists($oldfile1))
+           if(File::exists($oldfile1))
            {
-              \File::delete($oldfile1);
+              File::delete($oldfile1);
             }
             Image::make($image1)->resize(800, 400)->save($location);
             $company->image1 = $filename;
@@ -295,9 +298,9 @@ class CompanyController extends Controller
              $location = public_path("images/companies/" . $filename);
              $oldfile2 = public_path("images/companies/" . $company->image2);
              // dd($oldfile);
-             if(\File::exists($oldfile2))
+             if(File::exists($oldfile2))
              {
-                \File::delete($oldfile2);
+                File::delete($oldfile2);
               }
               Image::make($image2)->resize(800, 400)->save($location);
               $company->image2 = $filename;
@@ -310,9 +313,9 @@ class CompanyController extends Controller
                $location = public_path("images/companies/" . $filename);
                $oldfile3 = public_path("images/companies/" . $company->image3);
                // dd($oldfile);
-               if(\File::exists($oldfile3))
+               if(File::exists($oldfile3))
                {
-                  \File::delete($oldfile3);
+                  File::delete($oldfile3);
                 }
                 Image::make($image3)->resize(800, 400)->save($location);
                 $company->image3 = $filename;

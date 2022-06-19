@@ -19,14 +19,15 @@ class Product extends Model implements TranslatableContract
       'slug',
       'description',
     ];
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     protected $fillable = [
     'company_id',
     'user_id',
+    'title',
     'product_type',
     'header',
     'logo',

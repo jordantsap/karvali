@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Group;
 use App\Models\GroupType;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Auth;
-use Image;
-use Str;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class GroupController extends Controller
 {
@@ -235,9 +236,9 @@ class GroupController extends Controller
            $location = public_path("images/groups/" . $filename);
            $oldfile = public_path("images/groups/" . $group->header);
            // dd($oldfile);
-           if(\File::exists($oldfile))
+           if(File::exists($oldfile))
            {
-              \File::delete($oldfile);
+              File::delete($oldfile);
             }
             Image::make($header)->resize(800, 400)->save($location);
            $group->header = $filename;
@@ -250,9 +251,9 @@ class GroupController extends Controller
              $location = public_path("images/groups/" . $filename);
              $oldfile = public_path("images/groups/" . $group->logo);
              // dd($oldfile);
-             if(\File::exists($oldfile))
+             if(File::exists($oldfile))
              {
-                \File::delete($oldfile);
+                File::delete($oldfile);
               }
               Image::make($logo)->resize(800, 400)->save($location);
              $group->logo = $filename;
@@ -265,9 +266,9 @@ class GroupController extends Controller
              $location = public_path("images/groups/" . $filename);
              $oldfile1 = public_path("images/groups/" . $group->image1);
              // dd($oldfile);
-             if(\File::exists($oldfile1))
+             if(File::exists($oldfile1))
              {
-                \File::delete($oldfile1);
+                File::delete($oldfile1);
               }
               Image::make($image1)->resize(800, 400)->save($location);
              $group->image1 = $filename;
@@ -280,9 +281,9 @@ class GroupController extends Controller
                $location = public_path("images/groups/" . $filename);
                $oldfile2 = public_path("images/groups/" . $group->image2);
                // dd($oldfile);
-               if(\File::exists($oldfile2))
+               if(File::exists($oldfile2))
                {
-                  \File::delete($oldfile2);
+                  File::delete($oldfile2);
                 }
                 Image::make($image2)->resize(800, 400)->save($location);
                $group->image2 = $filename;
@@ -295,9 +296,9 @@ class GroupController extends Controller
                  $location = public_path("images/groups/" . $filename);
                  $oldfile3 = public_path("images/groups/" . $group->image3);
                  // dd($oldfile);
-                 if(\File::exists($oldfile3))
+                 if(File::exists($oldfile3))
                  {
-                    \File::delete($oldfile3);
+                    File::delete($oldfile3);
                   }
                   Image::make($image3)->resize(800, 400)->save($location);
                  $group->image3 = $filename;

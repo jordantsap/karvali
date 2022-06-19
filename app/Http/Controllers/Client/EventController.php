@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Client;
 
-
 use App\Models\Event;
 use App\Models\Group;
 use App\Models\Comment;
-use Image;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;

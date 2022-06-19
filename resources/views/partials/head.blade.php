@@ -23,6 +23,11 @@
 
     @yield('home-css')
     @yield('extra-css')
+    {{-- search result page css --}}
+    <style>
+      #searchresultsheader{
+            margin:50px 0;
+    </style>
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">

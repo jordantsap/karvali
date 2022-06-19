@@ -6,9 +6,10 @@ use App\Models\Album;
 use App\Models\AlbumPhoto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Str;
-
-use Image;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class AlbumController extends Controller
 {
@@ -32,7 +33,7 @@ class AlbumController extends Controller
     public function create()
     {
       $this->authorize('create_albums', 'App\Album');
-        return view('admin.albums.create', compact('albums'));
+        return view('admin.albums.create');
     }
 
     /**
@@ -137,9 +138,9 @@ class AlbumController extends Controller
          $location = public_path("images/albums/" . $filename);
          $oldfile = public_path("images/albums/" . $album->cover_image);
          // dd($oldfile);
-         if(\File::exists($oldfile))
+         if(File::exists($oldfile))
          {
-            \File::delete($oldfile);
+            File::delete($oldfile);
           }
           Image::make($image)->resize(800, 400)->save($location);
          $album->cover_image = $filename;
@@ -163,7 +164,7 @@ class AlbumController extends Controller
     {
       $this->authorize('delete_albums', 'App\Album');
       $album = Album::find($id);
-       $company->delete();
+       $album->delete();
        $notification = array(
        'message' => 'Album deleted successfully',
        'alert-type' => 'info'

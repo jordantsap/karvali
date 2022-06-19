@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductTranslation extends Model
 {
+  protected $translationForeignKey = 'product_id';
+  
   protected $fillable = [
     'meta_description',
     'meta_keywords',

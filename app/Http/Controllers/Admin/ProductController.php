@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Product;
-use Image;
-use Auth;
-// use Illuminate\Http\File;
+use App\Models\ProductType;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+
 class ProductController extends Controller
 {
     /**
@@ -32,7 +35,7 @@ class ProductController extends Controller
     public function create()
     {
         $this->authorize('create_products', 'App\Product');
-        $producttypes = \App\ProductType::all();
+        $producttypes = ProductType::all();
         return view('admin.products.create', compact('producttypes'));
     }
 
@@ -63,7 +66,7 @@ class ProductController extends Controller
           ]);
       $product = new Product;
       $product->title = $request->input('title');
-      $product->slug = str_slug($request->input('title'), '-');
+      $product->slug = Str::slug($request->input('title'), '-');
       $product->meta_description = $request->input('meta_description');
       $product->meta_keywords = $request->input('meta_keywords');
       $product->company_id = $request->company_id;
@@ -154,7 +157,7 @@ class ProductController extends Controller
     public function edit($id)
     {
       $this->authorize('update_products', 'App\Product');
-      $categories = \App\ProductType::all();
+      $categories = ProductType::all();
       $product = Product::find($id);
         return view('admin.products.edit', compact('product','categories'));
     }
@@ -190,7 +193,7 @@ class ProductController extends Controller
 
       $product = Product::find($product->id);
       $product->title = $request->title;
-      $product->slug = str_slug($request->title, '-');
+      $product->slug = Str::slug($request->title, '-');
       $product->meta_description = $request->input('meta_description');
       $product->meta_keywords = $request->input('meta_keywords');
       $product->company_id = $request->company_id;
@@ -213,9 +216,9 @@ class ProductController extends Controller
           $location = public_path("images/products/" . $filename);
           $oldfile = public_path("images/products/" . $product->header);
           // dd($oldfile);
-          if(\File::exists($oldfile))
+          if(File::exists($oldfile))
           {
-             \File::delete($oldfile);
+             File::delete($oldfile);
            }
            Image::make($header)->resize(800, 400)->save($location);
           $product->header = $filename;
@@ -228,9 +231,9 @@ class ProductController extends Controller
           $location = public_path("images/products/" . $filename);
           $oldfile = public_path("images/products/" . $product->logo);
           // dd($oldfile);
-          if(\File::exists($oldfile))
+          if(File::exists($oldfile))
           {
-             \File::delete($oldfile);
+             File::delete($oldfile);
            }
            Image::make($logo)->resize(800, 400)->save($location);
           $product->logo = $filename;
@@ -243,9 +246,9 @@ class ProductController extends Controller
             $location = public_path("images/products/" . $filename);
             $oldfile1 = public_path("images/products/" . $product->image1);
             // dd($oldfile);
-            if(\File::exists($oldfile1))
+            if(File::exists($oldfile1))
             {
-               \File::delete($oldfile1);
+               File::delete($oldfile1);
              }
              Image::make($image1)->resize(800, 400)->save($location);
             $product->image1 = $filename;
@@ -258,9 +261,9 @@ class ProductController extends Controller
               $location = public_path("images/products/" . $filename);
               $oldfile2 = public_path("images/products/" . $product->image2);
               // dd($oldfile);
-              if(\File::exists($oldfile2))
+              if(File::exists($oldfile2))
               {
-                 \File::delete($oldfile2);
+                 File::delete($oldfile2);
                }
                Image::make($image2)->resize(800, 400)->save($location);
               $product->image2 = $filename;
@@ -273,9 +276,9 @@ class ProductController extends Controller
                 $location = public_path("images/products/" . $filename);
                 $oldfile3 = public_path("images/products/" . $product->image3);
                 // dd($oldfile);
-                if(\File::exists($oldfile3))
+                if(File::exists($oldfile3))
                 {
-                   \File::delete($oldfile3);
+                   File::delete($oldfile3);
                  }
                  Image::make($image3)->resize(800, 400)->save($location);
                 $product->image3 = $filename;

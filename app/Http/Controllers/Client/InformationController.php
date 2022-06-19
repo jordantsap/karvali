@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Mail;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 class InformationController extends Controller
 {
@@ -71,7 +71,7 @@ class InformationController extends Controller
   			$message->to('jordantsap@hotmail.gr');
   			$message->subject($data['subject']);
   		});
-  		Session::flash('success', 'Ευχαριστούμε, το μύνημα σας εστάλη!');
+  		\Session::flash('success', 'Ευχαριστούμε, το μύνημα σας εστάλη!');
   		return redirect(route('contact'));
     }
 }

@@ -83,7 +83,7 @@ class OrderController extends Controller
 
        Mail::queue(new OrderPlaced($order));
 
-       // Cart::instance('default')->destroy();
+       Cart::instance('default')->destroy();
 
        $notification = array(
          'message' => 'Ευχαριστούμε! Έγινε αποστολή της παραγγελίας!',

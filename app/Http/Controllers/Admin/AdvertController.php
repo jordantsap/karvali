@@ -6,7 +6,9 @@ use App\Models\Advert;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Image;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class AdvertController extends Controller
 {
@@ -144,9 +146,9 @@ class AdvertController extends Controller
          $location = public_path("images/adverts/" . $filename);
          $oldfile = public_path("images/adverts/" . $advert->banner);
          // dd($oldfile);
-         if(\File::exists($oldfile))
+         if(File::exists($oldfile))
          {
-            \File::delete($oldfile);
+            File::delete($oldfile);
           }
           Image::make($image)->resize(800, 400)->save($location);
           $advert->banner = $filename;

@@ -53,7 +53,8 @@ class CartController extends Controller
         );
           return redirect()->back()->with($notification);
       }
-        Cart::instance('default')->add($request->id, $request->title, 1, $request->price)->associate('App\Product');
+        Cart::instance('default')->add($request->id, $request->title, 1, $request->price)
+        ->associate('App\Models\Product');
         $notification = array(
           'message' => __('alerts.productadded'),
           'alert-type' => 'success'

@@ -129,7 +129,7 @@
             <div class="col-xs-6">
               <img src="{{ asset('images/products/'.$item->model->logo) }}" class="img-responsive" alt="item">
               <div class=""><br>
-                <b>{{__('cart.productdescription')}}:</b></br>{{ str_limit($item->model->description, 100) }}</div>
+                <b>{{__('cart.productdescription')}}:</b></br>{{ Str::limit($item->model->description, 100) }}</div>
             </div>
             <div class="col-xs-6">
               <ul class="list-group">

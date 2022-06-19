@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyTranslation extends Model
 {
+  protected $translationForeignKey = 'company_id';
     protected $fillable = [
       'title',
       'slug',
@@ -15,8 +16,8 @@ class CompanyTranslation extends Model
       'description',
     ];
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

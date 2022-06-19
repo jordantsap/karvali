@@ -84,6 +84,16 @@ class ComposerViewsServiceProvider extends ServiceProvider
         }
         $view->with('producttypes', $producttypes);
 
+        if ( ! Cache::has('events')){
+          $events = Cache::rememberForever('events', function(){
+            return Event::withTranslation()->get();
+          });
+        }
+        else {
+          $events = Event::withTranslation()->get();
+        }
+        $view->with('events', $events);
+
       });
 
       view()->composer(['companies.index','companies.category'], function ($view) {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Newsletter as MyNewsletter;
+use App\Model\Newsletter as MyNewsletter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Newsletter;

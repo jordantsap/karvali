@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostType;
-use Auth;
-use Image;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -55,7 +57,7 @@ class PostController extends Controller
       $post->title = $request->title;
       $post->meta_description = $request->input('meta_description');
       $post->meta_keywords = $request->input('meta_keywords');
-      $post->slug = str_slug($post->title);
+      $post->slug = Str::slug($post->title);
       $post->image = $request->image;
       $post->post_type = $request->post_type;
       $post->active = $request->input('active');
@@ -100,7 +102,7 @@ class PostController extends Controller
     public function edit($id)
     {
       $this->authorize('update_posts', App\Post::class);
-      $categories = \App\PostType::all();
+      $categories = PostType::all();
       $post = Post::find($id);
         return view('admin.posts.edit', compact('post','categories'));
     }
@@ -128,7 +130,7 @@ class PostController extends Controller
      $post->title = $request->title;
      $post->meta_description = $request->input('meta_description');
      $post->meta_keywords = $request->input('meta_keywords');
-     $post->slug = str_slug($post->title);
+     $post->slug = Str::slug($post->title);
      $post->post_type = $request->post_type;
      $post->active = $request->input('active');
      $post->description = $request->description;
@@ -140,9 +142,9 @@ class PostController extends Controller
          $location = public_path("images/posts/" . $filename);
          $oldfile = public_path("images/posts/" . $post->image);
          // dd($oldfile);
-         if(\File::exists($oldfile))
+         if(File::exists($oldfile))
          {
-            \File::delete($oldfile);
+            File::delete($oldfile);
           }
           Image::make($image)->resize(800, 400)->save($location);
          $post->image = $filename;
