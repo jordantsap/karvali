@@ -35,7 +35,7 @@ return [
 
         'none' => [
             'driver' => 'null',
-        ],
+        ], // custom cache handler for no caching
 
         'apc' => [
             'driver' => 'apc',
