@@ -50,7 +50,7 @@ class Product extends Model implements TranslatableContract
 
   public function category()
   {
-      return $this->belongsTo('App\Models\ProductType', 'product_type');
+      return $this->belongsTo('App\Models\ProductType', 'product_type')->withDefault();
   }
 
   public function orders()

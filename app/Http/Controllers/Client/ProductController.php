@@ -12,11 +12,12 @@ class ProductController extends Controller
 {
   public function index()
   {
-    // $producttypes = ProductType::all();
+    // $producttypes = ProductType::withTranslation()->get();
     $products = Product::with('category','company','likes','comments')
     ->withTranslation()
     ->active()
     ->paginate(8);
+
       return view('products.index', compact('products'));
   }
 

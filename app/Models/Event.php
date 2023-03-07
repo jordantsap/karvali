@@ -7,7 +7,7 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Event extends Model //implements TranslatableContract
+class Event extends Model implements TranslatableContract
   {
     use Translatable, HasFactory;
 

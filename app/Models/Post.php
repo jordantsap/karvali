@@ -11,10 +11,10 @@ class Post extends Model implements TranslatableContract
 {
   use Translatable, HasFactory;
 
-  // public function getRouteKeyName()
-  // {
-  //     return 'slug';
-  // }
+//   public function getRouteKeyName()
+//   {
+//       return 'slug';
+//   }
 
   protected $translatedAttributes = [
     'title',
