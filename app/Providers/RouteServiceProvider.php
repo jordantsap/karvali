@@ -34,32 +34,34 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
 
         $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
-        });
+//        $this->routes(function () {
+//            $locale = Request::segment(1);
+//            Route::middleware('web')
+////                ->prefix($locale)
+//                ->group(base_path('routes/web.php'));
+//        });
 
         $this->routes(function () {
             $locale = Request::segment(1);
 
-            Route::middleware('web')
-                ->prefix($locale)
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+//            Route::middleware('web')
+//                ->prefix($locale)
+//                ->namespace($this->namespace)
+//                ->group(base_path('routes/web.php'));
 
 
-//                Route::group([
-//                    'middleware' => 'web',
-//                    'namespace' => $this->namespace,
-//                    'prefix' => $locale
-//                ], function ($router) {
-//                    require base_path('routes/web.php');
-//                });
+                Route::group([
+                    'middleware' => 'web',
+                    'namespace' => $this->namespace,
+                    'prefix' => $locale
+                ], function ($router) {
+                    require base_path('routes/web.php');
+                });
 
                 Route::group([
                     'middleware' => 'web',

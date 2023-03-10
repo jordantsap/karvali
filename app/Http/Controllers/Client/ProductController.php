@@ -28,16 +28,16 @@ class ProductController extends Controller
 
       return view('products.show', compact('product'));
   }
-  public function category($slug)
+  public function category(ProductType $slug)
     {
       $producttype = ProductType::whereTranslation('slug', $slug)->get();
 
-       $products = $producttype
-       ->products()
-       ->with(['company','category','likes','comments'])
-       ->active()
-       ->paginate(8);
-    //   dd($producttype);
-      return view('products.category', compact('products','producttype'));
+//       $products = $producttype
+//       ->products()
+//       ->with(['company','category','likes','comments'])
+//       ->active()
+//       ->get();
+//       return $producttype;
+//      return view('products.category', compact('producttype'));
     }
 }

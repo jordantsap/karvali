@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+Route::get('oldv78lang/{language}', ['as' => 'oldv78lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('search', 'SearchController@getresults')->name('searchresults');
 
@@ -33,6 +33,7 @@ Route::middleware(['guest'])->group(function() {
 Route::post('subscribers', 'Client\SubscriberController@store')->name('subscribers.store');
 
 Route::resource('comment', 'Client\CommentController');
+Route::resource('bookings', 'Client\BookingController');
 Route::resource('like', 'Client\LikeController');
 Route::resource('cart', 'Client\CartController');
 Route::post('clean-cart', 'Client\CartController@clean')->name('cart.clean');
@@ -43,7 +44,7 @@ Route::resource('/checkout', 'Client\CheckoutController');
 Route::get('/guestcheckout', 'Client\CheckoutController@index')->name('guestcheckout.index')->middleware('guest');
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
 
-Route::get('event/{event}', 'Client\EventController@show')->name('event');
+Route::get('event/{event?}', 'Client\EventController@show')->name('event');
 Route::get('{company?}/market', 'Client\CompanyController@show')->name('company');
 Route::get('{product?}/product', 'Client\ProductController@show')->name('product');
 Route::get('group/{group?}', 'Client\GroupController@show')->name('group');

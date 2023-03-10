@@ -80,7 +80,7 @@
                   @foreach (config('translatable.locales') as $lang => $language)
                       @if ($lang != app()->getLocale())
                           <li>
-                              <a href="{{ route('lang.switch', $lang) }}">
+                              <a href="{{ route('oldv78lang.switch', $lang) }}">
                                   {{ $language }}
                               </a>
                           </li>

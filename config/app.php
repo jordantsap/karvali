@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-return [
+return array(
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => config('translatable.locale'),
+    'locale' => 'en',//config('translatable.locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => config('translatable.fallback_locale'),
+    'fallback_locale' => 'el',//config('translatable.fallback_locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -138,10 +138,10 @@ return [
     |
     */
 
-    'maintenance' => [
+    'maintenance' => array(
         'driver' => 'file',
         // 'store'  => 'redis',
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,7 +154,7 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => array(
 
         /*
          * Laravel Framework Service Providers...
@@ -203,7 +203,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -216,8 +216,8 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
+    'aliases' => Facade::defaultAliases()->merge(array(
         // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
+    ))->toArray(),
 
-];
+);

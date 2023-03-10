@@ -37,10 +37,13 @@
                   <a href="{{ route('groups') }}">{{ __('header.groups') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('events') }}">{{ __('header.events') }}</a>
+                  <a href="{{ route('news.index') }}">{{ __('header.posts') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('news.index') }}">{{ __('header.posts') }}</a>
+                    <a href="{{ route('events') }}">{{ __('header.events') }}</a>
+                </li>
+                <li>
+                    <a href="{{ url('bookings') }}">{{ __('header.booking') }}</a>
                 </li>
                 <li>
                   <a href="{{ route('galleries') }}">{{ __('header.galleries') }}</a>
@@ -223,7 +226,7 @@
                       @foreach (config('translatable.locales') as $lang => $language)
                           @if ($lang != app()->getLocale())
                               <li>
-                                  <a href="{{ route('lang.switch', $lang) }}">
+                                  <a href="{{ route('oldv78lang.switch', $lang) }}">
                                       {{ $language }}
                                   </a>
                               </li>
