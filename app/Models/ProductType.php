@@ -18,14 +18,14 @@ class ProductType extends Model implements TranslatableContract
     'slug',
   ];
 
-  public function getRouteKeyName()
+  public function getRouteKeyName(): string
   {
       return 'slug';
   }
 
 
-  public function products()
+  public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
   {
-    return $this->hasMany(Product::class, 'product_type');
+    return $this->hasMany('App\Models\Product', 'product_type', 'slug');
   }
 }

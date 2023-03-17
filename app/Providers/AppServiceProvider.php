@@ -35,8 +35,8 @@ class AppServiceProvider extends ServiceProvider
         // \URL::forceScheme('https');
 
         // disable caching
-        Cache::extend( 'none', function( $app ) {
-            return Cache::repository( new NullStore );
-        } );
+//        Cache::extend( 'none', function( $app ) {
+//            return Cache::repository( new NullStore );
+//        } );
     }
 }

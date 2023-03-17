@@ -85,7 +85,8 @@ class ProductController extends Controller
       if ($request->hasFile('header')) {
           $header = $request->file('header');
           $filename = time() . '.' . $header->getClientOriginalExtension();
-          $location = public_path("products/" . $filename);
+          $location = public_path("images/products/" . $filename);
+//          dd($location);
           Image::make($header)->resize(800, 400)->save($location);
           // Storage::put($image)->save($location);
           $product->header = $filename;
@@ -94,7 +95,7 @@ class ProductController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $filename = time() . '.' . $logo->getClientOriginalExtension();
-            $location = public_path("products/" . $filename);
+            $location = public_path("images/products/" . $filename);
             Image::make($logo)->resize(800, 400)->save($location);
             // Storage::put($image)->save($location);
             $product->logo = $filename;
@@ -103,7 +104,7 @@ class ProductController extends Controller
         if ($request->hasFile('image1')) {
             $image1 = $request->file('image1');
             $filename = time() . '.' . $image1->getClientOriginalExtension();
-            $location = public_path("products/" . $filename);
+            $location = public_path("images/products/" . $filename);
             Image::make($image1)->resize(800, 400)->save($location);
             // Storage::put($image)->save($location);
             $product->image1 = $filename;
@@ -112,7 +113,7 @@ class ProductController extends Controller
           if ($request->hasFile('image2')) {
               $image2 = $request->file('image2');
               $filename = time() . '.' . $image2->getClientOriginalExtension();
-              $location = public_path("products/" . $filename);
+              $location = public_path("images/products/" . $filename);
               Image::make($image2)->resize(800, 400)->save($location);
               // Storage::put($image)->save($location);
               $product->image2 = $filename;
@@ -121,7 +122,7 @@ class ProductController extends Controller
             if ($request->hasFile('image3')) {
                 $image3 = $request->file('image3');
                 $filename = time() . '.' . $image3->getClientOriginalExtension();
-                $location = public_path("products/" . $filename);
+                $location = public_path("images/products/" . $filename);
                 Image::make($image3)->resize(800, 400)->save($location);
                 $product->image3 = $filename;
               }

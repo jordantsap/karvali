@@ -11,8 +11,8 @@ return [
     |
     */
     'locales' => [
-        'el' => 'Ελληνικά',
         'en' => 'English',
+        'el' => 'Ελληνικά',
     ],
 
     /*
@@ -39,7 +39,7 @@ return [
     | and never fallback to the translator one.
     |
     */
-    'locale' => config('app.locale'),
+    'locale' => 'en', /// config('app.locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     | set it to false.
     |
     */
-    'fallback_locale' => config('app.fallback_locale'),
+    'fallback_locale' => null, /// config('app.fallback_locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ return [
     | $useTranslationFallback when defined
     |
     */
-    'use_fallback' => true,
+    'use_fallback' => false,
 
     /*
     |--------------------------------------------------------------------------

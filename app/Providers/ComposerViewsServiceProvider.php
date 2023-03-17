@@ -53,8 +53,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
 
       view()->composer('home.categories', function ($view) {
 
-        if ( ! Cache::has('companytypes')) {
-          $companytypes = Cache::rememberForever('companytypes', function(){
+        if ( ! Cache::has('_companytypes')) {
+          $companytypes = Cache::rememberForever('_companytypes', function(){
             return CompanyType::withTranslation()->get();
           });
         }
@@ -63,8 +63,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
         }
         $view->with('companytypes', $companytypes);
 
-        if ( ! Cache::has('grouptypes')) {
-          $grouptypes = Cache::rememberForever('grouptypes', function(){
+        if ( ! Cache::has('_grouptypes')) {
+          $grouptypes = Cache::rememberForever('_grouptypes', function(){
             return GroupType::withTranslation()->get();
           });
         }
@@ -74,8 +74,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
         $view->with('grouptypes', $grouptypes);
 
 
-        if ( ! Cache::has('producttypes')){
-          $producttypes = Cache::rememberForever('producttypes', function(){
+        if ( ! Cache::has('_producttypes')){
+          $producttypes = Cache::rememberForever('_producttypes', function(){
             return ProductType::withTranslation()->get();
           });
         }
@@ -84,8 +84,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
         }
         $view->with('producttypes', $producttypes);
 
-        if ( ! Cache::has('events')){
-          $events = Cache::rememberForever('events', function(){
+        if ( ! Cache::has('_events')){
+          $events = Cache::rememberForever('_events', function(){
             return Event::withTranslation()->get();
           });
         }
@@ -98,8 +98,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
 
       view()->composer(['companies.index','companies.category'], function ($view) {
 
-        if ( ! Cache::has('companytypes')) {
-          $companytypes = Cache::rememberForever('companytypes', function(){
+        if ( ! Cache::has('_companytypes')) {
+          $companytypes = Cache::rememberForever('_companytypes', function(){
             return CompanyType::withTranslation()->get();
           });
         }
@@ -111,8 +111,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
 
       view()->composer(['groups.index','groups.category'], function ($view) {
 
-        if ( ! Cache::has('grouptypes')){
-          $grouptypes = Cache::rememberForever('grouptypes', function(){
+        if ( ! Cache::has('_grouptypes')){
+          $grouptypes = Cache::rememberForever('_grouptypes', function(){
             return GroupType::withTranslation()->get();
           });
         }
@@ -124,8 +124,8 @@ class ComposerViewsServiceProvider extends ServiceProvider
 
       view()->composer(['products.index','products.category'], function ($view) {
 
-        if ( ! Cache::has('producttypes')){
-          $producttypes = Cache::rememberForever('producttypes', function(){
+        if ( ! Cache::has('_producttypes')){
+          $producttypes = Cache::rememberForever('_producttypes', function(){
             return ProductType::withTranslation()->get();
           });
         }

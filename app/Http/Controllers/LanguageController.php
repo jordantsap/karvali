@@ -27,10 +27,9 @@ class LanguageController extends Controller
 
         // Check if the first segment matches a language code
         if (array_key_exists($lang, config('translatable.locales'))) {
-          // \App::setLocale($lang);
 
             // If it was indeed a translated route name
-            if ($route_name && Lang::has('routes.'.$route_name, $lang)) {
+            if ($route_name && Lang::has('routes.' . $route_name, $lang)) {
 
                 // Translate the route name to get the correct URI in the required language, and redirect to that URL.
                 if (count($query)) {
@@ -42,11 +41,10 @@ class LanguageController extends Controller
 
             // Replace the first segment by the new language code
             $segments[0] = $lang;
-             \App::setLocale($lang);
 
             // Redirect to the required URL
             if (count($query)) {
-                return redirect()->to(implode('/', $segments).'?'.http_build_query($query));
+                return redirect()->to(implode('/', $segments) . '?' . http_build_query($query));
             }
 
             return redirect()->to(implode('/', $segments));

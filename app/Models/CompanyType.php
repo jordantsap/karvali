@@ -8,10 +8,11 @@ use Astrotomic\Translatable\Translatable;
 
 class CompanyType extends Model implements TranslatableContract
 {
-    protected $fillable = ['name', 'slug'];
-    // public $primaryKey = 'slug';
-
     use Translatable;
+
+    protected $fillable = ['name', 'slug'];
+//     public $primaryKey = 'slug';
+
 
 
     protected $translatedAttributes = [

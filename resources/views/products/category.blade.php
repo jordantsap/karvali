@@ -32,8 +32,8 @@
           <div class="divider"></div>
 
        <div class="row">
-          @if(count($products) > 0)
-            @foreach ($products as $product)
+          @if(count($producttype->products) > 0)
+            @foreach ($$producttype->products as $product)
              <div class="col-xs-12 col-sm-6 col-md-4 portfolio-item">
                <div class="card h-100">
                  <a target="_blank" href="{{ route('product',$product->slug) }}">
@@ -83,7 +83,7 @@
        </div>
 
       <div class="col-xs-9">
-      	{{ '$products->links()' }}
+      	{{ $products->links() }}
       </div>
 
      </div>

@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => config('translatable.locale'),
+    'locale' => 'en', //config('translatable.locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => config('translatable.fallback_locale'),
+    'fallback_locale' => 'el', ///config('translatable.fallback_locale'),
 
     /*
     |--------------------------------------------------------------------------
