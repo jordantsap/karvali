@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en', //config('translatable.locale'),
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'el', ///config('translatable.fallback_locale'),
+    'fallback_locale' => 'el',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,9 +186,6 @@ return [
          * Package Service Providers...
          */
 
-        //Views Service Provider
-        App\Providers\ComposerViewsServiceProvider::class,
-
         //Observers Service Provider
         App\Providers\ObserversServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
@@ -201,6 +198,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        //Views Service Provider
+        App\Providers\ComposerViewsServiceProvider::class,
 
 
     ],

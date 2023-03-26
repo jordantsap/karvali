@@ -13,7 +13,7 @@ class ProductType extends Model implements TranslatableContract
 
   protected $fillable = ['name', 'slug'];
 
-  protected $translatedAttributes = [
+  protected array $translatedAttributes = [
     'name',
     'slug',
   ];

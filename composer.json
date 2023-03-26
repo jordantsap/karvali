@@ -9,6 +9,7 @@
         "astrotomic/laravel-translatable": "^11.12",
         "barryvdh/laravel-debugbar": "^3.8",
         "bumbummen99/shoppingcart": "^4.2",
+        "cviebrock/eloquent-sluggable": "^9.0",
         "ezyang/htmlpurifier": "^4.16",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",

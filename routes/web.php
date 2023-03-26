@@ -43,18 +43,18 @@ Route::resource('/checkout', 'Client\CheckoutController');
 Route::get('/guestcheckout', 'Client\CheckoutController@index')->name('guestcheckout.index')->middleware('guest');
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
 
-Route::get('event/{event?}', 'Client\EventController@show')->name('event');
-Route::get('{company?}/market', 'Client\CompanyController@show')->name('company');
-Route::get('{product?}/product', 'Client\ProductController@show')->name('product');
-Route::get('group/{group?}', 'Client\GroupController@show')->name('group');
+Route::get('event/{slug}', 'Client\EventController@show')->name('event');
+Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::class, 'show'])->name('company');
+Route::get('{slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
+Route::get('group/{slug}', 'Client\GroupController@show')->name('group');
 
 Route::get('events', 'Client\EventController@index')->name('events');
 Route::get('markets', 'Client\CompanyController@index')->name('companies');
 Route::get('products', [\App\Http\Controllers\Client\ProductController::class, 'index'])->name('front.products');
 Route::get('groups', 'Client\GroupController@index')->name('groups');
-Route::get('post/{post}', [App\Http\Controllers\Client\PostController::class, 'show'])->name('news.show');
+Route::get('post/{slug}', [App\Http\Controllers\Client\PostController::class, 'show'])->name('news.show');
 Route::get('news', [App\Http\Controllers\Client\PostController::class, 'index'])->name('news.index');
-Route::get('{album}/photo-album', 'Client\AlbumController@show')->name('gallery');
+Route::get('{slug}/photo-album', 'Client\AlbumController@show')->name('gallery');
 Route::get('photo-albums', 'Client\AlbumController@index')->name('galleries');
 
 Route::get('{posttype}/news', 'Client\PostController@category')->name('posts-category');

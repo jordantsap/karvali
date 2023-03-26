@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Str;
 
@@ -36,7 +37,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->realText($maxNbChars = 300, $indexSize = 2),
             'sku' => $this->faker->unixTime($max = 'now'),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 50), // 48.8932
-            'product_type' => rand(1, 8),
+            'product_type' => ProductType::factory()->create()->id,
             'company_id' => rand(1, 5),
             'user_id' => '1',
         ];

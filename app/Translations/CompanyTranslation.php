@@ -3,10 +3,14 @@
 namespace App\Translations;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class CompanyTranslation extends Model
 {
-  protected $translationForeignKey = 'company_id';
+//  use Sluggable;
+
+//  protected $translationForeignKey = 'company_id';
+
     protected $fillable = [
       'title',
       'slug',
@@ -16,7 +20,21 @@ class CompanyTranslation extends Model
       'description',
     ];
 
-    public function getRouteKeyName()
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+//    public function sluggable(): array
+//    {
+//        return [
+//            'slug' => [
+//                'source' => 'title'
+//            ]
+//        ];
+//    }
+
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }

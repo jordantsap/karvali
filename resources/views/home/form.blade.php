@@ -8,7 +8,7 @@
         <form action="{{route('searchresults')}}" method="get">
           <div class="form-group">
             <div class="col-xs-10" style="padding-left:0px !important;padding-right:0px !important;">
-              <input type="text" name="query" class="form-control input-lg" id="query" placeholder="{{__('form.search-input')}}">
+              <input type="text" name="query" class="form-control input-lg" id="query" placeholder="{{__('form.search-input')}}" required>
             </div>
             <div class="col-xs-2" style="padding:0px 0px !important">
               <button type="submit" class="btn btn-default btn-block input-lg">

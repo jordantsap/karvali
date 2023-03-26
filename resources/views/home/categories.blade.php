@@ -12,10 +12,10 @@
               <div class="animated slideInLeft">
                 <h3>{{ __('page.companycategories') }}</h3>
               </div>
-              @foreach ($companytypes as $category)
+              @foreach ($companytypes as $companytype)
                 <li class="list-group-item">
-                  <a href="{{ route('companies-category', $category->slug)}}">
-										<h4 class="animated slideInUp">{{$category->name}}</h4></a>
+                  <a href="{{ route('companies-category', $companytype->slug)}}">
+										<h4 class="animated slideInUp">{{$companytype->name}}</h4></a>
                 </li>
               @endforeach
             </div>
@@ -23,10 +23,10 @@
               <div class="scroll-animation-bounce">
                 <h3 class="animated slideInDown">{{ __('page.groupcategories') }}</h3>
               </div>
-              @foreach ($grouptypes as $category)
+              @foreach ($grouptypes as $grouptype)
                 <li class="list-group-item">
-                  <a href="{{ route('groups-category', $category->slug)}}">
-										<h4 class="animated slideInUp">{{$category->name}}</h4></a>
+                  <a href="{{ route('groups-category', $grouptype->slug)}}">
+										<h4 class="animated slideInUp">{{$grouptype->name}}</h4></a>
                 </li>
               @endforeach
             </div>
@@ -34,9 +34,9 @@
               <div class="animated slideInRight">
                 <h3>{{ __('page.productcategories') }}</h3>
               </div>
-              @foreach ($producttypes as $category)
+              @foreach ($producttypes as $producttype)
                 <li class="list-group-item">
-                  <a href="{{ route('products-category', $category->slug)}}"> <h4 class="animated slideInUp">{{$category->name}}</h4> </a>
+                  <a href="{{ route('products-category', $producttype->slug)}}"> <h4 class="animated slideInUp">{{$producttype->name}}</h4> </a>
                 </li>
               @endforeach
             </div>
