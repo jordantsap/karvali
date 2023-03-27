@@ -48,7 +48,7 @@
             <i class="fas fa-users" aria-hidden="true"></i> <span>Groups</span></a></li>
           @endcan
         @can ('view_products', App\Product::class)
-          <li><a href="{{ route('prod.index') }}">
+          <li><a href="{{ route('product.index') }}">
             <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Products</span></a></li>
         @endcan
         @can ('view_events', App\Event::class)

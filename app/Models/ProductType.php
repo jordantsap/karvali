@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductType extends Model implements TranslatableContract
 {
-  use Translatable;
+  use Translatable, HasFactory;
 
   protected $fillable = ['name', 'slug'];
 
-  protected array $translatedAttributes = [
+  protected $translatedAttributes = [
     'name',
     'slug',
   ];
@@ -26,6 +26,6 @@ class ProductType extends Model implements TranslatableContract
 
   public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
   {
-    return $this->hasMany('App\Models\Product', 'product_type', 'slug');
+    return $this->hasMany('App\Models\Product', 'product_type', 'id');
   }
 }

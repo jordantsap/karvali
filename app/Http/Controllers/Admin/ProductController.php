@@ -146,6 +146,7 @@ class ProductController extends Controller
         $this->authorize('view_products', 'App\Product');
 
         $product = Product::find($id);
+
         return view('admin.products.product', compact('product'));
     }
 

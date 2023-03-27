@@ -3,11 +3,13 @@
 namespace App\Translations;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Cviebrock\EloquentSluggable\Sluggable;
 class ProductTranslation extends Model
 {
+    use Sluggable;
+
   protected $translationForeignKey = 'product_id';
-  
+
   protected $fillable = [
     'meta_description',
     'meta_keywords',
@@ -16,6 +18,20 @@ class ProductTranslation extends Model
     'header',
     'description',
   ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
   // public function getRouteKeyName()
   // {

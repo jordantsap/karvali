@@ -47,8 +47,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             $locale = Request::segment(1);
 
-            Route::middleware('web')
-                ->prefix($locale)
+            Route::prefix($locale)
+                ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 

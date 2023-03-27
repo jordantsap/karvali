@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompanyType;
+use App\Models\Event;
+use App\Models\GroupType;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
@@ -29,7 +33,11 @@ class HomeController extends Controller
 
     public function homepage()
     {
-        return view('home');
+//        $companytypes = CompanyType::withTranslation()->get();
+//        $grouptypes = GroupType::withTranslation()->get();
+//        $producttypes = ProductType::withTranslation()->get();
+//        $events = Event::withTranslation()->get();
+        return view('home'); //, compact('companytypes', 'grouptypes', 'producttypes', 'events'));
     }
 
     // public function users()

@@ -7,7 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class CompanyTranslation extends Model
 {
-//  use Sluggable;
+  use Sluggable;
 
 //  protected $translationForeignKey = 'company_id';
 
@@ -25,14 +25,14 @@ class CompanyTranslation extends Model
      *
      * @return array
      */
-//    public function sluggable(): array
-//    {
-//        return [
-//            'slug' => [
-//                'source' => 'title'
-//            ]
-//        ];
-//    }
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function getRouteKeyName(): string
     {

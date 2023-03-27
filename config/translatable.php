@@ -39,7 +39,7 @@ return [
     | and never fallback to the translator one.
     |
     */
-    'locale' => 'en', /// config('app.locale'),
+    'locale' => null, /// config('app.locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,7 +76,7 @@ return [
     | locale. Note that 'use_fallback' must be enabled.
     |
      */
-    'use_property_fallback' => false,
+    'use_property_fallback' => true,
 
     /*
     |--------------------------------------------------------------------------

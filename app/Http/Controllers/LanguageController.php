@@ -9,7 +9,6 @@ class LanguageController extends Controller
 {
     public function switchLang(Request $request, $lang)
     {
-        // \App::setLocale($lang);
         // Store the URL on which the user was
         $previous_url = url()->previous();
 
@@ -29,7 +28,7 @@ class LanguageController extends Controller
         if (array_key_exists($lang, config('translatable.locales'))) {
 
             // If it was indeed a translated route name
-            if ($route_name && Lang::has('routes.' . $route_name, $lang)) {
+            if ($route_name && Lang::has('routes.'.$route_name, $lang)) {
 
                 // Translate the route name to get the correct URI in the required language, and redirect to that URL.
                 if (count($query)) {
@@ -44,7 +43,7 @@ class LanguageController extends Controller
 
             // Redirect to the required URL
             if (count($query)) {
-                return redirect()->to(implode('/', $segments) . '?' . http_build_query($query));
+                return redirect()->to(implode('/', $segments).'?'.http_build_query($query));
             }
 
             return redirect()->to(implode('/', $segments));
