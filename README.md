@@ -7,4 +7,6 @@ composer install
 php artisan migrate --seed  for clean project or  
 php artisan migrate:fresh --seed if your db has records  
 (Most of the seeds are in gr and english languages, expecially the infrastructure models like ModelTypes)  
-Remove unwanted seeders from DatabaseSeeder file and rerun php artisan migrate:fresh --seed   
+Remove unwanted seeders from DatabaseSeeder file and rerun php artisan migrate:fresh --seed  
+
+[Seeder for users Here](/database/seeders/UsersTableSeeder.php)
