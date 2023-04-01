@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $admin->fullname = 'JordanTsap';
         $admin->tel = '2510316852';
         $admin->mobile = '6984262910';
-        $admin->email = 'dev@dev.local';
+        $admin->email = 'dev@karvali.local';
         $admin->password = bcrypt('123456');
         $admin->save();
         $admin->roles()->attach($admin_role);
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
         $manager->fullname = 'manager';
         $manager->tel = '2510316852';
         $manager->mobile = '6984262910';
-        $manager->email = 'manager@manager.local';
+        $manager->email = 'manager@karvali.local';
         $manager->password = bcrypt('123456');
         $manager->save();
         $manager->roles()->attach($manager_role);
@@ -56,7 +56,7 @@ class UsersTableSeeder extends Seeder
         $blogger->fullname = 'blogger';
         $blogger->tel = '2510316852';
         $blogger->mobile = '6984262910';
-        $blogger->email = 'blogger@blogger.local';
+        $blogger->email = 'blogger@karvali.local';
         $blogger->password = bcrypt('123456');
         $blogger->save();
         $blogger->roles()->attach($blogger_role);
@@ -68,7 +68,7 @@ class UsersTableSeeder extends Seeder
         $company_manager->fullname = 'companyManager';
         $company_manager->tel = '2510316852';
         $company_manager->mobile = '6984262910';
-        $company_manager->email = 'company@company.local';
+        $company_manager->email = 'company@karvali.local';
         $company_manager->password = bcrypt('123456');
         $company_manager->save();
         $company_manager->roles()->attach($company_management);
@@ -79,7 +79,7 @@ class UsersTableSeeder extends Seeder
         $group_manager->fullname = 'groupManager';
         $group_manager->tel = '2510316852';
         $group_manager->mobile = '6984262910';
-        $group_manager->email = 'group@group.local';
+        $group_manager->email = 'group@karvali.local';
         $group_manager->password = bcrypt('123456');
         $group_manager->save();
         $group_manager->roles()->attach($group_management);
@@ -90,7 +90,7 @@ class UsersTableSeeder extends Seeder
         $event_manager->fullname = 'eventManager';
         $event_manager->tel = '2510316852';
         $event_manager->mobile = '6984262910';
-        $event_manager->email = 'event@event.local';
+        $event_manager->email = 'event@karvali.local';
         $event_manager->password = bcrypt('123456');
         $event_manager->save();
         $event_manager->roles()->attach($event_management);
@@ -101,7 +101,7 @@ class UsersTableSeeder extends Seeder
         $product_manager->fullname = 'productManager';
         $product_manager->tel = '2510316852';
         $product_manager->mobile = '6984262910';
-        $product_manager->email = 'product@product.local';
+        $product_manager->email = 'product@karvali.local';
         $product_manager->password = bcrypt('123456');
         $product_manager->save();
         $product_manager->roles()->attach($product_management);
