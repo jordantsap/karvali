@@ -17,7 +17,7 @@ class GroupController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function index(Request $request1)
     {
@@ -139,7 +139,7 @@ class GroupController extends Controller
         'message' => 'Group added successfully',
         'alert-type' => 'info'
         );
-        return redirect(route('group.show',$group->id))->with($notification);
+        return redirect(route('teams.show',$group->id))->with($notification);
     }
 
     /**
@@ -310,7 +310,7 @@ class GroupController extends Controller
        'message' => 'Group updated successfully',
        'alert-type' => 'info'
        );
-       return redirect(route('group.show', $group->id))->with($notification);
+       return redirect(route('teams.show', $group->id))->with($notification);
     }
 
     /**
@@ -327,6 +327,6 @@ class GroupController extends Controller
           'message' => 'User deleted successfully',
           'alert-type' => 'success'
           );
-          return redirect(route('groups.index'))->with($notification);
+          return redirect(route('teams.index'))->with($notification);
     }
 }

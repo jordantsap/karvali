@@ -161,7 +161,7 @@ class CompanyController extends Controller
       'message' => 'Company added successfully',
       'alert-type' => 'info'
       );
-      return redirect(route('company.show',$company->id))->with($notification);
+      return redirect(route('companies.show',$company->id))->with($notification);
     }
 
 
@@ -326,7 +326,7 @@ class CompanyController extends Controller
      'message' => 'Company updated successfully',
      'alert-type' => 'info'
      );
-     return redirect(route('company.show', $company->id))->with($notification);
+     return redirect(route('companies.show', $company->id))->with($notification);
     }
 
     /**

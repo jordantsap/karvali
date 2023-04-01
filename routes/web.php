@@ -60,7 +60,7 @@ Route::get('photo-albums', 'Client\AlbumController@index')->name('galleries');
 Route::get('{posttype}/news', 'Client\PostController@category')->name('posts-category');
 Route::get('{grouptype}/groups', 'Client\GroupController@category')->name('groups-category');
 Route::get('{companytype}/markets', 'Client\CompanyController@category')->name('companies-category');
-Route::get('{producttype}/products', 'Client\ProductController@category')->name('products-category');
+Route::get('{producttype}/products', [App\Http\Controllers\Client\ProductController::class,'category'])->name('products-category');
 
 Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');
 Route::get('today-events', [App\Http\Controllers\Client\EventDatesController::class, 'todayevents'])->name('todayevents');

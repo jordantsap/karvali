@@ -40,15 +40,15 @@
           <i class="fas fa-newspaper"></i> <span>Posts</span></a></li>
         @endcan
         @can ('view_companies', App\Company::class)
-        <li><a href="{{ route('company.index') }}">
+        <li><a href="{{ route('companies.index') }}">
           <i class="fas fa-shopping-bag"></i> <span>Companies</span></a></li>
         @endcan
         @can ('view_groups', App\Group::class)
-          <li><a href="{{ route('group.index') }}">
-            <i class="fas fa-users" aria-hidden="true"></i> <span>Groups</span></a></li>
+          <li><a href="{{ route('teams.index') }}">
+            <i class="fas fa-users" aria-hidden="true"></i> <span>Groups/Teams</span></a></li>
           @endcan
         @can ('view_products', App\Product::class)
-          <li><a href="{{ route('product.index') }}">
+          <li><a href="{{ route('products.index') }}">
             <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Products</span></a></li>
         @endcan
         @can ('view_events', App\Event::class)

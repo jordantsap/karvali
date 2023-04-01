@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -17,12 +18,12 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-      $this->authorize('view_products', 'App\Product');
-        $products = Product::orderBy('id', 'DESC')->paginate(9);
+//      $this->authorize('view_products', 'App\Product');
+//        $products = Product::orderBy('id', 'DESC')->paginate(9);
         return view('admin.products.index', compact('products'));
 
     }
@@ -145,7 +146,7 @@ class ProductController extends Controller
       // dd($product);
         $this->authorize('view_products', 'App\Product');
 
-        $product = Product::find($id);
+        $product = Product::findOrFail($id)->with('category');
 
         return view('admin.products.product', compact('product'));
     }

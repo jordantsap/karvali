@@ -7,7 +7,7 @@
       <h1>
         Groups
         @can ('create_groups', App\Group::class)
-          <small><a class="btn btn-primary" href="{{route('group.create')}}">New Group</a></small>
+          <small><a class="btn btn-primary" href="{{route('teams.create')}}">New Group</a></small>
         @endcan
       </h1>
     </section>
@@ -47,10 +47,10 @@
                     <td>{{Str::limit($group->description, 20)}}</td>
                     <td>
                     @can ('update_groups', App\Group::class)
-                        <a class="btn btn-primary" href="{{route('group.edit', $group->id)}}">Edit</a> -
+                        <a class="btn btn-primary" href="{{route('teams.edit', $group->id)}}">Edit</a> -
                       @endcan
                       @can ('view_groups', App\Group::class)
-                        <a class="btn btn-primary" href="{{route('group.show', $group->id)}}">View</a>
+                        <a class="btn btn-primary" href="{{route('teams.show', $group->id)}}">View</a>
                       @endcan
                     </td>
                   </tr>

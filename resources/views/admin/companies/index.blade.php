@@ -7,7 +7,7 @@
       <h1>
         Companies
         @can ('create_companies', App\Company::class)
-          <small><a class="btn btn-primary" href="{{route('company.create')}}">New</a></small>
+          <small><a class="btn btn-primary" href="{{route('companies.create')}}">New</a></small>
         @endcan
       </h1>
     </section>
@@ -47,10 +47,10 @@
                     <td><img width="150px" height="150px" src="{{asset('images/companies/'.$company->logo)}}" alt="{{$company->title}}"></td>
                     <td>
                     @can ('update_companies', App\Company::class)
-                      <a class="btn btn-primary" href="{{route('company.edit', $company->id)}}">Edit</a> -
+                      <a class="btn btn-primary" href="{{route('companies.edit', $company->id)}}">Edit</a> -
                     @endcan
                     @can ('view_companies', App\Company::class)
-                      <a class="btn btn-primary" href="{{route('company.show', $company->id)}}">View</a>
+                      <a class="btn btn-primary" href="{{route('companies.show', $company->id)}}">View</a>
                       @endcan
                     </td>
                   </tr>

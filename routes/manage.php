@@ -16,9 +16,9 @@ Route::prefix('manage')->middleware(['auth', 'verified'])->group(function() {
   Route::resource('albums', 'Admin\AlbumController');
   Route::resource('posts', 'Admin\PostController');
   Route::resource('events', 'Admin\EventController');
-  Route::resource('company', 'Admin\CompanyController');
-  Route::resource('product', 'Admin\ProductController');
-  Route::resource('group', 'Admin\GroupController');
+  Route::resource('companies', 'Admin\CompanyController');
+  Route::resource('products', 'Admin\ProductController');
+  Route::resource('teams', 'Admin\GroupController');
 
   // Route::get('companies', 'HomeController@companies')->name('admin.companies');
   // Route::get('myproducts', 'HomeController@products')->name('admin.products');
