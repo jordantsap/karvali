@@ -21,7 +21,7 @@ class ProductController extends Controller
       return view('products.index', compact('products'));
   }
 
-  public function show(Product $slug)
+  public function show($slug)
   {
     $product = Product::whereTranslation('slug', $slug)
     ->with(['company','category','likes','comments'])->first();
@@ -35,11 +35,11 @@ class ProductController extends Controller
           ->withTranslation()
           ->first();
 
-       $products = $producttype
-           ->products()
+//       $products = $producttype
+//           ->products()
 //       ->active()
-       ->paginate(8);
+//       ->paginate(8);
 //       dd($producttype);
-      return view('products.category', compact('products','producttype'));
+      return view('products.category', compact('producttype'));
     }
 }

@@ -53,6 +53,15 @@
                     @can ('view_posts', App\Post::class)
                       <a class="btn btn-primary" href="{{route('posts.show', $post->id)}}">View</a>
                     @endcan
+                    @can ('delete_posts', App\Models\Post::class)
+                        <form action="{{ route('posts.destroy', $post->id) }}"
+                              method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <br>
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                        </form>
+                    @endcan
                     </td>
                   </tr>
                   </tbody>

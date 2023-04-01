@@ -11,7 +11,7 @@
   <section class="content">
 
     <div class="box">
-      <form action="{{ route('prod.store') }}" method="post" role="form" enctype="multipart/form-data">
+      <form action="{{ route('prods.store') }}" method="post" role="form" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="box-body">
         <div class="row">

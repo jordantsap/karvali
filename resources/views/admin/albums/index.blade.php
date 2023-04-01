@@ -50,6 +50,15 @@
                     @can ('view_albums', App\Album::class)
                       <a class="btn btn-primary" href="{{route('albums.show', $album->id)}}">View</a>
                     @endcan
+                        @can ('delete_albums', App\Models\Album::class)
+                            <form action="{{ route('albums.destroy', $album->id) }}"
+                                  method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <br>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        @endcan
                     </td>
                   </tr>
                   </tbody>

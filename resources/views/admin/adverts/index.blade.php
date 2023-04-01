@@ -46,6 +46,15 @@
                     @can ('view_adverts', App\Advert::class)
                       <a class="btn btn-primary" href="{{route('adverts.show', $advert->id)}}">View</a>
                       @endcan
+                        @can ('delete_adverts', App\Models\Advert::class)
+                            <form action="{{ route('adverts.destroy', $advert->id) }}"
+                                  method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <br>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        @endcan
                     </td>
                   </tr>
                   </tbody>

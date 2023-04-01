@@ -44,8 +44,18 @@
                         <a class="btn btn-primary" href="{{route('events.edit', $event->id)}}">Edit</a> -
                       @endcan
                       @can ('view_events', App\Event::class)
-                        <a class="btn btn-primary" href="{{route('events.show', $event->id)}}">View</a></td>
+                        <a class="btn btn-primary" href="{{route('events.show', $event->id)}}">View</a>
                       @endcan
+                      @can ('delete_events', App\Models\Event::class)
+                          <form action="{{ route('events.destroy', $event->id) }}"
+                                method="POST">
+                              {{ csrf_field() }}
+                              {{ method_field('DELETE') }}
+                              <br>
+                              <button type="submit" class="btn btn-primary">Delete</button>
+                          </form>
+                      @endcan
+                    </td>
                   </tr>
                   </tbody>
                 @endforeach

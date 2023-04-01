@@ -52,6 +52,15 @@
                       @can ('view_groups', App\Group::class)
                         <a class="btn btn-primary" href="{{route('teams.show', $group->id)}}">View</a>
                       @endcan
+                        @can ('delete_groups', App\Models\Group::class)
+                            <form action="{{ route('teams.destroy', $group->id) }}"
+                                  method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <br>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+                        @endcan
                     </td>
                   </tr>
                   </tbody>

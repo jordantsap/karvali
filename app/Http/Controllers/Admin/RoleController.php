@@ -115,6 +115,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete_roles', 'App\Models\Role');
       $role =  Role::find($id);
       $role->delete();
       $notification = array(

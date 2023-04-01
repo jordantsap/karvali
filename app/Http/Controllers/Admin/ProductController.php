@@ -22,8 +22,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-//      $this->authorize('view_products', 'App\Product');
-//        $products = Product::orderBy('id', 'DESC')->paginate(9);
+      $this->authorize('view_products', 'App\Product');
+        $products = Product::orderBy('id', 'DESC')->paginate(9);
         return view('admin.products.index', compact('products'));
 
     }
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $this->authorize('create_products', 'App\Product');
+//        $this->authorize('create_products', 'App\Models\Product');
         $producttypes = ProductType::all();
         return view('admin.products.create', compact('producttypes'));
     }
@@ -132,7 +132,7 @@ class ProductController extends Controller
       'message' => 'Product added successfully',
       'alert-type' => 'info'
       );
-      return redirect(route('product.show',$product->id))->with($notification);
+      return redirect(route('prods.show',$product->id))->with($notification);
     }
 
     /**
@@ -144,9 +144,9 @@ class ProductController extends Controller
     public function show($id)
     {
       // dd($product);
-        $this->authorize('view_products', 'App\Product');
+        $this->authorize('view_products', Product::class);
 
-        $product = Product::findOrFail($id)->with('category');
+        $product = Product::whereTranslation('id',$id)->with('category')->withTranslation()->first();
 
         return view('admin.products.product', compact('product'));
     }
@@ -162,6 +162,7 @@ class ProductController extends Controller
       $this->authorize('update_products', 'App\Product');
       $categories = ProductType::all();
       $product = Product::find($id);
+      
         return view('admin.products.edit', compact('product','categories'));
     }
 
@@ -291,7 +292,7 @@ class ProductController extends Controller
       'message' => 'Product updated successfully',
       'alert-type' => 'info'
       );
-      return redirect(route('product.show', $product->id))->with($notification);
+      return redirect(route('prods.show', $product->id))->with($notification);
     }
 
     /**
@@ -308,6 +309,6 @@ class ProductController extends Controller
       'message' => 'User deleted successfully',
       'alert-type' => 'success'
       );
-      return redirect(route('products.index'))->with($notification);
+      return redirect(route('prods.index'))->with($notification);
     }
 }

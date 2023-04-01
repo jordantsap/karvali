@@ -6,9 +6,9 @@
     <section class="content-header">
       <h1>
         Products
-        @can ('create_products', App\Product::class)
-          <small><a class="btn btn-primary" href="{{route('prod.create')}}">Add New</a></small>
-        @endcan
+{{--        @can ('create_products', App\Models\Product::class)--}}
+          <small><a class="btn btn-primary" href="{{route('prods.create')}}">Add New</a></small>
+{{--        @endcan--}}
       </h1>
     </section>
     <!-- Main content -->
@@ -26,7 +26,7 @@
                     <th>Title</th>
                     <th>Logo</th>
                     <th>Description</th>
-                    @can ('view_products','update_products', App\Product::class)
+                    @can ('view_products','update_products', App\Models\Product::class)
                       <th>Actions</th>
                     @endcan
                   </tr>
@@ -46,11 +46,20 @@
                       <td><img width="150px" height="150px" src="{{asset('images/products/'.$product->logo)}}" alt="{{$product->title}}"></td>
                       <td>{{Str::limit($product->description, 20)}}</td>
                       <td>
-                        @can ('update_products', App\Product::class)
-                          <a class="btn btn-primary" href="{{route('prod.edit', $product->id)}}">Edit</a> -
+                        @can ('update_products', App\Models\Product::class)
+                          <a class="btn btn-primary" href="{{route('prods.edit', $product->id)}}">Edit</a> -
                         @endcan
-                        @can ('view_products', App\Product::class)
-                          <a class="btn btn-primary" href="{{route('prod.show', $product->id)}}">View</a>
+                        @can ('view_products', App\Models\Product::class)
+                          <a class="btn btn-primary" href="{{route('prods.show', $product->id)}}">View</a>
+                        @endcan
+                        @can ('delete_products', App\Models\Product::class)
+                                <form action="{{ route('prods.destroy', $product->id) }}"
+                                      method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
                         @endcan
                       </td>
                     </tr>

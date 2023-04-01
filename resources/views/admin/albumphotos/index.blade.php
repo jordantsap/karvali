@@ -46,9 +46,18 @@
                     {{-- @can ('update_photos', App\Albumphoto::class) --}}
                       <a class="btn btn-primary" href="{{route('photos.edit', $photo->id)}}">Edit</a> -
                     {{-- @endcan --}}
-                    {{-- @can ('view_photos', App\Albumphoto::class)
+{{--                    @can ('view_photos', App\Albumphoto::class)--}}
                       <a class="btn btn-primary" href="{{route('photos.show', $photo->id)}}">View</a>
-                    @endcan --}}
+{{--                    @endcan--}}
+{{--                        @can ('delete_photos', App\Models\Albumphoto::class)--}}
+                            <form action="{{ route('photos.destroy', $photo->id) }}"
+                                  method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <br>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                            </form>
+{{--                        @endcan--}}
                     </td>
                   </tr>
                   </tbody>

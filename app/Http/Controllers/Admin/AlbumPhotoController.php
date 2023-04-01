@@ -151,8 +151,15 @@ class AlbumPhotoController extends Controller
      * @param  \App\AlbumPhoto  $albumPhoto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AlbumPhoto $albumPhoto)
+    public function destroy($id)
     {
-        //
+//        $this->authorize('delete_albums', 'App\AlbumPhoto');
+        $album = AlbumPhoto::find($id);
+        $album->delete();
+        $notification = array(
+            'message' => 'AlbumPhoto deleted successfully',
+            'alert-type' => 'info'
+        );
+        return back()->with($notification);
     }
 }

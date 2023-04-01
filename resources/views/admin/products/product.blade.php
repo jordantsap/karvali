@@ -7,9 +7,10 @@
   <section class="content-header">
     <h1>
       Product : {{$product->title}}
-      @can ('update_products', App\Product::class)
-        <small><a class="btn btn-primary" href="{{route('prod.edit', $product->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+      @can ('update_products', App\Models\Product::class)
+        <small><a class="btn btn-primary" href="{{route('prods.edit', $product->id)}}">Edit</a>
       @endcan
+            - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
     </h1>
   </section>
 
@@ -116,7 +117,7 @@
         <div class="col-xs-3 form-group">
           <label for="image2">Εικόνα 2</label>
           <div class="col-xs-3 input-group">
-            <img width="200" height="200" src="{{$product->image2}}" alt="{{$product->title}}">
+            <img width="200" height="200" src="{{asset('images/products/'.$product->image2)}}" alt="{{$product->title}}">
           </div>
         </div>
         <div class="col-xs-3 form-group">

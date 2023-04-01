@@ -162,7 +162,7 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
-      $this->authorize('delete_albums', 'App\Album');
+//      $this->authorize('delete_albums', 'App\Album');
       $album = Album::find($id);
        $album->delete();
        $notification = array(
