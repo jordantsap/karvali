@@ -11,8 +11,8 @@ return [
     |
     */
     'locales' => [
-        'en' => 'English',
         'el' => 'Ελληνικά',
+        'en' => 'English',
     ],
 
     /*
@@ -38,8 +38,11 @@ return [
     | If you set a value here it will only use the current config value
     | and never fallback to the translator one.
     |
+    | keep null value to work well but
+    | change to any translatable.locales if error Astrotomic\Translatable\Locales::current(): Return value must be of type string, null returned
+    | during running seeders
     */
-    'locale' => null, /// config('app.locale'),
+    'locale' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +54,7 @@ return [
     | set it to false.
     |
     */
-    'fallback_locale' => 'el', /// config('app.fallback_locale'),
+    'fallback_locale' => 'en', //config('app.fallback_locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +67,7 @@ return [
     | $useTranslationFallback when defined
     |
     */
-    'use_fallback' => true,
+    'use_fallback' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -76,7 +79,7 @@ return [
     | locale. Note that 'use_fallback' must be enabled.
     |
      */
-    'use_property_fallback' => true,
+//    'use_property_fallback' => false,
 
     /*
     |--------------------------------------------------------------------------

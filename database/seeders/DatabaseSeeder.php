@@ -41,8 +41,7 @@ class DatabaseSeeder extends Seeder
           $this->call(PermissionTableSeeder::class);
           $this->call(RoleTableSeeder::class);
           $this->call(UsersTableSeeder::class);
-          // $this->call(RolesAndPermissionsSeeder::class);
-          // $this->call(CustomersTableSeeder::class);
+
           $this->call(PostTypeSeeder::class);
           $this->call(CompanyTypeSeeder::class);
           $this->call(GroupTypeSeeder::class);
@@ -55,7 +54,10 @@ class DatabaseSeeder extends Seeder
           $this->call(GroupsTableSeeder::class);
           $this->call(PostsTableSeeder::class);
           $this->call(ProductsTableSeeder::class);
-          // $this->call(TagsTableSeeder::class);
+          // just for reference
+//           $this->call(TagsTableSeeder::class);
+//         $this->call(RolesAndPermissionsSeeder::class);
+//         $this->call(CustomersTableSeeder::class);
 
          // supposed to only apply to a single connection and reset it's self
       // but I like to explicitly undo what I've done for clarity

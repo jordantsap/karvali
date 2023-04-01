@@ -19,7 +19,7 @@ class Language
             $segments = $request->segments();
 
             // Set the default language code as the first segment
-            $segments = Arr::prepend($segments, config('translatable.fallback_locale'));
+            $segments = Arr::prepend($segments, config('app.fallback_locale'));
 
             // Redirect to the correct url
             return redirect()->to(implode('/', $segments));

@@ -10,8 +10,8 @@
           <a href="{{ route('news.show',$post->slug) }}">
             <img class="" width="100%" height="250px" src="{{ asset('images/posts/'.$post->image) }}" alt="{{ $post->title }}">
           </a>
-          <h2><a class="" style="color:#000;" href="{{ route('news.show',$post->slug) }}">{{ str_limit($post->title, 18) }}</a></h2>
-          <h3 class="">{!! str_limit($post->description, 40) !!}</h3>
+          <h2><a class="" style="color:#000;" href="{{ route('news.show',$post->slug) }}">{{ Str::limit($post->title, 18) }}</a></h2>
+          <h3 class="">{!! Str::limit($post->description, 40) !!}</h3>
         </div>
         @endforeach
       </div>
