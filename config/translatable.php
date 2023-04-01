@@ -11,8 +11,8 @@ return [
     |
     */
     'locales' => [
-        'el' => 'Ελληνικά',
         'en' => 'English',
+        'el' => 'Ελληνικά',
     ],
 
     /*
@@ -67,7 +67,7 @@ return [
     | $useTranslationFallback when defined
     |
     */
-    'use_fallback' => false,
+    'use_fallback' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     | locale. Note that 'use_fallback' must be enabled.
     |
      */
-//    'use_property_fallback' => false,
+    'use_property_fallback' => true,
 
     /*
     |--------------------------------------------------------------------------
