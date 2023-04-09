@@ -66,15 +66,18 @@
                     </tbody>
                   @endforeach
                   @else
-                    no products
+                    <tr>
+                        <td>no products</td>
+                    </tr>
                 @endif
                 <tfoot>
                   <tr>
-                    <th>id</th>
-                    <th>Active</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Description</th>
+                      <th>id</th>
+                      <th>Active</th>
+                      <th>Category</th>
+                      <th>Title</th>
+                      <th>Logo</th>
+                      <th>Description</th>
                     @can (['view_products','update_products'], App\Product::class)
                       <th>Actions</th>
                     @endcan

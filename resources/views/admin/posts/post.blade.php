@@ -7,7 +7,7 @@
   <section class="content-header">
     <h1>
       Post : {{$post->title}}
-      @can ('update_posts', App\Post::class)
+      @can ('update_posts', App\Models\Post::class)
         <small><a class="btn btn-primary" href="{{route('posts.edit', $post->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
       @endcan
     </h1>

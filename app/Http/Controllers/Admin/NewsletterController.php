@@ -16,6 +16,7 @@ class NewsletterController extends Controller
     public function index()
     {
       $newsletters = Newsletter::paginate(5);
+
         return view('admin.newsletters.index', compact('newsletters'));
     }
 
@@ -39,11 +40,14 @@ class NewsletterController extends Controller
     {
       $this->validate($request,[
           'email' =>'required|string|email',
+          'name' =>'required|string|',
           ]);
       $newsletter = new Newsletter;
+      $newsletter->name = $request->name;
       $newsletter->email = $request->email;
 
       $newsletter->save();
+
       $notification = array(
       'message' => 'Newsletter added successfully',
       'alert-type' => 'info'
@@ -60,7 +64,7 @@ class NewsletterController extends Controller
     public function show($id)
     {
       $newsletter = Newsletter::find($id);
-        return view('admin.newsletterS.newsletter', compact('newsletter'));
+        return view('admin.newsletters.newsletter', compact('newsletter'));
     }
 
     /**
@@ -72,6 +76,7 @@ class NewsletterController extends Controller
     public function edit($id)
     {
         $newsletter = Newsletter::find($id);
+
         return view('admin.newsletters.edit', compact('newsletter'));
     }
 
@@ -86,11 +91,15 @@ class NewsletterController extends Controller
     {
       $this->validate($request,[
           'email' =>'required|email',
+          'name' =>'required',
           ]);
+
       $newsletter = Newsletter::find($id);
       $newsletter->email = $request->email;
+      $newsletter->name = $request->name;
 
       $newsletter->save();
+
       $notification = array(
       'message' => 'Newsletter added successfully',
       'alert-type' => 'info'

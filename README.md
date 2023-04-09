@@ -10,3 +10,8 @@ php artisan migrate:fresh --seed if your db has records
 Remove unwanted seeders from [DatabaseSeeder file](/database/seeders/DatabaseSeeder.php) and rerun php artisan migrate:fresh --seed  
 
 [Seeder for users to login Here](/database/seeders/UsersTableSeeder.php)
+
+
+hotels
+Room bookings
+capacity field

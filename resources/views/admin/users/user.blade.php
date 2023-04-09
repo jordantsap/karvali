@@ -7,7 +7,7 @@
   <section class="content-header">
     <h1>
       User : {{$user->username}}
-      @can ('update_users', App\User::class)
+      @can ('update_users', App\Models\User::class)
         <small><a class="btn btn-primary" href="{{route('users.edit', $user->id)}}">Edit</a></small>
       @endcan
     </h1>

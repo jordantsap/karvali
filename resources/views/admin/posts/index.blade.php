@@ -47,10 +47,10 @@
                     <td><img width="150px" height="150px" src="{{asset('images/posts/'.$post->image)}}" alt="{{$post->title}}"></td>
                     <td>{{Str::limit($post->description, 20)}}</td>
                     <td>
-                    @can ('update_posts', App\Post::class)
+                    @can ('update_posts', App\Models\Post::class)
                       <a class="btn btn-primary" href="{{route('posts.edit', $post->id)}}">Edit</a> -
                     @endcan
-                    @can ('view_posts', App\Post::class)
+                    @can ('view_posts', App\Models\Post::class)
                       <a class="btn btn-primary" href="{{route('posts.show', $post->id)}}">View</a>
                     @endcan
                     @can ('delete_posts', App\Models\Post::class)

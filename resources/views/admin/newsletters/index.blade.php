@@ -6,7 +6,7 @@
     <section class="content-header">
       <h1>
         Newsletters
-        @can ('create_newsletters', App\Newsletter::class)
+        @can ('create_newsletters', App\Models\Newsletter::class)
           <small><a class="btn btn-primary" href="{{route('newsletters.create')}}">New</a></small>
         @endcan
       </h1>
@@ -22,9 +22,10 @@
                 <thead>
                 <tr>
                   <th>id</th>
+                  <th>Name</th>
                   <th>E-mail</th>
                   <th>Created At</th>
-                  @can ('view_newsletters','update_newsletters', App\Newsletter::class)
+                  @can ('view_newsletters','update_newsletters', App\Models\Newsletter::class)
                     <th>Actions</th>
                   @endcan
                 </tr>
@@ -33,13 +34,14 @@
                   <tbody>
                   <tr>
                     <td>{{$newsletter->id}}</td>
+                    <td>{{$newsletter->name}}</td>
                     <td>{{$newsletter->email}}</td>
                     <td>{{$newsletter->created_at}}</td>
-                    <td>@can ('update_newsletters', App\Newsletter::class)
-                      <a class="btn btn-primary" href="{{route('newsletter.edit', $newsletter->id)}}">Edit</a> -
+                    <td>@can ('update_newsletters', App\Models\Newsletter::class)
+                      <a class="btn btn-primary" href="{{route('newsletters.edit', $newsletter->id)}}">Edit</a> -
                     @endcan
-                    @can ('view_newsletters', App\Newsletter::class)
-                      <a class="btn btn-primary" href="{{route('newsletter.show', $newsletter->id)}}">View</a>
+                    @can ('view_newsletters', App\Models\Newsletter::class)
+                      <a class="btn btn-primary" href="{{route('newsletters.show', $newsletter->id)}}">View</a>
                       @endcan
                     </td>
                   </tr>
@@ -48,9 +50,10 @@
                 <tfoot>
                   <tr>
                     <th>id</th>
+                    <th>Name</th>
                     <th>E-Mail</th>
                     <th>Created At</th>
-                    @can ('view_newsletters','update_newsletters', App\Newsletter::class)
+                    @can ('view_newsletters','update_newsletters', App\Models\Newsletter::class)
                       <th>Actions</th>
                     @endcan
                   </tr>

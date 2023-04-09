@@ -17,7 +17,7 @@
 
     <!-- Default box -->
     <div class="box">
-      <form action="{{ route('prod.update', [$product->slug]) }}" method="post" role="form" enctype="multipart/form-data">
+      <form action="{{ route('prods.update', [$product->slug]) }}" method="post" role="form" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
         <div class="box-body">

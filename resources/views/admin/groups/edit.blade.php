@@ -17,7 +17,7 @@
 
     <!-- Default box -->
     <div class="box">
-      <form action="{{ route('group.update',[$group->id]) }}" method="post" role="form"
+      <form action="{{ route('teams.update',[$group->id]) }}" method="post" role="form"
         enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT"> {{ csrf_field() }}
         <div class="box-body">
@@ -252,7 +252,7 @@
               @if ($errors->has('description'))
               <strong class="text-danger">{{ $errors->first('description') }}</strong>                @endif
               <div class="input-group">
-                <textarea name="description" id="description" class="form-control" rows="5" required>{{ $group->title }}</textarea>
+                <textarea name="description" id="description" class="form-control" rows="5" required>{{ $group->description }}</textarea>
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-info-sign"></span>
                 </span>

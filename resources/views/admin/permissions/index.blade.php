@@ -6,7 +6,7 @@
     <section class="content-header">
       <h1>
         Permissions
-        @can ('create_permissions', App\Permission::class)
+        @can ('create_permissions', App\Models\Permission::class)
           <small><a class="btn btn-primary" href="{{route('permissions.create')}}">New Permission</a></small>
         @endcan
       </h1>
@@ -22,7 +22,7 @@
                 <div class="row">
                   @foreach ($chunk as $permission)
                     <div class="col-xs-3">
-                      <ul class=""list-group>
+                      <ul class="list-group">
                         <li class="list-group-item" ><b>{{$permission->name }}</b></li>
                       </ul>
                     </div>

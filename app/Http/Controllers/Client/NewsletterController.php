@@ -2,39 +2,41 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Model\Newsletter as MyNewsletter;
+use App\Models\Newsletter as MyNewsletter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Newsletter;
+use Illuminate\Http\Response;
+use Spatie\Newsletter\Newsletter;
 
 class NewsletterController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
       // $newsletters = MyNewsletter::paginate();
-        return redirect()->back();//view('admin.newsletters.index', compact('newsletters'));
+//        return redirect()->back();//view('admin.newsletters.index', compact('newsletters'));
+        abort(404);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -63,45 +65,45 @@ class NewsletterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
+     * @param MyNewsletter $newsletter
+     * @return Response
      */
     public function show(Newsletter $newsletter)
     {
-        //
+        abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
+     * @param MyNewsletter $newsletter
+     * @return Response
      */
     public function edit(Newsletter $newsletter)
     {
-        //
+        abort(404);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param MyNewsletter $newsletter
+     * @return Response
      */
     public function update(Request $request, Newsletter $newsletter)
     {
-        //
+        abort(404);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
+     * @param Newsletter $newsletter
+     * @return void
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Newsletter $newsletter): void
     {
-        //
+        abort(404);
     }
 }

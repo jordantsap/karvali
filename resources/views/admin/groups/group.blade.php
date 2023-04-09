@@ -7,8 +7,8 @@
   <section class="content-header">
     <h1>
       Group : {{$group->title}}
-      @can ('update_groups', App\Group::class)
-        <small><a class="btn btn-primary" href="{{route('group.edit', $group->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+      @can ('update_groups', App\Models\Group::class)
+        <small><a class="btn btn-primary" href="{{route('teams.edit', $group->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
       @endcan
     </h1>
   </section>
@@ -205,7 +205,7 @@
           <div class="form-group">
             <label for="description">Περιγραφή</label>
             <div class="input-group">
-              <textarea name="description" id="description" class="form-control" rows="5" required>{{ $group->title }}</textarea>
+              <textarea name="description" id="description" class="form-control" rows="5" required>{{ $group->description }}</textarea>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-info-sign"></span>
               </span>

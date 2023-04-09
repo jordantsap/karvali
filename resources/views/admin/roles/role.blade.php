@@ -7,7 +7,7 @@
   <section class="content-header">
     <h1>
       Role : {{$role->name}}
-      @can ('update_roles', App\Role::class)
+      @can ('update_roles', App\Models\Role::class)
         <small><a class="btn btn-primary" href="{{route('roles.edit', $role->id)}}">Edit</a></small>
       @endcan
     </h1>
