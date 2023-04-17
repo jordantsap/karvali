@@ -16,11 +16,6 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
-            // $table->string('title');
-            // $table->string('slug');
-            // $table->string('meta_description');
-            // $table->string('meta_keywords');
-            // $table->string('manager');
             $table->string('header')->nullable();
             $table->string('logo')->nullable();
             $table->string('image1')->nullable();
@@ -34,7 +29,6 @@ class CreateGroupsTable extends Migration
           //  $table->string('address');
             // $table->float('lat', 10, 6);
             // $table->float('lng', 10, 6);
-            // $table->longText('description');
             $table->boolean('active')->default(0)->nullable();
             $table->timestamps();
         });

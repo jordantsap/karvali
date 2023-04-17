@@ -11,7 +11,7 @@ class CompanyTypeTranslation extends Model
 
     protected $fillable = ['name', 'slug'];
 
-    protected $translationForeignKey = 'event_id';
+//    protected $translationForeignKey = 'event_id';
 
     /**
      * Return the sluggable configuration array for this model.

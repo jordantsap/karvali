@@ -43,7 +43,7 @@ Route::resource('/checkout', 'Client\CheckoutController');
 Route::get('/guestcheckout', 'Client\CheckoutController@index')->name('guestcheckout.index')->middleware('guest');
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
 
-Route::get('event/{slug}', 'Client\EventController@show')->name('event');
+Route::get('event/{event?}', 'Client\EventController@show')->name('event');
 Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::class, 'show'])->name('company');
 Route::get('{slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 Route::get('group/{slug}', 'Client\GroupController@show')->name('group');

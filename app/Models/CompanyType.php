@@ -21,7 +21,7 @@ class CompanyType extends Model implements TranslatableContract
     ];
 
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
