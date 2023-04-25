@@ -6,6 +6,7 @@ class Permission extends \Spatie\Permission\Models\Permission
   public static function defaultPermissions()
   {
     return [
+
       'view_adverts',
       'create_adverts',
       'update_adverts',
