@@ -54,7 +54,7 @@ return [
     | set it to false.
     |
     */
-    'fallback_locale' => 'en', //config('app.fallback_locale'),
+    'fallback_locale' => 'el', //config('app.fallback_locale'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     | $useTranslationFallback when defined
     |
     */
-    'use_fallback' => true,
+    'use_fallback' => false,
 
     /*
     |--------------------------------------------------------------------------
