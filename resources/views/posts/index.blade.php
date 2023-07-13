@@ -51,8 +51,10 @@
                <div class="row">
                 <div class="col-xs-12">
                   <h4><b>{{__('page.category')}}</b></h4>
+                    @if($post->category)
                   <a href="{{ route('posts-category', $post->category->slug)}}">
                     <h3>{{$post->category->name}}</h3></a>
+                    @endif
                   <div class="divider"></div>
                   {{-- <br> --}}
                 </div>

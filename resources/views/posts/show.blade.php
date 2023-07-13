@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', $post->title.' '.$post->category->name.' '. __('head.post') )
+@section('title', $post->title.' '.$post->category->name ?? ' '.' '. __('head.post') )
 @section('meta_description', $post->category->name.' '.$post->meta_description)
 @section('meta_keywords', $post->meta_keywords.', '. $post->category->name.', '.__('head.postcategory'))
 

@@ -30,20 +30,20 @@ class ComposerViewsServiceProvider extends ServiceProvider
 
         $view->with('products', Product::withTranslation()
         ->with(['category','likes','comments'])
-        ->where('active',1)->take(6)->get());
+        ->active()->take(6)->get());
 
         $view->with('companies', Company::
         withTranslation()->
         with(['category','likes','comments'])
-        ->where('active',1)->take(6)->get());
+        ->active()->take(6)->get());
 
         $view->with('events', Event::withTranslation()
         ->with(['likes','comments'])
-        ->where('active',1)->take(6)->get());
+        ->active()->take(6)->get());
 
         $view->with('groups', Group::withTranslation()
         ->with(['category','likes','comments'])
-        ->where('active',1)->take(6)->get());
+        ->active()->take(6)->get());
 
       });
 

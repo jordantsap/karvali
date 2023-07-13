@@ -75,4 +75,9 @@ class Event extends Model implements TranslatableContract
       {
           return $this->morphMany('App\Models\Advert', 'advertable');
       }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }

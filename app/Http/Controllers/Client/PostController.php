@@ -12,7 +12,8 @@ class PostController extends Controller
     public function index()
     {
       // $posttypes = PostType::all();
-      $posts = Post::with(['category','likes','comments'])
+      $posts = Post::withTranslation()
+        ->with(['category','likes','comments'])
       ->active()
       ->orderBy('id', 'DESC')->paginate(6);
         return view('posts.index', compact('posts'));
