@@ -48,6 +48,8 @@ Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::cla
 Route::get('{slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 Route::get('group/{slug}', 'Client\GroupController@show')->name('group');
 
+Route::resource('hotels', \App\Http\Controllers\Client\HotelController::class);
+//Route::view('calendar','calendar');
 Route::get('events', 'Client\EventController@index')->name('events');
 Route::get('markets', 'Client\CompanyController@index')->name('companies');
 Route::get('products', [\App\Http\Controllers\Client\ProductController::class, 'index'])->name('front.products');

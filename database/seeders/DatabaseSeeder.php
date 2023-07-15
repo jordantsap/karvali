@@ -49,6 +49,8 @@ class DatabaseSeeder extends Seeder
 
           $this->call(EventsTableSeeder::class);
 
+          $this->call(HotelSeeder::class);
+
           $this->call(AlbumsTableSeeder::class);
           $this->call(AlbumPhotosTableSeeder::class);
           $this->call(CompaniesTableSeeder::class);

@@ -7,16 +7,29 @@
     <ul class="sidebar-menu">
         <li class="active"><a href="{{ route('dashboard') }}">
           <i class="fas fa-tachometer-alt"></i> <span>{{ Auth::user()->username}} : {{ Auth::user()->id}}</span></a>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{__('sidebar.langswitch')}}
+                <i class="fas fa-lg fa-globe"></i>
+                {{ app()->getLocale() }}
+            </a>
+            <ul class="dropdown-menu" style="background-color: #0E2231">
+                @foreach (config('translatable.locales') as $lang => $language)
+                    @if ($lang != app()->getLocale())
+                        <li>
+                            <a href="{{ route('lang.switch', $lang) }}">
+                                {{ $language }}
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
         </li>
+        </li>
+
         @hasanyrole('Super-Admin|Admin')
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Toggle dropdown</a>
-        <ul class="dropdown-menu">
-            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-        </ul>
-        </li>
+
         <li><a href="{{ route('adverts.index') }}">
           <i class="fas fa-puzzle-piece"></i> <span>Adverts!</span></a>
         </li>

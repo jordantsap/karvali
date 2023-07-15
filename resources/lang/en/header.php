@@ -4,6 +4,7 @@ return [
     'addnew' => 'Add New',
     'contactbutton' => 'Send',
     'mailus' => 'Mail Us',
+    'hotels' => 'Hotels',
     'companies' => 'Companies',
     'events' => 'Events',
     'groups' => 'Groups',

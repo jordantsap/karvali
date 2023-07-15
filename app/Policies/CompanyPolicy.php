@@ -13,13 +13,13 @@ class CompanyPolicy
     /**
      * Determine whether the user can view the company.
      *
-     * @param  \App\User  $user
-     * @param  \App\Company  $company
+     * @param User $user
+     * @param Company $company
      * @return mixed
      */
     public function view(User $user, Company $company)
     {
-        //
+        return $user->companies->count() || $user->companies->id == $company->id;
     }
 
     /**

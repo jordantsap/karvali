@@ -26,6 +26,10 @@
             <ul class="nav navbar-nav navbar-right">
               {{-- <ul class="nav navbar-nav"> --}}
                 <li>
+                  <a href="{{ route('hotels.index') }}">{{ __('header.hotels') }}
+                  </a>
+                </li>
+                <li>
                   <a href="{{ route('companies') }}">{{ __('header.companies') }}
                     <span class="sr-only">(current)</span>
                   </a>
