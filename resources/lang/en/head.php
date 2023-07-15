@@ -18,6 +18,7 @@ return [
     'group' => 'Nea Karvali Group',
     'post' => 'Nea Karvali Post',
     'company' => 'Nea Karvali Company',
+    'hotel' => 'Nea Karvali Hotel',
     'event' => 'Nea Karvali Event',
     'product' => 'Nea Karvali Product',
     'category' => 'Nea Karvali Category',

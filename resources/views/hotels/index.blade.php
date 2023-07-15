@@ -54,12 +54,12 @@
                                     </h2>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
-                                            <i class="fa fa-3x fa-thumbs-up"></i><span
-                                                class="badge">{{ $hotel->likes->count() }}</span>
+                                            <i class="fa fa-3x fa-thumbs-up"></i>
+                                            <span class="badge">{{ count($hotel->likes) }}</span>
                                         </div>
                                         <div class="col-xs-6 text-center">
-                                            <i class="fa fa-3x fa-comment"></i><span
-                                                class="badge">{{ $hotel->comments->count() }}</span>
+                                            <i class="fa fa-3x fa-comment"></i>
+                                            <span class="badge">{{ count($hotel->comments) }}</span>
                                         </div>
                                     </div>
 {{--                                    <div class="row">--}}

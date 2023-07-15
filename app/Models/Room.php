@@ -21,7 +21,7 @@ class Room extends Model implements TranslatableContract
     ];
 
     protected $fillable = [
-        'user_id',
+        'hotel_id',
         'header',
         'logo',
         'image1',

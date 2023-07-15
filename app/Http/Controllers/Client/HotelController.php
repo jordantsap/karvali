@@ -12,7 +12,6 @@ class HotelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -48,9 +47,12 @@ class HotelController extends Controller
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show($slug)
     {
-        //
+        $hotel = Hotel::whereTranslation('slug', $slug)
+            ->with(['likes','comments'])->firstOrFail();
+
+        return view('hotels.show',compact('hotel'));
     }
 
     /**
