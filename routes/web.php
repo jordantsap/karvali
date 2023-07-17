@@ -8,11 +8,17 @@ Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageControl
 Route::get('search', 'SearchController@getresults')->name('searchresults');
 
 // Route::view('/register', 'errors.404')->name('register-error');
-// Auth::routes();
+
+//Auth::routes();
+
 // Auth::routes(['verify' => true]);
+
+Route::resource('hotels', \App\Http\Controllers\Client\HotelController::class);
+//Route::view('calendar','calendar');
+
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::middleware(['guest'])->group(function() {
-  Route::get('/register', 'Auth\AuthRequestController@create')->name('auth-request');
+  Route::get('/register', [App\Http\Controllers\Auth\AuthRequestController::class,'create'])->name('auth-request');
   Route::post('/register', 'Auth\AuthRequestController@store')->name('register');
   Route::get('login', 'Auth\LoginController@showLoginForm')->name('logform');
   Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -48,30 +54,27 @@ Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::cla
 Route::get('{slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 Route::get('group/{slug}', 'Client\GroupController@show')->name('group');
 
-Route::resource('hotels', \App\Http\Controllers\Client\HotelController::class);
-//Route::view('calendar','calendar');
-Route::get('events', 'Client\EventController@index')->name('events');
 Route::get('markets', 'Client\CompanyController@index')->name('companies');
 Route::get('products', [\App\Http\Controllers\Client\ProductController::class, 'index'])->name('front.products');
 Route::get('groups', 'Client\GroupController@index')->name('groups');
-Route::get('post/{slug}', [App\Http\Controllers\Client\PostController::class, 'show'])->name('news.show');
-Route::get('news', [App\Http\Controllers\Client\PostController::class, 'index'])->name('news.index');
-Route::get('{slug}/photo-album', 'Client\AlbumController@show')->name('gallery');
-Route::get('photo-albums', 'Client\AlbumController@index')->name('galleries');
 
 Route::get('{posttype}/news', 'Client\PostController@category')->name('posts-category');
 Route::get('{grouptype}/groups', 'Client\GroupController@category')->name('groups-category');
 Route::get('{companytype}/markets', 'Client\CompanyController@category')->name('companies-category');
 Route::get('{producttype}/products', [App\Http\Controllers\Client\ProductController::class,'category'])->name('products-category');
 
-Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');
-Route::get('today-events', [App\Http\Controllers\Client\EventDatesController::class, 'todayevents'])->name('todayevents');
-Route::get('week-events', [App\Http\Controllers\Client\EventDatesController::class, 'weekevents'])->name('weekevents');
-Route::get('month-events', [App\Http\Controllers\Client\EventDatesController::class, 'monthevents'])->name('monthevents');
-Route::get('next-events', [App\Http\Controllers\Client\EventDatesController::class, 'upcomingevents'])->name('upcomingevents');
+//Route::get('events', 'Client\EventController@index')->name('events');
+//Route::get('post/{slug}', [App\Http\Controllers\Client\PostController::class, 'show'])->name('news.show');
+//Route::get('news', [App\Http\Controllers\Client\PostController::class, 'index'])->name('news.index');
+//Route::get('{slug}/photo-album', 'Client\AlbumController@show')->name('gallery');
+//Route::get('photo-albums', 'Client\AlbumController@index')->name('galleries');
+
+//Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');
+//Route::get('today-events', [App\Http\Controllers\Client\EventDatesController::class, 'todayevents'])->name('todayevents');
+//Route::get('week-events', [App\Http\Controllers\Client\EventDatesController::class, 'weekevents'])->name('weekevents');
+//Route::get('month-events', [App\Http\Controllers\Client\EventDatesController::class, 'monthevents'])->name('monthevents');
+//Route::get('next-events', [App\Http\Controllers\Client\EventDatesController::class, 'upcomingevents'])->name('upcomingevents');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'homepagetitle' => 'Marketplace Guide, Product Orders, Community Clubs and Events | nea-karvali.gr',
@@ -9,6 +9,7 @@ return [
     'contactbutton' => 'Send',
     'mailus' => 'Mail Us',
     'companiespagetitle' => 'Companies and Markets in Nea Karvali',
+    'hotelspagetitle' => 'Hotels in Nea Karvali',
     'events' => 'Events in Nea Karvali',
     'groups' => 'Groups in Nea Karvali',
     'posts' => 'Blog Posts in Nea Karvali',
@@ -17,6 +18,7 @@ return [
     'group' => 'Nea Karvali Group',
     'post' => 'Nea Karvali Post',
     'company' => 'Nea Karvali Company',
+    'hotel' => 'Nea Karvali Hotel',
     'event' => 'Nea Karvali Event',
     'product' => 'Nea Karvali Product',
     'category' => 'Nea Karvali Category',

@@ -10,6 +10,7 @@ return [
   'posts'=> 'Blog posts and News',
   'homeposts'=>'Blog post and news',
   'companies' => 'Nea Karvali Markets',
+    'hotels' => 'Nea Karvali Hotels',
   'events' => 'Nea Karvali Events',
   'groups' => 'Groups in Nea Karvali',
   'products' => 'Products in Nea Karvali',

@@ -40,16 +40,16 @@
                 </li>
               @endforeach
             </div>
-            <div class="col-xs-3 text-center">
-              <div class="animated slideInRight">
-                <h3>{{ __('page.events') }}</h3>
-              </div>
-              @foreach ($events as $event)
-                <li class="list-group-item">
-                  <a href="{{ route('event', $event->id)}}"> <h4 class="animated slideInUp">{{$event->title}}</h4> </a>
-                </li>
-              @endforeach
-            </div>
+{{--            <div class="col-xs-3 text-center">--}}
+{{--              <div class="animated slideInRight">--}}
+{{--                <h3>{{ __('page.events') }}</h3>--}}
+{{--              </div>--}}
+{{--              @foreach ($events as $event)--}}
+{{--                <li class="list-group-item">--}}
+{{--                  <a href="{{ route('event', $event->id)}}"> <h4 class="animated slideInUp">{{$event->title}}</h4> </a>--}}
+{{--                </li>--}}
+{{--              @endforeach--}}
+{{--            </div>--}}
 					</div><!-- /.row -->
 				</div>
 			</div>

@@ -4,6 +4,7 @@ return [
     'addnew' => 'Add New',
     'contactbutton' => 'Send',
     'mailus' => 'Mail Us',
+    'hotels' => 'Hotels',
     'companies' => 'Companies',
     'events' => 'Events',
     'groups' => 'Groups',
@@ -18,5 +19,5 @@ return [
     'register' => 'Authorise now',
     'help' => 'Help',
     'terms'=>'Terms and Condition',
-//    'help' => 'Help',
+    'help' => 'Help',
 ];

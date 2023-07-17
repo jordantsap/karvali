@@ -13,7 +13,7 @@
 						<li class="list-group-item"><a href="{{route('about')}}">{{ __('bottom.aboutus') }}</a></li>
 						<li class="list-group-item"><a href="{{route('termsofuse')}}">{{ __('bottom.termsofuse') }}</a></li>
             <li class="list-group-item"><a href="{{ route('online-cameras') }}">{{ __('bottom.cameras') }}</a></li>
-            <li class="list-group-item"><a href="{{ route('news.index')  }}">{{ __('bottom.posts') }}</a></li>
+{{--            <li class="list-group-item"><a href="{{ route('news.index')  }}">{{ __('bottom.posts') }}</a></li>--}}
 					</ul>
 				</div>
 			</div>

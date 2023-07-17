@@ -43,7 +43,7 @@
                                 <div class="card h-100">
                                     <a href="{{ route('hotels.show', $hotel->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
-                                            src="{{ asset('images/companies/' . $hotel->logo) }}"
+                                            src="{{ asset('images/hotels/' . $hotel->logo) }}"
                                             alt="{{ $hotel->title }}">
                                     </a>
                                 </div>

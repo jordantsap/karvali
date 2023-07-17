@@ -9,4 +9,6 @@ return [
   'help'=>'Βοήθεια',
   'termsofuse'=>'Όροι Χρήσης',
   'cameras'=>'Κάμερες',
+  'langswitch'=>'Αλλαγή Γλώσσας',
+  'langswitch'=>'Αλλαγή Γλώσσας',
 ];

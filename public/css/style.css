@@ -1,6 +1,7 @@
 section{padding:20px 0 80px 0 !important;}
 section#popular{padding: 20px 0 20px 0 !important;}
 section#tags{padding: 20px 0 20px 0 !important;}
+section#intro{padding: 20px 0 20px 0 !important;}
 section#categories{overflow:hidden;}
 .modal-open{overflow:hidden;padding-right:0 !important;}
 textarea, .panel-body {overflow-y: auto !important;}

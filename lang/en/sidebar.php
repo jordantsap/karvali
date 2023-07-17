@@ -9,4 +9,5 @@ return [
   'help'=>'Help',
   'termsofuse'=>'Terms of Use',
   'cameras'=>'Cameras',
+  'langswitch'=>'Language Switcher',
 ];
