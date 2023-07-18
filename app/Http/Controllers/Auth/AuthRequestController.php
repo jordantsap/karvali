@@ -2,31 +2,37 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUserNotification;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
+use Notification;
 
 class AuthRequestController extends Controller
 {
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
       $roles = Role::find([4,5,6]);
+
         return view('auth.auth-request', compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -61,7 +67,7 @@ class AuthRequestController extends Controller
     $user->newsletter = $request->newsletter;
 
     $user->save();
-    \Notification::route('mail', 'jordantsap@hotmail.gr')->notify(new NewUserNotification($user));
+    Notification::route('mail', 'jordantsap@hotmail.gr')->notify(new NewUserNotification($user));
     // return $user;
     $notification = array(
     'message' => 'Επιτυχημένη εγγραφή, Παρακαλώ ελέγξτε το E-Mail σας για περαιτέρω λεπτομέρειες. Θα επικοινωνήσουμε όσο το δυνατόν γρηγορότερα μαζί σας!',

@@ -22,9 +22,9 @@
         <li role="presentation">
           <a href="#productstab" aria-controls="messages" role="tab" data-toggle="tab">{{ __('page.popularproducts') }}</a>
         </li>
-        <li role="presentation">
-          <a href="#eventstab" aria-controls="settings" role="tab" data-toggle="tab">{{ __('page.popularevents') }}</a>
-        </li>
+{{--        <li role="presentation">--}}
+{{--          <a href="#eventstab" aria-controls="settings" role="tab" data-toggle="tab">{{ __('page.popularevents') }}</a>--}}
+{{--        </li>--}}
       </ul>
     </aside>
 
@@ -181,45 +181,46 @@
           </div>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="eventstab">
-          <div id="">
-            <div class="col-xs-12">
-              <div class="">
-                <h2>  {{ __('page.events') }}</h2>
-                <div class="divider"></div>
-                <br>
-                <div class="row">
-                  @foreach ($events as $event)
-                    <div class="col-xs-6 col-sm-3 portfolio-item">
-                      <a href="{{ route('event',$event->slug) }}">
-                        <img class="img-responsive img-fluid rounded" src="{{ asset('images/events/'.$event->logo) }}" style="width:100%;height:200px"
-                          alt="{{$event->title}}">
-                      </a>
-                      <h4 class="card-title"><a href="{{ route('event',$event->slug) }}">{{ Str::limit($event->title, 15) }}</a></h4>
-                      <div class="row" id="likecomment">
-                        <div class="col-xs-6 text-center">
-                          <i class="fas fa-2x fa-thumbs-up"></i>
-                          <span class="badge">{{$event->likes->count()}}</span>
-                        </div>
-                        <div class="col-xs-6 text-center">
-                          <i class="fas fa-2x fa-comment"></i>
-                          <span class="badge">{{$event->comments->count()}}</span>
-                        </div>
-                      </div>
-                      <br>
+{{--        <div role="tabpanel" class="tab-pane" id="eventstab">--}}
+{{--          <div id="">--}}
+{{--            <div class="col-xs-12">--}}
+{{--              <div class="">--}}
+{{--                <h2>  {{ __('page.events') }}</h2>--}}
+{{--                <div class="divider"></div>--}}
+{{--                <br>--}}
+{{--                <div class="row">--}}
+{{--                  @foreach ($events as $event)--}}
+{{--                    <div class="col-xs-6 col-sm-3 portfolio-item">--}}
+{{--                      <a href="{{ route('event',$event->slug) }}">--}}
+{{--                        <img class="img-responsive img-fluid rounded" src="{{ asset('images/events/'.$event->logo) }}" style="width:100%;height:200px"--}}
+{{--                          alt="{{$event->title}}">--}}
+{{--                      </a>--}}
+{{--                      <h4 class="card-title"><a href="{{ route('event',$event->slug) }}">{{ Str::limit($event->title, 15) }}</a></h4>--}}
+{{--                      <div class="row" id="likecomment">--}}
+{{--                        <div class="col-xs-6 text-center">--}}
+{{--                          <i class="fas fa-2x fa-thumbs-up"></i>--}}
+{{--                          <span class="badge">{{$event->likes->count()}}</span>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-xs-6 text-center">--}}
+{{--                          <i class="fas fa-2x fa-comment"></i>--}}
+{{--                          <span class="badge">{{$event->comments->count()}}</span>--}}
+{{--                        </div>--}}
+{{--                      </div>--}}
+{{--                      <br>--}}
 
-                      <div>{{Str::limit($event->description, 50) }}</div>
-                      <br>
-                      <a class="btn btn-primary btn-block" href="{{ route('event',$event->slug) }}">{{ __('page.viewevent') }}
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                      </a>
-                    </div>
-                  @endforeach
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+{{--                      <div>{{Str::limit($event->description, 50) }}</div>--}}
+{{--                      <br>--}}
+{{--                      <a class="btn btn-primary btn-block" href="{{ route('event',$event->slug) }}">{{ __('page.viewevent') }}--}}
+{{--                        <span class="glyphicon glyphicon-chevron-right"></span>--}}
+{{--                      </a>--}}
+{{--                    </div>--}}
+{{--                  @endforeach--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--          </div>--}}
+{{--        </div>--}}
+
       </div>
     </div>
   </div>

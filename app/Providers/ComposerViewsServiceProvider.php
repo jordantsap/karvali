@@ -37,9 +37,9 @@ class ComposerViewsServiceProvider extends ServiceProvider
         with(['category','likes','comments'])
         ->active()->take(6)->get());
 
-        $view->with('events', Event::withTranslation()
-        ->with(['likes','comments'])
-        ->active()->take(6)->get());
+//        $view->with('events', Event::withTranslation()
+//        ->with(['likes','comments'])
+//        ->active()->take(6)->get());
 
         $view->with('groups', Group::withTranslation()
         ->with(['category','likes','comments'])
@@ -84,15 +84,15 @@ class ComposerViewsServiceProvider extends ServiceProvider
         }
         $view->with('producttypes', $producttypes);
 
-        if ( ! Cache::has('events')){
-          $events = Cache::rememberForever('events', function(){
-            return Event::withTranslation()->get();
-          });
-        }
-        else {
-          $events = Event::withTranslation()->get();
-        }
-        $view->with('events', $events);
+//        if ( ! Cache::has('events')){
+//          $events = Cache::rememberForever('events', function(){
+//            return Event::withTranslation()->get();
+//          });
+//        }
+//        else {
+//          $events = Event::withTranslation()->get();
+//        }
+//        $view->with('events', $events);
 
       });
 
