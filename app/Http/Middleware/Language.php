@@ -3,14 +3,18 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Arr;
+use Symfony\Component\HttpFoundation\Response;
 
 class Language
 {
-    public function handle(Request $request, Closure $next)
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
     {
         // Check if the first segment matches a language code
         if (!array_key_exists($request->segment(1), config('translatable.locales')) ) {

@@ -1,73 +1,23 @@
 <?php
+
 namespace Database\Seeders;
 
-//use Database\Seeders\{AlbumsTableSeeder,
-//    AlbumPhotosTableSeeder,
-//    CompaniesTableSeeder,
-//    CompanyTypeSeeder,
-//    EventsTableSeeder,
-//    GroupsTableSeeder,
-//    GroupTypeSeeder,
-//    PermissionTableSeeder,
-//    PostsTableSeeder,
-//    PostTypeSeeder,
-//    ProductsTableSeeder,
-//    ProductTypeSeeder,
-//    RoleTableSeeder,
-//    UsersTableSeeder};
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
-
-use Spatie\Permission\Models\Role;
-use App\Models\Permission; //Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Seed the application's database.
      */
-    public function run()
+    public function run(): void
     {
-      User::unguard();
+        // \App\Models\User::factory(10)->create();
 
-    //disable foreign key check for this connection before running seeders
-      DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
-      app()['cache']->forget('spatie.permission.cache');
-
-          $this->call(PermissionTableSeeder::class);
-          $this->call(RoleTableSeeder::class);
-          $this->call(UsersTableSeeder::class);
-
-          $this->call(PostTypeSeeder::class);
-          $this->call(CompanyTypeSeeder::class);
-          $this->call(GroupTypeSeeder::class);
-          $this->call(ProductTypeSeeder::class);
-
-          $this->call(EventsTableSeeder::class);
-
-          $this->call(HotelSeeder::class);
-
-          $this->call(AlbumsTableSeeder::class);
-          $this->call(AlbumPhotosTableSeeder::class);
-          $this->call(CompaniesTableSeeder::class);
-          $this->call(GroupsTableSeeder::class);
-          $this->call(PostsTableSeeder::class);
-          $this->call(ProductsTableSeeder::class);
-
-          // just for reference
-//           $this->call(TagsTableSeeder::class);
-//         $this->call(RolesAndPermissionsSeeder::class);
-//         $this->call(CustomersTableSeeder::class);
-
-         // supposed to only apply to a single connection and reset it's self
-      // but I like to explicitly undo what I've done for clarity
-      DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-
-      User::reguard();
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        $this->call(ListingSeeder::class);
     }
 }

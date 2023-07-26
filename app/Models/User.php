@@ -2,69 +2,50 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'fullname', 'username', 'email', 'password', 'token', 'tel','mobile', 'newsletter', 'active', 'facebookid', 'twitterid',
+        'name',
+        'email',
+        'password',
     ];
 
+    public function listings(): HasMany
+    {
+        return $this->hasMany(Listing::class);
+    }
+
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
-    public function identities() {
-   return $this->hasMany('App\SocialIdentity');
-}
-
-    public function companies()
-    {
-        return $this->hasMany('App\Models\Company');
-    }
-    public function posts()
-    {
-        return $this->hasMany('App\Models\Post');
-    }
-    public function groups()
-    {
-        return $this->hasMany('App\Models\Group');
-    }
-    public function events()
-    {
-        return $this->hasMany('App\Models\Event');
-    }
-    public function products()
-    {
-        return $this->hasMany('App\Models\Product');
-    }
-    public function comments()
-    {
-        return $this->hasMany('App\Models\Comment');
-    }
-
     /**
-    * The event map for the model.
-    *
-    * @var array
-    */
-   // protected $dispatchesEvents = [
-   //     'created' => UserCreated::class,
-   //     'updated' => UserUpdated::class,
-   // ];
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 }

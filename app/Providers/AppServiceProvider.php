@@ -2,10 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Cache\NullStore;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,30 +10,20 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot(Request $request)
+    public function boot(Request $request): void
     {
-        Schema::defaultStringLength(191);
-
+        // Set the app locale according to the URL
         app()->setLocale($request->segment(1));
 
-        // \URL::forceScheme('https');
-
-        // disable caching
-//        Cache::extend( 'none', function( $app ) {
-//            return Cache::repository( new NullStore );
-//        } );
+        Schema::defaultStringLength(191);
     }
 }
