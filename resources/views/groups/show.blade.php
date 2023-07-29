@@ -4,7 +4,7 @@
 @section('meta_keywords', $group->meta_keywords.' '. $group->category->name)
 
 @section('content')
-  <img width="100%" height="350px" src="{{ asset('images/groups/'.$group->header) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
+  <img width="100%" height="350px" src="{{ asset('images/venues/'.$group->header) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
 	<div class="container">
 		<div id="groups">
 
@@ -15,7 +15,7 @@
 					<div class="divider"></div><br>
 
           <div class="col-xs-8">
-            <img src="{{ asset('images/groups/'. $group->logo) }}" width="100%" height="200px"alt="{{ $group->title }}">
+            <img src="{{ asset('images/venues/'. $group->logo) }}" width="100%" height="200px"alt="{{ $group->title }}">
           </div>
 
           <div class="col-xs-4 text-center">
@@ -78,18 +78,18 @@
 
             <div class="row"><br>
               <div class="col-xs-4">
-                <a data-lightbox="group" data-title="{{$group->title}}" data-alt="{{$group->title}}" href="{{ asset('images/groups/'.$group->image1) }}">
-                  <img src="{{ asset('images/groups/'.$group->image1) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
+                <a data-lightbox="group" data-title="{{$group->title}}" data-alt="{{$group->title}}" href="{{ asset('images/venues/'.$group->image1) }}">
+                  <img src="{{ asset('images/venues/'.$group->image1) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
                 </a>
               </div>
               <div class="col-xs-4">
-                <a data-lightbox="group" data-title="{{$group->title}}" data-alt="{{$group->title}}" href="{{ asset('images/groups/'.$group->image2) }}">
-                  <img src="{{ asset('images/groups/'.$group->image2) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
+                <a data-lightbox="group" data-title="{{$group->title}}" data-alt="{{$group->title}}" href="{{ asset('images/venues/'.$group->image2) }}">
+                  <img src="{{ asset('images/venues/'.$group->image2) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
                 </a>
               </div>
               <div class="col-xs-4">
-                <a data-lightbox="group" data-title="{{$group->title}}" data-alt="{{$group->title}}" href="{{ asset('images/groups/'.$group->image3) }}">
-                  <img src="{{ asset('images/groups/'.$group->image3) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
+                <a data-lightbox="group" data-title="{{$group->title}}" data-alt="{{$group->title}}" href="{{ asset('images/venues/'.$group->image3) }}">
+                  <img src="{{ asset('images/venues/'.$group->image3) }}" title="{{ $group->title }}" class="" alt="{{$group->title}}">
                 </a>
               </div>
             </div>

@@ -110,7 +110,7 @@ class ComposerViewsServiceProvider extends ServiceProvider
         $view->with('companytypes', $companytypes);
       });
 
-//      view()->composer(['groups.index','groups.category'], function ($view) {
+//      view()->composer(['venues.index','venues.category'], function ($view) {
 //
 //        if ( ! Cache::has('grouptypes')){
 //          $grouptypes = Cache::rememberForever('grouptypes', function(){
@@ -146,7 +146,7 @@ class ComposerViewsServiceProvider extends ServiceProvider
         //   $user = User::find($user_id);
         //   $view->with('products', Product::where('user_id',$user)->get());
         //   $view->with('companies', Company::where('user_id',$user)->get());
-        //   $view->with('groups', Group::where('user_id',$user)->get());
+        //   $view->with('venues', Group::where('user_id',$user)->get());
         //   $view->with('events', Event::where('user_id',$user)->get());
         // });
 

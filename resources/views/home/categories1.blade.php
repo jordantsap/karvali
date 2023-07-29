@@ -41,7 +41,7 @@
               </div>
               @foreach ($grouptypes as $category)
                 <li class="scroll-animation-in-right fast list-group-item">
-                  <a class="animated" href="{{ route('groups-category', $category->slug)}}">{{$category->name}}</a>
+                  <a class="animated" href="{{ route('venues-category', $category->slug)}}">{{$category->name}}</a>
                 </li>
               @endforeach
             </div>

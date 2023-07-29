@@ -55,7 +55,7 @@ class HomeController extends Controller
     {
       $user_id = auth()->user()->id;
       $user = User::find($user_id);
-        return view('auth.groups')->with('groups', $user->groups);
+        return view('auth.venues')->with('venues', $user->groups);
     }
     public function events()
     {

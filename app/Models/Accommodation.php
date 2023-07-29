@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,11 +20,6 @@ class Accommodation extends Model implements TranslatableContract
         'manager',
         'description',
     ];
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
     protected $fillable = [
         'user_id',
         'header',
@@ -38,12 +33,24 @@ class Accommodation extends Model implements TranslatableContract
         'facebook',
         'twitter',
         'active',
+        'total_rooms',
+        'accommodation_type_id',
         // 'description',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function rooms()
     {
         return $this->hasMany(Room::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(AccommodationType::class);
     }
 
 

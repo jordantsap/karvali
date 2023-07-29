@@ -87,14 +87,14 @@
                     @foreach ($venues as $venue)
                       <div class="col-xs-12 col-sm-6 col-md-3 venues-item">
                         <div class="card h-100">
-                          <a href="{{ route('venue',$venue->slug) }}">
+                          <a href="{{ route('venue.show',$venue->slug) }}">
                             <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/venues/'.$venue->logo) }}"
                               alt="{{ $venue->title }}">
                           </a>
                         </div>
                         <div class="card-body">
                           <h4 class="card-title">
-                            <a href="{{ route('venue',$venue->slug) }}">{{ Str::limit($venue->title, 15) }}</a>
+                            <a href="{{ route('venue.show',$venue->slug) }}">{{ Str::limit($venue->title, 15) }}</a>
                           </h4>
                           <div class="row" id="likecomment">
                             <div class="col-xs-6 text-center">

@@ -5,6 +5,7 @@ return [
     'contactbutton' => 'Send',
     'mailus' => 'Mail Us',
     'hotels' => 'Hotels',
+    'accommodation' => 'Accommodation',
     'companies' => 'Companies',
     'events' => 'Events',
     'groups' => 'Groups',

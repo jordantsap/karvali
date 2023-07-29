@@ -9,6 +9,7 @@
         <div class="container">
             <div class="row">
                 <h1 class="">{{ __('page.hotels') }}</h1>
+
 {{--                <nav class="navbar">--}}
 {{--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"--}}
 {{--                        data-target="#companytype-collapse" aria-expanded="false">--}}

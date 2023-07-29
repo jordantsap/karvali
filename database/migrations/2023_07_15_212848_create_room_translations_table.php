@@ -15,6 +15,17 @@ return new class extends Migration
     {
         Schema::create('room_translations', function (Blueprint $table) {
             $table->id();
+            $table->integer('room_id')->unsigned();
+            $table->string('locale')->index();
+
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
+            $table->string('meta_description');
+            $table->string('meta_keywords');
+            $table->longText('description')->nullable();
+
+            $table->unique(['room_id', 'locale']);
+
             $table->timestamps();
         });
     }

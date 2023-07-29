@@ -6,7 +6,7 @@ return [
     'mailus' => 'Mail Us',
     'companies' => 'Companies',
     'events' => 'Events',
-    'groups' => 'Groups',
+    'venues' => 'Groups',
     'posts' => 'News',
     'galleries'=>'Photos',
     'contact' => 'Contact',

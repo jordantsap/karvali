@@ -11,7 +11,7 @@ return [
   'homeposts'=>'Blog post and news',
   'companies' => 'Nea Karvali Markets',
   'events' => 'Nea Karvali Events',
-  'groups' => 'Groups in Nea Karvali',
+  'venues' => 'Groups in Nea Karvali',
   'products' => 'Products in Nea Karvali',
   'companycategories' => 'Market Types',
   'productcategories' => 'Product Types',

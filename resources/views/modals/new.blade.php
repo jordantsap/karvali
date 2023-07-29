@@ -29,7 +29,7 @@
           <div class="divider"></div>
           <h4 class="text-center">Σύλλογος</h4>
           <a href="{{ route('group.create')}}" title="Groups">
-            <img src="{{asset('images/groups.png')}}" class="img-responsive" alt="Community Groups">
+            <img src="{{asset('images/venues.png')}}" class="img-responsive" alt="Community Groups">
           </a>
         </div>
 

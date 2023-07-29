@@ -22,7 +22,7 @@ Route::prefix('manage')->middleware(['auth', 'verified'])->group(function() {
 
   // Route::get('companies', 'HomeController@companies')->name('admin.companies');
   // Route::get('myproducts', 'HomeController@products')->name('admin.products');
-  // Route::get('mygroups', 'HomeController@groups')->name('admin.groups');
+  // Route::get('mygroups', 'HomeController@venues')->name('admin.venues');
   // Route::get('events', 'HomeController@events')->name('admin.events');
   // Route::get('users/{id}', 'UserController@showUser')->name('admin.show.user');
 });

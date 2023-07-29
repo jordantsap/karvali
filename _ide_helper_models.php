@@ -455,7 +455,7 @@ namespace App\Models{
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Group> $groups
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Group> $venues
  * @property-read int|null $groups_count
  * @property-read \App\Models\Translations\GroupTypeTranslation|null $translation
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\GroupTypeTranslation> $translations
@@ -876,7 +876,7 @@ namespace App\Models{
  * @property-read int|null $companies_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Event> $events
  * @property-read int|null $events_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Group> $groups
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Group> $venues
  * @property-read int|null $groups_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count

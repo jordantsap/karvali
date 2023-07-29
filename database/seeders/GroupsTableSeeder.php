@@ -16,8 +16,8 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('groups')->truncate();
-        // $groups = factory(App\Models\Group::class, 15)->create();
+        DB::table('venues')->truncate();
+        // $venues = factory(App\Models\Group::class, 15)->create();
         Group::factory()->count(12)->create();
     }
 }

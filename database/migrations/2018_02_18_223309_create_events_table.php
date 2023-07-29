@@ -42,7 +42,7 @@ class CreateEventsTable extends Migration
             $table->integer('user_id')->unsigned()->after('id');
             // $table->integer('group_id')->unsigned()->nullable()->after('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            // $table->foreign('group_id')->references('id')->on('venues')->onDelete('cascade');
         });
     }
 

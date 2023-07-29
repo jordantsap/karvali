@@ -16,28 +16,9 @@ class VenueController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $venues = Venue::withTranslation()->paginate();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreVenueRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreVenueRequest $request)
-    {
-        //
+        return view('venues.index', compact('venues'));
     }
 
     /**
@@ -48,40 +29,7 @@ class VenueController extends Controller
      */
     public function show(Venue $venue)
     {
-        //
+        return view('venues.show', compact('venue'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Venue  $venue
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Venue $venue)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateVenueRequest  $request
-     * @param  \App\Models\Venue  $venue
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateVenueRequest $request, Venue $venue)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Venue  $venue
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Venue $venue)
-    {
-        //
-    }
 }

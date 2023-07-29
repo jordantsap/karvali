@@ -23,7 +23,7 @@ class GroupPolicy
     }
 
     /**
-     * Determine whether the user can create groups.
+     * Determine whether the user can create venues.
      *
      * @param  \App\User  $user
      * @return mixed

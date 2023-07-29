@@ -32,7 +32,7 @@
             <a href="{{ url('products') }}">{{ __('header.products') }}</a>
           </li>
           <li>
-            <a href="{{ url('groups') }}">{{ __('header.groups') }}</a>
+            <a href="{{ url('venues') }}">{{ __('header.venues') }}</a>
           </li>
           <li>
             <a href="{{ url('events') }}">{{ __('header.events') }}</a>
@@ -136,7 +136,7 @@
                   <li class="list-group-item">{{ __('cart.nocart') }}</li>
                   <a href="{{route('products.index')}}" class="list-group-item">{{ __('cart.gotoproducts') }}</a>
                   <a href="{{route('companies.index')}}" class="list-group-item">{{ __('cart.gotocompanies') }}</a>
-                  <a href="{{route('groups.index')}}" class="list-group-item">{{ __('cart.gotogroups') }}</a>
+                  <a href="{{route('venues.index')}}" class="list-group-item">{{ __('cart.gotogroups') }}</a>
                   <a href="{{route('events.index')}}" class="list-group-item">{{ __('cart.gotoevents') }}</a>
                   @endif
                 {{-- </div> --}}

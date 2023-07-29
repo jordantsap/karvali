@@ -50,7 +50,7 @@ class GroupController extends Controller
         'user_id' => 'Auth::user()->id',
         'active' => 'integer',
         'title' => 'required|min:5|max:100',
-        'slug' => 'unique:groups,title',
+        'slug' => 'unique:venues,title',
         'meta_description' =>'max:160',
         'meta_keywords' =>'',
         'group_type' => 'required|integer',
@@ -98,7 +98,7 @@ class GroupController extends Controller
         if ($request->hasFile('header')) {
             $header = $request->file('header');
             $filename = time() . '.' . $header->getClientOriginalExtension();
-            $location = public_path("images/groups/" . $filename);
+            $location = public_path("images/venues/" . $filename);
             Image::make($header)->resize(800, 400)->save($location);
             $group->header = $filename;
           }
@@ -106,7 +106,7 @@ class GroupController extends Controller
           if ($request->hasFile('logo')) {
               $logo = $request->file('logo');
               $filename = time() . '.' . $logo->getClientOriginalExtension();
-              $location = public_path("images/groups/" . $filename);
+              $location = public_path("images/venues/" . $filename);
               Image::make($logo)->resize(800, 400)->save($location);
               $group->logo = $filename;
             }
@@ -114,7 +114,7 @@ class GroupController extends Controller
           if ($request->hasFile('image1')) {
               $image1 = $request->file('image1');
               $filename = time() . '.' . $image1->getClientOriginalExtension();
-              $location = public_path("images/groups/" . $filename);
+              $location = public_path("images/venues/" . $filename);
               Image::make($image1)->resize(800, 400)->save($location);
               $group->image1 = $filename;
             }
@@ -122,7 +122,7 @@ class GroupController extends Controller
             if ($request->hasFile('image2')) {
                 $image2 = $request->file('image2');
                 $filename = time() . '.' . $image2->getClientOriginalExtension();
-                $location = public_path("images/groups/" . $filename);
+                $location = public_path("images/venues/" . $filename);
                 Image::make($image2)->resize(800, 400)->save($location);
                 $group->image2 = $filename;
               }
@@ -130,7 +130,7 @@ class GroupController extends Controller
               if ($request->hasFile('image3')) {
                   $image3 = $request->file('image3');
                   $filename = time() . '.' . $image3->getClientOriginalExtension();
-                  $location = public_path("images/groups/" . $filename);
+                  $location = public_path("images/venues/" . $filename);
                   Image::make($image3)->resize(800, 400)->save($location);
                   $group->image3 = $filename;
                 }
@@ -184,7 +184,7 @@ class GroupController extends Controller
           'user_id' => 'Auth::user()->id',
           'active' => 'integer',
           'title' => 'required|min:5|max:100',
-          'slug' => 'unique:groups,title',
+          'slug' => 'unique:venues,title',
           'meta_description' =>'max:160',
           'meta_keywords' =>'',
           'group_type' => 'required|integer',
@@ -233,8 +233,8 @@ class GroupController extends Controller
          //add new photo
            $header = $request->file('header');
            $filename = time() . '.' . $header->getClientOriginalExtension();
-           $location = public_path("images/groups/" . $filename);
-           $oldfile = public_path("images/groups/" . $group->header);
+           $location = public_path("images/venues/" . $filename);
+           $oldfile = public_path("images/venues/" . $group->header);
            // dd($oldfile);
            if(File::exists($oldfile))
            {
@@ -248,8 +248,8 @@ class GroupController extends Controller
            //add new photo
              $logo = $request->file('logo');
              $filename = time() . '.' . $logo->getClientOriginalExtension();
-             $location = public_path("images/groups/" . $filename);
-             $oldfile = public_path("images/groups/" . $group->logo);
+             $location = public_path("images/venues/" . $filename);
+             $oldfile = public_path("images/venues/" . $group->logo);
              // dd($oldfile);
              if(File::exists($oldfile))
              {
@@ -263,8 +263,8 @@ class GroupController extends Controller
            //add new photo
              $image1 = $request->file('image1');
              $filename = time() . '.' . $image1->getClientOriginalExtension();
-             $location = public_path("images/groups/" . $filename);
-             $oldfile1 = public_path("images/groups/" . $group->image1);
+             $location = public_path("images/venues/" . $filename);
+             $oldfile1 = public_path("images/venues/" . $group->image1);
              // dd($oldfile);
              if(File::exists($oldfile1))
              {
@@ -278,8 +278,8 @@ class GroupController extends Controller
              //add new photo
                $image2 = $request->file('image2');
                $filename = time() . '.' . $image2->getClientOriginalExtension();
-               $location = public_path("images/groups/" . $filename);
-               $oldfile2 = public_path("images/groups/" . $group->image2);
+               $location = public_path("images/venues/" . $filename);
+               $oldfile2 = public_path("images/venues/" . $group->image2);
                // dd($oldfile);
                if(File::exists($oldfile2))
                {
@@ -293,8 +293,8 @@ class GroupController extends Controller
                //add new photo
                  $image3 = $request->file('image3');
                  $filename = time() . '.' . $image3->getClientOriginalExtension();
-                 $location = public_path("images/groups/" . $filename);
-                 $oldfile3 = public_path("images/groups/" . $group->image3);
+                 $location = public_path("images/venues/" . $filename);
+                 $oldfile3 = public_path("images/venues/" . $group->image3);
                  // dd($oldfile);
                  if(File::exists($oldfile3))
                  {

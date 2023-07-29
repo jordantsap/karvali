@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoomTranslation extends Model
 {
-    use HasFactory;
     use Sluggable;
 
 //  protected $translationForeignKey = 'company_id';

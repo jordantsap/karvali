@@ -235,7 +235,7 @@ span.badge{background-color: #337ab7 !important;}
 
 #home-blog{background-color: cyan;padding: 50px 0 25px 0 !important;}
 
-/* #posts,#companies, #products, #groups, #events{background-color:#ffffff;padding:10px;-webkit-box-shadow: 0 0 30px 1px #3E30FF;box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);-moz-border-radius: 15px;border-radius: 15px;} */
+/* #posts,#companies, #products, #venues, #events{background-color:#ffffff;padding:10px;-webkit-box-shadow: 0 0 30px 1px #3E30FF;box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);-moz-border-radius: 15px;border-radius: 15px;} */
 
 #about h1, #companies h1, #products h1, #groups h1, #events h1, #posts h1 {font-size:2em;}
 

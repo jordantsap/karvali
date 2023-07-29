@@ -16,7 +16,15 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Hotel::class);
+            $table->foreignIdFor(\App\Models\Accommodation::class);
+            $table->string('header')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->unsignedInteger('capacity')->default(1);
+            $table->decimal('price', 8, 2)->default(0.00);
+            $table->boolean('active')->default(0)->nullable();
             $table->timestamps();
         });
     }

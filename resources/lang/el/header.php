@@ -6,6 +6,7 @@ return [
     'mailus' => 'Επικοινωνία',
     'companies' => 'Καταστήματα',
     'hotels' => 'Διαμονη',
+    'accommodation' => 'Διαμονη',
     'events' => 'Εκδηλώσεις',
     'groups' => 'Σύλλογοι',
     'venues' => 'Χώροι Εκδηλώσεων',

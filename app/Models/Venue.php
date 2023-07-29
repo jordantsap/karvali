@@ -49,6 +49,11 @@ class Venue extends Model implements TranslatableContract
     }
 
 
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable');

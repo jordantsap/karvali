@@ -62,11 +62,11 @@ class HomeController extends Controller
     //   $user = User::find($user_id);
     //     return view('auth.products')->with('products', $user->products);
     // }
-    // public function groups()
+    // public function venues()
     // {
     //   $user_id = auth()->user()->id;
     //   $user = User::find($user_id);
-    //     return view('auth.groups')->with('groups', $user->groups);
+    //     return view('auth.venues')->with('venues', $user->venues);
     // }
     // public function events()
     // {

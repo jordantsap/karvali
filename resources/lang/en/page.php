@@ -12,6 +12,8 @@ return [
   'companies' => 'Nea Karvali Markets',
   'events' => 'Nea Karvali Events',
   'groups' => 'Groups in Nea Karvali',
+  'accommodations' => 'Accommodations in Nea Karvali',
+  'accommodationtypes' => 'Accommodation Types in Nea Karvali',
   'venues' => 'Venues in Nea Karvali',
   'products' => 'Products in Nea Karvali',
   'companycategories' => 'Market Types',

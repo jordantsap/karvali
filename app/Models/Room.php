@@ -27,6 +27,9 @@ class Room extends Model implements TranslatableContract
         'image1',
         'image2',
         'image3',
+        'capacity',
+        'price',
+        'beds',
         'active',
         // 'description',
     ];

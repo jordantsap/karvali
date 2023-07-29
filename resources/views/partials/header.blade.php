@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
               {{-- <ul class="nav navbar-nav"> --}}
                 <li>
-                  <a href="{{ route('accommodations') }}">{{ __('header.hotels') }}
+                  <a href="{{ route('accommodations') }}">{{ __('header.accommodation') }}
                   </a>
                 </li>
                 <li>

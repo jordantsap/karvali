@@ -106,7 +106,7 @@
       <div class="form-group">
         <label for="header">header</label>
         <div class="input-group">
-          <img width="100%" height="200px" src="{{ asset('images/groups/'.$group->header) }}" alt="">
+          <img width="100%" height="200px" src="{{ asset('images/venues/'.$group->header) }}" alt="">
         </div>
       </div>
 
@@ -115,7 +115,7 @@
           <div class="form-group">
             <label for="logo">Λογότυπο</label>
             <div class="input-group">
-              <img width="100%" height="200px" src="{{ asset('images/groups/'.$group->logo) }}" alt="">
+              <img width="100%" height="200px" src="{{ asset('images/venues/'.$group->logo) }}" alt="">
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
           <div class="form-group">
             <label for="image1">Εικόνα Αρχικης</label>
             <div class="input-group">
-              <img width="100%" height="200px" src="{{ asset('images/groups/'.$group->image1) }}" alt="">
+              <img width="100%" height="200px" src="{{ asset('images/venues/'.$group->image1) }}" alt="">
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@
           <div class="form-group">
             <label for="image2">Εικόνα Λίστας Συλλόγων</label>
             <div class="input-group">
-              <img width="100%" height="200px" src="{{ asset('images/groups/'.$group->image2) }}" alt="">
+              <img width="100%" height="200px" src="{{ asset('images/venues/'.$group->image2) }}" alt="">
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@
           <div class="form-group">
             <label for="image3">Εικόνες Σελίδας Συλλόγου</label>
             <div class="input-group">
-              <img width="100%" height="200px" src="{{ asset('images/groups/'.$group->image3) }}" alt="">
+              <img width="100%" height="200px" src="{{ asset('images/venues/'.$group->image3) }}" alt="">
             </div>
           </div>
         </div>

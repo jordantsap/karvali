@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'addnew' => 'Νέο',
@@ -6,7 +6,7 @@ return [
     'mailus' => 'Επικοινωνία',
     'companies' => 'Καταστήματα',
     'events' => 'Εκδηλώσεις',
-    'groups' => 'Σύλλογοι',
+    'venues' => 'Σύλλογοι',
     'posts' => 'Ειδήσεις',
     'galleries' => 'Φωτογραφίες',
     'contact' => 'Επικοινωνία',
