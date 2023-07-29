@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
               {{-- <ul class="nav navbar-nav"> --}}
                 <li>
-                  <a href="{{ route('hotels.index') }}">{{ __('header.hotels') }}
+                  <a href="{{ route('accommodations') }}">{{ __('header.hotels') }}
                   </a>
                 </li>
                 <li>
@@ -35,16 +35,16 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{ route('front.products') }}">{{ __('header.products') }}</a>
+                  <a href="{{ route('products') }}">{{ __('header.products') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('groups') }}">{{ __('header.groups') }}</a>
+                  <a href="{{ route('venues') }}">{{ __('header.venues') }}</a>
                 </li>
-{{--                <li>--}}
-{{--                  <a href="{{ route('events') }}">{{ __('header.events') }}</a>--}}
-{{--                </li>--}}
                 <li>
-                  <a href="{{ route('news.index') }}">{{ __('header.posts') }}</a>
+                  <a href="{{ route('events') }}">{{ __('header.events') }}</a>
+                </li>
+                <li>
+                  <a href="{{ route('news') }}">{{ __('header.posts') }}</a>
                 </li>
 {{--                <li>--}}
 {{--                  <a href="{{ route('galleries') }}">{{ __('header.galleries') }}</a>--}}
@@ -86,7 +86,7 @@
                 </li>
               {{-- </ul>--------------- --}}
               <li class="dropdown">
-                @guest('web')
+                @guest()
                 {{-- @guest('customer') --}}
                 <a href="{{url('manage')}}">
                    {{-- data-toggle="dropdown" aria-expanded="false"
@@ -213,7 +213,7 @@
                   </li>
                   @else
                   <li class="list-group-item">{{ __('cart.nocart') }}</li>
-                  <a href="{{route('front.products')}}" class="list-group-item">{{ __('cart.gotoproducts') }}</a>
+                  <a href="{{route('products')}}" class="list-group-item">{{ __('cart.gotoproducts') }}</a>
                   <a href="{{route('companies')}}" class="list-group-item">{{ __('cart.gotocompanies') }}</a>
                   @endif
               </ul>

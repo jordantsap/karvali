@@ -6,7 +6,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    {{-- @include('information.sidebar') --}}
+     @include('partials.alerts')
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">{{ __('form.registerheader') }}</div>
@@ -14,6 +14,17 @@
         <div class="panel-body">
           <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
+
+              <div class="form-group">
+                  <label for="role" class="col-md-4 control-label">{{__('register.requestpackagelabel')}}</label>
+                  <div class="col-md-6">
+                      <select class="form-control" name="role">
+                          @foreach ($roles as $role)
+                              <option value="{{$role->id}}">{{$role->name}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+              </div>
 
             <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
               <label for="fullname" class="col-md-4 control-label">

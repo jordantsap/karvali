@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Translations\CompanyTranslation;
+use App\Models\Translations\ProductTranslation;
 use Illuminate\Http\Request;
 use ProtoneMedia\LaravelCrossEloquentSearch\Search;
-use App\Models\Product;
-use App\Models\Event;
-use App\Models\Company;
-use App\Translations\CompanyTranslation;
-use App\Translations\ProductTranslation;
 
 class SearchController extends Controller
 {

@@ -119,8 +119,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
- * @property-read \App\Translations\CommentTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\CommentTranslation> $translations
+ * @property-read \App\Models\Translations\CommentTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\CommentTranslation> $translations
  * @property-read int|null $translations_count
  * @method static \Illuminate\Database\Eloquent\Builder|Comment listsTranslations(string $translationField)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
@@ -181,8 +181,8 @@ namespace App\Models{
  * @property-read int|null $likes_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
- * @property-read \App\Translations\CompanyTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\CompanyTranslation> $translations
+ * @property-read \App\Models\Translations\CompanyTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\CompanyTranslation> $translations
  * @property-read int|null $translations_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Company active()
@@ -235,8 +235,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Company> $companies
  * @property-read int|null $companies_count
- * @property-read \App\Translations\CompanyTypeTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\CompanyTypeTranslation> $translations
+ * @property-read \App\Models\Translations\CompanyTypeTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\CompanyTypeTranslation> $translations
  * @property-read int|null $translations_count
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyType listsTranslations(string $translationField)
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyType newModelQuery()
@@ -338,8 +338,8 @@ namespace App\Models{
  * @property-read \App\Models\Group|null $group
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Like> $likes
  * @property-read int|null $likes_count
- * @property-read \App\Translations\EventTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\EventTranslation> $translations
+ * @property-read \App\Models\Translations\EventTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\EventTranslation> $translations
  * @property-read int|null $translations_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Event active()
@@ -409,8 +409,8 @@ namespace App\Models{
  * @property-read \App\Models\Event|null $event
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Like> $likes
  * @property-read int|null $likes_count
- * @property-read \App\Translations\GroupTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\GroupTranslation> $translations
+ * @property-read \App\Models\Translations\GroupTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\GroupTranslation> $translations
  * @property-read int|null $translations_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Group active()
@@ -457,8 +457,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Group> $groups
  * @property-read int|null $groups_count
- * @property-read \App\Translations\GroupTypeTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\GroupTypeTranslation> $translations
+ * @property-read \App\Models\Translations\GroupTypeTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\GroupTypeTranslation> $translations
  * @property-read int|null $translations_count
  * @method static \Illuminate\Database\Eloquent\Builder|GroupType listsTranslations(string $translationField)
  * @method static \Illuminate\Database\Eloquent\Builder|GroupType newModelQuery()
@@ -649,8 +649,8 @@ namespace App\Models{
  * @property-read int|null $comments_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Like> $likes
  * @property-read int|null $likes_count
- * @property-read \App\Translations\PostTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\PostTranslation> $translations
+ * @property-read \App\Models\Translations\PostTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\PostTranslation> $translations
  * @property-read int|null $translations_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Post active()
@@ -688,8 +688,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
  * @property-read int|null $posts_count
- * @property-read \App\Translations\PostTypeTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\PostTypeTranslation> $translations
+ * @property-read \App\Models\Translations\PostTypeTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\PostTypeTranslation> $translations
  * @property-read int|null $translations_count
  * @method static \Illuminate\Database\Eloquent\Builder|PostType listsTranslations(string $translationField)
  * @method static \Illuminate\Database\Eloquent\Builder|PostType newModelQuery()
@@ -737,8 +737,8 @@ namespace App\Models{
  * @property-read int|null $likes_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Order> $orders
  * @property-read int|null $orders_count
- * @property-read \App\Translations\ProductTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\ProductTranslation> $translations
+ * @property-read \App\Models\Translations\ProductTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\ProductTranslation> $translations
  * @property-read int|null $translations_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Product active()
@@ -783,8 +783,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
- * @property-read \App\Translations\ProductTypeTranslation|null $translation
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Translations\ProductTypeTranslation> $translations
+ * @property-read \App\Models\Translations\ProductTypeTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\ProductTypeTranslation> $translations
  * @property-read int|null $translations_count
  * @method static \Illuminate\Database\Eloquent\Builder|ProductType listsTranslations(string $translationField)
  * @method static \Illuminate\Database\Eloquent\Builder|ProductType newModelQuery()
@@ -920,15 +920,15 @@ namespace App\Translations{
  * @property string $locale
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation whereComment($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation whereCommentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CommentTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation whereCommentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CommentTranslation whereUpdatedAt($value)
  */
 	class CommentTranslation extends \Eloquent {}
 }
@@ -948,22 +948,22 @@ namespace App\Translations{
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereManager($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereManager($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class CompanyTranslation extends \Eloquent {}
 }
@@ -979,18 +979,18 @@ namespace App\Translations{
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereCompanyTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereCompanyTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CompanyTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class CompanyTypeTranslation extends \Eloquent {}
 }
@@ -1009,21 +1009,21 @@ namespace App\Translations{
  * @property string $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereEventId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EventTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereEventId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\EventTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class EventTranslation extends \Eloquent {}
 }
@@ -1043,22 +1043,22 @@ namespace App\Translations{
  * @property string $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereManager($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereGroupId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereManager($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class GroupTranslation extends \Eloquent {}
 }
@@ -1074,18 +1074,18 @@ namespace App\Translations{
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereGroupTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GroupTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereGroupTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\GroupTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class GroupTypeTranslation extends \Eloquent {}
 }
@@ -1104,21 +1104,21 @@ namespace App\Translations{
  * @property string $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation wherePostId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class PostTranslation extends \Eloquent {}
 }
@@ -1134,18 +1134,18 @@ namespace App\Translations{
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation wherePostTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|PostTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation wherePostTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\PostTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class PostTypeTranslation extends \Eloquent {}
 }
@@ -1164,21 +1164,21 @@ namespace App\Translations{
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereProductId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class ProductTranslation extends \Eloquent {}
 }
@@ -1194,18 +1194,18 @@ namespace App\Translations{
  * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation query()
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereProductTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProductTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereProductTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\ProductTypeTranslation withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class ProductTypeTranslation extends \Eloquent {}
 }
@@ -1214,9 +1214,9 @@ namespace App\Translations{
 /**
  * App\Translations\SubscriberTranslation
  *
- * @method static \Illuminate\Database\Eloquent\Builder|SubscriberTranslation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SubscriberTranslation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SubscriberTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\SubscriberTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\SubscriberTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\SubscriberTranslation query()
  */
 	class SubscriberTranslation extends \Eloquent {}
 }

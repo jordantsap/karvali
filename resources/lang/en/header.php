@@ -8,6 +8,7 @@ return [
     'companies' => 'Companies',
     'events' => 'Events',
     'groups' => 'Groups',
+    'venues' => 'Venues',
     'posts' => 'News',
     'galleries'=>'Photos',
     'contact' => 'Contact',

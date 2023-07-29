@@ -51,10 +51,10 @@
 
   @include('home.services')
 
-  @include('home.packages')
+{{--  @include('home.packages')--}}
 
 
-{{--   @include('home/blog')--}}
+   @include('home/blog')
 
   @include('partials.bottom')
 

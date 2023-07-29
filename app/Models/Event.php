@@ -47,18 +47,15 @@ class Event extends Model implements TranslatableContract
     // 'lat', 'lng',
   ];
 
+    public function venue()
+    {
+        return $this->belongsTo(Venue::class);
+    }
 
-  public function group()
-  {
-      return $this->belongsTo('App\Models\Group');
-  }
-
-
-  public function user()
+    public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
-
 
   public function comments()
     {

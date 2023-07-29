@@ -17,14 +17,14 @@
           <a href="#companiestab" aria-controls="home" role="tab" data-toggle="tab">{{ __('page.popularcompanies') }}</a>
         </li>
         <li role="presentation">
-          <a href="#groupstab" aria-controls="profile" role="tab" data-toggle="tab">{{ __('page.populargroups') }}</a>
+          <a href="#venuestab" aria-controls="venues" role="tab" data-toggle="tab">{{ __('page.popularvenues') }}</a>
         </li>
         <li role="presentation">
           <a href="#productstab" aria-controls="messages" role="tab" data-toggle="tab">{{ __('page.popularproducts') }}</a>
         </li>
-{{--        <li role="presentation">--}}
-{{--          <a href="#eventstab" aria-controls="settings" role="tab" data-toggle="tab">{{ __('page.popularevents') }}</a>--}}
-{{--        </li>--}}
+        <li role="presentation">
+          <a href="#eventstab" aria-controls="settings" role="tab" data-toggle="tab">{{ __('page.popularevents') }}</a>
+        </li>
       </ul>
     </aside>
 
@@ -74,44 +74,44 @@
             <!-- /.row -->
           </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="groupstab">
+        <div role="tabpanel" class="tab-pane" id="venuestab">
           <div id="">
             <div class="">
               <div class="">
                 <div class="col-xs-12">
 
-                  <h2>{{ __('page.groups') }}</h2>
+                  <h2>{{ __('page.venueσ') }}</h2>
                   <div class="divider"></div>
                   <br>
                   <div class="row">
-                    @foreach ($groups as $group)
-                      <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item">
+                    @foreach ($venues as $venue)
+                      <div class="col-xs-12 col-sm-6 col-md-3 venues-item">
                         <div class="card h-100">
-                          <a href="{{ route('group',$group->slug) }}">
-                            <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/groups/'.$group->logo) }}"
-                              alt="{{ $group->title }}">
+                          <a href="{{ route('venue',$venue->slug) }}">
+                            <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/venues/'.$venue->logo) }}"
+                              alt="{{ $venue->title }}">
                           </a>
                         </div>
                         <div class="card-body">
                           <h4 class="card-title">
-                            <a href="{{ route('group',$group->slug) }}">{{ Str::limit($group->title, 15) }}</a>
+                            <a href="{{ route('venue',$venue->slug) }}">{{ Str::limit($venue->title, 15) }}</a>
                           </h4>
                           <div class="row" id="likecomment">
                             <div class="col-xs-6 text-center">
                               <i class="fas fa-2x fa-thumbs-up"></i>
-                              <span class="badge">{{$group->likes->count()}}</span>
+                              <span class="badge">{{$venue->likes->count()}}</span>
                             </div>
                             <div class="col-xs-6 text-center">
                               <i class="fas fa-2x fa-comment"></i>
-                              <span class="badge">{{$group->comments->count()}}</span>
+                              <span class="badge">{{$venue->comments->count()}}</span>
                             </div>
                           </div>
                           <br>
-                          <div class="row">
-                            <div class="col-xs-12"><b>{{ __('page.category') }}</b>
-                              <a href="{{ route('groups-category', $group->category->slug)}}">{{$group->category->name}}</a>
-                            </div>
-                          </div>
+{{--                          <div class="row">--}}
+{{--                            <div class="col-xs-12"><b>{{ __('page.category') }}</b>--}}
+{{--                              <a href="{{ route('venues-category', $venue->category->slug)}}">{{$venue->category->name}}</a>--}}
+{{--                            </div>--}}
+{{--                          </div>--}}
                         </div>
                       </div>
 

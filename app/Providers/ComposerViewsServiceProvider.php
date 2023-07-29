@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Venue;
 use Illuminate\Support\ServiceProvider;
 use DB;
 use App\Models\Company;
@@ -37,18 +38,14 @@ class ComposerViewsServiceProvider extends ServiceProvider
         with(['category','likes','comments'])
         ->active()->take(6)->get());
 
-//        $view->with('events', Event::withTranslation()
-//        ->with(['likes','comments'])
-//        ->active()->take(6)->get());
-
-        $view->with('groups', Group::withTranslation()
-        ->with(['category','likes','comments'])
+        $view->with('events', Event::withTranslation()
+        ->with(['likes','comments'])
         ->active()->take(6)->get());
 
-      });
+        $view->with('venues', Venue::withTranslation()
+        ->with(['likes','comments'])
+        ->active()->take(6)->get());
 
-      view()->composer('home.blog', function ($view) {
-        $view->with('posts', Post::withTranslation()->take(6)->get());
       });
 
       view()->composer('home.categories', function ($view) {
@@ -63,16 +60,15 @@ class ComposerViewsServiceProvider extends ServiceProvider
         }
         $view->with('companytypes', $companytypes);
 
-        if ( ! Cache::has('grouptypes')) {
-          $grouptypes = Cache::rememberForever('grouptypes', function(){
-            return GroupType::withTranslation()->get();
+        if ( ! Cache::has('venues')) {
+            $venues = Cache::rememberForever('venues', function(){
+            return Venue::withTranslation()->get();
           });
         }
         else{
-          $grouptypes = GroupType::withTranslation()->get();
+            $venues = Venue::withTranslation()->get();
         }
-        $view->with('grouptypes', $grouptypes);
-
+        $view->with('venues', $venues);
 
         if ( ! Cache::has('producttypes')){
           $producttypes = Cache::rememberForever('producttypes', function(){
@@ -84,17 +80,22 @@ class ComposerViewsServiceProvider extends ServiceProvider
         }
         $view->with('producttypes', $producttypes);
 
-//        if ( ! Cache::has('events')){
-//          $events = Cache::rememberForever('events', function(){
-//            return Event::withTranslation()->get();
-//          });
-//        }
-//        else {
-//          $events = Event::withTranslation()->get();
-//        }
-//        $view->with('events', $events);
+        if ( ! Cache::has('events')){
+          $events = Cache::rememberForever('events', function(){
+            return Event::withTranslation()->get();
+          });
+        }
+        else {
+          $events = Event::withTranslation()->get();
+        }
+        $view->with('events', $events);
 
       });
+
+        view()->composer('home.blog', function ($view) {
+            $view->with('posts', Post::withTranslation()->take(6)->get());
+        });
+        // HOME PAGE END --------------------------------
 
       view()->composer(['companies.category'], function ($view) {
 
@@ -109,18 +110,18 @@ class ComposerViewsServiceProvider extends ServiceProvider
         $view->with('companytypes', $companytypes);
       });
 
-      view()->composer(['groups.index','groups.category'], function ($view) {
-
-        if ( ! Cache::has('grouptypes')){
-          $grouptypes = Cache::rememberForever('grouptypes', function(){
-            return GroupType::withTranslation()->get();
-          });
-        }
-        else {
-          $grouptypes = GroupType::withTranslation()->get();
-        }
-        $view->with('grouptypes', $grouptypes);
-      });
+//      view()->composer(['groups.index','groups.category'], function ($view) {
+//
+//        if ( ! Cache::has('grouptypes')){
+//          $grouptypes = Cache::rememberForever('grouptypes', function(){
+//            return GroupType::withTranslation()->get();
+//          });
+//        }
+//        else {
+//          $grouptypes = GroupType::withTranslation()->get();
+//        }
+//        $view->with('grouptypes', $grouptypes);
+//      });
 
       view()->composer(['products.index','products.category'], function ($view) {
 

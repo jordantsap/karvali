@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'homepagetitle' => 'Marketplace Guide, Product Orders, Community Clubs and Events | nea-karvali.gr',
-    'homepagedescription' => 'Business guide for shops and products. Information about New Karvali Community Clubs and Events in Nea Karvali.',
+    'homepagetitle' => 'Marketplace Guide, Product Orders, Hotels and Accommodation | nea-karvali.gr',
+    'homepagedescription' => 'Order Features for shops and products. Renting services about New Karvali Hotels in Nea Karvali.',
     'homepagekeywords' => 'products in nea karvali, nea karvali products, nea karvali events, nea karvali market, nea karvali guide, nea karvali groups',
     'followus' => 'Follow Us:',
     'headerbutton' => 'Add New',
