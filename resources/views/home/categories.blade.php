@@ -14,7 +14,7 @@
                         </div>
                         @foreach ($companytypes as $companytype)
                             <li class="list-group-item">
-                                <a href="{{ route('companies-category', $companytype->slug)}}">
+                                <a href="{{ route('front.companies-category', $companytype->slug)}}">
                                     <h4 class="animated slideInUp">{{$companytype->name}}</h4></a>
                             </li>
                         @endforeach
@@ -25,7 +25,7 @@
                         </div>
                         @foreach ($accommodationTypes as $accommodationType)
                             <li class="list-group-item">
-                                <a href="{{ route('accommodation-types', $accommodationType->slug)}}">
+                                <a href="{{ route('front.accommodation-types', $accommodationType->slug)}}">
                                     <h4 class="animated slideInUp">{{$accommodationType->title}}</h4></a>
                             </li>
                         @endforeach
@@ -36,7 +36,7 @@
                         </div>
                         @foreach ($producttypes as $producttype)
                             <li class="list-group-item">
-                                <a href="{{ route('products-category', $producttype->slug)}}"><h4
+                                <a href="{{ route('front.products-category', $producttype->slug)}}"><h4
                                         class="animated slideInUp">{{$producttype->name}}</h4></a>
                             </li>
                         @endforeach
@@ -47,7 +47,7 @@
                         </div>
                         @foreach ($venues as $venue)
                             <li class="list-group-item">
-                                <a href="{{ route('venues', $venue->id)}}"><h4
+                                <a href="{{ route('front.venues', $venue->id)}}"><h4
                                         class="animated slideInUp">{{$venue->title}}</h4></a>
                             </li>
                         @endforeach
@@ -56,7 +56,7 @@
                         </div>
                         @foreach ($events as $event)
                             <li class="list-group-item">
-                                <a href="{{ route('event', $event->id)}}"><h4
+                                <a href="{{ route('front.events', $event->id)}}"><h4
                                         class="animated slideInUp">{{$event->title}}</h4></a>
                             </li>
                         @endforeach

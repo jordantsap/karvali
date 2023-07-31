@@ -7,7 +7,7 @@
       <h1>
         Products
 {{--        @can ('create_products', App\Models\Product::class)--}}
-          <small><a class="btn btn-primary" href="{{route('products.create')}}">Add New</a></small>
+          <small><a class="btn btn-primary" href="{{route('owner.product.create')}}">Add New</a></small>
 {{--        @endcan--}}
       </h1>
     </section>
@@ -47,13 +47,13 @@
                       <td>{{Str::limit($product->description, 20)}}</td>
                       <td>
 {{--                        @can ('update', App\Models\Product::class)--}}
-                          <a class="btn btn-primary" href="{{route('products.edit', $product->id)}}">Edit</a> -
+                          <a class="btn btn-primary" href="{{route('owner.product.edit', $product->id)}}">Edit</a> -
 {{--                        @endcan--}}
 {{--                        @can ('view', App\Models\Product::class)--}}
-                          <a class="btn btn-primary" href="{{route('products.show', $product->id)}}">View</a>
+                          <a class="btn btn-primary" href="{{route('owner.product.show', $product->id)}}">View</a>
 {{--                        @endcan--}}
 {{--                        @can ('delete', App\Models\Product::class)--}}
-                                <form action="{{ route('products.destroy', $product->id) }}"
+                                <form action="{{ route('owner.product.destroy', $product->id) }}"
                                       method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}

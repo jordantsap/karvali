@@ -52,6 +52,10 @@ class Accommodation extends Model implements TranslatableContract
     {
         return $this->belongsTo(AccommodationType::class);
     }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
 
     public function comments()

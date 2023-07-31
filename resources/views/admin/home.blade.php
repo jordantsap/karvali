@@ -9,11 +9,11 @@
       Dashboard
       <small>it all starts here</small>
     </h1>
-    {{-- <ol class="breadcrumb">
+     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Examples</a></li>
       <li class="active">Blank page</li>
-    </ol> --}}
+    </ol>
   </section>
 
   <!-- Main content -->
@@ -33,12 +33,21 @@
         use purifyer into controllers
         <br>
         orderBy likes
+          @if(auth()->user()->has('companies') || auth()->user()->companies()->count())
+              has companies
+          @endif
+          @if(auth()->user()->has('accommodations')->count())
+              has accommodations
+          @endif
+          @if(auth()->user()->has('venues'))
+              has venues
+          @endif
 
       </div>
       <!-- /.box-body -->
-      {{-- <div class="box-footer">
+       <div class="box-footer">
         Footer
-      </div> --}}
+      </div>
       <!-- /.box-footer-->
     </div>
     <!-- /.box -->

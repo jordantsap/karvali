@@ -41,14 +41,14 @@
               @foreach ($companies as $company)
               <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item">
                 <div class="card h-100">
-                  <a href="{{ route('company',$company->id) }}">
+                  <a href="{{ route('front.companies',$company->id) }}">
                     <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/companies/'.$company->logo) }}"
                       alt="{{ $company->title }}">
                   </a>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                      <a href="{{ route('company',$company->id) }}">{{ Str::limit($company->title, 15) }}</a>
+                      <a href="{{ route('front.company',$company->id) }}">{{ Str::limit($company->title, 15) }}</a>
                     </h4>
                   <div class="row" id="likecomment">
                     <div class="col-xs-6 text-center">
@@ -63,7 +63,7 @@
                   <br>
                   <div class="row">
                     <div class="col-xs-12"><b>{{ __('page.category') }}</b>
-                      <a href="{{ route('companies-category', $company->category->slug)}}">{{$company->category->name}}</a>
+                      <a href="{{ route('front.companies-category', $company->category->slug)}}">{{$company->category->name}}</a>
                     </div>
                   </div>
                 </div>
@@ -87,14 +87,14 @@
                     @foreach ($venues as $venue)
                       <div class="col-xs-12 col-sm-6 col-md-3 venues-item">
                         <div class="card h-100">
-                          <a href="{{ route('venue.show',$venue->slug) }}">
+                          <a href="{{ route('front.venues',$venue->slug) }}">
                             <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/venues/'.$venue->logo) }}"
                               alt="{{ $venue->title }}">
                           </a>
                         </div>
                         <div class="card-body">
                           <h4 class="card-title">
-                            <a href="{{ route('venue.show',$venue->slug) }}">{{ Str::limit($venue->title, 15) }}</a>
+                            <a href="{{ route('front.venue.show',$venue->slug) }}">{{ Str::limit($venue->title, 15) }}</a>
                           </h4>
                           <div class="row" id="likecomment">
                             <div class="col-xs-6 text-center">
@@ -135,14 +135,14 @@
               @foreach ($products as $product)
               <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item">
                 <div class="card h-100">
-                  <a href="{{ route('product',$product->slug) }}">
+                  <a href="{{ route('front.product',$product->slug) }}">
                     <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/products/'.$product->logo) }}"
                       alt="{{ $product->title }}">
                   </a>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">
-                          <a href="{{ route('product',$product->slug) }}">{{ Str::limit($product->title, 15) }}</a>
+                          <a href="{{ route('front.product',$product->slug) }}">{{ Str::limit($product->title, 15) }}</a>
                         </h4>
                   <div class="row" id="likecomment">
                     <div class="col-xs-6 text-center">
@@ -158,13 +158,13 @@
                   <div class="row">
                     <div class="col-xs-12">
                       <b>{{ __('page.category') }}</b>
-                      <a href="{{ route('products-category', $product->category->slug)}}">{{$product->category->name}}</a>
+                      <a href="{{ route('front.products-category', $product->category->slug)}}">{{$product->category->name}}</a>
                     </div>
                   </div>
                   <br>
                   <div class="row">
                     <div class="col-xs-12"><b>{{ __('page.company') }}</b>
-                      <a href="{{route('company', $product->company->slug)}}">
+                      <a href="{{route('front.company', $product->company->slug)}}">
                         {{ Str::limit($product->company->title, 10) }}</a>
                     </div>
                   </div>

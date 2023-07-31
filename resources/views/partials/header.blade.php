@@ -16,7 +16,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ route('homepage') }}">
+            <a class="navbar-brand" href="{{ route('front.homepage') }}">
               <span class="glyphicon glyphicon-map-marker" style="font-size:19px;" aria-hidden="true"></span>
               {{ config('app.name') }}
             </a>
@@ -26,25 +26,25 @@
             <ul class="nav navbar-nav navbar-right">
               {{-- <ul class="nav navbar-nav"> --}}
                 <li>
-                  <a href="{{ route('accommodations') }}">{{ __('header.accommodation') }}
+                  <a href="{{ route('front.accommodations') }}">{{ __('header.accommodation') }}
                   </a>
                 </li>
                 <li>
-                  <a href="{{ route('companies') }}">{{ __('header.companies') }}
+                  <a href="{{ route('front.companies') }}">{{ __('header.companies') }}
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li>
-                  <a href="{{ route('products') }}">{{ __('header.products') }}</a>
+                  <a href="{{ route('front.products') }}">{{ __('header.products') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('venues') }}">{{ __('header.venues') }}</a>
+                  <a href="{{ route('front.venues') }}">{{ __('header.venues') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('events') }}">{{ __('header.events') }}</a>
+                  <a href="{{ route('front.events') }}">{{ __('header.events') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('news') }}">{{ __('header.posts') }}</a>
+                  <a href="{{ route('front.news') }}">{{ __('header.posts') }}</a>
                 </li>
 {{--                <li>--}}
 {{--                  <a href="{{ route('galleries') }}">{{ __('header.galleries') }}</a>--}}
@@ -129,7 +129,7 @@
                   @endguest
                   @auth('web')
                       <li>
-                        <a href="{{ route('dashboard') }}">{{ __('header.account') }}</a>
+                        <a href="{{ route('admin.dashboard') }}">{{ __('header.account') }}</a>
                       </li>
                       <li role="separator" class="divider"></li>
                       <li>
@@ -213,8 +213,8 @@
                   </li>
                   @else
                   <li class="list-group-item">{{ __('cart.nocart') }}</li>
-                  <a href="{{route('products')}}" class="list-group-item">{{ __('cart.gotoproducts') }}</a>
-                  <a href="{{route('companies')}}" class="list-group-item">{{ __('cart.gotocompanies') }}</a>
+                  <a href="{{route('front.products')}}" class="list-group-item">{{ __('cart.gotoproducts') }}</a>
+                  <a href="{{route('front.companies')}}" class="list-group-item">{{ __('cart.gotocompanies') }}</a>
                   @endif
               </ul>
             </li>
