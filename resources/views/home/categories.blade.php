@@ -21,12 +21,12 @@
                     </div>
                     <div class="col-xs-3 text-center">
                         <div class="scroll-animation-bounce">
-                            <h3 class="animated slideInDown">{{ __('page.venuecategories') }}</h3>
+                            <h3 class="animated slideInDown">{{ __('page.accommodationTypes') }}</h3>
                         </div>
-                        @foreach ($venues as $venue)
+                        @foreach ($accommodationTypes as $accommodationType)
                             <li class="list-group-item">
-                                <a href="{{ route('venues', $venue->slug)}}">
-                                    <h4 class="animated slideInUp">{{$venue->title}}</h4></a>
+                                <a href="{{ route('accommodation-types', $accommodationType->slug)}}">
+                                    <h4 class="animated slideInUp">{{$accommodationType->title}}</h4></a>
                             </li>
                         @endforeach
                     </div>
@@ -43,6 +43,15 @@
                     </div>
                     <div class="col-xs-3 text-center">
                         <div class="animated slideInRight">
+                            <h3>{{ __('page.venues') }}</h3>
+                        </div>
+                        @foreach ($venues as $venue)
+                            <li class="list-group-item">
+                                <a href="{{ route('venues', $venue->id)}}"><h4
+                                        class="animated slideInUp">{{$venue->title}}</h4></a>
+                            </li>
+                        @endforeach
+                        <div class="animated slideInRight">
                             <h3>{{ __('page.events') }}</h3>
                         </div>
                         @foreach ($events as $event)
@@ -51,6 +60,7 @@
                                         class="animated slideInUp">{{$event->title}}</h4></a>
                             </li>
                         @endforeach
+
                     </div>
                 </div><!-- /.row -->
             </div>

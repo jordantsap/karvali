@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
-use App\Models\AccommodationType;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAccommodationTypeRequest;
 use App\Http\Requests\UpdateAccommodationTypeRequest;
+use App\Models\AccommodationType;
 
 class AccommodationTypeController extends Controller
 {

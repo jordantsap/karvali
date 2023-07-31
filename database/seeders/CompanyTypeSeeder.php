@@ -19,11 +19,11 @@ class CompanyTypeSeeder extends Seeder
         DB::table('company_types')->truncate();
         // $companytype()->setDefaultLocale('el');
         CompanyType::create([
-            'name:en' => 'Super Market',
-            'slug:en' => 'super-market',
+            'name:en' => 'Retail Sales',
+            'slug:en' => 'retail-sales',
 
-            'name:el' => 'Πολυκατάστημα',
-            'slug:el' => 'polykatasthma',
+            'name:el' => 'Πωλησεις Λιανικης',
+            'slug:el' => 'pwlhseis-lianikhs',
         ]);
         CompanyType::create([
             'name:en' => 'Coffee Shop',
@@ -102,25 +102,25 @@ class CompanyTypeSeeder extends Seeder
             'slug:el' => 'artoskeyasmata',
         ]);
         CompanyType::create([
-            'name:en' => 'Rentals',
-            'slug:en' => 'rentals',
-
-            'name:el' => 'Δωμάτια',
-            'slug:el' => 'rentrooms',
-        ]);
-        CompanyType::create([
             'name:en' => 'Construction Tools',
             'slug:en' => 'construction-tools',
 
             'name:el' => 'Οικοδομικά Υλικά',
             'slug:el' => 'oikodomikaylika',
         ]);
-        CompanyType::create([
-            'name:en' => 'Others',
-            'slug:en' => 'others',
-
-            'name:el' => 'Διάφορα',
-            'slug:el' => 'diafora',
-        ]);
+//        CompanyType::create([
+//            'name:en' => 'Rentals',
+//            'slug:en' => 'rentals',
+//
+//            'name:el' => 'Δωμάτια',
+//            'slug:el' => 'rentrooms',
+//        ]);
+//        CompanyType::create([
+//            'name:en' => 'Others',
+//            'slug:en' => 'others',
+//
+//            'name:el' => 'Διάφορα',
+//            'slug:el' => 'diafora',
+//        ]);
     }
 }

@@ -49,6 +49,7 @@ Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmati
 
 Route::get('accommodations', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
 Route::get('accommodations/{accommodation:slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
+
 Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])->name('accommodation-types');
 //Route::view('calendar','calendar');
 
@@ -56,7 +57,7 @@ Route::get('markets', 'Client\CompanyController@index')->name('companies');
 Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::class, 'show'])->name('company');
 
 Route::get('products', [\App\Http\Controllers\Client\ProductController::class, 'index'])->name('products');
-Route::get('{slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
+Route::get('{product:slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 
 Route::get('venues', [App\Http\Controllers\Client\VenueController::class, 'index'])->name('venues');
 Route::get('venue/{slug}', [App\Http\Controllers\Client\VenueController::class, 'show'])->name('venue.show');

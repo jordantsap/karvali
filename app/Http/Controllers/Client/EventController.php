@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Client;
 use App\Models\Event;
 use App\Models\Group;
 use App\Models\Comment;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -28,11 +34,14 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-      $events = Event::with(['likes','comments'])->where('active',1)->paginate(5);//where('date', '>', Carbon::now())->orderBy('date', 'asc')->paginate(10);
+      $events = Event::withTranslation()
+        ->with(['likes','comments'])
+          ->active()
+          ->paginate(5);//where('date', '>', Carbon::now())->orderBy('date', 'asc')->paginate(10);
       return view('events.index', ['events' => $events]);
     }
 
@@ -40,12 +49,13 @@ class EventController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($slug)
     {
       $event = Event::whereTranslation('slug', $slug)
-      ->with(['likes','comments'])
+          ->withTranslation()
+//      ->with(['likes','comments'])
       ->first();
       // $comments = Comment::all();
       return view('events.show', ['event' => $event]);
@@ -55,7 +65,7 @@ class EventController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|RedirectResponse|Redirector
      */
     public function edit(Event $event)
     {
@@ -69,9 +79,9 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Event $event)
     {
@@ -144,7 +154,7 @@ class EventController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Event $event)
     {

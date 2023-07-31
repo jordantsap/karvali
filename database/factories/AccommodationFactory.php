@@ -40,7 +40,7 @@ class AccommodationFactory extends Factory
             'description' => $this->faker->realText($maxNbChars = 500, $indexSize = 3),
             'user_id' => rand(1, 2),
             'total_rooms' => rand(1, 10),
-            'accommodation_type_id' => rand(1, AccommodationType::count()),
+            'accommodation_type_id' => rand(1, 10),
         ];
     }
 }

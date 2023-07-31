@@ -20,59 +20,59 @@ class AccommodationTypeSeeder extends Seeder
         DB::table('accommodation_types')->truncate();
 
         AccommodationType::create([
-            'name:en' => 'Hotel',
+            'title:en' => 'Hotel',
             'slug:en' => 'hotel',
 
-            'name:el' => 'Ξενοδοχείο',
+            'title:el' => 'Ξενοδοχείο',
             'slug:el' => 'xenodoxeio',
         ]);
         AccommodationType::create([
-            'name:en' => 'Camping',
+            'title:en' => 'Camping',
             'slug:en' => 'camping',
 
-            'name:el' => 'Κάμπιγκ',
+            'title:el' => 'Κάμπιγκ',
             'slug:el' => 'kamping',
         ]);
         AccommodationType::create([
-            'name:en' => 'Apartment',
+            'title:en' => 'Apartment',
             'slug:en' => 'apartment',
 
-            'name:el' => 'Διαμέρισμα',
+            'title:el' => 'Διαμέρισμα',
             'slug:el' => 'diamerisma',
         ]);
         AccommodationType::create([
-            'name:en' => 'Villa',
+            'title:en' => 'Villa',
             'slug:en' => 'villa',
 
-            'name:el' => 'Έπαυλη',
-            'slug:el' => 'Έπαυλη',
+            'title:el' => 'Έπαυλη',
+            'slug:el' => 'epayli',
         ]);
         AccommodationType::create([
-            'name:en' => 'Guesthouse-Hostel',
+            'title:en' => 'Guesthouse-Hostel',
             'slug:en' => 'guesthouse-Hostel',
 
-            'name:el' => 'Ξενώνας',
-            'slug:el' => 'Ξενώνας',
+            'title:el' => 'Ξενώνας',
+            'slug:el' => 'ksenwnas',
         ]);
         AccommodationType::create([
-            'name:en' => 'Vacation Rental',
+            'title:en' => 'Vacation Rental',
             'slug:en' => 'Vacation Rental',
 
-            'name:el' => 'Ενοικίαση διακοπών',
-            'slug:el' => 'ενοικίαση-διακοπών',
+            'title:el' => 'Ενοικίαση διακοπών',
+            'slug:el' => 'rent-house',
         ]);
         AccommodationType::create([
-            'name:en' => 'Resort',
+            'title:en' => 'Resort',
             'slug:en' => 'Resort',
 
-            'name:el' => 'Θέρετρο',
-            'slug:el' => 'θέρετρο',
+            'title:el' => 'Θέρετρο',
+            'slug:el' => 'theretro',
         ]);
         AccommodationType::create([
-            'name:en' => 'Motel',
-            'slug:en' => 'Motel',
+            'title:en' => 'Motel',
+            'slug:en' => 'motel',
 
-            'name:el' => 'Μοτέλ',
+            'title:el' => 'Μοτέλ',
             'slug:el' => 'Μοτέλ',
         ]);
     }

@@ -50,7 +50,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $roles =Role::whereIn('id', [4, 5, 6, 7])->get();
+        $roles =Role::whereIn('id', [3, 4, 5])->get();
+
         return view('auth.register',compact('roles'));
     }
 

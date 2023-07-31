@@ -37,7 +37,7 @@ class RoleTableSeeder extends Seeder
             'view_posts']);
 
         /*----------------------------*/
-        $role = Role::create(['name' => 'Company Products Owner']);
+        $role = Role::create(['name' => 'Company/Products Owner']);
         $role->givePermissionTo([
             'company_management',
             'view_companies',
@@ -51,7 +51,7 @@ class RoleTableSeeder extends Seeder
             'delete_products',
             ]);
 
-        $role = Role::create(['name' => 'Accommodation Owner']);
+        $role = Role::create(['name' => 'Accommodation/Rooms Owner']);
         $role->givePermissionTo(['accommodation_management',
             'view_accommodation',
             'create_accommodation',
@@ -63,7 +63,7 @@ class RoleTableSeeder extends Seeder
             'delete_rooms',
             ]);
 
-        $role = Role::create(['name' => 'Event Venue Manager']);
+        $role = Role::create(['name' => 'Venue/Event Manager']);
         $role->givePermissionTo([
             'venue_management',
             'view_venue',

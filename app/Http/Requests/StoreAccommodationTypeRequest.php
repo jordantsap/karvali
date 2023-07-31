@@ -13,7 +13,7 @@ class StoreAccommodationTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,18 @@ class StoreAccommodationTypeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'en.title' => 'required',
+            'en.meta_description' => 'nullable',
+            'en.meta_keywords' => 'nullable',
         ];
+
+        foreach (config('translatable.locales') as $locale) {
+            $rules[$locale . '.title'] = 'string';
+            $rules[$locale . '.meta_description'] = 'string';
+            $rules[$locale . '.meta_keywords'] = 'string';
+        }
+
+        return $rules;
     }
 }

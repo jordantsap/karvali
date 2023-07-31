@@ -35,27 +35,27 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=2gub9al0ldt0eozuliq6xyzda6xxot10w7lanj6pk2dvqs52"></script>
+{{--  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=2gub9al0ldt0eozuliq6xyzda6xxot10w7lanj6pk2dvqs52"></script>--}}
 
-    <script>
-    tinymce.init({
-      selector: 'textarea',
-      menubar: 'false',
-      branding: 'false',
-      entity_encoding : 'raw',
-      force_br_newlines : 'true',
-      force_p_newlines : 'false',
-      forced_root_block : '', {{--Needed for 3.x,--}}
-      plugins: [
-        'advlist autolink lists link charmap print preview anchor textcolor',
-        'searchreplace visualblocks code fullscreen',
-        'table contextmenu paste code help'
-      ],
-      toolbar: 'undo redo | link | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-      setup: function (editor) {
-          editor.on('change', function (e) {
-              editor.save();
-          });
-      }
-    });
-    </script>
+{{--    <script>--}}
+{{--    tinymce.init({--}}
+{{--      selector: 'textarea',--}}
+{{--      menubar: 'false',--}}
+{{--      branding: 'false',--}}
+{{--      entity_encoding : 'raw',--}}
+{{--      force_br_newlines : 'true',--}}
+{{--      force_p_newlines : 'false',--}}
+{{--      forced_root_block : '', --}}{{--Needed for 3.x,--}}
+{{--      plugins: [--}}
+{{--        'advlist autolink lists link charmap print preview anchor textcolor',--}}
+{{--        'searchreplace visualblocks code fullscreen',--}}
+{{--        'table contextmenu paste code help'--}}
+{{--      ],--}}
+{{--      toolbar: 'undo redo | link | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',--}}
+{{--      setup: function (editor) {--}}
+{{--          editor.on('change', function (e) {--}}
+{{--              editor.save();--}}
+{{--          });--}}
+{{--      }--}}
+{{--    });--}}
+{{--    </script>--}}

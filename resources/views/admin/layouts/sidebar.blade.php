@@ -6,7 +6,7 @@
 
     <ul class="sidebar-menu">
         <li class="active"><a href="{{ route('dashboard') }}">
-          <i class="fas fa-tachometer-alt"></i> <span>{{ Auth::user()->username}} : {{ Auth::user()->id}}</span></a>
+          <i class="fas fa-tachometer-alt"></i> <span>{{ Auth::user()->username}} : {{ Auth::user()->id.Auth::user()->getRoleNames()}}</span></a>
 
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -59,6 +59,8 @@
         @endcan
         @hasanyrole('Super-Admin|Admin')
         <li><a href="{{ route('newsletters.index') }}"><i class="fas fa-book"></i> <span>Newsletters</span></a></li>
+
+        <li><a href="{{ route('accommodation-types.index') }}"><i class="fas fa-book"></i> <span>Accommodation Types</span></a></li>
         @endhasanyrole
         @can ('view_posts', App\Models\Post::class)
         <li><a href="{{ route('posts.index') }}">

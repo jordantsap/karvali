@@ -9,31 +9,31 @@
         <div class="container">
             <div class="row">
                 <h1 class="">{{ __('page.accommodations') }}</h1>
-{{--                <nav class="navbar">--}}
-{{--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"--}}
-{{--                        data-target="#companytype-collapse" aria-expanded="false">--}}
-{{--                        <span class="">{{ __('page.categories') }}</span>--}}
-{{--                        <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>--}}
-{{--                    </button>--}}
+                <nav class="navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#companytype-collapse" aria-expanded="false">
+                        <span class="">{{ __('page.categories') }}</span>
+                        <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
+                    </button>
 {{--                    <!-- List group -->--}}
-{{--                    <div class="row">--}}
-{{--                        <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">--}}
-{{--                            @foreach ($companytypes as $companytype)--}}
-{{--                                <li>--}}
-{{--                                    <a href="{{ route('companies-category', $companytype->slug) }}"--}}
-{{--                                        class="">{{ $companytype->name }}&nbsp<span--}}
-{{--                                            class="badge">{{ $companytype->companies->where('active', 1)->count() }}</span>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            @endforeach--}}
-{{--                            <li>--}}
-{{--                                <script>--}}
-{{--                                    document.write('<a href="' + document.referrer + '">{{ __('page.backlink') }}</a>');--}}
-{{--                                </script>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </nav>--}}
+                    <div class="row">
+                        <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
+                            @foreach ($accommodationTypes as $accommodationType)
+                                <li>
+                                    <a href="{{ route('accommodation-types', $accommodationType->slug) }}"
+                                        class="">{{ $accommodationType->title }}&nbsp
+                                        <span class="badge">{{ $accommodationType->accommodations->where('active', 1)->count() }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                            <li>
+                                <script>
+                                    document.write('<a href="' + document.referrer + '">{{ __('page.backlink') }}</a>');
+                                </script>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
                 <div class="divider"></div>
 
                 <div class="row">
@@ -62,14 +62,14 @@
                                             <span class="badge">{{ count($accommodation->comments) }}</span>
                                         </div>
                                     </div>
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-xs-12">--}}
-{{--                                            <h3><b>{{ __('page.category') }}</b> <a--}}
-{{--                                                    href="{{ route('accommodation-types', $accommodation->type->slug) }}">--}}
-{{--                                                    {{ $accommodation->type->title }}</a>--}}
-{{--                                            </h3>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h3><b>{{ __('page.category') }}</b>
+                                                <a href="{{ route('accommodation-types', $accommodation->accommodationType->slug ?? '') }}">
+                                                    {{ $accommodation->accommodationType ? \Str::limit($accommodation->accommodationType->title, 10) : '#'}}</a>
+                                            </h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

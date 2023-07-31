@@ -20,6 +20,7 @@ return [
   'productcategories' => 'Product Types',
   'groupcategories' => 'Group Types',
   'venuecategories' => 'Venue Categories',
+  'accommodationTypes' => 'Accommodation Types',
   'howto' => 'Guides',
   'popularheader' => 'Popular',
   'popularevents' => 'Events',

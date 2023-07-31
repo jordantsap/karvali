@@ -19,6 +19,7 @@ Route::prefix('manage')->middleware(['auth', 'verified'])->group(function() {
   Route::resource('companies', 'Admin\CompanyController');
   Route::resource('prods', 'Admin\ProductController');
   Route::resource('teams', 'Admin\GroupController');
+  Route::resource('accommodation-types', \App\Http\Controllers\Admin\AccommodationTypeController::class);
 
   // Route::get('companies', 'HomeController@companies')->name('admin.companies');
   // Route::get('myproducts', 'HomeController@products')->name('admin.products');

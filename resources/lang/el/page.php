@@ -19,6 +19,7 @@ return [
     'companycategories' => 'Τύποι Καταστημάτων',
     'groupcategories' => 'Τύποι Συλλόγων',
     'venuecategories' => 'Τύποι Χώρων Εκδηλώσεων',
+    'accommodationTypes' => 'Τύποι Καταλυμάτων',
     'productcategories' => 'Τύποι Προϊόντων',
     'howto' => 'Οδηγίες',
     'popularheader' => 'Δημοφιλείς',

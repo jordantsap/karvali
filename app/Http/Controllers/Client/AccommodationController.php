@@ -20,10 +20,14 @@ class AccommodationController extends Controller
      */
     public function index()
     {
-        $accommodations = Accommodation::withTranslation()
+        $accommodations = Accommodation::with('accommodationType')
+            ->translated()
+            ->withTranslation()
             ->paginate();
 
-        return view('accommodations.index', compact('accommodations'));
+        $accommodationTypes = AccommodationType::translated()->get();
+
+        return view('accommodations.index', compact('accommodations', 'accommodationTypes'));
     }
 
     /**
@@ -39,9 +43,14 @@ class AccommodationController extends Controller
         return view('accommodations.show', compact('accommodation'));
     }
 
-    public function category(AccommodationType $accommodationType)
+    public function category(AccommodationType $accommodationType, $slug)
     {
-         return $accommodationType->accommodations()->withTranslation()->paginate();
+         $accommodationType = AccommodationType::whereTranslation('slug', $slug)
+             ->withTranslation()->get();
+
+        $accommodations = Accommodation::withTranslation()->where('accommodation_type_id', $accommodationType[0]->id)->paginate();
+
+         return view('accommodations.category', compact(['accommodations','accommodationType']));
     }
 
 }

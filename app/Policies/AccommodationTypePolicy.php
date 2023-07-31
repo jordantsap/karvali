@@ -30,7 +30,7 @@ class AccommodationTypePolicy
      */
     public function view(User $user, AccommodationType $accommodationType)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class AccommodationTypePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasRole(['Super-Admin', 'Admin']);
     }
 
     /**
@@ -53,7 +53,7 @@ class AccommodationTypePolicy
      */
     public function update(User $user, AccommodationType $accommodationType)
     {
-        //
+        return $user->hasRole(['Super-Admin', 'Admin']);
     }
 
     /**
@@ -65,7 +65,7 @@ class AccommodationTypePolicy
      */
     public function delete(User $user, AccommodationType $accommodationType)
     {
-        //
+        return $user->hasRole(['Super-Admin', 'Admin']);
     }
 
     /**
@@ -77,7 +77,7 @@ class AccommodationTypePolicy
      */
     public function restore(User $user, AccommodationType $accommodationType)
     {
-        //
+        return $user->hasRole(['Super-Admin', 'Admin']);
     }
 
     /**
@@ -89,6 +89,6 @@ class AccommodationTypePolicy
      */
     public function forceDelete(User $user, AccommodationType $accommodationType)
     {
-        //
+        return $user->hasRole(['Super-Admin', 'Admin']);
     }
 }

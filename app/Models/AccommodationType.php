@@ -11,15 +11,18 @@ class AccommodationType extends Model implements TranslatableContract
 {
     use Translatable, HasFactory;
 
-
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'slug',
+    ];
+    protected $guarded = [];
 //     public $primaryKey = 'slug';
 
-
-
     protected $translatedAttributes  = [
-        'name',
+        'title',
         'slug',
+//        'meta_keywords',
+//        'meta_description',
     ];
 
 
@@ -29,8 +32,20 @@ class AccommodationType extends Model implements TranslatableContract
     }
 
 
-    public function accommodation()
+    public function accommodations()
     {
         return $this->hasMany(Accommodation::class);
+    }
+
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
     }
 }

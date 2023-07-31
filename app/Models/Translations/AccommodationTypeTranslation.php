@@ -3,19 +3,23 @@
 namespace App\Models\Translations;
 
 use Astrotomic\Translatable\Translatable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AccommodationTypeTranslation extends Model
 {
-    use Translatable;
+    use Sluggable;
+
+    public $timestamps = false;
 
     protected $fillable = [
-        'name',
+        'title',
         'slug',
-//        'locale_unique',
+        'meta_keywords',
+        'meta_description',
     ];
-    public $timestamps = false;
+
 
     /**
      * Return the sluggable configuration array for this model.
@@ -26,7 +30,7 @@ class AccommodationTypeTranslation extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'title'
             ]
         ];
     }

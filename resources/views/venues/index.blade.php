@@ -10,15 +10,15 @@
             <div class="row">
                 <h1 class="">{{ __('page.venues') }}</h1>
 
-{{--                <nav class="navbar">--}}
-{{--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"--}}
-{{--                        data-target="#companytype-collapse" aria-expanded="false">--}}
-{{--                        <span class="">{{ __('page.categories') }}</span>--}}
-{{--                        <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>--}}
-{{--                    </button>--}}
-{{--                    <!-- List group -->--}}
-{{--                    <div class="row">--}}
-{{--                        <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">--}}
+                <nav class="navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#companytype-collapse" aria-expanded="false">
+                        <span class="">{{ __('page.categories') }}</span>
+                        <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
+                    </button>
+                    {{-- List group --}}
+                    <div class="row">
+                        <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
 {{--                            @foreach ($companytypes as $companytype)--}}
 {{--                                <li>--}}
 {{--                                    <a href="{{ route('companies-category', $companytype->slug) }}"--}}
@@ -27,14 +27,14 @@
 {{--                                    </a>--}}
 {{--                                </li>--}}
 {{--                            @endforeach--}}
-{{--                            <li>--}}
-{{--                                <script>--}}
-{{--                                    document.write('<a href="' + document.referrer + '">{{ __('page.backlink') }}</a>');--}}
-{{--                                </script>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </nav>--}}
+                            <li>
+                                <script>
+                                    document.write('<a href="' + document.referrer + '">{{ __('page.backlink') }}</a>');
+                                </script>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
                 <div class="divider"></div>
 
                 <div class="row">

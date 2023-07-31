@@ -41,14 +41,13 @@ class DatabaseSeeder extends Seeder
           $this->call(PermissionTableSeeder::class);
           $this->call(RoleTableSeeder::class);
           $this->call(UsersTableSeeder::class);
-
+//
+          $this->call(AccommodationTypeSeeder::class);
           $this->call(PostTypeSeeder::class);
           $this->call(CompanyTypeSeeder::class);
-          $this->call(GroupTypeSeeder::class);
           $this->call(ProductTypeSeeder::class);
-
+//
           $this->call(VenueSeeder::class);
-          $this->call(AccommodationTypeSeeder::class);
           $this->call(AccommodationSeeder::class);
           $this->call(RoomSeeder::class);
 
@@ -58,6 +57,7 @@ class DatabaseSeeder extends Seeder
           $this->call(ProductsTableSeeder::class);
 
           // just for reference
+//          $this->call(GroupTypeSeeder::class);
 //          $this->call(AlbumsTableSeeder::class);
 //          $this->call(AlbumPhotosTableSeeder::class);
 //          $this->call(GroupsTableSeeder::class);

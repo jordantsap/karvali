@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AccommodationType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,12 +16,14 @@ return new class extends Migration
     {
         Schema::create('accommodation_type_translations', function (Blueprint $table) {
             $table->id();
-            $table->integer('accommodation_type_id')->unsigned();
+            $table->foreignIdFor(AccommodationType::class);
             $table->string('locale')->index();
 
             // The actual fields to store the content of your entity. You can add whatever you need.
-            $table->string('name');
+            $table->string('title');
             $table->string('slug')->unique();
+//            $table->string('meta_description')->nullable();
+//            $table->string('meta_keywords')->nullable();
 
             $table->unique(['accommodation_type_id', 'locale'], 'locale_unique');
             $table->timestamps();

@@ -32,13 +32,6 @@ class ProductTypeSeeder extends Seeder
             'slug:el' => 'alkool',
         ]);
         ProductType::create([
-            'name:en' => 'Free',
-            'slug:en' => 'free',
-
-            'name:el' => 'Δωρεάν',
-            'slug:el' => 'dwrean'
-        ]);
-        ProductType::create([
             'name:en' => 'Hand Made',
             'slug:en' => 'handmade',
 
@@ -115,12 +108,20 @@ class ProductTypeSeeder extends Seeder
             'name:el' => 'Ηλεκτρονικά',
             'slug:el' => 'hlektronika',
         ]);
-        ProductType::create([
-            'name:en' => 'Others',
-            'slug:en' => 'others',
+//        ProductType::create([
+//            'name:en' => 'Free',
+//            'slug:en' => 'free',
+//
+//            'name:el' => 'Δωρεάν',
+//            'slug:el' => 'dwrean'
+//        ]);
 
-            'name:el' => 'Διάφορα',
-            'slug:el' => 'diafora',
-        ]);
+//        ProductType::create([
+//            'name:en' => 'Others',
+//            'slug:en' => 'others',
+//
+//            'name:el' => 'Διάφορα',
+//            'slug:el' => 'diafora',
+//        ]);
     }
 }
