@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CompanyTypeTranslation extends Model
 {
     use Sluggable;
-
+    public $timestamps = false;
     protected $fillable = ['name', 'slug'];
 
 //    protected $translationForeignKey = 'event_id';

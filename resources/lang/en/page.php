@@ -42,7 +42,7 @@ return [
   'contactmessageplaceholder' => '10 Minimum chars',
   'contactbutton' => 'Send',
   'viewevent' => 'View Event',
-  'manager' => 'Manager:',
+  'manager' => 'Manager Name:',
   'telephone' => 'Telephone',
   'howtoheader' => 'How to be a part of Us',
   'gototop' => 'top',

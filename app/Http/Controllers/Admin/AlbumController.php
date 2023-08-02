@@ -20,7 +20,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-      $this->authorize('view_albums', 'App\Album');
+      $this->authorize('view-albums', 'App\Album');
         $albums = Album::paginate(10);
         return view('admin.albums.index', compact('albums'));
     }
@@ -32,7 +32,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-      $this->authorize('create_albums', 'App\Album');
+      $this->authorize('create-albums', 'App\Album');
         return view('admin.albums.create');
     }
 
@@ -87,7 +87,7 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
-        $this->authorize('view_albums', 'App\Album');
+        $this->authorize('view-albums', 'App\Album');
         $album = Album::find($id);
         return view('admin.albums.album', compact('album'));
     }
@@ -100,7 +100,7 @@ class AlbumController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('update_albums', 'App\Album');
+        $this->authorize('update-albums', 'App\Album');
         $album = Album::find($id);
         return view('admin.albums.edit', compact('album'));
     }
@@ -162,7 +162,7 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
-//      $this->authorize('delete_albums', 'App\Album');
+//      $this->authorize('delete-albums', 'App\Album');
       $album = Album::find($id);
        $album->delete();
        $notification = array(

@@ -5,7 +5,8 @@ use App\Http\Controllers\Owner\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::name('owner.')
+Route::middleware(['auth', 'verified'])
+    ->name('owner')
     ->prefix('owner')
     ->as('owner.')->group(function () {
 
@@ -14,6 +15,8 @@ Route::name('owner.')
         Route::resource('product', \App\Http\Controllers\Owner\ProductController::class);
 
         Route::resource('accommodation', \App\Http\Controllers\Owner\AccommodationController::class);
+
+        Route::resource('rooms', \App\Http\Controllers\Owner\RoomController::class);
 
         Route::resource('venue', \App\Http\Controllers\Owner\VenueController::class);
 

@@ -19429,10 +19429,10 @@
 }
 
     namespace Illuminate\Http {
-            /**
+        /**
+         *
      *
-     *
-     */
+     *@property mixed $title*/
         class Request {
                     /**
          *

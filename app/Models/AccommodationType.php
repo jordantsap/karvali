@@ -11,12 +11,14 @@ class AccommodationType extends Model implements TranslatableContract
 {
     use Translatable, HasFactory;
 
+//     public $primaryKey = 'slug';
+
     protected $fillable = [
         'title',
         'slug',
+        'meta_keywords',
+        'meta_description',
     ];
-    protected $guarded = [];
-//     public $primaryKey = 'slug';
 
     protected $translatedAttributes  = [
         'title',
@@ -24,7 +26,6 @@ class AccommodationType extends Model implements TranslatableContract
 //        'meta_keywords',
 //        'meta_description',
     ];
-
 
     public function getRouteKeyName(): string
     {

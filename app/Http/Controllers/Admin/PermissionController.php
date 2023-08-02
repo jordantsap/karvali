@@ -24,7 +24,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-      $this->authorize('view_permissions', 'App\Permission');
+      $this->authorize('view-permissions', 'App\Permission');
         $permissions = Permission::all();
         return view('admin.permissions.index',compact('permissions'));
     }
@@ -36,7 +36,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-      $this->authorize('create_permissions', 'App\Permission');
+      $this->authorize('create-permissions', 'App\Permission');
         return view('admin.permissions.create');
     }
 
@@ -48,7 +48,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-      $this->authorize('create_permissions', 'App\Permission');
+      $this->authorize('create-permissions', 'App\Permission');
         $this->validate($request,[
             'name' => 'required|max:50|unique:permissions',
             // 'for'  => 'required'
@@ -69,7 +69,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-      // $this->authorize('view_permissions', 'App\Permission');
+      // $this->authorize('view-permissions', 'App\Permission');
       //   return view('admin.permissions.show',compact('permission'));
       abort(404);
     }
@@ -82,7 +82,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-      $this->authorize('update_permissions', 'App\Permission');
+      $this->authorize('update-permissions', 'App\Permission');
         $permission = Permission::find($permission->id);
         return view('admin.permissions.edit',compact('permission'));
     }
@@ -96,7 +96,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-      $this->authorize('update_permissions', 'App\Permission');
+      $this->authorize('update-permissions', 'App\Permission');
         $this->validate($request,[
             'name' => 'required|max:50',
             // 'for'  => 'required'
@@ -117,7 +117,7 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-      $this->authorize('delete_permissions', 'App\Permission');
+      $this->authorize('delete-permissions', 'App\Permission');
         Permission::where('id',$permission->id)->delete();
         return redirect()->back()->with('message','Permission Deleted Successfully');
     }

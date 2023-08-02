@@ -25,72 +25,72 @@ class RoleTableSeeder extends Seeder
 
         $role = Role::create(['name' => 'Admin']);
         $role->givePermissionTo([
-            'view_events',
-            'view_products',
-//            'view_groups',
-            'view_companies',
-            'view_users',
-            'create_users',
-            'update_users',
-            'create_posts',
-            'update_posts',
-            'view_posts']);
+            'view-events',
+            'view-products',
+//            'view-groups',
+            'view-companies',
+            'view-users',
+            'create-users',
+            'update-users',
+            'create-posts',
+            'update-posts',
+            'view-posts']);
 
         /*----------------------------*/
         $role = Role::create(['name' => 'Company/Products Owner']);
         $role->givePermissionTo([
-            'company_management',
-            'view_companies',
-            'create_companies',
-            'update_companies',
-            'delete_companies',
+            'company-management',
+            'view-companies',
+            'create-companies',
+            'update-companies',
+            'delete-companies',
 
-            'view_products',
-            'create_products',
-            'update_products',
-            'delete_products',
+            'view-products',
+            'create-products',
+            'update-products',
+            'delete-products',
             ]);
 
         $role = Role::create(['name' => 'Accommodation/Rooms Owner']);
-        $role->givePermissionTo(['accommodation_management',
-            'view_accommodation',
-            'create_accommodation',
-            'update_accommodation',
-            'delete_accommodation',
-            'view_rooms',
-            'create_rooms',
-            'update_rooms',
-            'delete_rooms',
+        $role->givePermissionTo(['accommodation-management',
+            'view-accommodation',
+            'create-accommodation',
+            'update-accommodation',
+            'delete-accommodation',
+            'view-rooms',
+            'create-rooms',
+            'update-rooms',
+            'delete-rooms',
             ]);
 
-        $role = Role::create(['name' => 'Venue/Event Manager']);
+        $role = Role::create(['name' => 'Venue/Event Owner']);
         $role->givePermissionTo([
-            'venue_management',
-            'view_venue',
-            'create_venue',
-            'update_venue',
-            'delete_venue',
+            'venue-management',
+            'view-venue',
+            'create-venue',
+            'update-venue',
+            'delete-venue',
 
-            'view_events',
-            'create_events',
-            'update_events',
-            'delete_events',
+            'view-events',
+            'create-events',
+            'update-events',
+            'delete-events',
             ]);
 
         $role = Role::create(['name' => 'Blogger']);
-        $role->givePermissionTo(['view_posts', 'create_posts', 'update_posts']);
+        $role->givePermissionTo(['view-posts', 'create-posts', 'update-posts']);
 
         $role = Role::create(['name' => 'Customer']);
-        $role->givePermissionTo(['order_management']);
+        $role->givePermissionTo(['order-management']);
 
 //        $role = Role::create(['name' => 'Group Manager']);
-//        $role->givePermissionTo(['group_management']);
+//        $role->givePermissionTo(['group-management']);
 
 //        $role = Role::create(['name' => 'Product Supplier']);
-//        $role->givePermissionTo(['product_management']);
+//        $role->givePermissionTo(['product-management']);
 
 //        $role = Role::create(['name' => 'Event Host']);
-//        $role->givePermissionTo(['event_management']);
+//        $role->givePermissionTo(['event-management']);
 
     }
 }

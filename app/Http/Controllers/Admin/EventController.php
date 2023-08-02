@@ -19,7 +19,7 @@ class EventController extends Controller
      */
     public function index()
     {
-      $this->authorize('view_events', 'App\Event');
+      $this->authorize('view-events', 'App\Event');
         $events = Event::orderBy('id', 'DESC')->paginate(10);
         return view('admin.events.index', compact('events'));
     }
@@ -31,7 +31,7 @@ class EventController extends Controller
      */
     public function create()
     {
-      $this->authorize('create_events', 'App\Event');
+      $this->authorize('create-events', 'App\Event');
         return view('admin.events.create');
     }
 
@@ -43,7 +43,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create_events', 'App\Event');
+        $this->authorize('create-events', 'App\Event');
         $this->validate($request, array(
           'user_id' => 'integer|Auth::user()->id',
           'title' => 'required|min:5|max:100',
@@ -165,7 +165,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_events', 'App\Event');
+      $this->authorize('update-events', 'App\Event');
       $event = Event::find($id);
         return view('admin.events.edit', compact('event'));
     }
@@ -179,7 +179,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('update_events', 'App\Event');
+        $this->authorize('update-events', 'App\Event');
         $this->validate($request, array(
           'user_id' => 'integer|Auth::user()->id',
           'title' => 'required|min:5|max:100',
@@ -324,7 +324,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-      $this->authorize('delete_events', 'App\Event');
+      $this->authorize('delete-events', 'App\Event');
           Event::where('id',$id)->delete();
           $notification = array(
           'message' => 'User deleted successfully',

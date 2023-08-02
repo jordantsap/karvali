@@ -24,7 +24,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-      $this->authorize('view_companies', 'App\Company');
+      $this->authorize('view-companies', 'App\Company');
       $companies = Company::orderBy('id', 'DESC')->paginate(10);
         return view('admin.companies.index', compact('companies'));
     }
@@ -36,7 +36,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-      $this->authorize('create_companies', 'App\Company');
+      $this->authorize('create-companies', 'App\Company');
       $companytypes = CompanyType::all();
       return view('admin.companies.create', compact('companytypes'));
     }
@@ -45,7 +45,7 @@ class CompanyController extends Controller
      * Store a newly created Company in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -161,7 +161,7 @@ class CompanyController extends Controller
       'message' => 'Company added successfully',
       'alert-type' => 'info'
       );
-      return redirect(route('companies.show',$company->id))->with($notification);
+      return redirect(route('admin.companies.show',$company->id))->with($notification);
     }
 
 
@@ -173,9 +173,10 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_companies', 'App\Company');
+      $this->authorize('update-companies', 'App\Company');
       $categories = CompanyType::all();
       $company = Company::find($id);
+
       return view('admin.companies.edit', compact('company', 'categories'));
     }
 
@@ -188,7 +189,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->authorize('update_companies', 'App\Company');
+      $this->authorize('update-companies', 'App\Company');
       $this->validate($request, array(
         'user_id' => 'integer|Auth::user()->id',
         'title' => 'required|min:5|max:100',
@@ -326,7 +327,7 @@ class CompanyController extends Controller
      'message' => 'Company updated successfully',
      'alert-type' => 'info'
      );
-     return redirect(route('companies.show', $company->id))->with($notification);
+     return redirect(route('admin.companies.show', $company->id))->with($notification);
     }
 
     /**
@@ -337,7 +338,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-      $this->authorize('view_companies', 'App\Company');
+      $this->authorize('view-companies', 'App\Company');
       $company = Company::find($id);
       return view('admin.companies.company', compact('company'));
     }
@@ -350,7 +351,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-      $this->authorize('delete_companies', 'App\Company');
+      $this->authorize('delete-companies', 'App\Company');
       $company = Company::find($id);
        $company->delete();
        $notification = array(

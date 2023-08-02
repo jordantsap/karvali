@@ -16,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $this->authorize('view_roles', 'App\Role');
+        $this->authorize('view-roles', 'App\Role');
         $roles = Role::all();
         return view('admin.roles.index', compact('roles'));
     }
@@ -28,7 +28,7 @@ class RoleController extends Controller
      */
     public function create(Role $role)
     {
-        $this->authorize('create_roles', 'App\Role');
+        $this->authorize('create-roles', 'App\Role');
         $permissions = Permission::all();
         return view('admin.roles.create',compact('permissions'));
     }
@@ -63,7 +63,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-      $this->authorize('view_roles', Role::class);
+      $this->authorize('view-roles', Role::class);
       $role = Role::find($role->id);
       $permissions = Permission::all();
       return view('admin.roles.role', compact('role', 'permissions'));
@@ -77,7 +77,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_roles', 'App\Role');
+      $this->authorize('update-roles', 'App\Role');
       $role = Role::find($id);
       $permissions = Permission::all();
       return view('admin.roles.edit',compact('role','permissions'));
@@ -92,7 +92,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->authorize('update_roles', 'App\Role');
+        // $this->authorize('update-roles', 'App\Role');
         $this->validate($request,[
             'name' =>'max:50',
             ]);
@@ -115,7 +115,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('delete_roles', 'App\Models\Role');
+        $this->authorize('delete-roles', 'App\Models\Role');
       $role =  Role::find($id);
       $role->delete();
       $notification = array(

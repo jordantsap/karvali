@@ -52,7 +52,7 @@ Route::as('front.')->group(function () {
     Route::get('accommodations', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
     Route::get('accommodations/{accommodation:slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
 
-    Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])->name('accommodation-types');
+    Route::get('accommodation-types/{slug?}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])->name('accommodation-types');
 //Route::view('calendar','calendar');
 
     Route::get('markets', 'Client\CompanyController@index')->name('companies');

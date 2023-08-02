@@ -12,7 +12,7 @@ class Accommodation extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;
 
-    protected $translatedAttributes = [
+    protected array $translatedAttributes = [
         'title',
         'slug',
         'meta_description',
@@ -22,26 +22,25 @@ class Accommodation extends Model implements TranslatableContract
     ];
     protected $fillable = [
         'user_id',
-        'header',
-        'logo',
-        'image1',
-        'image2',
-        'image3',
-        'telephone',
-        'website',
-        'email',
-        'facebook',
-        'twitter',
         'active',
         'total_rooms',
         'accommodation_type_id',
-        // 'description',
+        'website',
+        'email',
+        'telephone',
+        'facebook',
+        'twitter',
+//        'header',
+//        'logo',
+//        'image1',
+//        'image2',
+//        'image3',
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
     public function rooms()
     {

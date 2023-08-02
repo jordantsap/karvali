@@ -76,7 +76,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      $this->authorize('view_users', 'App\User');
+      $this->authorize('view-users', 'App\User');
       $user = User::find($id);
         return view('admin.users.user', compact('user'));
     }
@@ -89,7 +89,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_users', 'App\User');
+      $this->authorize('update-users', 'App\User');
         $user = User::find($id);
         $roles = Role::all();
         return view('admin.users.edit',compact('user','roles'));
@@ -104,7 +104,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->authorize('update_users', 'App\User');
+      $this->authorize('update-users', 'App\User');
         $this->validate($request,[
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
@@ -128,7 +128,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {  $this->authorize('delete_users', 'App\User');
+    {  $this->authorize('delete-users', 'App\User');
         User::where('id',$id)->delete();
         $notification = array(
         'message' => 'User deleted successfully',

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreAccommodationRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreAccommodationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,32 @@ class StoreAccommodationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'en.title' => 'required',
+            'en.meta_description' => 'required',
+            'en.meta_keywords'=>'required',
+            'en.manager'=>'required',
+            'en.description'=>'required',
+            'website'=>'',
+            'user_id' => [
+                // The user_id should be the authenticated user's ID
+                Rule::in([auth()->id()])
+            ],
+            'email' =>'required|email',
+//            'telephone' => ['nullable', 'regex:/^(?:(?:\+|00)30|030)?\d{10}$/'],
+            'facebook'=>'',
+            'twitter' => '',
+            'accommodation_type_id' => 'integer',
         ];
+
+        foreach (config('translatable.locales') as $locale) {
+            $rules[$locale . '.title'] = 'string';
+            $rules[$locale . '.meta_description'] = 'string';
+            $rules[$locale . '.meta_keywords'] = 'string';
+            $rules[$locale . '.manager'] = 'string';
+            $rules[$locale . '.description'] = 'string';
+        }
+
+        return $rules;
     }
 }

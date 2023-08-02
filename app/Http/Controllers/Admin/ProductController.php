@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-      $this->authorize('view_products', 'App\Product');
+      $this->authorize('view-products', 'App\Product');
         $products = Product::orderBy('id', 'DESC')->paginate(9);
         return view('admin.products.index', compact('products'));
 
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-//        $this->authorize('create_products', 'App\Models\Product');
+//        $this->authorize('create-products', 'App\Models\Product');
         $producttypes = ProductType::all();
         return view('admin.products.create', compact('producttypes'));
     }
@@ -144,7 +144,7 @@ class ProductController extends Controller
     public function show($id)
     {
       // dd($product);
-        $this->authorize('view_products', Product::class);
+        $this->authorize('view-products', Product::class);
 
         $product = Product::whereTranslation('id',$id)->with('category')->withTranslation()->first();
 
@@ -159,10 +159,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_products', 'App\Product');
+      $this->authorize('update-products', 'App\Product');
       $categories = ProductType::all();
       $product = Product::find($id);
-      
+
         return view('admin.products.edit', compact('product','categories'));
     }
 
@@ -303,7 +303,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-      $this->authorize('delete_products', 'App\Product');
+      $this->authorize('delete-products', 'App\Product');
       Product::where('id',$id)->delete();
       $notification = array(
       'message' => 'User deleted successfully',

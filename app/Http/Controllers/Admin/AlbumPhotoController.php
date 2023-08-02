@@ -17,7 +17,7 @@ class AlbumPhotoController extends Controller
      */
     public function index()
     {
-      // $this->authorize('view_albums', 'App\Album');
+      // $this->authorize('view-albums', 'App\Album');
         $albumphotos = AlbumPhoto::paginate(10);
         return view('admin.albumphotos.index', compact('albumphotos'));
     }
@@ -79,7 +79,7 @@ class AlbumPhotoController extends Controller
      */
     public function show($id)
     {
-        $this->authorize('view_companies', 'App\Company');
+        $this->authorize('view-companies', 'App\Company');
         $albumphoto = AlbumPhoto::find($id);
         return view('admin.albumphotos.albumphoto', compact('albumphoto'));
         // return view('admin.companies.company', compact('company'));
@@ -93,7 +93,7 @@ class AlbumPhotoController extends Controller
      */
     public function edit($id)
     {
-      // $this->authorize('update_companies', 'App\Company');
+      // $this->authorize('update-companies', 'App\Company');
       $albums = Album::all();
       $albumphoto = AlbumPhoto::find($id);
       return view('admin.albumphotos.edit', compact('albumphoto', 'albums'));
@@ -108,7 +108,7 @@ class AlbumPhotoController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // $this->authorize('update_companies', 'App\Company');
+      // $this->authorize('update-companies', 'App\Company');
       $this->validate($request, array(
         'active' => '',
         'file'=> 'required|image|mimes:jpeg,bmp,jpg,gif,png',
@@ -153,7 +153,7 @@ class AlbumPhotoController extends Controller
      */
     public function destroy($id)
     {
-//        $this->authorize('delete_albums', 'App\AlbumPhoto');
+//        $this->authorize('delete-albums', 'App\AlbumPhoto');
         $album = AlbumPhoto::find($id);
         $album->delete();
         $notification = array(

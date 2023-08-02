@@ -19,10 +19,10 @@ class Company extends Model implements TranslatableContract
       'manager',
       'description',
     ];
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
 
     protected $fillable = [
     'user_id',

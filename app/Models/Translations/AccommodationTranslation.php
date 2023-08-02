@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class AccommodationTranslation extends Model
 {
     use Sluggable;
+    public $timestamps = false;
 
     protected $fillable = [
         'title',

@@ -5,9 +5,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          Your Accommodation
+          Your Rooms
 {{--        @can ('create_companies', App\Company::class)--}}
-          <small><a class="btn btn-primary" href="{{route('owner.accommodation.create')}}">New</a></small>
+          <small><a class="btn btn-primary" href="{{route('owner.rooms.create')}}">New</a></small>
 {{--        @endcan--}}
       </h1>
     </section>
@@ -32,55 +32,52 @@
 {{--                  @endcan--}}
                 </tr>
                 </thead>
-                @foreach ($accommodations as $accommodation)
+                @foreach ($rooms as $room)
                   <tbody>
                   <tr>
-                    <td>{{$accommodation->id}}</td>
-                    <td>{{$accommodation->active?"yes":'no'}}</td>
+                    <td>{{$room->id}}</td>
+                    <td>{{$room->active?"yes":'no'}}</td>
                     <td>
-                      @if( ! empty($accommodation->accommodationType)){{ $accommodation->accommodationType->title }}
+                      @if( ! empty($room->category)){{ $room->category->name }}
                       @else None
                       @endif
                     </td>
-                    <td>{{Str::limit($accommodation->title,10)}}</td>
-                    <td>{{$accommodation->manager}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/accommodations/'.$accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
+                    <td>{{Str::limit($room->title,10)}}</td>
+                    <td>{{$room->manager}}</td>
+                    <td><img width="150px" height="150px" src="{{asset('images/companies/'.$room->logo)}}" alt="{{$room->title}}"></td>
                     <td>
-                    @can ('update-accommodation', [Auth()->user(), $accommodation])
-                      <a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->id)}}">Edit</a> -
-                    @endcan
-                    @can ('view-accommodation', [Auth()->user(), $accommodation])
-                      <a class="btn btn-primary" href="{{route('owner.accommodation.show', $accommodation->id)}}">View</a>
-                      @endcan
-                        @can ('delete-accommodation', [Auth()->user(), App\Models\Accommodation::class])
-                            <form action="{{ route('owner.accommodation.destroy', $accommodation->id) }}"
+{{--                    @can ('update_companies', App\Company::class)--}}
+                      <a class="btn btn-primary" href="{{route('owner.company.edit', $room->id)}}">Edit</a> -
+{{--                    @endcan--}}
+{{--                    @can ('view_companies', App\Company::class)--}}
+                      <a class="btn btn-primary" href="{{route('owner.company.show', $room->id)}}">View</a>
+{{--                      @endcan--}}
+{{--                        @can ('delete_companies', App\Models\Company::class)--}}
+                            <form action="{{ route('owner.company.destroy', $room->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <br>
                                 <button type="submit" class="btn btn-primary">Delete</button>
                             </form>
-                        @endcan
+{{--                        @endcan--}}
                     </td>
                   </tr>
                   </tbody>
                 @endforeach
                 <tfoot>
                   <tr>
-
-                      <th>id</th>
-                      <th>Active</th>
-                      <th>Category</th>
-                      <th>Title</th>
-                      <th>Manager</th>
-                      <th>Logo</th>
-{{--                    @can ('view','update', App\Models\Accommodation::class)--}}
+                    <th>id</th>
+                    <th>Active</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    @can ('view_companies','update_companies', App\Company::class)
                       <th>Actions</th>
-{{--                    @endcan--}}
+                    @endcan
                   </tr>
                 </tfoot>
               </table>
-              {{$accommodations->links()}}
+              {{$rooms->links()}}
             </div>
             <!-- /.box-body -->
           </div>

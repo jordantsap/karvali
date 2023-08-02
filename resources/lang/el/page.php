@@ -43,7 +43,7 @@ return [
     'contactbutton' => 'Αποστολή',
     'viewevent' => 'Δείτε Εκδήλωση',
     'category' => 'Κατηγορία:',
-    'manager' => 'Υπεύθυνος:',
+    'manager' => 'Όνομα Υπευθύνου:',
     'telephone' => 'Τηλέφωνο',
     'howtoheader' => 'Τρόποι διαφήμισης στη σελίδα',
     'gototop' => 'top',

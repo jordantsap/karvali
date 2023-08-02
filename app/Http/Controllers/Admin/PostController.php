@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-      $this->authorize('create_posts', 'App\Post');
+      $this->authorize('create-posts', 'App\Models\Post');
         $categories = PostType::all();
         return view('admin.posts.create', compact('categories'));
     }
@@ -87,8 +87,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-      $this->authorize('view_posts', 'App\Post');
-      // $category = \App\PostType::all();
+      $this->authorize('view-posts', 'App\Models\Post');
+      // $category = \App\Models\PostType::all();
       $post = Post::find($id);
         return view('admin.posts.post', compact('post', 'category'));
     }
@@ -101,7 +101,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_posts', App\Post::class);
+      $this->authorize('update-posts', App\Models\Post::class);
       $categories = PostType::all();
       $post = Post::find($id);
         return view('admin.posts.edit', compact('post','categories'));
@@ -166,7 +166,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-      $this->authorize('delete_posts', App\Post::class);
+      $this->authorize('delete-posts', App\Models\Post::class);
       $post = Post::find($id);
        $post->delete();
        $notification = array(

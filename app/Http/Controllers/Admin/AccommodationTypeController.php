@@ -17,6 +17,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class AccommodationTypeController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('role:admin|Super Admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +28,8 @@ class AccommodationTypeController extends Controller
      */
     public function index()
     {
-        $accommodationTypes = AccommodationType::withTranslation()->get();
+        $accommodationTypes = AccommodationType::withTranslation()
+            ->orderBy('created_at', 'desc')->get();
 
         return view('admin.accommodation-types.index',compact('accommodationTypes'));
     }
@@ -39,13 +44,32 @@ class AccommodationTypeController extends Controller
         return view('admin.accommodation-types.create');
     }
 
-    public function store(StoreAccommodationTypeRequest $request)
+    public function store(Request $request, AccommodationType $accommodationType)
     {
-        AccommodationType::create($request->validated());
+//        AccommodationType::create([
+//            'en' => [
+//                'title' => '$request->title',
+//                'slug' => '$request->slug',
+//            ],
+//            'el' => [
+//                'title' => 'Κάμπιγκ',
+//                'slug' => 'kamping',
+//            ],
+//        ]);
+        $accommodationType = new AccommodationType();
+        $accommodationType->fill([
+            'en' => [
+                'title' => 'My first edited post',
+            ],
+            'de' => [
+                'title' => 'Mein erster bearbeiteter Beitrag',
+            ],
+        ]);
+        return $accommodationType->get();
 
-        toastr()->addSuccess('Accommodation Type Created Successfully');
-
-        return redirect(route('accommodation-types.index'));
+//        toastr()->addSuccess('Accommodation Type Created Successfully');
+//
+//        return redirect(route('admin.accommodation-types.index'));
     }
 
     /**
@@ -56,7 +80,7 @@ class AccommodationTypeController extends Controller
      */
     public function show(AccommodationType $accommodationType)
     {
-        //
+        return view('admin.accommodations.show');
     }
 
     /**

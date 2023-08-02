@@ -11,6 +11,7 @@ class RoomTranslation extends Model
     use Sluggable;
 
 //  protected $translationForeignKey = 'company_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'title',

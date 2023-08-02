@@ -13,7 +13,7 @@ class AccommodationPolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(User $user)
@@ -24,43 +24,43 @@ class AccommodationPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Accommodation  $accommodation
+     * @param \App\Models\User $user
+     * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Accommodation $accommodation)
     {
-        //
+        return $user->id == $accommodation->user_id || $user->hasPermissionTo('accommodation-management');
     }
 
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {
-        //
+        return $user->id == $accommodation->user_id || $user->hasPermissionTo('accommodation-management');
     }
 
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Accommodation  $accommodation
+     * @param \App\Models\User $user
+     * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Accommodation $accommodation)
     {
-        //
+        return $user->id == $accommodation->user_id || $user->hasPermissionTo('accommodation-management');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Accommodation  $accommodation
+     * @param \App\Models\User $user
+     * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Accommodation $accommodation)
@@ -71,8 +71,8 @@ class AccommodationPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Accommodation  $accommodation
+     * @param \App\Models\User $user
+     * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Accommodation $accommodation)
@@ -83,8 +83,8 @@ class AccommodationPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Accommodation  $accommodation
+     * @param \App\Models\User $user
+     * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Accommodation $accommodation)

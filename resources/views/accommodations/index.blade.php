@@ -20,7 +20,7 @@
                         <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
                             @foreach ($accommodationTypes as $accommodationType)
                                 <li>
-                                    <a href="{{ route('accommodation-types', $accommodationType->slug) }}"
+                                    <a href="{{ route('front.accommodation-types', $accommodationType->slug) }}"
                                         class="">{{ $accommodationType->title }}&nbsp
                                         <span class="badge">{{ $accommodationType->accommodations->where('active', 1)->count() }}</span>
                                     </a>

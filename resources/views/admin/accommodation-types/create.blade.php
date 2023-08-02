@@ -17,7 +17,7 @@
 
             <!-- Default box -->
             <div class="box">
-                <form method="post" action="{{ route('accommodation-types.store') }}">
+                <form method="post" action="{{ route('admin.accommodation-types.store') }}">
                     @csrf
                     <div class="box-body">
 

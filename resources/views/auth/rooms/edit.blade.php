@@ -4,13 +4,13 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Edit Company: <small>{{$accommodation->title}}</small>
+      Edit Company: <small>{{$company->title}}</small>
       <a class="btn btn-warning" href="javascript:history.back()">Go Back</a>
     </h1>
   </section>
   <section class="content">
     <div class="box">
-      <form method="post" action="{{ route('owner.accommodation.update', $accommodation->id) }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('companies.update', $company->id) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="box-body">
@@ -22,7 +22,7 @@
                   <strong class="text-danger">{{ $errors->first('title') }}</strong>
                 @endif
                 <div class="input-group">
-                  <input type="text" class="form-control" name="title" value="{{ $accommodation->title }}" id="title" placeholder="{{ $accommodation->title }}">
+                  <input type="text" class="form-control" name="title" value="{{ $company->title }}" id="title" placeholder="{{ $company->title }}">
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-home"></span>
                   </span>
@@ -35,7 +35,7 @@
                 <strong class="text-danger">{{ $errors->first('telephone') }}</strong>
               @endif
               <div class="input-group">
-                <input type="text" class="form-control" value="{{ $accommodation->telephone }}" id="telephone" name="telephone" placeholder="Τηλέφωνο" >
+                <input type="text" class="form-control" value="{{ $company->telephone }}" id="telephone" name="telephone" placeholder="Τηλέφωνο" >
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-user"></span>
                 </span>
@@ -49,7 +49,7 @@
               <strong class="text-danger">{{ $errors->first('meta_description') }}</strong>
             @endif
             <div class="input-group">
-              <input type="text" class="form-control" name="meta_description" value="{{ $accommodation->meta_description }}" id="title" placeholder="{{ $accommodation->meta_description }}">
+              <input type="text" class="form-control" name="meta_description" value="{{ $company->meta_description }}" id="title" placeholder="{{ $company->meta_description }}">
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-home"></span>
               </span>
@@ -62,7 +62,7 @@
               <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
             @endif
             <div class="input-group">
-              <input type="text" class="form-control" name="meta_keywords" value="{{ $accommodation->meta_keywords }}" id="title" placeholder="{{ $accommodation->meta_keywords }}">
+              <input type="text" class="form-control" name="meta_keywords" value="{{ $company->meta_keywords }}" id="title" placeholder="{{ $company->meta_keywords }}">
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-home"></span>
               </span>
@@ -72,7 +72,7 @@
             <div class="row">
               <div class="col-xs-2 form-group">
                 <label for="active"> Active
-                  <input type="checkbox" name="active" value="1" @if ($accommodation->active == 1)
+                  <input type="checkbox" name="active" value="1" @if ($company->active == 1)
                     {{'checked'}}
                   @endif>
                 </label>
@@ -84,7 +84,7 @@
                   <strong class="text-danger">{{ $errors->first('manager') }}</strong>
                 @endif
                 <div class="input-group">
-                  <input type="text" class="form-control" value="{{ $accommodation->manager }}" id="manager" name="manager" placeholder="Manager Name" >
+                  <input type="text" class="form-control" value="{{ $company->manager }}" id="manager" name="manager" placeholder="Manager Name" >
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user"></span>
                   </span>
@@ -96,12 +96,12 @@
                   <strong class="text-danger">{{ $errors->first('company_type') }}</strong>
                 @endif
                 <div class="input-group">
-                  <select id="company_type" value="{{ $accommodation->accommodationType }}" name="accommodation_type_id" class="form-control" >
+                  <select id="company_type" value="{{ $company->company_type }}" name="company_type" class="form-control" >
                     <option value="">Επιλέξτε</option>
-                    @foreach ($accommodationTypes as $accommodationType)
-                      <option value="{{$accommodationType->id}}" @if( $accommodation->accommodationType->id == $accommodationType->id){{'selected'}}
+                    @foreach ($categories as $category)
+                      <option value="{{$category->id}}" @if( $company->company_type == $category->id){{'selected'}}
                       @else None
-                      @endif>{{$accommodationType->title}}</option>
+                      @endif>{{$category->name}}</option>
                     @endforeach
                   </select>
                   <span class="input-group-addon">
@@ -113,7 +113,7 @@
 
             <div class="form-group">
               <label for="header">header</label>
-              <img width="100%" height="200" src="{{asset('images/accommodations/'.$accommodation->header)}}" alt="{{$accommodation->title}}">
+              <img width="100%" height="200" src="{{asset('images/companies/'.$company->header)}}" alt="{{$company->title}}">
             </div>
             <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
               {{-- <label for="logo">Λογότυπο</label> --}}
@@ -121,7 +121,7 @@
                 <strong class="text-danger">{{ $errors->first('header') }}</strong>
               @endif
               <div class="input-group">
-                <input type="file" value="{{asset('images/companies/'.$accommodation->header)}}" name="header">
+                <input type="file" value="{{asset('images/companies/'.$company->header)}}" name="header">
                 <p class="help-block">Help text here.</p>
               </div>
             </div>
@@ -130,7 +130,7 @@
               <div class="col-xs-3">
                 <div class="form-group">
                   <label for="logo">Λογοτυπο</label>
-                  <img width="200" height="200" src="{{asset('images/companies/'.$accommodation->logo)}}" alt="{{$accommodation->title}}">
+                  <img width="200" height="200" src="{{asset('images/companies/'.$company->logo)}}" alt="{{$company->title}}">
                 </div>
                 <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
                   {{-- <label for="logo">Λογότυπο</label> --}}
@@ -138,7 +138,7 @@
                     <strong class="text-danger">{{ $errors->first('logo') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="file" value="{{asset('images/companies/'.$accommodation->logo)}}" name="logo">
+                    <input type="file" value="{{asset('images/companies/'.$company->logo)}}" name="logo">
                     <p class="help-block">Help text here.</p>
                   </div>
                 </div>
@@ -150,7 +150,7 @@
                     <strong class="text-danger">{{ $errors->first('image1') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="file" value="{{asset('images/companies/'.$accommodation->image1)}}" name="image1">
+                    <input type="file" value="{{asset('images/companies/'.$company->image1)}}" name="image1">
                     <p class="help-block">Help text here.</p>
                   </div>
                 </div>
@@ -162,7 +162,7 @@
                     <strong class="text-danger">{{ $errors->first('image2') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="file" value="{{asset('images/companies/'.$accommodation->image2)}}" name="image2">
+                    <input type="file" value="{{asset('images/companies/'.$company->image2)}}" name="image2">
                     <p class="help-block">Help text here.</p>
                   </div>
                 </div>
@@ -174,7 +174,7 @@
                     <strong class="text-danger">{{ $errors->first('image3') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="file" value="{{asset('images/companies/'.$accommodation->image3)}}" name="image3">
+                    <input type="file" value="{{asset('images/companies/'.$company->image3)}}" name="image3">
                     <p class="help-block">Image 3.</p>
                   </div>
                 </div>
@@ -189,13 +189,13 @@
                 @endif
                 <br>
                 <label class="checkbox-inline">
-                  <input type="checkbox" multiple name="days[]" value="Weekdays" {{ $accommodation->days == 'Weekdays' ? 'checked' : ''}}> Καθημερινα
+                  <input type="checkbox" multiple name="days[]" value="Weekdays" {{ $company->days == 'Weekdays' ? 'checked' : ''}}> Καθημερινα
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" multiple name="days[]" value="Saturday" {{ $accommodation->days == 'Suturday' ? 'checked' : ''}}> Σαββατο
+                  <input type="checkbox" multiple name="days[]" value="Saturday" {{ $company->days == 'Suturday' ? 'checked' : ''}}> Σαββατο
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" multiple name="days[]" value="Sunday" {{$accommodation->days == 'Sunday' ? 'checked' : ''}}> Κυριακη
+                  <input type="checkbox" multiple name="days[]" value="Sunday" {{$company->days == 'Sunday' ? 'checked' : ''}}> Κυριακη
                 </label>
               </div>
               <div class="col-xs-3">
@@ -205,7 +205,7 @@
                     <strong class="text-danger">{{ $errors->first('morningtime') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="time" class="form-control" value="{{ $accommodation->morningtime }}" id="morningtime" name="morningtime" placeholder="Πρωινές Ώρες" >
+                    <input type="time" class="form-control" value="{{ $company->morningtime }}" id="morningtime" name="morningtime" placeholder="Πρωινές Ώρες" >
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -220,7 +220,7 @@
                     <strong class="text-danger">{{ $errors->first('afternoontime') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="time" class="form-control" value="{{ $accommodation->afternoontime }}" id="afternoontime" name="afternoontime" placeholder="Απογευματινές Ώρες" >
+                    <input type="time" class="form-control" value="{{ $company->afternoontime }}" id="afternoontime" name="afternoontime" placeholder="Απογευματινές Ώρες" >
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -237,7 +237,7 @@
                     <strong class="text-danger">{{ $errors->first('website') }}</strong>
                   @endif
                   <div class="input-group">
-                    <input type="text" class="form-control" value="{{ $accommodation->website }}" id="website" name="website" placeholder="Website" >
+                    <input type="text" class="form-control" value="{{ $company->website }}" id="website" name="website" placeholder="Website" >
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-globe"></span>
                     </span>
@@ -252,7 +252,7 @@
                       <strong class="text-danger">{{ $errors->first('email') }}</strong>
                     @endif
                     <div class="input-group">
-                      <input type="text" value="{{ $accommodation->email }}" class="form-control" id="email" name="email" placeholder="E-Mail" >
+                      <input type="text" value="{{ $company->email }}" class="form-control" id="email" name="email" placeholder="E-Mail" >
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-envelope"></span>
                       </span>
@@ -269,7 +269,7 @@
                       <strong class="text-danger">{{ $errors->first('facebook') }}</strong>
                     @endif
                     <div class="input-group">
-                      <input type="text" class="form-control" value="{{ $accommodation->facebook }}" id="facebook" name="facebook"
+                      <input type="text" class="form-control" value="{{ $company->facebook }}" id="facebook" name="facebook"
                         placeholder="facebook">
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-thumbs-up"></span>
@@ -285,7 +285,7 @@
                       <strong class="text-danger">{{ $errors->first('twitter') }}</strong>
                     @endif
                     <div class="input-group">
-                      <input type="text" class="form-control" value="{{ $accommodation->twitter }}" id="twitter" name="twitter"
+                      <input type="text" class="form-control" value="{{ $company->twitter }}" id="twitter" name="twitter"
                         placeholder="Twitter">
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-heart"></span>
@@ -303,10 +303,10 @@
 	  							@endif
 									<br>
 									<label class="radio-inline">
-										<input type="radio" name="pos" value="No" {{ $accommodation->pos == 'No' ? 'checked' : ''}} > No
+										<input type="radio" name="pos" value="No" {{ $company->pos == 'No' ? 'checked' : ''}} > No
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="pos" value="Yes" {{ $accommodation->pos == 'Yes' ? 'checked' : ''}} > Yes
+										<input type="radio" name="pos" value="Yes" {{ $company->pos == 'Yes' ? 'checked' : ''}} > Yes
 									</label>
 								</div>
 
@@ -318,19 +318,19 @@
 									<br>
 									<label class="checkbox-inline">
 										<input type="checkbox" name="creditcard[]" value="Nocard"
-                    {{ $accommodation->creditcard == 'Nocard' ? 'checked' : ''}}> Not
+                    {{ $company->creditcard == 'Nocard' ? 'checked' : ''}}> Not
 									</label>
 									<label class="checkbox-inline">
 										<input type="checkbox" name="creditcard[]" value="Visa"
-                    {{ $accommodation->creditcard == 'Visa' ? 'checked' : ''}}> Visa
+                    {{ $company->creditcard == 'Visa' ? 'checked' : ''}}> Visa
 									</label>
 									<label class="checkbox-inline">
 										<input type="checkbox" name="creditcard[]" value="Mastercard"
-                    {{ $accommodation->creditcard == 'Mastercard' ? 'checked' : ''}}> Mastercard
+                    {{ $company->creditcard == 'Mastercard' ? 'checked' : ''}}> Mastercard
 									</label>
 									<label class="checkbox-inline">
 										<input type="checkbox" name="creditcard[]" value="American Express"
-                    {{ $accommodation->creditcard == 'American Express' ? 'checked' : ''}}> American Express
+                    {{ $company->creditcard == 'American Express' ? 'checked' : ''}}> American Express
 									</label>
 								</div>
                 <div class="col-xs-3 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
@@ -340,17 +340,17 @@
 	  							@endif
 									<br>
 									<label class="radio-inline">
-										<input type="radio" name="delivery" value="No" {{ $accommodation->delivery == 'No' ? 'checked' : ''}} > No
+										<input type="radio" name="delivery" value="No" {{ $company->delivery == 'No' ? 'checked' : ''}} > No
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="delivery" value="Yes" {{ $accommodation->delivery == 'Yes' ? 'checked' : ''}} > Yes
+										<input type="radio" name="delivery" value="Yes" {{ $company->delivery == 'Yes' ? 'checked' : ''}} > Yes
 									</label>
 								</div>
 							</div>
 
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea id="editor" class="textarea" name="description" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$accommodation->description}}</textarea>
+              <textarea id="editor" class="textarea" name="description" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$company->description}}</textarea>
             </div>
           </div>
           <!-- /.box-body -->

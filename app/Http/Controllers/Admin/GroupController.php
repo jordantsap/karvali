@@ -21,7 +21,7 @@ class GroupController extends Controller
      */
     public function index(Request $request1)
     {
-      $this->authorize('view_groups', 'App\Group');
+      $this->authorize('view-groups', 'App\Group');
         $groups = Group::orderBy('id', 'DESC')->paginate(10);
         return view('admin.groups.index', compact('groups'));
     }
@@ -33,7 +33,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-      $this->authorize('create_groups', 'App\Group');
+      $this->authorize('create-groups', 'App\Group');
       $grouptypes = GroupType::all();
         return view('admin.groups.create', compact('grouptypes'));
     }
@@ -150,7 +150,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-      $this->authorize('view_groups', 'App\Group');
+      $this->authorize('view-groups', 'App\Group');
       $categories = GroupType::all();
       $group = Group::with('category')->find($group->id);
         return view('admin.groups.group', compact('group','categories'));
@@ -164,7 +164,7 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-      $this->authorize('update_groups', 'App\Group');
+      $this->authorize('update-groups', 'App\Group');
       $categories = GroupType::all();
       $group = Group::find($id);
         return view('admin.groups.edit', compact('group', 'categories'));
@@ -179,7 +179,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('update_groups', 'App\Group');
+        $this->authorize('update-groups', 'App\Group');
         $request->validate([
           'user_id' => 'Auth::user()->id',
           'active' => 'integer',
@@ -321,7 +321,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-      $this->authorize('delete_groups', 'App\Group');
+      $this->authorize('delete-groups', 'App\Group');
           Group::where('id',$id)->delete();
           $notification = array(
           'message' => 'User deleted successfully',

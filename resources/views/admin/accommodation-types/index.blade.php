@@ -7,7 +7,7 @@
             <h1>
                 Accommodation Types
                 @can ('create', App\Models\AccommodationType::class)
-                    <small><a class="btn btn-primary" href="{{route('accommodation-types.create')}}">Add New</a></small>
+                    <small><a class="btn btn-primary" href="{{route('admin.accommodation-types.create')}}">Add New</a></small>
                 @endcan
             </h1>
         </section>
@@ -43,13 +43,13 @@
 {{--                                        <td>{{Str::limit($accommodationType->description, 20)}}</td>--}}
                                         <td>
 {{--                                            @can ('update', App\Models\AccommodationType::class)--}}
-                                                <a class="btn btn-primary" href="{{route('accommodation-types.edit', $accommodationType->id)}}">Edit</a> -
+                                                <a class="btn btn-primary" href="{{route('admin.accommodation-types.edit', $accommodationType->id)}}">Edit</a> -
 {{--                                            @endcan--}}
 {{--                                            @can ('view', App\Models\AccommodationType::class)--}}
-                                                <a class="btn btn-primary" href="{{route('accommodation-types.show', $accommodationType->id)}}">View</a>
+                                                <a class="btn btn-primary" href="{{route('admin.accommodation-types.show', $accommodationType->id)}}">View</a>
 {{--                                            @endcan--}}
                                             @can ('delete', [$accommodationType, App\Models\AccommodationType::class])
-                                                <form action="{{ route('accommodation-types.destroy', $accommodationType->id) }}"
+                                                <form action="{{ route('admin.accommodation-types.destroy', $accommodationType->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}

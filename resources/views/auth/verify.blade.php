@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-       @include('auth.sidebar')
+{{--       @include('auth.sidebar')--}}
         <div class="col-xs-6 col-xs-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading mt-4">{{ __('verification.heading') }}</div>
