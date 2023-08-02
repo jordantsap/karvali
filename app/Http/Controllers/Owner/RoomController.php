@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Accommodation;
+use App\Models\AccommodationType;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('auth.rooms.create');
+        $accommodations = Accommodation::where('user_id', auth()->id())->get();
+
+        return view('auth.rooms.create', compact('accommodations'));
     }
 
     /**
@@ -40,7 +44,30 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $room = new Room();
+        $room->accommodation_id = $request->accommodation_id;
+        $room->active = $request->active;
+//        $room->accommodation_type_id = $request->accommodation_type_id;
+        $room->capacity = $request->capacity;
+        $room->price = $request->price;
+        $room->beds = $request->beds;
+        // images
+
+        $room->save();
+
+        foreach (config('translatable.locales') as $locale => $lang) {
+            $room->translateOrNew($locale)->title = $request->{$locale}['title'];
+            $room->translateOrNew($locale)->meta_description = $request->{$locale}['meta_description'];
+            $room->translateOrNew($locale)->meta_keywords = $request->{$locale}['meta_keywords'];
+//            $room->translateOrNew($locale)->manager = $request->{$locale}['manager'];
+            $room->translateOrNew($locale)->description = $request->{$locale}['description'];
+        }
+
+        $room->save();
+
+        toastr()->addSuccess('Accommodation was saved successfully.');
+
+        return redirect(route('owner.rooms.show', $room->id));
     }
 
     /**
@@ -51,7 +78,9 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        $room = Room::find($room->id);
+
+        return view('auth.rooms.show',[$room->id], compact('room'));
     }
 
     /**
@@ -62,7 +91,11 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+//        $this->authorize('update-room', 'App\Models\Room', [$room->id]);
+        $categories = AccommodationType::all();
+        $room = Room::find($room->id);
+
+        return view('auth.rooms.edit', compact('room','categories'));
     }
 
     /**

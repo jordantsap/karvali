@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
           $this->call(ProductTypeSeeder::class);
 //
 //          $this->call(VenueSeeder::class);
-//          $this->call(AccommodationSeeder::class);
-//          $this->call(RoomSeeder::class);
+          $this->call(AccommodationSeeder::class);
+          $this->call(RoomSeeder::class);
 //
 //          $this->call(EventsTableSeeder::class);
 //          $this->call(CompaniesTableSeeder::class);

@@ -21,26 +21,26 @@ class Room extends Model implements TranslatableContract
     ];
 
     protected $fillable = [
-        'hotel_id',
+        'active',
+        'accommodation_id',
+        'capacity',
+        'price',
+        'beds',
         'header',
         'logo',
         'image1',
         'image2',
         'image3',
-        'capacity',
-        'price',
-        'beds',
-        'active',
         // 'description',
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
-    public function hotel()
+    public function accommodation()
     {
-        return $this->belongsTo(Hotel::class);
+        return $this->belongsTo(Accommodation::class);
     }
 }
