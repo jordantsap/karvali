@@ -111,7 +111,12 @@ class AccommodationController extends Controller
      */
     public function update(Request $request, Accommodation $accommodation)
     {
-        $accommodation->update($request->all());
+        $accommodation = $accommodation->update($request->all());
+
+
+        toastr()->addSuccess('Accommodation Updated successfully.');
+
+        return redirect(route('owner.accommodation.show', $accommodation->id));
     }
 
     /**

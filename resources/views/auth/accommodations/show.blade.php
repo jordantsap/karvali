@@ -60,40 +60,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="header">header</label>
-                        <div class="input-group">
-                            <img width="200" height="200" src="{{asset('images/companies/'.$accommodation->header)}}" alt="{{$accommodation->title}}">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-3 form-group">
-                            <label for="logo">Λογότυπο</label>
-                            <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/companies/'.$accommodation->logo)}}" alt="{{$accommodation->title}}">
-                            </div>
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label for="image1">Εικόνα Αρχικης Σελίδας</label>
-                            <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/companies/'.$accommodation->image1)}}" alt="{{$accommodation->title}}">
-                            </div>
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label for="image2">Εικόνα 2</label>
-                            <div class="col-xs-3 input-group">
-                                <img width="200" height="200" src="{{asset('images/companies/'.$accommodation->image2)}}" alt="{{$accommodation->title}}">
-                            </div>
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label for="image3">Εικόνες 3</label>
-                            <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/companies/'.$accommodation->image3)}}" alt="{{$accommodation->title}}">
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
