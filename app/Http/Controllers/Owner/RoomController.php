@@ -91,7 +91,6 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-//        $this->authorize('update-room', 'App\Models\Room', [$room->id]);
         $categories = AccommodationType::all();
         $room = Room::find($room->id);
 

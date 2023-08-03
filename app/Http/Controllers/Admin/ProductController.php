@@ -132,7 +132,7 @@ class ProductController extends Controller
       'message' => 'Product added successfully',
       'alert-type' => 'info'
       );
-      return redirect(route('prods.show',$product->id))->with($notification);
+      return redirect(route('admin.products.show',$product->id))->with($notification);
     }
 
     /**
