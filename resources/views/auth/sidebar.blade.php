@@ -24,6 +24,10 @@
 <li><a href="{{ route('owner.rooms.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Room</span></a>
 </li>
 
+<li><a href="{{ route('owner.room-types.index') }}"><i class="fas fa-shopping-bag"></i> <span>Room Types List</span></a></li>
+<li><a href="{{ route('owner.room-types.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create RoomType</span></a>
+</li>
+
 @endrole
 @role('Venue/Event Owner')
 

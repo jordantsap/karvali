@@ -18,6 +18,8 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('rooms', \App\Http\Controllers\Owner\RoomController::class);
 
+        Route::resource('room-types', \App\Http\Controllers\Owner\RoomTypeController::class);
+
         Route::resource('venue', \App\Http\Controllers\Owner\VenueController::class);
 
         Route::resource('event', \App\Http\Controllers\Owner\EventController::class);

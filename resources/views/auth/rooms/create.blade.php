@@ -41,6 +41,23 @@
                                 </div>
                             </div>
 
+                            <div class="col-xs-2 form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type">{{__('Καταλλυμα Δωματιου')}}</label>
+                                @if ($errors->has('accommodation_id'))
+                                    <strong class="text-danger">{{ $errors->first('accommodation_type_id') }}</strong>
+                                @endif
+                                <div class="">
+                                    <select id="category_id" value="{{ old('category_id') }}"
+                                            name="category_id" class="form-control" required>
+                                        <option value="{{ old('category_id') }}">Επιλέξτε</option>
+                                        @foreach($categories as $category)
+                                            <option
+                                                value="{{ $category->id }} {{ old('category_id') }}" {{old('category_id')?"selected":""}}>{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <!-- For 'capacity' -->
                             <div class="col-xs-3 form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
                                 <label for="capacity">{{ __('Max Capacity') }}</label>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
 use App\Models\Room;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -31,9 +32,11 @@ class RoomController extends Controller
      */
     public function create()
     {
+        $categories = RoomType::all();
+//        $roomTypes = RoomType::all();
         $accommodations = Accommodation::where('user_id', auth()->id())->get();
 
-        return view('auth.rooms.create', compact('accommodations'));
+        return view('auth.rooms.create', compact('accommodations', 'categories'));
     }
 
     /**
@@ -92,9 +95,10 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         $categories = AccommodationType::all();
+        $roomTypes = RoomType::all();
         $room = Room::find($room->id);
 
-        return view('auth.rooms.edit', compact('room','categories'));
+        return view('auth.rooms.edit', compact('room','categories','roomTypes'));
     }
 
     /**

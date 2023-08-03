@@ -23,6 +23,7 @@ class Room extends Model implements TranslatableContract
     protected $fillable = [
         'active',
         'accommodation_id',
+        'room_type_id',
         'capacity',
         'price',
         'beds',
@@ -42,5 +43,9 @@ class Room extends Model implements TranslatableContract
     public function accommodation()
     {
         return $this->belongsTo(Accommodation::class);
+    }
+    public function roomType()
+    {
+        return $this->belongsTo(RoomType::class);
     }
 }

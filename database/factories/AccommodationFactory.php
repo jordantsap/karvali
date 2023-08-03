@@ -29,7 +29,7 @@ class AccommodationFactory extends Factory
 //            'image2' => 'noimage.jpg',
 //            'image3' => 'noimage.jpg',
             'telephone' => '2510-316270',
-//            'manager' => $this->faker->name,
+            'manager' => $this->faker->name,
             'website' => $this->faker->domainName,
             'email' => $this->faker->email,
             'facebook' => $this->faker->domainName,

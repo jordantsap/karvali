@@ -5,9 +5,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          Your Rooms
+          Your Room Types
 {{--        @can ('create_companies', App\Company::class)--}}
-          <small><a class="btn btn-primary" href="{{route('owner.rooms.create')}}">New</a></small>
+          <small><a class="btn btn-primary" href="{{route('owner.room-types.create')}}">New Room Type</a></small>
 {{--        @endcan--}}
       </h1>
     </section>
@@ -22,38 +22,27 @@
                 <thead>
                 <tr>
                   <th>id</th>
-                  <th>Active</th>
-                  <th>Category</th>
                   <th>Title</th>
-                  <th>Manager</th>
-                  <th>Logo</th>
 {{--                  @can ('view_companies','update_companies', App\Company::class)--}}
                     <th>Actions</th>
 {{--                  @endcan--}}
                 </tr>
                 </thead>
-                @foreach ($rooms as $room)
+                @foreach ($roomTypes as $room)
                   <tbody>
                   <tr>
                     <td>{{$room->id}}</td>
-                    <td>{{$room->active?"yes":'no'}}</td>
-                    <td>
-                      @if( ! empty($room->category)){{ $room->category->name }}
-                      @else None
-                      @endif
-                    </td>
                     <td>{{Str::limit($room->title,10)}}</td>
-                    <td>{{$room->manager}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/companies/'.$room->logo)}}" alt="{{$room->title}}"></td>
+
                     <td>
 {{--                    @can ('update_companies', App\Company::class)--}}
-                      <a class="btn btn-primary" href="{{route('owner.company.edit', $room->id)}}">Edit</a> -
+                      <a class="btn btn-primary" href="{{route('owner.room-types.edit', $room->id)}}">Edit</a> -
 {{--                    @endcan--}}
 {{--                    @can ('view_companies', App\Company::class)--}}
-                      <a class="btn btn-primary" href="{{route('owner.company.show', $room->id)}}">View</a>
+                      <a class="btn btn-primary" href="{{route('owner.room-types.show', $room->id)}}">View</a>
 {{--                      @endcan--}}
 {{--                        @can ('delete_companies', App\Models\Company::class)--}}
-                            <form action="{{ route('owner.company.destroy', $room->id) }}"
+                            <form action="{{ route('owner.room-types.destroy', $room->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -68,16 +57,14 @@
                 <tfoot>
                   <tr>
                     <th>id</th>
-                    <th>Active</th>
                     <th>Title</th>
-                    <th>Image</th>
                     @can ('view_companies','update_companies', App\Company::class)
                       <th>Actions</th>
                     @endcan
                   </tr>
                 </tfoot>
               </table>
-              {{$rooms->links()}}
+              {{$roomTypes->links()}}
             </div>
             <!-- /.box-body -->
           </div>

@@ -6,11 +6,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Room : {{$room->title}}
-                @can ('update-rooms', App\Models\Room::class)
-                    <small><a class="btn btn-primary" href="{{route('owner.rooms.edit', $room->id)}}">Edit</a>
-                        @endcan
-                        - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+                Edit Room :
+                <small>{{$room->title}}</small>
+                <a class="btn btn-warning" href="javascript:history.back()">Go Back</a>
             </h1>
         </section>
 
@@ -19,138 +17,176 @@
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="title">Ονομασία:</label>
-                                <div class="input-group">
-                                    <input type="text" value="{{ $room->title }}" class="form-control" name="title" placeholder="{{ $room->title }}">
-                                    <span class="input-group-addon">
-                <span class="glyphicon glyphicon-home"></span>
-              </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-4">
-                            <label for="category">Category</label>
-                            <div class="form-control" name="category" id="category" disabled>
-                                @if( ! empty($room->category)){{ $room->category->name }}
-                                @else Null
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+                <form action="{{ route('owner.rooms.update', [$room->slug]) }}" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="PUT">
+                    {{ csrf_field() }}
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                                    <label for="title" class="control-label">{{ __('form.title') }}</label>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ $room->title}}" required>
 
-                    <div class="row">
-                        <div class="col-xs-2 form-group">
-                            <label for="active"> Active
-                                <input type="checkbox" name="active" value="1" @if ($room->active == 1)
-                                    {{'checked'}}
-                                    @endif>
-                            </label>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="form-group{{ $errors->has('sku') ? ' has-error' : '' }}">
-                                <label for="sku">Κωδικός προϊόντος</label>
-                                <div class="input-group">
-                                    <input type="text" value="{{ $room->sku }}" class="form-control" name="sku" placeholder="Τιμή" required>
-                                    <span class="input-group-addon">
-                <span class="glyphicon glyphicon-euro"></span>
-              </span>
+                                    @if ($errors->has('title'))
+                                        <span class="help-block">
+                            <strong>{{ $errors->first('title') }}</strong>
+                        </span>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                                <label for="price">Τιμή</label>
-                                <div class="input-group">
-                                    <input type="text" value="{{ $room->price }}" class="form-control" name="price" placeholder="Τιμή" required>
-                                    <span class="input-group-addon">
-                <span class="glyphicon glyphicon-euro"></span>
-              </span>
+                            <div class="col-xs-4">
+                                <div class="form-group{{ $errors->has('room_type') ? ' has-error' : '' }}">
+                                    <label for="room_type">Κατηγορία Δωματίου</label>
+                                    @if ($errors->has('room_type'))
+                                        <strong class="text-danger">{{ $errors->first('room_type') }}</strong>
+                                    @endif
+                                    <div class="input-group">
+                                        <select id="room_type" value="{{ old('room_type') }}" name="room_type" class="form-control" required>
+                                            <option value="">Επιλέξτε</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{$category->id}}" @if( $room->category == $category->id){{'selected'}}
+                                                @else None
+                                                    @endif>{{$category->title}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-list"></span>
+                </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-xs-4">
-                            <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
-                                <label for="company_id">Εταιρεία</label>
-                                @if ($errors->has('company_id'))
-                                    <strong class="text-danger">{{ $errors->first('company_id') }}</strong>
-                                @endif
-                                <div class="input-group">
-                                    <select id="company_id" value="{{ $room->company_id }}" name="company_id" class="form-control" required>
-                                        <option value="">Επιλέξτε</option>
-                                        @foreach(auth()->user()->companies as $company)
-                                            <option value="{{ $company->id }}" {{$room->company_id == $company->id? "selected" : ''}}>{{ $company->title }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="input-group-addon">
-                <span class="glyphicon glyphicon-list"></span>
-              </span>
+                        <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
+                            <label for="meta_description" class="control-label">{{ __('Meta Description') }}</label>
+                            <input id="meta_description" type="text" class="form-control" name="meta_description" value="{{ $room->meta_description}}" required>
+
+                            @if ($errors->has('meta_description'))
+                                <span class="help-block">
+                        <strong>{{ $errors->first('meta_description') }}</strong>
+                    </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('meta_keywords') ? ' has-error' : '' }}">
+                            <label for="meta_keywords" class="control-label">{{ __('Meta Keywords') }}</label>
+                            <input id="meta_keywords" type="text" class="form-control" name="meta_keywords" value="{{ $room->meta_keywords}}" required>
+
+                            @if ($errors->has('meta_keywords'))
+                                <span class="help-block">
+                        <strong>{{ $errors->first('meta_keywords') }}</strong>
+                    </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-2 form-group">
+                                <label for="active"> Active
+                                    <input type="checkbox" name="active" value="1" @if ($room->active == 1)
+                                        {{'checked'}}
+                                        @endif>
+                                </label>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+                                    <label for="price">Τιμή</label>
+                                    <div class="input-group">
+                                        <input type="text" value="{{ $room->price }}" class="form-control" name="price" placeholder="Τιμή" required>
+                                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-euro"></span>
+                </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <div class="form-group{{ $errors->has('accommodation_id') ? ' has-error' : '' }}">
+                                    <label for="accommodation_id">{{ __('Κατάλημα') }}</label>
+                                    @if ($errors->has('accommodation_id'))
+                                        <strong class="text-danger">{{ $errors->first('accommodation_id') }}</strong>
+                                    @endif
+                                    <div class="input-group">
+                                        <select id="accommodation_id" value="{{ $room->accommodation_id }}" name="accommodation_id" class="form-control" required>
+                                            <option value="">Επιλέξτε</option>
+                                            @if(auth()->user()->has('accommodations'))
+                                                <option value="{{ auth()->user()->accommodations }}" {{$room->accommodation_id == $room->id? "selected disabled" : ''}}>{{ $room->title }}</option>
+                                            @endif
+                                        </select>
+                                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-list"></span>
+                </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="header">header</label>
-                        <div class="input-group">
-                            <img width="100%" height="200" src="{{asset('images/products/'.$room->header)}}" alt="{{$room->title}}">
+                        <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
+                            <label for="header">Header: </label>
+                            <input type="file" value="{{asset('images/products/'.$room->header)}}" name="header">
+                            <p class="help-block">Example block-level help text here.</p>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs-3 form-group">
-                            <label for="logo">Λογότυπο</label>
-                            <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/products/'.$room->logo)}}" alt="{{$room->title}}">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+                                    <label for="logo">Λογότυπο: </label>
+                                    <input type="file" value="{{asset('images/products/'.$room->logo)}}" name="logo">
+                                    <p class="help-block">Example block-level help text here.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label for="image1">Εικόνα Αρχικης Σελίδας</label>
-                            <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/products/'.$room->image1)}}" alt="{{$room->title}}">
+                            <div class="col-xs-3">
+                                <div class="form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
+                                    <label for="image1">Εικόνα 1: </label>
+                                    <input type="file" value="{{asset('images/products/'.$room->image1)}}" name="image1">
+                                    <p class="help-block">Example block-level help text here.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label for="image2">Εικόνα 2</label>
-                            <div class="col-xs-3 input-group">
-                                <img width="200" height="200" src="{{asset('images/products/'.$room->image2)}}" alt="{{$room->title}}">
+                            <div class="col-xs-3">
+                                <div class="form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
+                                    <label for="image2">Εικόνα 2: </label>
+                                    <input type="file" value="{{asset('images/products/'.$room->image2)}}" name="image2">
+                                    <p class="help-block">Example block-level help text here.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label for="image3">Εικόνες 3</label>
-                            <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/products/'.$room->image3)}}" alt="{{$room->title}}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                <label for="description">Περιγραφή</label>
-                                <div class="input-group">
-              <textarea name="description" id="description" class="form-control"
-                        rows="5" required>{{ $room->description }}</textarea>
-                                    <span class="input-group-addon">
-                <span class="glyphicon glyphicon-info-sign"></span>
-              </span>
+                            <div class="col-xs-3">
+                                <div class="form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
+                                    <label for="image3">Εικόνα 3: </label>
+                                    <input type="file" value="{{asset('images/products/'.$room->image3)}}" name="image3">
+                                    <p class="help-block">Example block-level help text here.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    </form>
-                </div>
-                <!-- /.box-body -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                    <label for="description">Περιγραφή</label>
+                                    <div class="input-group">
+                <textarea name="description" id="description" class="form-control"
+                          rows="5" value="{{ $room->description }}" required>{{ $room->description }}</textarea>
+                                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <a class="btn btn-default btn-block" href="javascript:history.back()">Go Back</a>
+                            </div>
+                        </div>
+                </form>
             </div>
-            <!-- /.box -->
+    </div>
+    <!-- /.box -->
 
-        </section>
-        <!-- /.content -->
+    </section>
+    <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 @endsection
