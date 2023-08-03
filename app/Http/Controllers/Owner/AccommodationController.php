@@ -107,7 +107,7 @@ class AccommodationController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Accommodation $accommodation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Accommodation $accommodation)
     {
@@ -116,7 +116,7 @@ class AccommodationController extends Controller
 
         toastr()->addSuccess('Accommodation Updated successfully.');
 
-        return redirect(route('owner.accommodation.show', $accommodation->id));
+        return redirect(route('auth.accommodations.show', $accommodation->id));
     }
 
     /**

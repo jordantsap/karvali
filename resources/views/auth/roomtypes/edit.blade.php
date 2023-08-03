@@ -25,7 +25,7 @@
                               <strong class="text-danger">{{ $errors->first('title') }}</strong>
                           @endif
                           <div class="input-group">
-                              <input type="text" class="form-control" name="[title]{{$locale}}" value="{{ $roomType->title }}" id="title" placeholder="{{ $roomType->title }}">
+                              <input type="text" class="form-control" name="title:{{$locale}}" value="{{ $roomType->title }}" id="title" placeholder="{{ $roomType->title }}">
                               <span class="input-group-addon">
                     <span class="glyphicon glyphicon-home"></span>
                   </span>

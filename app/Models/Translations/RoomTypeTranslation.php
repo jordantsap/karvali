@@ -31,8 +31,8 @@ class RoomTypeTranslation extends Model
         ];
     }
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
 }

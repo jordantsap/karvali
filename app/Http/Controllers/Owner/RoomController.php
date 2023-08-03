@@ -18,7 +18,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::where('accommodation_id', auth()->user()->accommodations()->first())
+        $rooms = Room::whereIn('accommodation_id', auth()->user()->accommodations->pluck('id'))
             ->withTranslation()
             ->paginate();
 
@@ -33,10 +33,10 @@ class RoomController extends Controller
     public function create()
     {
         $categories = RoomType::all();
-//        $roomTypes = RoomType::all();
+        $roomTypes = RoomType::all();
         $accommodations = Accommodation::where('user_id', auth()->id())->get();
 
-        return view('auth.rooms.create', compact('accommodations', 'categories'));
+        return view('auth.rooms.create', compact('accommodations', 'categories', 'roomTypes'));
     }
 
     /**
@@ -110,7 +110,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $room = $room->update($request->all());
+
+        toastr()->addSuccess('Room was Updated successfully.');
+
+        return redirect(route('auth.rooms.show', $room->id));
     }
 
     /**

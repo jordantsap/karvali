@@ -61,11 +61,11 @@ class RoomTypeController extends Controller
      * @param  \App\Models\RoomType  $roomType
      * @return \Illuminate\Http\Response
      */
-    public function show(RoomType $roomType)
+    public function show($id = null)
     {
-        $roomType = RoomType::find($roomType->id);
+        $roomType = RoomType::find($id);
 
-        return view('auth.roomtypes.show', [$roomType->id], compact('roomType'));
+        return view('auth.roomtypes.show', compact('roomType'));
     }
 
     /**
@@ -88,11 +88,11 @@ class RoomTypeController extends Controller
      */
     public function update(Request $request, RoomType $roomType)
     {
-        $roomType->update($request->all());
+        $roomType = $roomType->update($request->all());
 
-        toastr()->addSuccess('Accommodation was saved successfully.');
+        toastr()->addSuccess('Room Type was Updated successfully.');
 
-        return redirect(route('owner.room-types.show', $roomType->id));
+        return redirect(route('auth.roomtypes.show', $roomType->id));
     }
 
     /**

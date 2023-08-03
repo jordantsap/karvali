@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="col-xs-2 form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type">{{__('Καταλλυμα Δωματιου')}}</label>
+                                <label for="type">{{__('form.accommodationid')}}</label>
                                 @if ($errors->has('accommodation_id'))
                                     <strong class="text-danger">{{ $errors->first('accommodation_type_id') }}</strong>
                                 @endif
@@ -42,9 +42,9 @@
                             </div>
 
                             <div class="col-xs-2 form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type">{{__('Καταλλυμα Δωματιου')}}</label>
-                                @if ($errors->has('accommodation_id'))
-                                    <strong class="text-danger">{{ $errors->first('accommodation_type_id') }}</strong>
+                                <label for="type">{{__('form.categorytype')}}</label>
+                                @if ($errors->has('category_id'))
+                                    <strong class="text-danger">{{ $errors->first('category_id') }}</strong>
                                 @endif
                                 <div class="">
                                     <select id="category_id" value="{{ old('category_id') }}"
@@ -60,7 +60,7 @@
 
                             <!-- For 'capacity' -->
                             <div class="col-xs-3 form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
-                                <label for="capacity">{{ __('Max Capacity') }}</label>
+                                <label for="capacity">{{ __('form.capacity') }}</label>
                                 @if ($errors->has('capacity'))
                                     <strong class="text-danger">{{ $errors->first('capacity') }}</strong>
                                 @endif
@@ -75,13 +75,13 @@
 
                             <!-- For 'price' -->
                             <div class="col-xs-3 form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                                <label for="price">{{ __('Price')}}</label>
+                                <label for="price">{{ __('form.Price')}}</label>
                                 @if ($errors->has('price'))
                                     <strong class="text-danger">{{ $errors->first('price') }}</strong>
                                 @endif
                                 <div class="input-group">
                                     <input type="text" class="form-control" value="{{ old('price') }}"
-                                           id="price" name="price" placeholder="Price">
+                                           id="price" name="price" placeholder="{{ __('form.priceplacehold')}}">
                                     <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
         </span>
@@ -90,13 +90,13 @@
 
                             <!-- For 'beds' -->
                             <div class="col-xs-3 form-group{{ $errors->has('beds') ? ' has-error' : '' }}">
-                                <label for="beds">{{ __('Beds')}}</label>
+                                <label for="beds">{{ __('form.beds')}}</label>
                                 @if ($errors->has('beds'))
                                     <strong class="text-danger">{{ $errors->first('beds') }}</strong>
                                 @endif
                                 <div class="input-group">
                                     <input type="number" class="form-control" value="{{ old('beds') }}"
-                                           id="beds" name="beds" placeholder="Beds">
+                                           id="beds" name="beds" placeholder="{{ __('form.beds')}}">
                                     <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
         </span>
@@ -163,7 +163,7 @@
                             </div>
 
                         <div class="form-group">
-                            <label for="description">{{__("Description").' - '."( $locale )"}}</label>
+                            <label for="description">{{__("form.description").' - '."( $locale )"}}</label>
                             <textarea class="textarea" name="{{$lang}}[description]" placeholder="Place some text here"
                                       style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('description')}}</textarea>
                         </div>

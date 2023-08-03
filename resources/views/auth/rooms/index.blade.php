@@ -23,26 +23,26 @@
                 <tr>
                   <th>id</th>
                   <th>Title</th>
-{{--                  @can ('view_companies','update_companies', App\Company::class)--}}
+{{--                  @can ('view-rooms','update-rooms', App\Company::class)--}}
                     <th>Actions</th>
 {{--                  @endcan--}}
                 </tr>
                 </thead>
-                @foreach ($roomTypes as $room)
+                @foreach ($roomTypes as $roomType)
                   <tbody>
                   <tr>
-                    <td>{{$room->id}}</td>
-                    <td>{{Str::limit($room->title,10)}}</td>
+                    <td>{{$roomType->id}}</td>
+                    <td>{{Str::limit($roomType->title,10)}}</td>
 
                     <td>
 {{--                    @can ('update_companies', App\Company::class)--}}
-                      <a class="btn btn-primary" href="{{route('owner.room-types.edit', $room->id)}}">Edit</a> -
+                      <a class="btn btn-primary" href="{{route('owner.room-types.edit', $roomType->id)}}">Edit</a> -
 {{--                    @endcan--}}
 {{--                    @can ('view_companies', App\Company::class)--}}
-                      <a class="btn btn-primary" href="{{route('owner.room-types.show', $room->id)}}">View</a>
+                      <a class="btn btn-primary" href="{{route('owner.room-types.show', $roomType->id)}}">View</a>
 {{--                      @endcan--}}
 {{--                        @can ('delete_companies', App\Models\Company::class)--}}
-                            <form action="{{ route('owner.room-types.destroy', $room->id) }}"
+                            <form action="{{ route('owner.room-types.destroy', $roomType->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -58,7 +58,7 @@
                   <tr>
                     <th>id</th>
                     <th>Title</th>
-                    @can ('view_companies','update_companies', App\Company::class)
+                    @can ('view-rooms','update-rooms', App\Models\Room::class)
                       <th>Actions</th>
                     @endcan
                   </tr>

@@ -58,6 +58,8 @@ Route::as('front.')->group(function () {
         ->name('accommodation-types.show');
 //Route::view('calendar','calendar');
 
+    Route::resource('amenities', 'Client\CompanyController@index');
+
     Route::get('markets', 'Client\CompanyController@index')->name('companies');
     Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::class, 'show'])->name('company');
 
