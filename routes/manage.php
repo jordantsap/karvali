@@ -16,6 +16,8 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('accommodation', \App\Http\Controllers\Owner\AccommodationController::class);
 
+        Route::resource('amenities', \App\Http\Controllers\Owner\AmenityController::class);
+
         Route::resource('rooms', \App\Http\Controllers\Owner\RoomController::class);
 
         Route::resource('room-types', \App\Http\Controllers\Owner\RoomTypeController::class);

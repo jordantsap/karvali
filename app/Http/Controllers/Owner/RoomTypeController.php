@@ -88,11 +88,16 @@ class RoomTypeController extends Controller
      */
     public function update(Request $request, RoomType $roomType)
     {
-        $roomType = $roomType->update($request->all());
+        $roomType = RoomType::find($roomType->id);
+        foreach (config('translatable.locales') as $locale => $lang) {
+            $roomType->translateOrNew($locale)->title = $request->{$locale}['title'];
+        }
+
+        $roomType->save();
 
         toastr()->addSuccess('Room Type was Updated successfully.');
 
-        return redirect(route('auth.roomtypes.show', $roomType->id));
+        return redirect(route('owner.room-types.show', $roomType->id));
     }
 
     /**

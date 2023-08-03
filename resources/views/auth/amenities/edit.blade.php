@@ -4,14 +4,14 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-        {{__('Edit Room Type')}}: <small>{{$roomType->title}}</small>
+        {{__('Edit Amenity')}}: <small>{{$amenity->title}}</small>
       <a class="btn btn-warning" href="javascript:history.back()">Go Back</a>
     </h1>
   </section>
 
   <section class="content">
     <div class="box">
-      <form method="post" action="{{ route('owner.room-types.update', $roomType->id) }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('owner.amenities.update', $amenity->id) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="box-body">
@@ -25,7 +25,7 @@
                               <strong class="text-danger">{{ $errors->first('title') }}</strong>
                           @endif
                           <div class="input-group">
-                              <input type="text" class="form-control" name="{{$locale}}[title]" value="{{ $roomType->title }}" id="title" placeholder="{{ $roomType->title }}">
+                              <input type="text" class="form-control" name="{{$locale}}[title]" value="{{ $amenity->title }}" id="title" placeholder="{{ $amenity->title }}">
                               <span class="input-group-addon">
                     <span class="glyphicon glyphicon-home"></span>
                   </span>

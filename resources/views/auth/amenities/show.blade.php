@@ -6,9 +6,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Room Type : {{$roomType->title}}
+                Amenity : {{$amenity->title}}
                 @can ('update-accommodation', App\Models\Accommodation::class)
-                    <small><a class="btn btn-primary" href="{{route('owner.room-types.edit', $roomType->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+                    <small><a class="btn btn-primary" href="{{route('owner.amenities.edit', $amenity->id)}}">Edit</a>
+                        - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
                 @endcan
             </h1>
         </section>
@@ -23,15 +24,16 @@
                     @foreach(config('translatable.locales') as $locale => $lang)
                         <div class="row">
                             <div class="col-xs-8 form-group">
-                                <label for="title">{{__('form.title'). ' '. $lang}}</label>
-                                <input type="text" class="form-control" placeholder="{{ $roomType->translate($locale)->title }}">
+                                <label for="title">{{__('form.title'). ' show.blade.php'. $lang}}</label>
+                                <input type="text" class="form-control"
+                                       placeholder="{{ $amenity->translate($locale)->title }}">
                             </div>
 
                         </div>
                     @endforeach
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
 
         </section>
         <!-- /.content -->
