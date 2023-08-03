@@ -101,13 +101,16 @@ class AmenityController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified accommodation from storage.
      *
-     * @param  \App\Models\Amenity  $amenity
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Amenity $amenity)
+    public function destroy($id)
     {
-        //
+//        $this->authorize('delete-products', 'App\Product');
+        Amenity::where('id',$id)->delete();
+        toastr()->addSuccess('Amenity was deleted successfully.');
+        return redirect(route('owner.amenities.index'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Providers\RouteServiceProvider;
@@ -90,6 +91,7 @@ class RegisterController extends Controller
         ]);
         $user->assignRole($data['role']);
         event(new Registered($user));
+        event(new UserRegistered($user));
 
         return $user;
     }

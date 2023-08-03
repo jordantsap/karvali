@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
 use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
@@ -106,8 +107,11 @@ class RoomTypeController extends Controller
      * @param  \App\Models\RoomType  $roomType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RoomType $roomType)
+    public function destroy($id)
     {
-        //
+//        $this->authorize('delete-products', 'App\Product');
+        RoomType::where('id',$id)->delete();
+        toastr()->addSuccess('Room Type was deleted successfully.');
+        return redirect(route('owner.room-types.index'));
     }
 }

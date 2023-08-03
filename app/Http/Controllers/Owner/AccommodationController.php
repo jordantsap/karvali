@@ -127,6 +127,8 @@ class AccommodationController extends Controller
      */
     public function destroy(Accommodation $accommodation)
     {
-        //
+        Accommodation::where('id',$accommodation->id)->delete();
+        toastr()->addSuccess('Accommodation was deleted successfully.');
+        return redirect(route('owner.accommodation.index'));
     }
 }
