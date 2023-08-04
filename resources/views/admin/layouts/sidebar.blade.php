@@ -12,24 +12,24 @@
             <i class="fas fa-tachometer-alt"></i>
             <span> {{ auth()->user()->getRoleNames()[0] }}</a> </span></li>
 
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                {{__('sidebar.langswitch')}}
-                <i class="fas fa-lg fa-globe"></i>
-                {{ app()->getLocale() }}
-            </a>
-            <ul class="dropdown-menu" style="background-color: #0E2231">
-                @foreach (config('translatable.locales') as $lang => $language)
-                    @if ($lang != app()->getLocale())
-                        <li>
-                            <a href="{{ route('lang.switch', $lang) }}">
-                                {{ $language }}
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
-        </li>
+{{--        <li class="dropdown">--}}
+{{--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+{{--                {{__('sidebar.langswitch')}}--}}
+{{--                <i class="fas fa-lg fa-globe"></i>--}}
+{{--                {{ app()->getLocale() }}--}}
+{{--            </a>--}}
+{{--            <ul class="dropdown-menu" style="background-color: #0E2231">--}}
+{{--                @foreach (config('translatable.locales') as $lang => $language)--}}
+{{--                    @if ($lang != app()->getLocale())--}}
+{{--                        <li>--}}
+{{--                            <a href="{{ route('lang.switch', $lang) }}">--}}
+{{--                                {{ $language }}--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </li>--}}
 
         @hasanyrole('Super-Admin|Admin')
 

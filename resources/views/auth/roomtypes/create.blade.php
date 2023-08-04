@@ -10,7 +10,6 @@
                 {{-- <small>it all starts here</small> --}}
             </h1>
         </section>
-        @include('partials.alerts')
 
         <!-- Main content -->
         <section class="content">

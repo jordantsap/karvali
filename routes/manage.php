@@ -22,9 +22,9 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('room-types', \App\Http\Controllers\Owner\RoomTypeController::class);
 
-        Route::resource('venue', \App\Http\Controllers\Owner\VenueController::class);
+        Route::resource('venues', \App\Http\Controllers\Owner\VenueController::class);
 
-        Route::resource('event', \App\Http\Controllers\Owner\EventController::class);
+        Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
 
 //        Route::get('user/{id}', 'UserController@showUser')->name('show.user');
 

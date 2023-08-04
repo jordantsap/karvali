@@ -54,7 +54,7 @@ Route::as('front.')->group(function () {
 
     Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
         ->name('accommodation-types');
-    Route::get('accommodation-types/{slug?}', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'category'])
+    Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'category'])
         ->name('accommodation-types.show');
 //Route::view('calendar','calendar');
 

@@ -33,7 +33,18 @@ return [
     'capacity' => 'Max Capacity',
     'Price' => 'Price',
     'priceplacehold' => 'Add Price here',
-    'description' => 'Περιγραφή',
+    'description' => 'Description',
     'beds' => 'Beds',
+    'published' => 'Published',
+    'entranceprice' => 'Entrance Price',
+    'telephone' => 'Telephone',
+
+    'startdate' => 'Start Date',
+    'starttime' => 'Start Time',
+    'enddate' => 'End Date',
+    'endtime' => 'End Time',
+    'website' => 'Website link',
+    'langinputs' => 'For translation',
+    'imginputs' => 'Images',
 
 ];

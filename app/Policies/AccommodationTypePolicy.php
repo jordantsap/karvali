@@ -18,7 +18,7 @@ class AccommodationTypePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**

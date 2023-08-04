@@ -5,9 +5,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Your Venues
-{{--        @can ('create_companies', App\Company::class)--}}
-          <small><a class="btn btn-primary" href="{{route('owner.venue.create')}}">New</a></small>
+        Venues
+{{--        @can ('create-venues', App\Models\Venue::class)--}}
+          <small><a class="btn btn-primary" href="{{route('owner.venues.create')}}">New</a></small>
 {{--        @endcan--}}
       </h1>
     </section>
@@ -21,13 +21,12 @@
               <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>id</th>
-                  <th>Active</th>
-                  <th>Category</th>
-                  <th>Title</th>
-                  <th>Manager</th>
-                  <th>Logo</th>
-{{--                  @can ('view_companies','update_companies', App\Company::class)--}}
+                    <th>id</th>
+                    <th>Active</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Description</th>
+{{--                  @can ('view_events','update_events', App\Event::class)--}}
                     <th>Actions</th>
 {{--                  @endcan--}}
                 </tr>
@@ -37,30 +36,25 @@
                   <tr>
                     <td>{{$venue->id}}</td>
                     <td>{{$venue->active?"yes":'no'}}</td>
+                    <td>{{$venue->title}}</td>
+                    <td><img width="150px" height="150px" src="{{asset('images/events/'.$venue->logo)}}" alt="{{$venue->title}}"></td>
+                    <td>{{Str::limit($venue->description, 20)}}</td>
                     <td>
-                      @if( ! empty($venue->category)){{ $venue->category->name }}
-                      @else None
-                      @endif
-                    </td>
-                    <td>{{Str::limit($venue->title,10)}}</td>
-                    <td>{{$venue->manager}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/venues/'.$venue->logo)}}" alt="{{$venue->title}}"></td>
-                    <td>
-                    @can ('update_companies', App\Company::class)
-                      <a class="btn btn-primary" href="{{route('owner.venue.edit', $venue->id)}}">Edit</a> -
-                    @endcan
-                    @can ('view_companies', App\Company::class)
-                      <a class="btn btn-primary" href="{{route('owner.venue.show', $venue->id)}}">View</a>
-                      @endcan
-                        @can ('delete_companies', App\Models\Company::class)
-                            <form action="{{ route('owner.venue.destroy', $venue->id) }}"
-                                  method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <br>
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                            </form>
-                        @endcan
+{{--                    @can ('update_events', App\Event::class)--}}
+                        <a class="btn btn-primary" href="{{route('owner.venues.edit', $venue->id)}}">Edit</a> -
+{{--                      @endcan--}}
+{{--                      @can ('view_events', App\Event::class)--}}
+                        <a class="btn btn-primary" href="{{route('owner.venues.show', $venue->slug)}}">View</a>
+{{--                      @endcan--}}
+{{--                      @can ('delete_events', App\Models\Event::class)--}}
+                          <form action="{{ route('owner.venues.destroy', $venue->id) }}"
+                                method="POST">
+                              {{ csrf_field() }}
+                              {{ method_field('DELETE') }}
+                              <br>
+                              <button type="submit" class="btn btn-primary">Delete</button>
+                          </form>
+{{--                      @endcan--}}
                     </td>
                   </tr>
                   </tbody>
@@ -71,9 +65,10 @@
                     <th>Active</th>
                     <th>Title</th>
                     <th>Image</th>
-{{--                    @can ('view_companies','update_companies', App\Company::class)--}}
+                    <th>Description</th>
+                    @can ('view-venues','update-venues', App\Models\Venue::class)
                       <th>Actions</th>
-{{--                    @endcan--}}
+                    @endcan
                   </tr>
                 </tfoot>
               </table>

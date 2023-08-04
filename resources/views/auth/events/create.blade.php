@@ -9,7 +9,7 @@
 
   <section class="content">
     <div class="box">
-      <form action="{{ route('events.store') }}" method="post" role="form" enctype="multipart/form-data">
+      <form action="{{ route('owner.events.store') }}" method="post" role="form" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="box-body">
           <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

@@ -47,7 +47,7 @@
                         </div>
                         @foreach ($venues as $venue)
                             <li class="list-group-item">
-                                <a href="{{ route('front.venues', $venue->id)}}"><h4
+                                <a href="{{ route('front.venues', $venue->slug)}}"><h4
                                         class="animated slideInUp">{{$venue->title}}</h4></a>
                             </li>
                         @endforeach
@@ -56,7 +56,7 @@
                         </div>
                         @foreach ($events as $event)
                             <li class="list-group-item">
-                                <a href="{{ route('front.events', $event->id)}}"><h4
+                                <a href="{{ route('front.events', $event->slug)}}"><h4
                                         class="animated slideInUp">{{$event->title}}</h4></a>
                             </li>
                         @endforeach

@@ -53,10 +53,10 @@ class Permission extends \Spatie\Permission\Models\Permission
             'update-rooms',
             'delete-rooms',
 
-            'view-venue',
-            'create-venue',
-            'update-venue',
-            'delete-venue',
+            'view-venues',
+            'create-venues',
+            'update-venues',
+            'delete-venues',
 
             'view-events',
             'create-events',

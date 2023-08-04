@@ -17,10 +17,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class AccommodationTypeController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('role:admin|Super Admin');
-    }
+//    public function __construct()
+//    {
+//        return $this->middleware('role:admin|Super Admin');
+//    }
     /**
      * Display a listing of the resource.
      *

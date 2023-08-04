@@ -74,26 +74,27 @@ class GroupController extends Controller
 
       $group->user_id = Auth::user()->id;
       $group->title = $request->title;
-      $group->active = $request->active;
-      $group->meta_description = $request->input('meta_description');
-      $group->meta_keywords = $request->input('meta_keywords');
+        $group->description = $request->description;
+        $group->active = $request->active;
+        $group->meta_description = $request->input('meta_description');
+        $group->meta_keywords = $request->input('meta_keywords');
       $group->slug = Str::slug($request->title, '-');
       $group->header = $request->header;
       $group->logo = $request->logo;
-      $group->image1 = $request->image1;
-      $group->image2 = $request->image2;
-      $group->image3 = $request->image3;
-      $group->group_type = $request->group_type;
-      $group->manager = $request->manager;
-      $group->telephone = $request->telephone;
-      $group->website = strtolower($request->website);
-      $group->email = strtolower($request->email);
-      $group->facebook = strtolower($request->facebook);
-      $group->twitter = strtolower($request->twitter);
-      //$group->address = $request->address;
+        $group->image1 = $request->image1;
+        $group->image2 = $request->image2;
+        $group->image3 = $request->image3;
+        $group->group_type = $request->group_type;
+        $group->telephone = $request->telephone;
+        $group->website = strtolower($request->website);
+        $group->email = strtolower($request->email);
+        $group->facebook = strtolower($request->facebook);
+        $group->twitter = strtolower($request->twitter);
+        $group->manager = $request->manager;
+        //$group->address = $request->address;
       // $group->lat = $request->input('lat');
       // $group->lng = $request->input('lng');
-      $group->description = $request->description;
+
 
         if ($request->hasFile('header')) {
             $header = $request->file('header');

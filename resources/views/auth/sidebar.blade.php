@@ -36,7 +36,10 @@
 
 @role('Venue/Event Owner')
 
-<li><a href="{{ route('owner.venue.index') }}"><i class="fas fa-shopping-bag"></i> <span>Venue List</span></a></li>
-<li><a href="{{ route('owner.venue.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Venue</span></a>
+<li><a href="{{ route('owner.venues.index') }}"><i class="fas fa-shopping-bag"></i> <span>Venue List</span></a></li>
+<li><a href="{{ route('owner.venues.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Venue</span></a>
+
+<li><a href="{{ route('owner.events.index') }}"><i class="fas fa-shopping-bag"></i> <span>Event List</span></a></li>
+<li><a href="{{ route('owner.events.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Event</span></a>
 
 @endrole

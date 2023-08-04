@@ -17,7 +17,6 @@ class RoleTableSeeder extends Seeder
     {
         $admin_permission = Permission::all();
 
-        //RoleTableSeeder.php
         $dev_role = new Role();
         $dev_role->name = 'Super-Admin';
         $dev_role->save();
@@ -27,7 +26,7 @@ class RoleTableSeeder extends Seeder
         $role->givePermissionTo([
             'view-events',
             'view-products',
-//            'view-groups',
+            'view-venues',
             'view-companies',
             'view-users',
             'create-users',
@@ -66,10 +65,10 @@ class RoleTableSeeder extends Seeder
         $role = Role::create(['name' => 'Venue/Event Owner']);
         $role->givePermissionTo([
             'venue-management',
-            'view-venue',
-            'create-venue',
-            'update-venue',
-            'delete-venue',
+            'view-venues',
+            'create-venues',
+            'update-venues',
+            'delete-venues',
 
             'view-events',
             'create-events',

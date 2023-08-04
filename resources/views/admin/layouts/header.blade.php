@@ -15,13 +15,29 @@
       <i class="fas fa-bars"></i>
       <span class="sr-only">Toggle navigation</span>
     </a>
+{{--      <ul class="">--}}
+      <div class="navbar-brand">
+          {{__('header.langswitch')}}
+      </div>
+          @foreach (config('translatable.locales') as $lang => $language)
+                            @if ($lang != app()->getLocale())
+{{--                              <li class="nav-item">--}}
+              <a class="btn btn-primary" href="{{ route('lang.switch', $lang) }}">
+                  {{ $language }}
+              </a>
+{{--                              </li>--}}
+                            @endif
+          @endforeach
+
+{{--      </ul>--}}
 
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
+
       <ul class="nav navbar-nav">
 
         <!-- Messages: style can be found in dropdown.less-->
-        {{-- <li class="dropdown messages-menu">
+         <li class="dropdown messages-menu">
           <!-- Menu toggle button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
@@ -53,11 +69,11 @@
             </li>
             <li class="footer"><a href="#">See All Messages</a></li>
           </ul>
-        </li> --}}
+        </li>
         <!-- /.messages-menu -->
 
         <!-- Notifications Menu -->
-        {{-- <li class="dropdown notifications-menu">
+         <li class="dropdown notifications-menu">
           <!-- Menu toggle button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
@@ -78,11 +94,11 @@
             </li>
             <li class="footer"><a href="#">View all</a></li>
           </ul>
-        </li> --}}
+        </li>
         <!-- Notifications Menu -->
 
         <!-- Tasks Menu -->
-        {{-- <li class="dropdown tasks-menu">
+         <li class="dropdown tasks-menu">
           <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-flag-o"></i>
@@ -116,7 +132,7 @@
               <a href="#">View all tasks</a>
             </li>
           </ul>
-        </li> --}}
+        </li>
         <!-- User Account Menu -->
         <li class="dropdown user user-menu">
           <!-- Menu Toggle Button -->
@@ -128,16 +144,16 @@
           </a>
           <ul class="dropdown-menu">
             <!-- The user image in the menu -->
-            {{-- <li class="user-header">
+             <li class="user-header">
               <img src="{{asset('images/unsplash2.jpg')}}" class="user-image" alt="">
               <p>{{Auth::user()->username}} <br>
                 <small>Member since <br>
                   {{Auth::user()->created_at}}
                 </small>
               </p>
-            </li> --}}
+            </li>
             <!-- Menu Body -->
-            {{-- <li class="user-body">
+             <li class="user-body">
               <div class="row">
                 <div class="col-xs-4 text-center">
                   <a href="#">Followers</a>
@@ -150,7 +166,7 @@
                 </div>
               </div>
               <!-- /.row -->
-            </li> --}}
+            </li>
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">

@@ -19,15 +19,15 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->truncate();
 
-        $admin_role = Role::where('id',1)->first();
-        $manager_role = Role::where('id',2)->first();
-        $blogger_role = Role::where('id',3)->first();
-        $company_management = Role::where('id',4)->first();
-//        $group_management = Role::where('id',5)->first();
-        $venue_management = Role::where('id',5)->first();
-        $event_management = Role::where('id',6)->first();
-        $product_management = Role::where('id',7)->first();
-        $customer_manager = Role::where('id',8)->first();
+        $superadmin_role = Role::where('name','Super-Admin')->first();
+        $admin_role = Role::where('name', 'Admin')->first();
+        $company_management = Role::where('name','Company/Products Owner')->first();
+        $accommodation_management = Role::where('name','Accommodation/Rooms Owner')->first();
+
+        $venue_management = Role::where('name','Venue/Event Owner')->first();
+        $blog_management = Role::where('name', 'Blogger')->first();
+        $customer_role = Role::where('name','Customer')->first();
+
 
         $admin = new User();
         $admin->username = 'jordantsap';
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         $admin->password = bcrypt('123456');
         $admin->email_verified_at = now();
         $admin->save();
-        $admin->roles()->attach($admin_role);
+        $admin->roles()->attach($superadmin_role);
 
         $manager = new User();
         $manager->username = 'manager';
@@ -51,19 +51,7 @@ class UsersTableSeeder extends Seeder
         $manager->password = bcrypt('123456');
         $manager->email_verified_at = now();
         $manager->save();
-        $manager->roles()->attach($manager_role);
-
-        $blogger = new User();
-        $blogger->username = 'blogger';
-        $blogger->active = 1;
-        $blogger->fullname = 'blogger';
-        $blogger->tel = '2510316852';
-        $blogger->mobile = '6984262910';
-        $blogger->email = 'blogger@karvali.local';
-        $blogger->password = bcrypt('123456');
-        $blogger->email_verified_at = now();
-        $blogger->save();
-        $blogger->roles()->attach($blogger_role);
+        $manager->roles()->attach($admin_role);
 
         /*-----------------------------*/
         $company_manager = new User();
@@ -78,16 +66,19 @@ class UsersTableSeeder extends Seeder
         $company_manager->save();
         $company_manager->roles()->attach($company_management);
 
-//        $group_manager = new User();
-//        $group_manager->username = 'groupManager';
-//        $group_manager->active = 1;
-//        $group_manager->fullname = 'groupManager';
-//        $group_manager->tel = '2510316852';
-//        $group_manager->mobile = '6984262910';
-//        $group_manager->email = 'group@karvali.local';
-//        $group_manager->password = bcrypt('123456');
-//        $group_manager->save();
-//        $group_manager->roles()->attach($group_management);
+
+        $event_manager = new User();
+        $event_manager->username = 'accommodationManager';
+        $event_manager->active = 1;
+        $event_manager->fullname = 'accommodationManager';
+        $event_manager->tel = '2510316852';
+        $event_manager->mobile = '6984262910';
+        $event_manager->email = 'accommodation@karvali.local';
+        $event_manager->password = bcrypt('123456');
+        $event_manager->email_verified_at = now();
+        $event_manager->save();
+        $event_manager->roles()->attach($accommodation_management);
+
 
         $group_manager = new User();
         $group_manager->username = 'venueManager';
@@ -101,29 +92,18 @@ class UsersTableSeeder extends Seeder
         $group_manager->save();
         $group_manager->roles()->attach($venue_management);
 
-        $event_manager = new User();
-        $event_manager->username = 'eventManager';
-        $event_manager->active = 1;
-        $event_manager->fullname = 'eventManager';
-        $event_manager->tel = '2510316852';
-        $event_manager->mobile = '6984262910';
-        $event_manager->email = 'event@karvali.local';
-        $event_manager->password = bcrypt('123456');
-        $event_manager->email_verified_at = now();
-        $event_manager->save();
-        $event_manager->roles()->attach($event_management);
 
-        $product_manager = new User();
-        $product_manager->username = 'productManager';
-        $product_manager->active = 1;
-        $product_manager->fullname = 'productManager';
-        $product_manager->tel = '2510316852';
-        $product_manager->mobile = '6984262910';
-        $product_manager->email = 'product@karvali.local';
-        $product_manager->password = bcrypt('123456');
-        $product_manager->email_verified_at = now();
-        $product_manager->save();
-        $product_manager->roles()->attach($product_management);
+        $blogger = new User();
+        $blogger->username = 'blogger';
+        $blogger->active = 1;
+        $blogger->fullname = 'blogger';
+        $blogger->tel = '2510316852';
+        $blogger->mobile = '6984262910';
+        $blogger->email = 'blogger@karvali.local';
+        $blogger->password = bcrypt('123456');
+        $blogger->email_verified_at = now();
+        $blogger->save();
+        $blogger->roles()->attach($blog_management);
 
         $customer = new User();
         $customer->username = 'customer';
@@ -135,6 +115,30 @@ class UsersTableSeeder extends Seeder
         $customer->password = bcrypt('123456');
         $customer->email_verified_at = now();
         $customer->save();
-        $customer->roles()->attach($customer_manager);
+        $customer->roles()->attach($customer_role);
+
+//        $group_manager = new User();
+//        $group_manager->username = 'groupManager';
+//        $group_manager->active = 1;
+//        $group_manager->fullname = 'groupManager';
+//        $group_manager->tel = '2510316852';
+//        $group_manager->mobile = '6984262910';
+//        $group_manager->email = 'group@karvali.local';
+//        $group_manager->password = bcrypt('123456');
+//        $group_manager->save();
+//        $group_manager->roles()->attach($group_management);
+
+//        $product_manager = new User();
+//        $product_manager->username = 'productManager';
+//        $product_manager->active = 1;
+//        $product_manager->fullname = 'productManager';
+//        $product_manager->tel = '2510316852';
+//        $product_manager->mobile = '6984262910';
+//        $product_manager->email = 'product@karvali.local';
+//        $product_manager->password = bcrypt('123456');
+//        $product_manager->email_verified_at = now();
+//        $product_manager->save();
+//        $product_manager->roles()->attach($product_management);
+
     }
 }

@@ -21,4 +21,5 @@ return [
     'terms' => 'Οροι Χρήσης',
     'admin' => 'Διαχειριστής',
     'register' => 'Εξουσιοδότηση τώρα',
+    'langswitch'=>'Language Switcher',
 ];

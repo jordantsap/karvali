@@ -22,4 +22,5 @@ return [
     'help' => 'Help',
     'terms'=>'Terms and Condition',
     'help' => 'Help',
+    'langswitch'=>'Αλλαγή Γλώσσας',
 ];

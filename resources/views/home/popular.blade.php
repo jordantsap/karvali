@@ -94,7 +94,7 @@
                         </div>
                         <div class="card-body">
                           <h4 class="card-title">
-                            <a href="{{ route('front.venue.show',$venue->slug) }}">{{ Str::limit($venue->title, 15) }}</a>
+                            <a href="{{ route('front.venue.show',$venue->id) }}">{{ Str::limit($venue->title, 15) }}</a>
                           </h4>
                           <div class="row" id="likecomment">
                             <div class="col-xs-6 text-center">
