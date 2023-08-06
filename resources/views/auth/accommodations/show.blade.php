@@ -8,7 +8,7 @@
             <h1>
                 Accommodation : {{$accommodation->title}}
                 @can ('update-accommodation', App\Models\Accommodation::class)
-                    <small><a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+                    <small><a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->slug)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
                 @endcan
             </h1>
         </section>

@@ -99,10 +99,10 @@ class AccommodationController extends Controller
      * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accommodation $accommodation)
+    public function edit($slug)
     {
         $accommodation = Accommodation::withTranslation()
-            ->where('id', $accommodation->id)->firstOrFail();
+            ->whereTranslation('slug', $slug)->first();
         $accommodationTypes = AccommodationType::withTranslation()->get();
 
         return view('auth.accommodations.edit', compact(['accommodation', 'accommodationTypes']));
