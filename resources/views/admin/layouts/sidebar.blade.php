@@ -63,6 +63,8 @@
 {{--        @hasanyrole('Super-Admin|Admin')--}}
         <li><a href="{{ route('admin.newsletters.index') }}"><i class="fas fa-book"></i> <span>Newsletters</span></a></li>
 
+        <li><a href="{{ route('admin.accommodations.index') }}"><i class="fas fa-book"></i> <span>Accommodations</span></a></li>
+
         <li><a href="{{ route('admin.accommodation-types.index') }}"><i class="fas fa-book"></i> <span>Accommodation Types</span></a></li>
 {{--        @endhasanyrole--}}
 {{--        @role ('view', App\Models\Post::class)--}}

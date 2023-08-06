@@ -152,7 +152,7 @@
             <h3>{{ $company->description }}</h3>
           </li>
           <li class="list-group-item">
-            <a href="{{route('product', $company->slug) }}" class="btn btn-default btn-block">Show</a>
+            <a href="{{route('front.product', $company->slug) }}" class="btn btn-default btn-block">Show</a>
           </li>
           </ul>
         </div>

@@ -90,8 +90,8 @@ class RegisterController extends Controller
 //            'email_verified_at' => now(),
         ]);
         $user->assignRole($data['role']);
-        event(new Registered($user));
-        event(new UserRegistered($user));
+//        event(new Registered($user));
+//        event(new UserRegistered($user));
 
         return $user;
     }

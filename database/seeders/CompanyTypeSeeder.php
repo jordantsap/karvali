@@ -26,8 +26,8 @@ class CompanyTypeSeeder extends Seeder
             'slug:el' => 'pwlhseis-lianikhs',
         ]);
         CompanyType::create([
-            'name:en' => 'Coffee Shop',
-            'slug:en' => 'coffeeshop',
+            'name:en' => 'Coffee',
+            'slug:en' => 'coffee',
 
             'name:el' => 'Καφετέρια',
             'slug:el' => 'cafeteria',
@@ -95,8 +95,8 @@ class CompanyTypeSeeder extends Seeder
             'slug:el' => 'mpoygatses',
         ]);
         CompanyType::create([
-            'name:en' => 'Bakery Products',
-            'slug:en' => 'bakeryproducts',
+            'name:en' => 'Bakery',
+            'slug:en' => 'bakery',
 
             'name:el' => 'Αρτοσκευάσματα',
             'slug:el' => 'artoskeyasmata',

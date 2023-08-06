@@ -48,8 +48,8 @@ class AccommodationTypeSeeder extends Seeder
             'slug:el' => 'epayli',
         ]);
         AccommodationType::create([
-            'title:en' => 'Guesthouse-Hostel',
-            'slug:en' => 'guesthouse-Hostel',
+            'title:en' => 'Hostel',
+            'slug:en' => 'Hostel',
 
             'title:el' => 'Ξενώνας',
             'slug:el' => 'ksenwnas',

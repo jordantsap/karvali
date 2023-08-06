@@ -3,7 +3,7 @@
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
+ <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129494448-1"></script>
   <script>

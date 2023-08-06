@@ -40,6 +40,12 @@ class StoreAccommodationRequest extends FormRequest
             'facebook'=>'',
             'twitter' => '',
             'accommodation_type_id' => 'integer',
+            'header'=>'image|nullable',
+            'logo'=>'nullable',
+            'image1'=>'nullable',
+            'image2'=>'nullable',
+            'image3'=>'nullable',
+            'imgfile'=>'nullable',
         ];
 
         foreach (config('translatable.locales') as $locale) {

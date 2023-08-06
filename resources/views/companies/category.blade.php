@@ -1,7 +1,7 @@
 @extends('layouts.main')
-@section('title', $companytype->name.' '.__('head.companycategory'))
-@section('meta_description', __('meta.companycategorydescription').' category.blade.php'.$companytype->name)
-@section('meta_keywords', $companytype->name.' '.__('meta.companycategorykeywords'))
+{{--@section('title', $companytype->title.' '.__('head.companycategory'))--}}
+{{--@section('meta_description', __('meta.companycategorydescription').' category.blade.php'.$companytype->name)--}}
+{{--@section('meta_keywords', $companytype->name.' '.__('meta.companycategorykeywords'))--}}
 
 @section('content')
     <!-- Page Content -->
@@ -21,7 +21,7 @@
                         <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
                             @foreach($companytypes as $companytype)
                                 <li>
-                                    <a href="{{ route('companies-category', $companytype->slug)}}"
+                                    <a href="{{ route('front.companies-category', $companytype->slug)}}"
                                        class="">{{ $companytype->name }}&nbsp<span
                                             class="badge">{{$companytype->companies->where('active',1)->count()}}</span>
                                     </a>
@@ -38,11 +38,11 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if(count($companies) > 0)
+                    @if($companies)
                         @foreach ($companies as $company)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
-                                    <a href="{{ route('company',$company->slug) }}">
+                                    <a href="{{ route('front.company',$company->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
                                              src="{{ asset('images/companies/'.$company->logo) }}"
                                              alt="{{ $company->title }}">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <h2 class="card-title">
-                                        <a href="{{ route('company',$company->slug) }}">{{ Str::limit($company->title, 20) }}</a>
+                                        <a href="{{ route('front.company',$company->slug) }}">{{ Str::limit($company->title, 20) }}</a>
                                     </h2>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
@@ -65,7 +65,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <h3><b>{{ __('page.category') }}</b> <a
-                                                    href="{{ route('companies-category', $company->category->slug)}}">{{$company->category->name}}</a>
+                                                    href="{{ route('front.companies-category', $company->category->slug)}}">{{$company->category->name}}</a>
                                             </h3>
                                         </div>
                                     </div>

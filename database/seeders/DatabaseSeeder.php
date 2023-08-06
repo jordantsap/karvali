@@ -52,9 +52,9 @@ class DatabaseSeeder extends Seeder
           $this->call(RoomSeeder::class);
 //
 //          $this->call(EventsTableSeeder::class);
-//          $this->call(CompaniesTableSeeder::class);
-//          $this->call(PostsTableSeeder::class);
-//          $this->call(ProductsTableSeeder::class);
+          $this->call(CompaniesTableSeeder::class);
+          $this->call(PostsTableSeeder::class);
+          $this->call(ProductsTableSeeder::class);
 
           // just for reference
 //          $this->call(GroupTypeSeeder::class);

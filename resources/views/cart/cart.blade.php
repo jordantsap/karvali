@@ -45,7 +45,7 @@
                 <td><img src="{{ asset('images/products/'.$item->model->logo) }}" alt="{{ $item->model->title }}" width="100px" height="100px"></td>
                 <td>{{ $item->model->title }}<br>
                   <div class="divider"></div>
-                  <a target="_blank" href="{{route('company',$item->model->company->slug)}}">{{ $item->model->company->title }}</a>
+                  <a target="_blank" href="{{route('front.company',$item->model->company->slug)}}">{{ $item->model->company->title }}</a>
                 </td>
                 <td>{{ Str::limit($item->model->sku, 50) }}</td>
                 <td>{{ Str::limit($item->model->description,50) }}</td>
@@ -64,7 +64,7 @@
                   </select>
                 </td>
                 <td>{{ $item->subtotal }}€</td>
-                <td><a target="_blank" href="{{route('product',$item->model->slug) }}" class="btn btn-primary btn-block">
+                <td><a target="_blank" href="{{route('front.product',$item->model->slug) }}" class="btn btn-primary btn-block">
                   {{__('cart.product')}}</a>
                   <br>
                   <form action="{{ route('cart.destroy', $item->rowId)}}" method="post">

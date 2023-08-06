@@ -38,22 +38,22 @@
                                         <td>{{$accommodation->id}}</td>
                                         <td>{{$accommodation->active?"yes":'no'}}</td>
                                         <td>
-                                            @if( $accommodation->has('accommodationType')){{ $accommodation->accommodation->title }}
+                                            @if( $accommodation->accommodationType){{ $accommodation->accommodationType->title }}
                                             @else None
                                             @endif
                                         </td>
                                         <td>{{Str::limit($accommodation->title,10)}}</td>
                                         <td>{{$accommodation->manager}}</td>
-                                        <td><img width="150px" height="150px" src="{{asset('images/companies/'.$accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
+                                        <td><img width="150px" height="150px" src="{{asset('images/accommodations/'.$accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
                                         <td>
 {{--                                            @can ('update_companies', App\Company::class)--}}
-                                                <a class="btn btn-primary" href="{{route('companies.edit', $accommodation->id)}}">Edit</a> -
+                                                <a class="btn btn-primary" href="{{route('admin.accommodations.edit', $accommodation->id)}}">Edit</a> -
 {{--                                            @endcan--}}
 {{--                                            @can ('view_companies', App\Company::class)--}}
-                                                <a class="btn btn-primary" href="{{route('companies.show', $accommodation->id)}}">View</a>
+                                                <a class="btn btn-primary" href="{{route('admin.accommodations.show', $accommodation->id)}}">View</a>
 {{--                                            @endcan--}}
 {{--                                            @can ('delete_companies', App\Models\Company::class)--}}
-                                                <form action="{{ route('companies.destroy', $accommodation->id) }}"
+                                                <form action="{{ route('admin.accommodations.destroy', $accommodation->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
@@ -77,7 +77,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                            {{$companies->links()}}
+                            {{$accommodations->links()}}
                         </div>
                         <!-- /.box-body -->
                     </div>

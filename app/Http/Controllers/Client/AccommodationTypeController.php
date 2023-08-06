@@ -20,27 +20,6 @@ class AccommodationTypeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreAccommodationTypeRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreAccommodationTypeRequest $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\AccommodationType  $accommodationType
@@ -51,37 +30,6 @@ class AccommodationTypeController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AccommodationType  $accommodationType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AccommodationType $accommodationType)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAccommodationTypeRequest  $request
-     * @param  \App\Models\AccommodationType  $accommodationType
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateAccommodationTypeRequest $request, AccommodationType $accommodationType)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AccommodationType  $accommodationType
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(AccommodationType $accommodationType)
-    {
-        //
-    }
 }

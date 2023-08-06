@@ -20,6 +20,8 @@ class Accommodation extends Model implements TranslatableContract
         'manager',
         'description',
     ];
+//    public function getRouteKeyName()
+
     protected $fillable = [
         'user_id',
         'active',
@@ -30,17 +32,17 @@ class Accommodation extends Model implements TranslatableContract
         'telephone',
         'facebook',
         'twitter',
-//        'header',
-//        'logo',
-//        'image1',
-//        'image2',
-//        'image3',
+        'header',
+        'logo',
+        'image1',
+        'image2',
+        'image3',
+        'imgfile',
     ];
-
-//    public function getRouteKeyName()
-//    {
-//        return 'slug';
-//    }
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     public function rooms()
     {
@@ -56,6 +58,10 @@ class Accommodation extends Model implements TranslatableContract
         return $this->belongsTo(User::class);
     }
 
+    public function uploads(): MorphToMany
+    {
+        return $this->morphToMany(Uploads::class, 'uploadable');
+    }
 
     public function comments()
     {

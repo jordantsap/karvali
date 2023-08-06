@@ -13,7 +13,7 @@
 
             <!-- Default box -->
             <div class="box">
-                <form method="post" action="{{ route('owner.accommodation.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('owner.accommodation.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="row">
@@ -190,10 +190,132 @@
                                 </div>
                             @endforeach
 
+
+                            <div class="col-xs-2 form-group{{ $errors->has('header') ? ' has-error' : '' }}">
+                                <label for="header">header</label>
+                                @if ($errors->has('header'))
+                                    <strong class="text-danger">{{ $errors->first('header') }}</strong>
+                                @endif
+                                <div class="input-group">
+                                    @if ( old('header'))
+                                        <img src="{{ old('header') }}" alt="">
+                                    @endif
+                                    <input type="file" name="header" value="{{ old('header') }}" >
+                                        <img id="headerPreview" src="#" alt="Header Preview" style="display: none; max-width: 300px;">
+                                        <p class="help-block">Help text here.</p>
+                                </div>
+
+                            </div>
+                                <div class="col-xs-2 form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+                                    <label for="logo">Λογότυπο</label>
+                                    @if ($errors->has('logo'))
+                                        <strong class="text-danger">{{ $errors->first('logo') }}</strong>
+                                    @endif
+                                    <div class="input-group">
+                                        @if ( old('logo'))
+                                            <img src="{{ old('logo') }}" alt="">
+                                        @endif
+                                        <input type="file" name="logo" value="{{ old('logo') }}" >
+                                            <img id="logoPreview" src="#" alt="Logo Preview" style="display: none; max-width: 300px;">
+
+                                            <p class="help-block">Help text here.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
+                                    <label for="image1">Εικόνα Αρχικης Σελίδας</label>
+                                    @if ($errors->has('image1'))
+                                        <strong class="text-danger">{{ $errors->first('image1') }}</strong>
+                                    @endif
+                                    <div class="input-group">
+                                        @if ( old('image1'))
+                                            <img src="{{ old('image1') }}" alt="">
+                                        @endif
+                                        <input type="file" name="image1" value="{{ old('image1') }}" >
+                                        <p class="help-block">Help text here.</p>
+                                            <img id="imagePreview1" src="#" alt="Image Preview 1" style="display: none; max-width: 300px;">
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
+                                    <label for="image2">Εικόνα λίστας καταχωρήσεων</label>
+                                    @if ($errors->has('image2'))
+                                        <strong class="text-danger">{{ $errors->first('image2') }}</strong>
+                                    @endif
+                                    <div class="input-group">
+                                        @if ( old('image2'))
+                                            <img src="{{ old('image2') }}" alt="">
+                                        @endif
+                                        <input type="file" name="image2" value="{{ old('image2') }}" >
+                                        <p class="help-block">Help text here.</p>
+                                            <img id="imagePreview2" src="#" alt="Image Preview 2" style="display: none; max-width: 300px;">
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
+                                    <label for="image3">Εικόνες σελίδας Καταστήματος</label>
+                                    @if ($errors->has('image3'))
+                                        <strong class="text-danger">{{ $errors->first('image3') }}</strong>
+                                    @endif
+                                    <div class="input-group">
+                                        @if ( old('image3'))
+                                            <img src="{{ old('image3') }}" alt="">
+                                        @endif
+                                        <input type="file" name="image3" value="{{ old('image3') }}">
+                                        <p class="help-block">
+                                            <img id="imagePreview3" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            <script>
+                                const imageInputIds = ['header', 'logo', 'image1', 'image2', 'image3'];
+
+                                imageInputIds.forEach((inputId) => {
+                                    const inputElement = document.getElementById(inputId);
+
+                                    inputElement.addEventListener('change', function(event) {
+                                        const fileInput = event.target;
+                                        const file = fileInput.files[0];
+
+                                        const imagePreview = document.getElementById(`${inputId}Preview`);
+
+                                        if (file) {
+                                            const reader = new FileReader();
+
+                                            reader.addEventListener('load', function() {
+                                                imagePreview.src = reader.result;
+                                                imagePreview.style.display = 'block';
+                                            });
+
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            imagePreview.src = '#';
+                                            // imagePreview.style.display = 'none';
+                                        }
+                                    });
+                                });
+
+
+                            </script>
+
+                                <div class="row">
+                                    <div class="col-xs-8 col-lg-offset-2 form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                                        <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                                        @if ($errors->has('imgfile'))
+                                            <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
+                                        @endif
+                                        <div>
+                                            @if ( old('imgfile'))
+                                                <img src="{{ old('imgfile') }}" alt="">
+                                            @endif
+                                            <input type="file" name="imgfile" id="imgfile">
+                                        </div>
+                                    </div>
+                                </div>
+
                             <hr>
 
                             <input type="hidden" name="user_id" value="{{auth()->id()}}">
-                            </hr>
+{{--                            </hr>--}}
                             <!-- /.box-body -->
 
                             <div class="col-xs-12">

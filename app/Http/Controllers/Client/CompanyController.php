@@ -30,14 +30,15 @@ class CompanyController extends Controller
     {
       $companytype = Companytype::with('companies')
       ->whereTranslation('slug', $slug)
-      ->withTranslation()
+//      ->withTranslation()
       ->first();
+//      return $companytype;
 
       $companies = $companytype->companies()
       ->with(['category','likes','comments'])
       ->active()
       ->paginate(8);
-
+//
       return view('companies.category', compact('companies', 'companytype'));
     }
 }

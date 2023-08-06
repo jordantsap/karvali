@@ -4,7 +4,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      New Company
+      New Accommodation
     </h1>
   </section>
 

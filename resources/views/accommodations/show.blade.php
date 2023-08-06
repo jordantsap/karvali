@@ -1,7 +1,7 @@
 ﻿@extends('layouts.main')
-{{--@section('title', '$accommodation->name'.' '.$accommodation->title)--}}
-{{--@section('meta_description', '$accommodation->name'.' '.__('head.hotel').' '.$accommodation->meta_description)--}}
-{{--@section('meta_keywords', $accommodation->meta_keywords.'  '. '$accommodation->name'.' '.__('head.hotel'))--}}
+@section('title', $accommodation->title.' '.$accommodation->title)
+@section('meta_description', '$accommodation->name'.' '.__('head.hotel').' '.$accommodation->meta_description)
+@section('meta_keywords', $accommodation->meta_keywords.'  '. '$accommodation->name'.' '.__('head.hotel'))
 
 @section('head-js')
   <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c1ce62ff6809e0011a91cbd&product=inline-share-buttons' async='async'></script>
@@ -9,7 +9,7 @@
 
 @section('content')
 
-<img width="100%" height="350px" src="{{ asset('images/accommodations/'.$accommodation->header) }}"
+<img width="100%" height="350px" src="{{ asset('images/accommodations/' . $accommodation->header) }}"
   title="{{ $accommodation->title }}" class="" alt="{{$accommodation->title}}">
 <h1 class="text-center">{{ $accommodation->title }}</h1>
 <div class="divider"></div>
@@ -19,7 +19,7 @@
 
     <div class="row">
       <div class="col-xs-6">
-        <img src="{{ asset('images/accommodations/'.$accommodation->logo) }}" width="100%" height="250"
+        <img src="{{ asset('images/accommodations/', $accommodation->logo) }}" width="100%" height="250"
           alt="{{ $accommodation->title }}" title="{{ $accommodation->title }}">
         </div>
 
@@ -132,14 +132,14 @@
                 <ul class="list-group">
                   <li class="list-group-item"><h2>{{ $accommodation->title }}</h2>
                   </li>
-                  <li class="list-group-item"><img src="{{ asset('images/hotels/'.$accommodation->logo) }}" width="100%" height="100px" alt="{{$accommodation->title}}" title"{{$accommodation->title}}"></li>
-                  {{-- <li class="list-group-item bold">Κατηγορία: <a href="{{ route('products-category', $accommodation->producttype->id)}}">{{ $accommodation->producttype->name }}</a></li> --}}
+                  <li class="list-group-item"><img src="{{ asset('images/accommodations/'.$accommodation->logo) }}" width="100%" height="100px" alt="{{$accommodation->title}}" title"{{$accommodation->title}}"></li>
+                   <li class="list-group-item bold">Κατηγορία: <a href="{{ route('front.products-category', $accommodation->accommodationType->id)}}">{{ $accommodation->accommodationType->name }}</a></li>
                   <li class="list-group-item"><h3>Τιμή: {{ $accommodation->price }}</h3></li>
           <li class="list-group-item">
             <h3>{{ $accommodation->description }}</h3>
           </li>
           <li class="list-group-item">
-            <a href="{{route('product', $accommodation->slug) }}" class="btn btn-default btn-block">Show</a>
+            <a href="{{route('front.product', $accommodation->slug) }}" class="btn btn-default btn-block">Show</a>
           </li>
           </ul>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccommodationController;
 use App\Http\Controllers\Admin\AccommodationTypeController;
 use App\Http\Controllers\Owner\CompanyController;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,14 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
 
+        Route::post('tmp-upload/', [\App\Http\Controllers\FilePondController::class, 'tmpUpload'])->name('tmpUpload');
+        Route::delete('tmp-delete', [\App\Http\Controllers\FilePondController::class,'tpmDelete'])->name('tmpDelete');
+
 //        Route::get('user/{id}', 'UserController@showUser')->name('show.user');
 
     });
 
-Route::prefix('manage')->as('admin.')->middleware(['auth', 'verified'])->group(callback: function () {
+Route::prefix('manage')->as('admin.')->middleware(['auth'])->group(callback: function () {
     Route::get('/', 'Admin\HomeController@index');//->name('dashboard');
     Route::get('dashboard', 'Admin\HomeController@index')->name('dashboard');
     Route::resource('adverts', 'Admin\AdvertController');
@@ -48,6 +52,7 @@ Route::prefix('manage')->as('admin.')->middleware(['auth', 'verified'])->group(c
     Route::resource('products', 'Admin\ProductController');
     Route::resource('teams', 'Admin\GroupController');
     Route::resource('accommodation-types', AccommodationTypeController::class);
+    Route::resource('accommodations', AccommodationController::class);
 
 });
 

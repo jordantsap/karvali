@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('accommodations', function (Blueprint $table) {
             $table->id();
 
-//            $table->string('header')->nullable();
-//            $table->string('logo')->nullable();
-//            $table->string('image1')->nullable();
-//            $table->string('image2')->nullable();
-//            $table->string('image3')->nullable();
+            $table->string('header')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
             $table->string('telephone')->nullable();
             $table->string('website')->nullable();
             $table->string('email')->nullable();

@@ -18,7 +18,7 @@
        <div class="row">
          <ul class="nav navbar-nav collapse navbar-collapse" id="producttype-collapse">
             @foreach($producttypes as $producttype)
-              <li><a href="{{ route('products-category', $producttype->slug)}}" class="">{{ $producttype->name }}&nbsp<span class="badge">{{$producttype->products->where('active',1)->count()}}</span>
+              <li><a href="{{ route('front.products-category', $producttype->slug)}}" class="">{{ $producttype->name }}&nbsp<span class="badge">{{$producttype->products->where('active',1)->count()}}</span>
               </a></li>
             @endforeach
             <li>
@@ -36,13 +36,13 @@
             @foreach ($producttype->products as $product)
              <div class="col-xs-12 col-sm-6 col-md-4 portfolio-item">
                <div class="card h-100">
-                 <a target="_blank" href="{{ route('product',$product->slug) }}">
+                 <a target="_blank" href="{{ route('front.product',$product->slug) }}">
                    <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;" src="{{ asset('images/products/'.$product->logo) }}" alt="{{ $product->title }}">
                  </a>
                </div>
                <div class="card-body">
                  <div class="card-title">
-                   <a target="_blank" target="_blank" href="{{ route('product',$product->slug) }}">
+                   <a target="_blank" target="_blank" href="{{ route('front.product',$product->slug) }}">
                    <h2>{{ Str::limit($product->title, 30) }}</h2></a>
                  </div>
                  <div class="row" id="likecomment">
@@ -53,9 +53,9 @@
                      <i class="fa fa-3x fa-comment"></i><span class="badge">{{$product->comments->count()}}</span>
                    </div>
                  </div>
-                   <div class="row col-xs-4 col-sm-12"><h3><b>{{ __('page.category') }}</b> <a href="{{ route('products-category', $product->category->slug)}}">{{$product->category->name}}</a></h3> </div>
+                   <div class="row col-xs-4 col-sm-12"><h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.products-category', $product->category->slug)}}">{{$product->category->name}}</a></h3> </div>
                    <div class="row">
-                     <div class="col-xs-8"><h4><b>{{ __('page.company') }}</b> <a href="{{route('company',$product->company->slug)}}"><br>{{Str::limit($product->company->title, 10)}}</a></h4></div>
+                     <div class="col-xs-8"><h4><b>{{ __('page.company') }}</b> <a href="{{route('front.company',$product->company->slug)}}"><br>{{Str::limit($product->company->title, 10)}}</a></h4></div>
                      <h4 class="col-xs-4"><b>{{ __('page.price') }}</b> <br>€ {{ $product->price }}</h4>
                    </div>
                    <div class="row">
@@ -83,7 +83,7 @@
        </div>
 
       <div class="col-xs-9">
-      	{{ $products->links() }}
+{{--      	{{ $products->links() }}--}}
       </div>
 
      </div>

@@ -21,11 +21,11 @@ class AccommodationController extends Controller
     public function index()
     {
         $accommodations = Accommodation::with('accommodationType')
-            ->translated()
+//            ->translated()
             ->withTranslation()
             ->paginate();
 
-        $accommodationTypes = AccommodationType::translated()->get();
+        $accommodationTypes = AccommodationType::withTranslation()->get();
 
         return view('accommodations.index', compact('accommodations', 'accommodationTypes'));
     }
@@ -36,14 +36,14 @@ class AccommodationController extends Controller
      * @param Accommodation $accommodation
      * @return Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $accommodation = Accommodation::withTranslation()->whereTranslation('slug',$slug)->first();
+        $accommodation = Accommodation::find($id);
 
         return view('accommodations.show', compact('accommodation'));
     }
 
-    public function category(AccommodationType $accommodationType, $slug)
+    public function category($slug)
     {
          $accommodationType = AccommodationType::whereTranslation('slug', $slug)
              ->withTranslation()->get();

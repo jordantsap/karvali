@@ -20,7 +20,7 @@
                         <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
                             @foreach($accommodationTypes as $accommodationType)
                                 <li>
-                                    <a href="{{ route('accommodation-types', $accommodationType->slug)}}" class="">{{ $accommodationType->title }}&nbsp
+                                    <a href="{{ route('front.accommodation-types.show', $accommodationType->slug)}}" class="">{{ $accommodationType->title }}&nbsp
                                         <span class="badge">{{$accommodationType->accommodations->where('active',1)->count()}}</span>
                                     </a>
                                 </li>
@@ -34,17 +34,17 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if(count($accommodations) > 0)
+                    @if($accommodations)
                         @foreach ($accommodations as $accommodation)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
-                                    <a href="{{ route('accommodation.show',$accommodation->slug) }}">
+                                    <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;" src="{{ asset('images/accommodations/'.$accommodation->logo) }}" alt="{{ $accommodation->title }}">
                                     </a>
                                 </div>
                                 <div class="card-body text-center">
                                     <h2 class="card-title">
-                                        <a href="{{ route('accommodation.show',$accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
+                                        <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
                                     </h2>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('companies-category', $accommodation->accommodationType->slug)}}">
+                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.companies-category', $accommodation->accommodationType->slug)}}">
                                                     {{$accommodation->accommodationType->title}}
                                                 </a></h3>
                                         </div>

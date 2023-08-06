@@ -74,15 +74,15 @@ class ProductTypeSeeder extends Seeder
             'slug:el' => 'paradosiako',
         ]);
         ProductType::create([
-            'name:en' => 'Pharmaceuticals',
-            'slug:en' => 'pharmaceuticals',
+            'name:en' => 'Pharma',
+            'slug:en' => 'pharma',
 
             'name:el' => 'Φαρμακευτικά',
             'slug:el' => 'farmakeytika',
         ]);
         ProductType::create([
-            'name:en' => 'Agricultural',
-            'slug:en' => 'agricultural',
+            'name:en' => 'Agriculture',
+            'slug:en' => 'agriculture',
 
             'name:el' => 'Αγροτικά',
             'slug:el' => 'agrotika',

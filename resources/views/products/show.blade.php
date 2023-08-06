@@ -27,12 +27,12 @@
           <ul class="list-group">
               <li class="list-group-item bold">
                 <h2>{{__('single.company')}}
-                  <a href="{{ route('company',$product->company->slug) }}">
+                  <a href="{{ route('front.company',$product->company->slug) }}">
                     {{ Str::limit($product->company->title, 200) }}</a></h2></li>
 
               <li class="list-group-item bold">
                 <h2>{{__('single.category')}}
-                  <a href="{{ route('products-category', $product->category->slug)}}">
+                  <a href="{{ route('front.products-category', $product->category->slug)}}">
                     {{ $product->category->name }}</a>
                 </h2>
               </li>

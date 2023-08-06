@@ -55,6 +55,12 @@ class AccommodationController extends Controller
         $accommodation->twitter = $request->twitter;
         $accommodation->email = $request->email;
         $accommodation->total_rooms = $request->total_rooms;
+        $accommodation->header = $request->header;
+        $accommodation->logo = $request->logo;
+        $accommodation->image1 = $request->image1;
+        $accommodation->image2 = $request->image2;
+        $accommodation->image3 = $request->image3;
+        $accommodation->imgfile = $request->imgfile;
 
         $accommodation->save();
 
@@ -80,11 +86,11 @@ class AccommodationController extends Controller
      * @param \App\Models\Accommodation $accommodation
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Accommodation $accommodation)
+    public function show($slug)
     {
-        $accommodation = Accommodation::find($accommodation->id);
+        $accommodation = Accommodation::whereTranslation('slug',$slug)->first();
 
-        return view('auth.accommodations.show', [$accommodation->id], compact('accommodation'));
+        return view('auth.accommodations.show', compact('accommodation'));
     }
 
     /**

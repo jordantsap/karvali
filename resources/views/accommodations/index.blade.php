@@ -20,7 +20,7 @@
                         <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
                             @foreach ($accommodationTypes as $accommodationType)
                                 <li>
-                                    <a href="{{ route('front.accommodation-types', $accommodationType->slug) }}"
+                                    <a href="{{ route('front.accommodation-types.show',$accommodationType->slug) }}"
                                         class="">{{ $accommodationType->title }}&nbsp
                                         <span class="badge">{{ $accommodationType->accommodations->where('active', 1)->count() }}</span>
                                     </a>
@@ -43,7 +43,7 @@
                                 <div class="card h-100">
                                     <a href="{{ route('front.accommodation.show', $accommodation->id) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
-                                            src="{{ asset('images/accommodations/' . $accommodation->logo) }}"
+                                            src="{{ asset('images/accommodations/'. $accommodation->logo) }}"
                                             alt="{{ $accommodation->title }}">
                                     </a>
                                 </div>
