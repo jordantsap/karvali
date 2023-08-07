@@ -2,26 +2,8 @@
 <html lang="en">
 <head>
 	@include('admin.layouts.head')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
-    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
-    <style>
-
-        .filepond--panel-root {
-            height: 50px !important;
-            /*width: 100px !important;*/
-        }
-        .filepond--item {
-            height: 100px;
-            font-size: 24px !important;
-        }
-        .filepond--file {
-            color: white;
-        }
-        .filepond--drop-label {
-            color: #555;
-            font-size: 20px !important;
-        }
-    </style>
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
@@ -34,36 +16,58 @@
 <script src="{{ asset('admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 </div>
 
-
-<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+{{-- IMAGES PREVIEW SCRIPT--}}
 
 <script>
-    FilePond.registerPlugin(FilePondPluginImagePreview);
-    // Get a reference to the file input element
-    const inputElement = document.querySelector('#imgfile');
-    const pond = FilePond.create(inputElement);
+    const imageInputIds = ['header', 'logo', 'image1', 'image2', 'image3', 'imgfile'];
 
+    imageInputIds.forEach((inputId) => {
+        const inputElement = document.getElementById(inputId);
+        const imagePreview = document.getElementById(`${inputId}Preview`);
 
-    pond.setOptions({
-        server: {
-            headers:{
-                'X-CSRF-TOKEN': '{{csrf_token()}}'
-            },
-            process: {
-                url: '{{route('owner.tmpUpload')}}',
-                method: 'POST',
-            },
-            revert: '{{route('owner.tmpDelete')}}'
-        },
+        inputElement.addEventListener('change', function(event) {
+            const fileInput = event.target;
+            const file = fileInput.files[0];
 
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function() {
+                    imagePreview.src = reader.result;
+                    imagePreview.style.display = 'block';
+                });
+
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+            }
+        });
     });
 
-    pond.processFile(1).then((file) => {
-        // File has been processed
-        console.log(file);
+    const imgfileInput = document.getElementById('imgfile');
+    const selectedImagesContainer = document.getElementById('imgfilePreviewContainer');
+
+    imgfileInput.addEventListener('change', function(event) {
+        selectedImagesContainer.innerHTML = '';
+
+        for (const file of imgfileInput.files) {
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+                const imagePreview = document.createElement('img');
+                imagePreview.src = reader.result;
+                imagePreview.style.width = '150px';
+                imagePreview.style.height = '150px';
+                selectedImagesContainer.appendChild(imagePreview);
+            });
+
+            reader.readAsDataURL(file);
+        }
     });
 </script>
+
+
 
 {{-- toaster --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -117,5 +121,21 @@ $('ul.treeview-menu a').filter(function() {
 }).parentsUntil(".sidebar-menu > .treeview-menu").siblings().removeClass('active').end().addClass('active');
 </script>
 
+<!-- Add this script at the end of your layout or specific view -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    // Lightbox2 configuration
+    lightbox.option({
+        'fadeDuration': 500,
+        'resizeDuration': 700,
+        'wrapAround': true,
+        'disableScrolling': true, // Prevent scrolling while lightbox is open
+        'positionFromTop': 50, // Adjust the distance from the top of the screen
+        'fitImagesInViewport': true, // Fit images to the screen
+        'maxWidth': '90%', // Set the maximum width of the lightbox image
+        'maxHeight': '90%', // Set the maximum height of the lightbox image
+        'showImageNumberLabel': false // Hide the image number label (1 of 3)
+    });
+</script>
 </body>
 </html>

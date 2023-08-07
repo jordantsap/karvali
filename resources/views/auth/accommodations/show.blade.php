@@ -119,6 +119,60 @@
                         <textarea id="editor" class="textarea" name="description" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$accommodation->description}}</textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label for="header">header</label>
+                        <div class="input-group">
+                            <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->header)}}" alt="{{$accommodation->title}}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-3 form-group">
+                            <label for="logo">Λογότυπο</label>
+                            <div class="input-group">
+                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->logo)}}" alt="{{$accommodation->title}}">
+                            </div>
+                        </div>
+                        <div class="col-xs-3 form-group">
+                            <label for="image1">Εικόνα Αρχικης Σελίδας</label>
+                            <div class="input-group">
+                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->image1)}}" alt="{{$accommodation->title}}">
+                            </div>
+                        </div>
+                        <div class="col-xs-3 form-group">
+                            <label for="image2">Εικόνα 2</label>
+                            <div class="col-xs-3 input-group">
+                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->image2)}}" alt="{{$accommodation->title}}">
+                            </div>
+                        </div>
+                        <div class="col-xs-3 form-group">
+                            <label for="image3">Εικόνες 3</label>
+                            <div class="input-group">
+                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->image3)}}" alt="{{$accommodation->title}}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @if($accommodation->images)
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label for="image3"> <h1>{{__('Λοιπές Εικόνες')}}</h1></label>
+                                </div>
+                                @foreach($accommodation->images as $upload)
+                                    <div class="col-xs-1 col-md-3">
+                                        <a href="{{ asset($upload->path) }}" data-lightbox="accommodation-images">
+                                            <img width="100%" height="100%" src="{{ asset($upload->path) }}" alt="{{$upload->id}}">
+                                        </a>
+                                    </div>
+                                @endforeach
+                                @else
+                                    No images available
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
                 <!-- /.box-body -->
             </div>

@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAccommodationRequest;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
+use App\Models\Image as ImageModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class AccommodationController extends Controller
 {
@@ -41,10 +44,12 @@ class AccommodationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(StoreAccommodationRequest $request, Accommodation $accommodation)
     {
+//        dd($request->all());
+
         $accommodation = new Accommodation();
         $accommodation->user_id = $request->user_id;
         $accommodation->active = $request->active;
@@ -60,9 +65,26 @@ class AccommodationController extends Controller
         $accommodation->image1 = $request->image1;
         $accommodation->image2 = $request->image2;
         $accommodation->image3 = $request->image3;
-        $accommodation->imgfile = $request->imgfile;
+//        $accommodation->uploads = $request->imgfile;
+
 
         $accommodation->save();
+
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+        $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName); // You can specify a custom directory
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $accommodation->images()->save($upload);
+
+            }
+        }
 
         foreach (config('translatable.locales') as $locale => $lang) {
             $accommodation->translateOrNew($locale)->title = $request->{$locale}['title'];
@@ -74,9 +96,10 @@ class AccommodationController extends Controller
 
         $accommodation->save();
 
+//        return $accommodation->uploads();
         toastr()->addSuccess('Accommodation was saved successfully.');
 
-        return redirect(route('owner.accommodation.show', $accommodation->id));
+        return redirect(route('owner.accommodation.show', $accommodation->slug));
 
     }
 
@@ -122,7 +145,7 @@ class AccommodationController extends Controller
 
         toastr()->addSuccess('Accommodation Updated successfully.');
 
-        return redirect(route('auth.accommodations.show', $accommodation->id));
+        return redirect(route('auth.accommodations.show', $accommodation->slug));
     }
 
     /**

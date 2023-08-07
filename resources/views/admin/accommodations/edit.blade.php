@@ -113,7 +113,7 @@
 
             <div class="form-group">
               <label for="header">header</label>
-              <img width="100%" height="200" src="{{asset('images/companies/'.$company->header)}}" alt="{{$company->title}}">
+              <img width="100%" height="200" src="{{asset('images/accommodations/'.$company->header)}}" alt="{{$company->title}}">
             </div>
             <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
               {{-- <label for="logo">Λογότυπο</label> --}}

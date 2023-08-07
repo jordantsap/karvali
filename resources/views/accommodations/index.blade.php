@@ -41,7 +41,7 @@
                         @foreach ($accommodations as $accommodation)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
-                                    <a href="{{ route('front.accommodation.show', $accommodation->id) }}">
+                                    <a href="{{ route('front.accommodation.show', $accommodation->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
                                             src="{{ asset('images/accommodations/'. $accommodation->logo) }}"
                                             alt="{{ $accommodation->title }}">
@@ -50,7 +50,7 @@
                                 <div class="card-body text-center">
                                     <h2 class="card-title">
                                         <a
-                                            href="{{ route('front.accommodation.show', $accommodation->id) }}">{{ Str::limit($accommodation->title, 20) }}</a>
+                                            href="{{ route('front.accommodation.show', $accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
                                     </h2>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">

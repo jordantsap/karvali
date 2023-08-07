@@ -36,9 +36,9 @@ class AccommodationController extends Controller
      * @param Accommodation $accommodation
      * @return Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $accommodation = Accommodation::find($id);
+        $accommodation = Accommodation::whereTranslation('slug', $slug)->first();
 
         return view('accommodations.show', compact('accommodation'));
     }

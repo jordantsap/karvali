@@ -5,9 +5,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          Your Accommodation
+          New Accommodation
 {{--        @can ('create_companies', App\Company::class)--}}
-          <small><a class="btn btn-primary" href="{{route('owner.accommodation.store')}}">New</a></small>
+          <small><a class="btn btn-primary" href="{{route('owner.accommodation.create')}}">New</a></small>
 {{--        @endcan--}}
       </h1>
     </section>

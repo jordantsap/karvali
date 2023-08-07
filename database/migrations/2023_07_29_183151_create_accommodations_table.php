@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
+//            $table->json('uploads')->nullable();
             $table->string('telephone')->nullable();
             $table->string('website')->nullable();
             $table->string('email')->nullable();

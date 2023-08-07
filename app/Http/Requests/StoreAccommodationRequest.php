@@ -45,7 +45,7 @@ class StoreAccommodationRequest extends FormRequest
             'image1'=>'nullable',
             'image2'=>'nullable',
             'image3'=>'nullable',
-            'imgfile'=>'nullable',
+            'imgfile.*'=>'sometimes',
         ];
 
         foreach (config('translatable.locales') as $locale) {

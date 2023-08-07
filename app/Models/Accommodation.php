@@ -37,8 +37,9 @@ class Accommodation extends Model implements TranslatableContract
         'image1',
         'image2',
         'image3',
-        'imgfile',
+        'uploads',
     ];
+
     public function getRouteKeyName(): string
     {
         return 'slug';
@@ -53,14 +54,15 @@ class Accommodation extends Model implements TranslatableContract
     {
         return $this->belongsTo(AccommodationType::class);
     }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function uploads(): MorphToMany
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->morphToMany(Uploads::class, 'uploadable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function comments()

@@ -26,13 +26,15 @@ Route::middleware(['auth', 'verified'])
         Route::resource('venues', \App\Http\Controllers\Owner\VenueController::class);
 
         Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
-
-        Route::post('tmp-upload/', [\App\Http\Controllers\FilePondController::class, 'tmpUpload'])->name('tmpUpload');
-        Route::delete('tmp-delete', [\App\Http\Controllers\FilePondController::class,'tpmDelete'])->name('tmpDelete');
+//
+//        Route::post('tmp-upload/', [\App\Http\Controllers\FilePondController::class, 'tmpUpload'])->name('tmpUpload');
+//        Route::delete('tmp-delete', [\App\Http\Controllers\FilePondController::class,'tpmDelete'])->name('tmpDelete');
 
 //        Route::get('user/{id}', 'UserController@showUser')->name('show.user');
 
     });
+Route::post('accommodations/media', [\App\Http\Controllers\DropzoneController::class, 'storeMedia'])->name('projects.storeMedia');
+
 
 Route::prefix('manage')->as('admin.')->middleware(['auth'])->group(callback: function () {
     Route::get('/', 'Admin\HomeController@index');//->name('dashboard');

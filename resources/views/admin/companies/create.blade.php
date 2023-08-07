@@ -88,6 +88,7 @@
           </div>
 
 
+          <div class="row">
           <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
             <label for="header">header</label>
             @if ($errors->has('header'))
@@ -101,7 +102,6 @@
               <p class="help-block">Help text here.</p>
             </div>
           </div>
-          <div class="row">
                 <div class="col-xs-3 form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
                   <label for="logo">Λογότυπο</label>
                   @if ($errors->has('logo'))
