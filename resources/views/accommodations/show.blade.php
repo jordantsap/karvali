@@ -9,7 +9,7 @@
 
 @section('content')
 
-<img width="100%" height="350px" src="{{ asset('images/accommodations/' . $accommodation->header) }}"
+<img width="100%" height="350px" src="{{ asset('images/accommodations/' . $accommodation->header)??$accommodation->header }}"
   title="{{ $accommodation->title }}" class="" alt="{{$accommodation->title}}">
 <h1 class="text-center">{{ $accommodation->title }}</h1>
 <div class="divider"></div>
@@ -103,18 +103,18 @@
 
               <div class="row">
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$accommodation->title}}" data-alt="{{$accommodation->title}}" href="{{ asset('images/companies/'.$accommodation->image1) }}">
-                    <img src="{{ asset('images/companies/'.$accommodation->image1) }}" title="{{ $accommodation->title }}" class="img-responsive img-rounded" alt="{{$accommodation->title}}">
+                  <a data-lightbox="accommodations" data-title="{{$accommodation->title}}" data-alt="{{$accommodation->title}}" href="{{ asset('images/accommodations/'.$accommodation->image1) }}">
+                    <img src="{{ asset('images/accommodations/'.$accommodation->image1) }}" title="{{ $accommodation->title }}" class="img-responsive img-rounded" alt="{{$accommodation->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$accommodation->title}}" data-alt="{{$accommodation->title}}" href="{{ asset('images/companies/'.$accommodation->image2) }}">
-                    <img src="{{ asset('images/companies/'.$accommodation->image2) }}" title="{{ $accommodation->title }}" class="img-responsive img-rounded" alt="{{$accommodation->title}}">
+                  <a data-lightbox="accommodations" data-title="{{$accommodation->title}}" data-alt="{{$accommodation->title}}" href="{{ asset('images/accommodations/'.$accommodation->image2) }}">
+                    <img src="{{ asset('images/accommodations/'.$accommodation->image2) }}" title="{{ $accommodation->title }}" class="img-responsive img-rounded" alt="{{$accommodation->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$accommodation->title}}" data-alt="{{$accommodation->title}}" href="{{ asset('images/companies/'.$accommodation->image3) }}">
-                    <img src="{{ asset('images/companies/'.$accommodation->image3) }}" title="{{ $accommodation->title }}" class="img-responsive img-rounded" alt="{{$accommodation->title}}">
+                  <a data-lightbox="accommodations" data-title="{{$accommodation->title}}" data-alt="{{$accommodation->title}}" href="{{ asset('images/accommodations/'.$accommodation->image3) }}">
+                    <img src="{{ asset('images/accommodations/'.$accommodation->image3) }}" title="{{ $accommodation->title }}" class="img-responsive img-rounded" alt="{{$accommodation->title}}">
                   </a>
                 </div>
               </div>
@@ -127,19 +127,24 @@
           </div>
 
           @if(count($accommodation->rooms->where('active',1)) > 0)
-            @foreach($accommodation->rooms->where('active',1) as $accommodation)
+            @foreach($accommodation->rooms->where('active',1) as $room)
               <div class="col-xs-3">
                 <ul class="list-group">
-                  <li class="list-group-item"><h2>{{ $accommodation->title }}</h2>
+                  <li class="list-group-item"><h2>{{__("Title: "). $room->title }}</h2>
                   </li>
-                  <li class="list-group-item"><img src="{{ asset('images/accommodations/'.$accommodation->logo) }}" width="100%" height="100px" alt="{{$accommodation->title}}" title"{{$accommodation->title}}"></li>
-                   <li class="list-group-item bold">Κατηγορία: <a href="{{ route('front.products-category', $accommodation->accommodationType->id)}}">{{ $accommodation->accommodationType->name }}</a></li>
-                  <li class="list-group-item"><h3>Τιμή: {{ $accommodation->price }}</h3></li>
+                  <li class="list-group-item"><img src="{{ asset('images/rooms/'.$room->logo) }}" width="100%" height="100px" alt="{{$room->title}}" title={{$room->title}}"></li>
+                   <li class="list-group-item bold">
+                       Κατηγορία: <a href="{{ $room->accommodationType? route('front.room-types', $room->accommodationType->slug):'#'}}">
+                           {{ $room->accommodationType? $room->accommodationType->title :'' }}</a></li>
+                  <li class="list-group-item"><h3>Τιμή: {{ $room->price }}</h3></li>
           <li class="list-group-item">
-            <h3>{{ $accommodation->description }}</h3>
+            <h3>{{ $room->description }}</h3>
           </li>
           <li class="list-group-item">
-            <a href="{{route('front.product', $accommodation->slug) }}" class="btn btn-default btn-block">Show</a>
+{{--            <a href="{{route('front.room.show',$room->id) }}" class="btn btn-default btn-block">Show</a>--}}
+              <a href="#" data-toggle="modal" data-target="#roomModal">
+                  {{__('Title'). $room->title }}
+              </a>
           </li>
           </ul>
         </div>
@@ -158,7 +163,7 @@
 
         <div class="col-xs-6">
           <label>{{__('single.latestcomments')}}</label>
-          @if(count($accommodation->comments) > 0)
+          @if($accommodation->comments)
           <ul class="list-group">
             @foreach ($accommodation->comments as $comment)
             <li class="list-group-item">
@@ -195,4 +200,158 @@
       </div>
     </div>
   </div>
-  <br> @endsection
+
+@endsection
+{{--@include('modals.roomModal')--}}
+
+
+<div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="roomModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roomModalLabel">Room Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label for="title">Ονομασία:</label>
+                            <div class="input-group">
+                                <input type="text" value="{{ $room->title }}" class="form-control" name="title" placeholder="{{ $room->title }}">
+                                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-home"></span>
+              </span>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                        <div class="row">--}}
+                    <div class="col-xs-12">
+                        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                            <label for="description">Περιγραφή</label>
+                            <div class="input-group">
+              <textarea name="description" id="description" class="form-control"
+                        rows="5" required>{{ $room->description }}</textarea>
+                                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-info-sign"></span>
+              </span>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                        </div>--}}
+
+                    <div class="form-group col-xs-4">
+                        <label for="category">Category</label>
+                        <div class="form-control" name="category" id="category" disabled>
+                            @if( ! empty($room->category)){{ $room->category->name }}
+                            @else Null
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-2 form-group">
+                        <label for="active"> Active
+                            <input type="checkbox" name="active" value="1" @if ($room->active == 1)
+                                {{'checked'}}
+                                @endif>
+                        </label>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+                            <label for="price">Τιμή</label>
+                            <div class="input-group">
+                                <input type="text" value="{{ $room->price }}" class="form-control" name="price" placeholder="Τιμή" required>
+                                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-euro"></span>
+              </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <div class="form-group{{ $errors->has('accommodation_id') ? ' has-error' : '' }}">
+                            <label for="accommodation_id">Εταιρεία</label>
+                            @if ($errors->has('accommodation_id'))
+                                <strong class="text-danger">{{ $errors->first('accommodation_id') }}</strong>
+                            @endif
+                            <div class="input-group">
+                                <select id="accommodation_id" value="{{ $room->accommodation_id }}" name="accommodation_id" class="form-control" required>
+                                    <option value="">Επιλέξτε</option>
+                                    @foreach($room->accommodation() as $company)
+                                        <option value="{{ $company->id }}" {{$room->accommodation_id == $company->id? "selected" : ''}}>{{ $company->title }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-list"></span>
+              </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="header">header</label>
+                    <div class="input-group">
+                        <img width="100%" height="200" src="{{asset('images/rooms/'.$room->header)}}" alt="{{$room->title}}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 form-group">
+                        <label for="logo">Λογότυπο</label>
+                        <div class="input-group">
+                            <img width="200" height="200" src="{{asset('images/rooms/'.$room->logo)}}" alt="{{$room->title}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 form-group">
+                        <label for="image1">Εικόνα Αρχικης Σελίδας</label>
+                        <div class="input-group">
+                            <img width="200" height="200" src="{{asset('images/rooms/'.$room->image1)}}" alt="{{$room->title}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 form-group">
+                        <label for="image2">Εικόνα 2</label>
+                        <div class="col-xs-3 input-group">
+                            <img width="200" height="200" src="{{asset('images/rooms/'.$room->image2)}}" alt="{{$room->title}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 form-group">
+                        <label for="image3">Εικόνες 3</label>
+                        <div class="input-group">
+                            <img width="200" height="200" src="{{asset('images/rooms/'.$room->image3)}}" alt="{{$room->title}}">
+                        </div>
+                    </div>
+                </div>
+                @if(count($room->images) > 0)
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label for="image3"> <h1>{{__('Λοιπές Εικόνες')}}</h1></label>
+                            </div>
+                            @foreach($room->images as $upload)
+                                <div class="col-xs-1 col-md-3">
+                                    <a href="{{ asset($upload->path) }}" data-lightbox="accommodation-images">
+                                        <img width="100%" height="100%" src="{{ asset($upload->path) }}" alt="{{$upload->id}}">
+                                    </a>
+                                </div>
+                            @endforeach
+                            dsfagedthfyuhdj
+                            @else
+                                No more images available
+                        </div>
+                    </div>
+                @endif
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

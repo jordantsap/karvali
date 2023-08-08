@@ -273,17 +273,27 @@
                   </div>
               </div>
               <div class="row">
-                  <div class="col-xs-8 col-lg-offset-2 form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
-                      <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
-                      @if ($errors->has('imgfile'))
-                          <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
-                      @endif
-                      <div>
-                          @if ( old('imgfile'))
-                              <input type="file" name="images[]" id="imgfile" multiple>
+                  <div class="col-xs-4 col-lg-offset-4">
+                      <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                          <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                          @if ($errors->has('imgfile'))
+                              <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
                           @endif
-                          <input type="file" name="imgfile" id="imgfile">
+                          <div>
+                              {{--                                            @if ( old('imgfile'))--}}
+                              {{--                                                <input type="file" name="imgfile[]" id="imgfile" multiple>--}}
+                              {{--                                            @endif--}}
+                              <input type="file" name="imgfile[]" id="imgfile" multiple>
+                          </div>
+                          <p class="help-block">
+                          {{__('You can only select up to 5 files.')}}
+                          <div id="imgfilePreviewContainer">
+                              {{__('Preview')}}
+                          </div>
+
+                          </p>
                       </div>
+
                   </div>
 
               </div>

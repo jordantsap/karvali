@@ -7,7 +7,13 @@ use App\Http\Requests\StoreAccommodationRequest;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
 use App\Models\Image as ImageModel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -16,7 +22,7 @@ class AccommodationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -31,7 +37,7 @@ class AccommodationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -43,8 +49,8 @@ class AccommodationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
      */
     public function store(StoreAccommodationRequest $request, Accommodation $accommodation)
     {
@@ -106,12 +112,12 @@ class AccommodationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Accommodation $accommodation
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param Accommodation $accommodation
+     * @return Application|Factory|View
      */
-    public function show($slug)
+    public function show(Accommodation $accommodation)
     {
-        $accommodation = Accommodation::whereTranslation('slug',$slug)->first();
+        $accommodation = Accommodation::find($accommodation->id);
 
         return view('auth.accommodations.show', compact('accommodation'));
     }
@@ -119,8 +125,8 @@ class AccommodationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Accommodation $accommodation
-     * @return \Illuminate\Http\Response
+     * @param Accommodation $accommodation
+     * @return Application|Factory|View
      */
     public function edit($slug)
     {
@@ -134,9 +140,9 @@ class AccommodationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Accommodation $accommodation
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @param Accommodation $accommodation
+     * @return Application|RedirectResponse|Redirector
      */
     public function update(Request $request, Accommodation $accommodation)
     {
@@ -151,8 +157,8 @@ class AccommodationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Accommodation $accommodation
-     * @return \Illuminate\Http\Response
+     * @param Accommodation $accommodation
+     * @return Response
      */
     public function destroy(Accommodation $accommodation)
     {

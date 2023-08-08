@@ -13,8 +13,8 @@ class FilePondController extends Controller
      */
     public function tmpUpload(Request $request)
     {
-        if ($request->hasFile('imgfile')) {
-            $image = $request->file('imgfile');
+        if ($request->hasFile('imgfile[]')) {
+            $image = $request->file('imgfile[]');
             $filename = $image->getClientOriginalName();
             $folder = uniqid('accommodation',true);
             $image->storeAs('/images/accommodations/tmp/' . $folder, $filename);

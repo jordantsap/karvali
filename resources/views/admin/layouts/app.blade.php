@@ -47,14 +47,27 @@
 
     const imgfileInput = document.getElementById('imgfile');
     const selectedImagesContainer = document.getElementById('imgfilePreviewContainer');
+    const maxFiles = 5; // Maximum number of files allowed
 
-    imgfileInput.addEventListener('change', function(event) {
+    imgfileInput.addEventListener('change', function (event) {
+        const input = event.target;
+        const selectedFiles = input.files;
+
+        // Check if the number of selected files exceeds the limit
+        if (selectedFiles.length > maxFiles) {
+            alert(`You can only select up to ${maxFiles} files.`);
+            input.value = ''; // Clear the selected files if over the limit
+            return; // Exit the function, so further processing is stopped
+        }
+
+        // Clear the container before appending new images
         selectedImagesContainer.innerHTML = '';
 
-        for (const file of imgfileInput.files) {
+        // Loop through selected files and display image previews
+        for (const file of selectedFiles) {
             const reader = new FileReader();
 
-            reader.addEventListener('load', function() {
+            reader.addEventListener('load', function () {
                 const imagePreview = document.createElement('img');
                 imagePreview.src = reader.result;
                 imagePreview.style.width = '150px';
@@ -65,6 +78,18 @@
             reader.readAsDataURL(file);
         }
     });
+</script>
+<script>
+
+    // document.getElementById('imagefile').addEventListener('change', function (event) {
+    //     const input = event.target;
+    //     const maxFiles = 5;
+    //
+    //     if (input.files.length > maxFiles) {
+    //         alert(`You can only select up to ${maxFiles} files.`);
+    //         input.value = ''; // Clear the selected files if over the limit
+    //     }
+    // });
 </script>
 
 

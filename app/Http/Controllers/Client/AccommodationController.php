@@ -43,12 +43,15 @@ class AccommodationController extends Controller
         return view('accommodations.show', compact('accommodation'));
     }
 
-    public function category($slug)
+    public function category(Accommodation $accommodation, $slug)
     {
-         $accommodationType = AccommodationType::whereTranslation('slug', $slug)
-             ->withTranslation()->get();
+         $accommodationType = AccommodationType::with('accommodations')
+             ->whereTranslation('slug', $slug)
+             ->first();
 
-        $accommodations = Accommodation::withTranslation()->where('accommodation_type_id', $accommodationType[0]->id)->paginate();
+        $accommodations = Accommodation::whereHas('accommodationType',function($query) use ($slug) {
+            $query->whereTranslation('slug', $slug);
+        })->paginate();
 
          return view('accommodations.category', compact(['accommodations','accommodationType']));
     }

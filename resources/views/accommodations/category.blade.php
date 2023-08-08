@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', '$accommodationType->title' . ' '.__('head.companycategory'))
+@section('title', $accommodationType->title . ' '.__('head.companycategory'))
 @section('meta_description', __('meta.companycategorydescription').' '.'$accommodationType->title')
 @section('meta_keywords', '$accommodationType->title'.' '.__('meta.companycategorykeywords'))
 

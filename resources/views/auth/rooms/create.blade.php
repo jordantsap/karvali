@@ -169,6 +169,106 @@
                         </div>
                         @endforeach
 
+                        <div class="col-xs-4 form-group{{ $errors->has('header') ? ' has-error' : '' }}">
+                            <label for="header">header</label>
+                            @if ($errors->has('header'))
+                                <strong class="text-danger">{{ $errors->first('header') }}</strong>
+                            @endif
+                            <div class="input-group">
+                                @if ( old('header'))
+                                    <img src="{{ old('header') }}" alt="">
+                                @endif
+                                <input type="file" name="header" id="header" value="{{ old('header') }}" >
+                                <p class="help-block">
+                                    <img id="headerPreview" src="#" alt="Header Preview" style="display: none; max-width: 300px;">
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4 form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+                            <label for="logo">Λογότυπο</label>
+                            @if ($errors->has('logo'))
+                                <strong class="text-danger">{{ $errors->first('logo') }}</strong>
+                            @endif
+                            <div class="input-group">
+                                @if ( old('logo'))
+                                    <img src="{{ old('logo') }}" alt="">
+                                @endif
+                                <input type="file" id="logo" name="logo" value="{{ old('logo') }}" >
+                                <p class="help-block">
+                                    <img id="logoPreview" src="#" alt="Logo Preview" style="display: none; max-width: 300px;">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
+                            <label for="image1">Εικόνα Αρχικης Σελίδας</label>
+                            @if ($errors->has('image1'))
+                                <strong class="text-danger">{{ $errors->first('image1') }}</strong>
+                            @endif
+                            <div class="input-group">
+                                @if ( old('image1'))
+                                    <img src="{{ old('image1') }}" alt="">
+                                @endif
+                                <input type="file" name="image1" id="image1" value="{{ old('image1') }}" >
+                                <p class="help-block"><img id="image1Preview" src="#" alt="Image Preview 1" style="display: none; max-width: 300px;"></p>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-4 form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
+                            <label for="image2">Εικόνα λίστας καταχωρήσεων</label>
+                            @if ($errors->has('image2'))
+                                <strong class="text-danger">{{ $errors->first('image2') }}</strong>
+                            @endif
+                            <div class="input-group">
+                                @if ( old('image2'))
+                                    <img src="{{ old('image2') }}" alt="">
+                                @endif
+                                <input type="file" id="image2" name="image2" value="{{ old('image2') }}" >
+                                <p class="help-block"><img id="image2Preview" src="#" alt="Image Preview 2" style="display: none; max-width: 300px;"></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
+                            <label for="image3">Εικόνες σελίδας Καταστήματος</label>
+                            @if ($errors->has('image3'))
+                                <strong class="text-danger">{{ $errors->first('image3') }}</strong>
+                            @endif
+                            <div class="input-group">
+                                @if ( old('image3'))
+                                    <img src="{{ old('image3') }}" alt="">
+                                @endif
+                                <input type="file" id="image3" name="image3" value="{{ old('image3') }}">
+                                <p class="help-block">
+                                    <img id="image3Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-lg-offset-4">
+                            <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                                <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                                @if ($errors->has('imgfile'))
+                                    <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
+                                @endif
+                                <div>
+{{--                                    @if ( old('imgfile'))--}}
+{{--                                        <input type="file" name="imgfile[]" id="imgfile" multiple>--}}
+{{--                                    @endif--}}
+                                    <input type="file" name="imgfile[]" id="imgfile" multiple>
+                                </div>
+                                <p class="help-block">
+                                    {{__('You can only select up to 5 files.')}}
+                                <div id="imgfilePreviewContainer">
+                                    {{__('Preview')}}
+                                </div>
+
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+
                         <input type="hidden" name="user_id" value="{{auth()->id()}}">
 
                     </div>

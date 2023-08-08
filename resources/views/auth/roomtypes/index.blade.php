@@ -5,10 +5,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Accommodation Types
-                @can ('create', App\Models\AccommodationType::class)
-                    <small><a class="btn btn-primary" href="{{route('admin.accommodation-types.create')}}">Add New</a></small>
-                @endcan
+                Room Types
+{{--                @can ('create-roomtypes', App\Models\RoomType::class)--}}
+                    <small><a class="btn btn-primary" href="{{route('owner.room-types.create')}}">Add New</a></small>
+{{--                @endcan--}}
             </h1>
         </section>
 
@@ -32,24 +32,24 @@
 {{--                                    @endcan--}}
                                 </tr>
                                 </thead>
-                                @foreach ($accommodationTypes as $accommodationType)
+                                @foreach ($roomTypes as $roomType)
                                     <tbody>
                                     <tr>
-                                        <td>{{$accommodationType->id}}</td>
-{{--                                        <td>{{$accommodationType->active?"yes":'no'}}</td>--}}
-                                        <td>{{$accommodationType->title}}</td>
-                                        <td>{{$accommodationType->slug}}</td>
+                                        <td>{{$roomType->id}}</td>
+{{--                                        <td>{{$roomType->active?"yes":'no'}}</td>--}}
+                                        <td>{{$roomType->title}}</td>
+                                        <td>{{$roomType->slug}}</td>
 
-{{--                                        <td>{{Str::limit($accommodationType->description, 20)}}</td>--}}
+{{--                                        <td>{{Str::limit($roomType->description, 20)}}</td>--}}
                                         <td>
 {{--                                            @can ('update', App\Models\AccommodationType::class)--}}
-                                                <a class="btn btn-primary" href="{{route('admin.accommodation-types.edit', $accommodationType->id)}}">Edit</a> -
+                                                <a class="btn btn-primary" href="{{route('owner.room-types.edit', $roomType->id)}}">Edit</a> -
 {{--                                            @endcan--}}
 {{--                                            @can ('view', App\Models\AccommodationType::class)--}}
-                                                <a class="btn btn-primary" href="{{route('admin.accommodation-types.show', $accommodationType->id)}}">View</a>
+                                                <a class="btn btn-primary" href="{{route('owner.room-types.show', $roomType->id)}}">View</a>
 {{--                                            @endcan--}}
-                                            @can ('delete', [$accommodationType, App\Models\AccommodationType::class])
-                                                <form action="{{ route('admin.accommodation-types.destroy', $accommodationType->id) }}"
+                                            @can ('delete', [$roomType, App\Models\AccommodationType::class])
+                                                <form action="{{ route('owner.room-types.destroy', $roomType->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}

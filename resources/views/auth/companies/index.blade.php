@@ -6,8 +6,8 @@
     <section class="content-header">
       <h1>
         Companies
-        @can ('create_companies', App\Company::class)
-          <small><a class="btn btn-primary" href="{{route('companies.create')}}">New</a></small>
+        @can ('create-companies', App\models\Company::class)
+          <small><a class="btn btn-primary" href="{{route('owner.companies.create')}}">New</a></small>
         @endcan
       </h1>
     </section>

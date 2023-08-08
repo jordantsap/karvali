@@ -18,6 +18,6 @@ class CompaniesTableSeeder extends Seeder
     {
         DB::table('companies')->truncate();
         // $companies = factory(App\Models\Company::class, 12)->create();
-        Company::factory()->count(12)->create();
+        Company::factory()->count(2)->create();
     }
 }

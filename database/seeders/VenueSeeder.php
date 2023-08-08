@@ -19,6 +19,6 @@ class VenueSeeder extends Seeder
     {
         DB::table('venues')->truncate();
         // $products = factory(App\Models\Product::class, 15)->create();
-        Venue::factory()->count(12)->create();
+        Venue::factory()->count(5)->create();
     }
 }

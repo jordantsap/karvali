@@ -59,7 +59,10 @@ class Venue extends Model implements TranslatableContract
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
-
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
     public function likes()
     {
         return $this->morphMany('App\Models\Like', 'likeable');

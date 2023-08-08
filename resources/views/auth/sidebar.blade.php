@@ -1,9 +1,9 @@
 @role('Company/Products Owner')
 <li>
-    <a href="{{ route('owner.company.index') }}"><i class="fas fa-shopping-bag"></i> <span>Company List</span></a>
+    <a href="{{ route('owner.companies.index') }}"><i class="fas fa-shopping-bag"></i> <span>Company List</span></a>
 </li>
 <li>
-    <a href="{{ route('owner.company.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Company</span></a>
+    <a href="{{ route('owner.companies.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Company</span></a>
 </li>
 
 <li>

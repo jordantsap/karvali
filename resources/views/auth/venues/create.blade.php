@@ -23,24 +23,10 @@
                                     &nbsp<input type="checkbox" name="active" value="1" class="minimal">
                                 </label>
                             </div>
-{{--                            <div class="col-xs-3 form-group{{ $errors->has('company_type') ? ' has-error' : '' }}">--}}
-{{--                                <label for="company_type">Κατηγορία Καταστήματος</label>--}}
-{{--                                @if ($errors->has('company_type'))--}}
-{{--                                    <strong class="text-danger">{{ $errors->first('company_type') }}</strong>--}}
-{{--                                @endif--}}
-{{--                                <div class="">--}}
-{{--                                    <select id="company_type" value="{{ old('company_type') }}" name="company_type" class="form-control" >--}}
-{{--                                        <option value="{{ old('company_type') }}">Επιλέξτε</option>--}}
-{{--                                        @foreach($companytypes as $companytype)--}}
-{{--                                            <option value="{{ $companytype->id }} {{ old('company_type') }}" {{old('company_type')?"selected":""}}>{{ $companytype->name }}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
 
                             <div class="col-xs-4 form-group">
                                 <label for="telephone">Τηλέφωνο</label>
-                                <input type="text" value="{{ old('title') }}" name="telephone" class="form-control" id="telephone" placeholder="Τηλέφωνο Επιχείρησης" >
+                                <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control" id="telephone" placeholder="Τηλέφωνο Επιχείρησης" >
                             </div>
 
                         </div>
@@ -273,7 +259,9 @@
                                     <img src="{{ old('header') }}" alt="">
                                 @endif
                                 <input type="file" name="header" value="{{ old('header') }}" >
-                                <p class="help-block">Help text here.</p>
+                                <p class="help-block">
+                                    <img id="headerPreview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                </p>
                             </div>
                         </div>
                         <div class="row">
@@ -287,7 +275,9 @@
                                         <img src="{{ old('logo') }}" alt="">
                                     @endif
                                     <input type="file" name="logo" value="{{ old('logo') }}" >
-                                    <p class="help-block">Help text here.</p>
+                                    <p class="help-block">
+                                        <img id="logoPreview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-xs-3 form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
@@ -300,7 +290,9 @@
                                         <img src="{{ old('image1') }}" alt="">
                                     @endif
                                     <input type="file" name="image1" value="{{ old('image1') }}" >
-                                    <p class="help-block">Help text here.</p>
+                                    <p class="help-block">
+                                        <img id="image1Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-xs-3 form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
@@ -313,7 +305,9 @@
                                         <img src="{{ old('image2') }}" alt="">
                                     @endif
                                     <input type="file" name="image2" value="{{ old('image2') }}" >
-                                    <p class="help-block">Help text here.</p>
+                                    <p class="help-block">
+                                        <img id="image2Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-xs-3 form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
@@ -326,8 +320,31 @@
                                         <img src="{{ old('image3') }}" alt="">
                                     @endif
                                     <input type="file" name="image3" value="{{ old('image3') }}">
-                                    <p class="help-block">Help text here.</p>
+                                    <p class="help-block">
+                                        <img id="image3Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                                    </p>
                                 </div>
+                            </div>
+                            <div class="col-xs-4 col-lg-offset-4">
+                                <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                                    <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                                    @if ($errors->has('imgfile'))
+                                        <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
+                                    @endif
+                                    <div>
+                                        {{--                                            @if ( old('imgfile'))--}}
+                                        {{--                                                <input type="file" name="imgfile[]" id="imgfile" multiple>--}}
+                                        {{--                                            @endif--}}
+                                        <input type="file" name="imgfile[]" id="imgfile" multiple>
+                                    </div>
+                                    <p class="help-block">
+                                    <div id="imgfilePreviewContainer">
+                                        {{__('Preview')}}
+                                    </div>
+
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
                     </div>

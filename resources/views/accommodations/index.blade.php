@@ -52,11 +52,15 @@
                                         <a
                                             href="{{ route('front.accommodation.show', $accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
                                     </h2>
+                                    <div class="">
+                                        {{__('Rooms: ') .$accommodation->rooms->count()}}
+                                    </div>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
                                             <i class="fa fa-3x fa-thumbs-up"></i>
                                             <span class="badge">{{ count($accommodation->likes) }}</span>
                                         </div>
+
                                         <div class="col-xs-6 text-center">
                                             <i class="fa fa-3x fa-comment"></i>
                                             <span class="badge">{{ count($accommodation->comments) }}</span>

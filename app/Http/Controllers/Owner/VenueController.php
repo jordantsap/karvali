@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
 use App\Models\GroupType;
+use App\Models\Image as ImageModel;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class VenueController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -55,6 +58,22 @@ class VenueController extends Controller
         $venue->email = $request->email;
 
         $venue->save();
+
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/venues', $imageName); // You can specify a custom directory
+                $location = public_path("images/venues/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $venue->images()->save($upload);
+
+            }
+        }
 
         foreach (config('translatable.locales') as $locale => $lang) {
             $venue->translateOrNew($locale)->title = $request->{$locale}['title'];

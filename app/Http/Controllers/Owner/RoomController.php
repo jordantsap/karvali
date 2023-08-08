@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
+use App\Models\Image as ImageModel;
 use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class RoomController extends Controller
 {
@@ -58,6 +61,24 @@ class RoomController extends Controller
 
         $room->save();
 
+
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/rooms', $imageName); // You can specify a custom directory
+                $location = public_path("images/rooms/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $room->images()->save($upload);
+
+            }
+        }
+
+
         foreach (config('translatable.locales') as $locale => $lang) {
             $room->translateOrNew($locale)->title = $request->{$locale}['title'];
             $room->translateOrNew($locale)->meta_description = $request->{$locale}['meta_description'];
@@ -70,7 +91,7 @@ class RoomController extends Controller
 
         toastr()->addSuccess('Accommodation was saved successfully.');
 
-        return redirect(route('owner.rooms.show', $room->id));
+        return redirect(route('owner.rooms.show', $room->slug));
     }
 
     /**
@@ -81,9 +102,9 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        $room = Room::find($room->id);
+        $room = Room::where('id',$room->id)->first();
 
-        return view('auth.rooms.show',[$room->id], compact('room'));
+        return view('auth.rooms.show', compact('room'));
     }
 
     /**
@@ -96,7 +117,7 @@ class RoomController extends Controller
     {
         $categories = AccommodationType::all();
         $roomTypes = RoomType::all();
-        $room = Room::find($room->id);
+        $room = Room::with('accommodation')->where('id',$room->id)->first();
 
         return view('auth.rooms.edit', compact('room','categories','roomTypes'));
     }
@@ -110,11 +131,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        $room = $room->update($request->all());
+        $room->update($request->all());
 
         toastr()->addSuccess('Room was Updated successfully.');
 
-        return redirect(route('auth.rooms.show', $room->id));
+        return redirect(route('owner.rooms.show', $room));
     }
 
     /**

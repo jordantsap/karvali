@@ -117,7 +117,7 @@
             <div class="form-group">
               <label for="logo">Λογότυπο</label>
               <div class="input-group">
-                <img width="100%" height="200px" src="{{ asset('images/events/'.$venue->logo) }}" alt="{{ $venue->title }}">
+                <img width="100%" height="200px" src="{{ asset('images/venues/',$venue->logo) }}" alt="{{ $venue->title }}">
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@
             <div class="form-group">
               <label for="image1">Εικόνα Αρχικης</label>
               <div class="input-group">
-                <img width="100%" height="200px" src="{{ asset('images/events/'.$venue->image1) }}" alt="{{ $venue->title }}">
+                <img width="100%" height="200px" src="{{ asset('images/venues/',$venue->image1) }}" alt="{{ $venue->title }}">
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
             <div class="form-group">
               <label for="image2">Εικόνα Λίστας Συλλόγων</label>
               <div class="input-group">
-                <img width="100%" height="200px" src="{{ asset('images/events/'.$venue->image2)}}" alt="{{ $venue->title }}">
+                <img width="100%" height="200px" src="{{ asset('images/venues/',$venue->image2)}}" alt="{{ $venue->title }}">
               </div>
             </div>
           </div>
@@ -141,7 +141,7 @@
             <div class="form-group">
               <label for="image3">Εικόνες Σελίδας Συλλόγου</label>
               <div class="input-group">
-                <img width="100%" height="200px" src="{{ asset('images/events/'.$venue->image3) }}" alt="{{ $venue->title }}">
+                <img width="100%" height="200px" src="{{ asset('images/venues/', $venue->image3) }}" alt="{{ $venue->title }}">
               </div>
             </div>
           </div>

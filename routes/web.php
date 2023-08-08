@@ -49,10 +49,16 @@ Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmati
 
 Route::as('front.')->group(function () {
 
-    Route::get('accommodations', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
+    Route::get('accommodations/', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
     Route::get('accommodations/{id}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
+
     Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])
         ->name('accommodation-types.show');
+
+    Route::get('rooms/', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
+    Route::get('rooms/{room}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
+    Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('front.room.show');
+
 
     Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
         ->name('accommodationtype.show');

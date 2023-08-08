@@ -60,6 +60,6 @@ class PostsTableSeeder extends Seeder
 //        $post2->meta_keywords = 'Un chouette texte qui vous raconte des choses';
 //        $post2->save();
 
-        Post::factory()->count(12)->create();
+        Post::factory()->count(5)->create();
     }
 }

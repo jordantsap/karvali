@@ -11,7 +11,7 @@ Route::middleware(['auth', 'verified'])
     ->prefix('owner')
     ->as('owner.')->group(function () {
 
-        Route::resource('company', CompanyController::class);
+        Route::resource('companies', CompanyController::class);
 
         Route::resource('product', \App\Http\Controllers\Owner\ProductController::class);
 

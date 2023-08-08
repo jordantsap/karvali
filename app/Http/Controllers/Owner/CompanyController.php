@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\CompanyType;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -29,7 +30,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        $companytypes = CompanyType::withTranslation()->get();
+
+        return view('auth.companies.create', compact('companytypes'));
     }
 
     /**

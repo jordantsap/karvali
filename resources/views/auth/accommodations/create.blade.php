@@ -279,6 +279,7 @@
                                             <input type="file" name="imgfile[]" id="imgfile" multiple>
                                         </div>
                                         <p class="help-block">
+                                        {{__('You can only select up to 5 files.')}}
                                         <div id="imgfilePreviewContainer">
                                             {{__('Preview')}}
                                         </div>

@@ -17,7 +17,7 @@ class RoomTypeController extends Controller
      */
     public function index()
     {
-        return view('auth.rooms.index',[
+        return view('auth.roomtypes.index',[
             'roomTypes'=> RoomType::withTranslation()
         ->paginate(),
         ]);
