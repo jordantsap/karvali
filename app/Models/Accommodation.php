@@ -65,6 +65,11 @@ class Accommodation extends Model implements TranslatableContract
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    public function amenities()
+    {
+        return $this->morphToMany(Amenity::class, 'amenitable');
+    }
+
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable');

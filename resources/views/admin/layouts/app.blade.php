@@ -3,7 +3,7 @@
 <head>
 	@include('admin.layouts.head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
@@ -16,6 +16,22 @@
 <script src="{{ asset('admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('#amenities').select2({
+            placeholder: 'Select an option',
+            multiple: true,
+            closeOnSelect: false,
+            allowClear: true
+        });
+        // $('#amenities').on('select2:select', function (e) {
+        //     var data = e.params.data.id;
+        //     console.log(data);
+        // });
+    });
+</script>
 {{-- IMAGES PREVIEW SCRIPT--}}
 
 <script>
@@ -79,20 +95,6 @@
         }
     });
 </script>
-<script>
-
-    // document.getElementById('imagefile').addEventListener('change', function (event) {
-    //     const input = event.target;
-    //     const maxFiles = 5;
-    //
-    //     if (input.files.length > maxFiles) {
-    //         alert(`You can only select up to ${maxFiles} files.`);
-    //         input.value = ''; // Clear the selected files if over the limit
-    //     }
-    // });
-</script>
-
-
 
 {{-- toaster --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

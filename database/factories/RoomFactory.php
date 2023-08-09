@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Accommodation;
+use App\Models\Amenity;
+use App\Models\RoomType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +22,7 @@ class RoomFactory extends Factory
         return [
             'active'=> '1',
             'accommodation_id'=> Accommodation::factory()->create()->id,
+            'room_type_id'=> rand(1,6),
             'title' => $this->faker->company,
             'slug' =>$this->faker->slug,
             'meta_description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),

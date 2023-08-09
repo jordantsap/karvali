@@ -186,13 +186,17 @@ body {
 
 }
 
+.content-wrapper{
+    background-color: # !important;
+}
+
 .content-wrapper,
 
 .right-side {
 
   min-height: 100%;
 
-  background-color: #ecf0f5;
+  background-color: #00FF00;
 
   z-index: 800;
 

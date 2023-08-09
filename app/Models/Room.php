@@ -32,13 +32,17 @@ class Room extends Model implements TranslatableContract
         'image1',
         'image2',
         'image3',
-        // 'description',
     ];
 
 //    public function getRouteKeyName()
 //    {
 //        return 'slug';
 //    }
+
+    public function amenities()
+    {
+        return $this->morphToMany(Amenity::class, 'amenitable');
+    }
 
     public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {

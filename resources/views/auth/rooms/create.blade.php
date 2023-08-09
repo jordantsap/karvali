@@ -41,22 +41,40 @@
                                 </div>
                             </div>
 
-                            <div class="col-xs-2 form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <div class="col-xs-2 form-group{{ $errors->has('room_type_id') ? ' has-error' : '' }}">
                                 <label for="type">{{__('form.categorytype')}}</label>
-                                @if ($errors->has('category_id'))
-                                    <strong class="text-danger">{{ $errors->first('category_id') }}</strong>
+                                @if ($errors->has('room_type_id'))
+                                    <strong class="text-danger">{{ $errors->first('room_type_id') }}</strong>
                                 @endif
                                 <div class="">
-                                    <select id="category_id" value="{{ old('category_id') }}"
-                                            name="category_id" class="form-control" required>
-                                        <option value="{{ old('category_id') }}">Επιλέξτε</option>
-                                        @foreach($categories as $category)
+                                    <select id="room_type_id" value="{{ old('room_type_id') }}"
+                                            name="room_type_id" class="form-control" required>
+                                        <option value="{{ old('room_type_id') }}">Επιλέξτε</option>
+                                        @foreach($roomTypes as $category)
                                             <option
-                                                value="{{ $category->id }} {{ old('category_id') }}" {{old('category_id')?"selected":""}}>{{ $category->title }}</option>
+                                                value="{{ $category->id }} {{ old('room_type_id') }}" {{old('room_type_id')?"selected":""}}>{{ $category->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-xs-2 form-group{{ $errors->has('amenity_id') ? ' has-error' : '' }}">
+                                <label for="type">{{__('form.amenityid')}}</label>
+                                @if ($errors->has('amenity_id'))
+                                    <strong class="text-danger">{{ $errors->first('amenity_id') }}</strong>
+                                @endif
+                                <div class="">
+                                    <select id="amenities" value="{{ old('amenities') }}"
+                                            name="amenities[]" class="form-control" required multiple>
+{{--                                        <option value="{{ old('amenity_id') }}">Επιλέξτε</option>--}}
+                                        @foreach($amenities as $amenity)
+                                            <option
+                                                value="{{ $amenity->id }} {{ old('amenities') }}" {{old('amenities')?"selected":""}}>
+                                                {{ $amenity->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <!-- For 'capacity' -->
                             <div class="col-xs-3 form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">

@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('amenities', function (Blueprint $table) {
+        Schema::create('amenitables', function (Blueprint $table) {
             $table->id();
-            $table->string('price')->nullable();
+            $table->bigInteger('amenity_id');
+            $table->bigInteger('amenitable_id');
+            $table->string('amenitable_type');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('amenities');
+        Schema::dropIfExists('amenitables');
     }
 };

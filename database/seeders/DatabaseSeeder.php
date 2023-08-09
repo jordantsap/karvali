@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder
           $this->call(VenueSeeder::class);
           $this->call(AccommodationSeeder::class);
           $this->call(RoomSeeder::class);
+          $this->call(AmenitySeeder::class);
 
           $this->call(EventsTableSeeder::class);
           $this->call(CompaniesTableSeeder::class);

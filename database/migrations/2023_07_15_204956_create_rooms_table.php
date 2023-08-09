@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Accommodation::class);
+            $table->foreignIdFor(\App\Models\RoomType::class);
             $table->string('header')->nullable();
             $table->string('logo')->nullable();
             $table->string('image1')->nullable();

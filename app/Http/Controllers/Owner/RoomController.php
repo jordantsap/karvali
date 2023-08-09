@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
+use App\Models\Amenity;
 use App\Models\Image as ImageModel;
 use App\Models\Room;
 use App\Models\RoomType;
@@ -38,8 +39,9 @@ class RoomController extends Controller
         $categories = RoomType::all();
         $roomTypes = RoomType::all();
         $accommodations = Accommodation::where('user_id', auth()->id())->get();
+        $amenities = Amenity::withTranslation()->get();
 
-        return view('auth.rooms.create', compact('accommodations', 'categories', 'roomTypes'));
+        return view('auth.rooms.create', compact('accommodations', 'categories', 'roomTypes','amenities'));
     }
 
     /**
@@ -50,16 +52,20 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+//        return $request->input('amenities', []);;
+
         $room = new Room();
-        $room->accommodation_id = $request->accommodation_id;
         $room->active = $request->active;
-//        $room->accommodation_type_id = $request->accommodation_type_id;
+        $room->accommodation_id = $request->accommodation_id;
+        $room->room_type_id = $request->room_type_id;
+//        $room->amenity_id = $request->input('amenities', []);
         $room->capacity = $request->capacity;
         $room->price = $request->price;
         $room->beds = $request->beds;
         // images
 
         $room->save();
+        $room->amenities()->sync($request->input('amenities', []));
 
 
         // Handle multiple image uploads with polymorphic relationship
@@ -91,7 +97,7 @@ class RoomController extends Controller
 
         toastr()->addSuccess('Accommodation was saved successfully.');
 
-        return redirect(route('owner.rooms.show', $room->slug));
+        return redirect(route('owner.rooms.show', $room->id));
     }
 
     /**

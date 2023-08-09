@@ -62,6 +62,8 @@ class AccommodationController extends Controller
         $accommodation->user_id = $request->user_id;
         $accommodation->active = $request->active;
         $accommodation->accommodation_type_id = $request->accommodation_type_id;
+        $accommodation->amenity_id = $request->amenity_id;
+        $accommodation->room_type_id = $request->room_type_id;
         $accommodation->website = $request->website;
         $accommodation->telephone = $request->telephone;
         $accommodation->facebook = $request->facebook;

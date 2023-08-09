@@ -17,5 +17,16 @@ class Amenity extends Model implements TranslatableContract
         'slug',
     ];
     protected $fillable = [
+        'price'
     ];
+
+    public function accommodations()
+    {
+        return $this->morphedByMany(Accommodation::class, 'amenitable');
+    }
+
+    public function rooms()
+    {
+        return $this->morphedByMany(Room::class, 'amenitable');
+    }
 }
