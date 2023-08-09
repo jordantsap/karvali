@@ -45,6 +45,23 @@
                   </span>
                       </div>
                   </div>
+              <div class="col-xs-2 form-group{{ $errors->has('amenity_id') ? ' has-error' : '' }}">
+                  <label for="type">{{__('form.amenities')}}</label>
+                  @if ($errors->has('amenity_id'))
+                      <strong class="text-danger">{{ $errors->first('amenity_id') }}</strong>
+                  @endif
+                  <div class="">
+                      <select id="amenities" value="{{ old('amenities') }}"
+                              name="amenities[]" class="form-control" required multiple>
+                          {{--                                        <option value="{{ old('amenity_id') }}">Επιλέξτε</option>--}}
+                          @foreach($amenities as $amenity)
+                              <option value="{{ $amenity->id }} {{ old('amenities') }}"{{old('amenities')?"selected":""}}
+                                  {{$amenity->id == $accommodation->amenities->pluck('id')->first() ? 'selected':''}}>
+                                  {{ $amenity->title }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+              </div>
 {{--              </div>--}}
 
               <div class="">
@@ -155,8 +172,7 @@
 
           </div>
 
-              <div class="">
-
+                <div class="row">
                 <div class="col-xs-6 form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
                     <label for="meta_description">{{__('Meta Description')}} - ({{$locale}})</label>
                     @if ($errors->has('meta_description'))
@@ -182,11 +198,10 @@
               </span>
                     </div>
                 </div>
-            </div>
 
-{{--        </div>--}}
+        </div>
 
-          <div class="col-xs-12 form-group">
+          <div class="form-group">
               <label for="description">{{__('Description')}} ({{$lang}})</label>
               <textarea id="editor" class="textarea" name="{{$locale}}[description]" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$accommodation->description}}</textarea>
           </div>

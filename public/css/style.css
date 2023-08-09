@@ -13,6 +13,9 @@ textarea, .panel-body {overflow-y: auto !important;}
 	z-index: 9999;
 	background: url('../images/spinner.gif') 50% 50% no-repeat #fcfcfc;
 }
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display{
+    color: #000000 !important;
+}
 .noresults{font-size: 24px;text-align: center;height: 30vh;align-items: center;display: flex;justify-content: center;}
 
 body{overflow:auto;padding-top:50px;min-width:100% !important;}

@@ -27,6 +27,7 @@ class Accommodation extends Model implements TranslatableContract
         'active',
         'total_rooms',
         'accommodation_type_id',
+//        'amenity_id',
         'website',
         'email',
         'telephone',

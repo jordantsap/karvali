@@ -64,8 +64,6 @@ class AccommodationController extends Controller
         $accommodation->user_id = $request->user_id;
         $accommodation->active = $request->active;
         $accommodation->accommodation_type_id = $request->accommodation_type_id;
-        $accommodation->amenity_id = $request->amenity_id;
-        $accommodation->room_type_id = $request->room_type_id;
         $accommodation->website = $request->website;
         $accommodation->telephone = $request->telephone;
         $accommodation->facebook = $request->facebook;
@@ -77,10 +75,10 @@ class AccommodationController extends Controller
         $accommodation->image1 = $request->image1;
         $accommodation->image2 = $request->image2;
         $accommodation->image3 = $request->image3;
-//        $accommodation->uploads = $request->imgfile;
-
 
         $accommodation->save();
+
+        $accommodation->amenities()->sync($request->input('amenities', []));
 
         // Handle multiple image uploads with polymorphic relationship
         if ($request->hasFile('imgfile')) {
@@ -144,8 +142,9 @@ class AccommodationController extends Controller
         $accommodation = Accommodation::withTranslation()
             ->whereTranslation('slug', $slug)->first();
         $accommodationTypes = AccommodationType::withTranslation()->get();
+        $amenities = Amenity::withTranslation()->get();
 
-        return view('auth.accommodations.edit', compact(['accommodation', 'accommodationTypes']));
+        return view('auth.accommodations.edit', compact(['accommodation', 'accommodationTypes','amenities']));
     }
 
     /**

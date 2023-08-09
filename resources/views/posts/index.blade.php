@@ -20,7 +20,7 @@
           <ul class="nav navbar-nav collapse navbar-collapse" id="posttype-collapse">
             @foreach($posttypes as $posttype)
             <li>
-              <a href="{{ route('front.posts-category', $posttype->slug)}}" class="">{{ $posttype->name }}&nbsp
+              <a href="{{ route('front.posts-category', $posttype->slug)}}" class="">{{ $posttype->title }}&nbsp
                 <span class="badge">{{$posttype->posts->where('active',1)->count()}}</span>
               </a>
             </li>

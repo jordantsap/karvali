@@ -21,7 +21,7 @@
                             @foreach ($companytypes as $companytype)
                                 <li>
                                     <a href="{{ route('front.companies-category', $companytype->slug) }}"
-                                        class="">{{ $companytype->name }}&nbsp<span
+                                        class="">{{ $companytype->title }}&nbsp<span
                                             class="badge">{{ $companytype->companies->where('active', 1)->count() }}</span>
                                     </a>
                                 </li>

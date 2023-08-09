@@ -19,7 +19,7 @@
                             @if ($producttypes)
                             @foreach ($producttypes as $producttype)
                             <li><a href="{{ route('front.products-category', $producttype->slug) }}"
-                                    class="">{{ $producttype->name }}&nbsp
+                                    class="">{{ $producttype->title }}&nbsp
                                     <span class="badge">
                                         {{ $producttype->products
                                         ->where('active', 1)

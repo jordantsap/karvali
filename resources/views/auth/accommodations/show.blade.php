@@ -20,6 +20,20 @@
             <div class="box">
                 <div class="box-body">
                     <div class="row">
+                        <div class="col-xs-2 form-group">
+                            <label for="active"> Active
+                                <input type="checkbox" name="active" value="1" @if ($accommodation->active == 1)
+                                    {{'checked'}}
+                                    @endif>
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label for="title">{{__('form.categorytype')}}</label>
+                            <input type="text" value="{{$accommodation->accommodationType->title}}" readonly>
+                        </div>
+
+                    </div>
+                    <div class="row">
                         <div class="col-xs-8 form-group">
                             <label for="title">Επωνυμία</label>
                             <input type="text" class="form-control" id="title" placeholder="{{$accommodation->title}}" value="{{$accommodation->title}}" >
@@ -39,13 +53,6 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-2 form-group">
-                            <label for="active"> Active
-                                <input type="checkbox" name="active" value="1" @if ($accommodation->active == 1)
-                                    {{'checked'}}
-                                    @endif>
-                            </label>
-                        </div>
                         <div class="col-xs-6 form-group">
                             <label for="title">Όνομα Υπευθύνου</label>
                             <input type="text" class="form-control" id="manager" placeholder="{{$accommodation->manager}}" value="{{$accommodation->manager}}" >

@@ -28,7 +28,7 @@ return [
     'savetimedesc' => 'You can checkout as guest too!',
     'savetimealways' => 'Save time for later',
     'savetimealwaysdesc' => 'Create an account for quick future purchases, customer profiles and easy access to your purchase history',
-    'categorytype' => 'Room Category',
+    'categorytype' => 'Category',
     'accommodationid' => 'Room Accommodation',
     'capacity' => 'Max Capacity',
     'Price' => 'Price',
