@@ -122,7 +122,7 @@ class AccommodationController extends Controller
      */
     public function show(Accommodation $accommodation)
     {
-        $accommodation = Accommodation::with('accommodationType')
+        $accommodation = Accommodation::with('accommodationType','amenities')
             ->whereTranslation('slug',$accommodation->slug)
             ->first();
 
@@ -157,6 +157,8 @@ class AccommodationController extends Controller
     public function update(Request $request, Accommodation $accommodation)
     {
         $accommodation->update($request->all());
+
+        $accommodation->amenities()->sync($request->input('amenities', []));
 
 
         toastr()->addSuccess('Accommodation Updated successfully.');

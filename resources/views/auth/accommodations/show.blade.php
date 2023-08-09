@@ -27,9 +27,15 @@
                                     @endif>
                             </label>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 form-group">
                             <label for="title">{{__('form.categorytype')}}</label>
-                            <input type="text" value="{{$accommodation->accommodationType->title}}" readonly>
+                            <input type="text" class="form-control" value="{{$accommodation->accommodationType->title}}" readonly>
+                        </div>
+                        <div class="col-xs-4 form-group">
+                            <label for="title">{{__('form.amenities')}}</label> <br>
+                            @foreach($accommodation->amenities as $amenity)
+                            <input type="text" class="col-xs-12 form-control" value="{{$amenity->title}}" readonly>
+                            @endforeach
                         </div>
 
                     </div>

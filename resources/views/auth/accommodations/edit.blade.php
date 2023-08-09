@@ -51,15 +51,16 @@
                       <strong class="text-danger">{{ $errors->first('amenity_id') }}</strong>
                   @endif
                   <div class="">
-                      <select id="amenities" value="{{ old('amenities') }}"
-                              name="amenities[]" class="form-control" required multiple>
-                          {{--                                        <option value="{{ old('amenity_id') }}">Επιλέξτε</option>--}}
-                          @foreach($amenities as $amenity)
-                              <option value="{{ $amenity->id }} {{ old('amenities') }}"{{old('amenities')?"selected":""}}
-                                  {{$amenity->id == $accommodation->amenities->pluck('id')->first() ? 'selected':''}}>
-                                  {{ $amenity->title }}</option>
-                          @endforeach
-                      </select>
+                  <select id="amenities" value="{{ old('amenities') }}"
+                          name="amenities[]" class="form-control" required multiple>
+                      {{--                                        <option value="{{ old('amenity_id') }}">Επιλέξτε</option>--}}
+                      @foreach($amenities as $amenity)
+                          <option value="{{ $amenity->id }}"
+                              {{ in_array($amenity->id, is_array(old('amenities')) ? old('amenities') : ($accommodation->amenities ? $accommodation->amenities->pluck('id')->toArray() : [])) ? 'selected' : '' }}>
+                              {{ $amenity->title }}
+                          </option>
+                      @endforeach
+                  </select>
                   </div>
               </div>
 {{--              </div>--}}
