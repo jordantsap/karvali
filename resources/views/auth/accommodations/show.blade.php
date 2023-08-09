@@ -52,9 +52,11 @@
                         </div>
                         <div class="form-group col-xs-4">
                             <label for="category">Category</label>
-                            <div class="form-control" name="category" id="category" disabled>
-                                @if( ! empty($accommodation->accommodationType())){{ $accommodation->accommodationType->title }}
-                                @else Null
+                            <div class="form-control" disabled>
+                                @if(isset($accommodation->accommodationType))
+                                    {{ $accommodation->accommodationType->title}}
+                                @else
+                                    Null
                                 @endif
                             </div>
                         </div>
@@ -65,7 +67,7 @@
                             <div class="form-group">
                                 <label for="website">Ιστοσελίδα</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" value="{{ $accommodation->website }}" id="website" name="website" placeholder="Website" required>
+                                    <input type="text" class="form-control" id="website" name="website" placeholder="{{ $accommodation->website }}" required>
                                     <span class="input-group-addon">
                   <span class="glyphicon glyphicon-globe"></span>
                 </span>
@@ -77,7 +79,7 @@
                             <div class="form-group">
                                 <label for="email">E-Mail</label>
                                 <div class="input-group">
-                                    <input type="text" value="{{ $accommodation->email }}" class="form-control" id="email" name="email" placeholder="E-Mail" required>
+                                    <input type="text" value="{{ $accommodation->email }}" class="form-control" id="email" name="email" placeholder="{{ $accommodation->email }}" required>
                                     <span class="input-group-addon">
                     <span class="glyphicon glyphicon-envelope"></span>
                   </span>

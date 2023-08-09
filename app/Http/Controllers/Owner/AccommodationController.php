@@ -7,9 +7,11 @@ use App\Http\Requests\StoreAccommodationRequest;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
 use App\Models\Image as ImageModel;
+use App\Models\Room;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -94,6 +96,7 @@ class AccommodationController extends Controller
 
         foreach (config('translatable.locales') as $locale => $lang) {
             $accommodation->translateOrNew($locale)->title = $request->{$locale}['title'];
+            $accommodation->translateOrNew($locale)->slug = Str::slug($request->{$locale}['title']);
             $accommodation->translateOrNew($locale)->meta_description = $request->{$locale}['meta_description'];
             $accommodation->translateOrNew($locale)->meta_keywords = $request->{$locale}['meta_keywords'];
             $accommodation->translateOrNew($locale)->manager = $request->{$locale}['manager'];
@@ -105,7 +108,7 @@ class AccommodationController extends Controller
 //        return $accommodation->uploads();
         toastr()->addSuccess('Accommodation was saved successfully.');
 
-        return redirect(route('owner.accommodation.show', $accommodation->slug));
+        return redirect(route('owner.accommodation.show', $accommodation->id));
 
     }
 
@@ -117,9 +120,13 @@ class AccommodationController extends Controller
      */
     public function show(Accommodation $accommodation)
     {
-        $accommodation = Accommodation::find($accommodation->id);
+        $accommodation = Accommodation::with('accommodationType')
+            ->whereTranslation('slug',$accommodation->slug)
+            ->first();
 
-        return view('auth.accommodations.show', compact('accommodation'));
+//        $room = $accommodation->has('rooms');
+
+        return view('auth.accommodations.show', compact(['accommodation']));
     }
 
     /**
@@ -146,12 +153,12 @@ class AccommodationController extends Controller
      */
     public function update(Request $request, Accommodation $accommodation)
     {
-        $accommodation = $accommodation->update($request->all());
+        $accommodation->update($request->all());
 
 
         toastr()->addSuccess('Accommodation Updated successfully.');
 
-        return redirect(route('auth.accommodations.show', $accommodation->slug));
+        return redirect(route('owner.accommodation.show', $accommodation->id));
     }
 
     /**

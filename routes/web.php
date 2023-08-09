@@ -50,14 +50,15 @@ Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmati
 Route::as('front.')->group(function () {
 
     Route::get('accommodations/', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
-    Route::get('accommodations/{id}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
+    Route::get('accommodations/{accommodation:slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
 
     Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])
         ->name('accommodation-types.show');
 
     Route::get('rooms/', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
     Route::get('rooms/{room}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
-    Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('front.room.show');
+
+    Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
 
     Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
@@ -87,7 +88,7 @@ Route::view('calendar','calendar');
     Route::get('{producttype}/products-type', [App\Http\Controllers\Client\ProductController::class,'category'])->name('products-category');
 
     Route::get('events', 'Client\EventController@index')->name('events');
-    Route::get('event/{event}', 'Client\EventController@show')->name('eventshow');
+    Route::get('event/{event}', 'Client\EventController@show')->name('event.show');
 
     Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');
     Route::get('today-events', [App\Http\Controllers\Client\EventDatesController::class, 'todayevents'])->name('todayevents');

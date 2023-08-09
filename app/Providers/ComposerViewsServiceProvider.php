@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\PostType;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Room;
 use App\Models\Venue;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
@@ -43,6 +44,11 @@ class ComposerViewsServiceProvider extends ServiceProvider
                 ->active()->take(6)->get());
 
         });
+
+//        view()->composer('modals.roomModal', function ($view) {
+//
+//            $view->with('room', Room::where('accommodation_id', $this->accommodation));
+//        });
 
         view()->composer('home.categories', function ($view) {
 

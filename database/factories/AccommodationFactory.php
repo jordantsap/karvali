@@ -23,7 +23,7 @@ class AccommodationFactory extends Factory
             'slug' => $this->faker->slug,
             'meta_description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'meta_keywords' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
-            'header' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'header' => $this->faker->image(null, 480, 600, true),
             'logo' => $this->faker->imageUrl(640, 480, 'animals', true),
             'image1' => 'noimage.jpg',
             'image2' => 'noimage.jpg',

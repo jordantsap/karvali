@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
+use App\Models\Room;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -30,19 +31,6 @@ class AccommodationController extends Controller
         return view('accommodations.index', compact('accommodations', 'accommodationTypes'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Accommodation $accommodation
-     * @return Response
-     */
-    public function show($slug)
-    {
-        $accommodation = Accommodation::whereTranslation('slug', $slug)->first();
-
-        return view('accommodations.show', compact('accommodation'));
-    }
-
     public function category(Accommodation $accommodation, $slug)
     {
          $accommodationType = AccommodationType::with('accommodations')
@@ -54,6 +42,24 @@ class AccommodationController extends Controller
         })->paginate();
 
          return view('accommodations.category', compact(['accommodations','accommodationType']));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Accommodation $accommodation
+     * @return Response
+     */
+    public function show($slug)
+    {
+        $accommodation = Accommodation::whereTranslation('slug',$slug)->first();
+//        $room = Room::where('accommodation_id',$accommodation->id)->get();;
+        // New Code
+//        if ($accommodation->translate()->where('slug', $slug)->first()->locale != app()->getLocale()) {
+//            return redirect()->route('front.accommodation.show', $accommodation->translate()->slug);
+//        }
+
+        return view('accommodations.show', compact('accommodation'));
     }
 
 }

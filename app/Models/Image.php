@@ -28,4 +28,8 @@ class Image extends Model
     {
         return $this->morphedByMany(Accommodation::class, 'imageable');
     }
+    public function rooms()
+    {
+        return $this->morphedByMany(Accommodation::class, 'imageable');
+    }
 }
