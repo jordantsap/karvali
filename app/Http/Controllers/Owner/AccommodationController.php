@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAccommodationRequest;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
+use App\Models\Amenity;
 use App\Models\Image as ImageModel;
 use App\Models\Room;
 use Illuminate\Contracts\Foundation\Application;
@@ -44,8 +45,9 @@ class AccommodationController extends Controller
     public function create()
     {
         $types = AccommodationType::withTranslation()->get();
+        $amenities = Amenity::withTranslation()->get();
 
-        return view('auth.accommodations.create', compact('types'));
+        return view('auth.accommodations.create', compact('types','amenities'));
     }
 
     /**

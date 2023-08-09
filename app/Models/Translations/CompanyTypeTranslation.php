@@ -9,7 +9,7 @@ class CompanyTypeTranslation extends Model
 {
     use Sluggable;
     public $timestamps = false;
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['title', 'slug'];
 
 //    protected $translationForeignKey = 'event_id';
 

@@ -19,107 +19,107 @@ class CompanyTypeSeeder extends Seeder
         DB::table('company_types')->truncate();
         // $companytype()->setDefaultLocale('el');
         CompanyType::create([
-            'name:en' => 'Retail Sales',
+            'title:en' => 'Retail Sales',
             'slug:en' => 'retail-sales',
 
-            'name:el' => 'Πωλησεις Λιανικης',
+            'title:el' => 'Πωλησεις Λιανικης',
             'slug:el' => 'pwlhseis-lianikhs',
         ]);
         CompanyType::create([
-            'name:en' => 'Coffee',
+            'title:en' => 'Coffee',
             'slug:en' => 'coffee',
 
-            'name:el' => 'Καφετέρια',
+            'title:el' => 'Καφετέρια',
             'slug:el' => 'cafeteria',
         ]);
         CompanyType::create([
-            'name:en' => 'Hairdressers',
+            'title:en' => 'Hairdressers',
             'slug:en' => 'hairdressers',
-            'name:el' => 'Κομμωτήρια',
+            'title:el' => 'Κομμωτήρια',
             'slug:el' => 'kommwthria',
         ]);
         CompanyType::create([
-            'name:en' => 'Fast Food',
+            'title:en' => 'Fast Food',
             'slug:en' => 'fast-food',
 
-            'name:el' => 'Γρήγορο Φαγητό',
+            'title:el' => 'Γρήγορο Φαγητό',
             'slug:el' => 'grigorofagito',
         ]);
         CompanyType::create([
-            'name:en' => 'Ouzeri',
+            'title:en' => 'Ouzeri',
             'slug:en' => 'oyzodrink',
 
-            'name:el' => 'Ουζερί',
+            'title:el' => 'Ουζερί',
             'slug:el' => 'oyzeri',
         ]);
         CompanyType::create([
-            'name:en' => 'Traditional Cafes',
+            'title:en' => 'Traditional Cafes',
             'slug:en' => 'traditionalcafes',
 
-            'name:el' => 'Καφενεία',
+            'title:el' => 'Καφενεία',
             'slug:el' => 'kafeneia',
         ]);
         CompanyType::create([
-            'name:en' => 'Restaurants',
+            'title:en' => 'Restaurants',
             'slug:en' => 'restaurants',
 
-            'name:el' => 'Εστιατόρια',
+            'title:el' => 'Εστιατόρια',
             'slug:el' => 'estiatoria',
         ]);
         CompanyType::create([
-            'name:en' => 'Butchers',
+            'title:en' => 'Butchers',
             'slug:en' => 'butchers',
 
-            'name:el' => 'Κρεοπωλεία',
+            'title:el' => 'Κρεοπωλεία',
             'slug:el' => 'kreopwleia',
         ]);
         CompanyType::create([
-            'name:en' => 'Pasteria',
+            'title:en' => 'Pasteria',
             'slug:en' => 'pasteria',
 
-            'name:el' => 'Ζαχαροπλαστεία',
+            'title:el' => 'Ζαχαροπλαστεία',
             'slug:el' => 'zaxaroplasteia',
         ]);
         CompanyType::create([
-            'name:en' => 'Grocery store',
+            'title:en' => 'Grocery store',
             'slug:en' => 'grocerystore',
 
-            'name:el' => 'Μανάβικα',
+            'title:el' => 'Μανάβικα',
             'slug:el' => 'manavika',
         ]);
         CompanyType::create([
-            'name:en' => 'Bougatsa',
+            'title:en' => 'Bougatsa',
             'slug:en' => 'bougatsa',
 
-            'name:el' => 'Μπουγατσες',
+            'title:el' => 'Μπουγατσες',
             'slug:el' => 'mpoygatses',
         ]);
         CompanyType::create([
-            'name:en' => 'Bakery',
+            'title:en' => 'Bakery',
             'slug:en' => 'bakery',
 
-            'name:el' => 'Αρτοσκευάσματα',
+            'title:el' => 'Αρτοσκευάσματα',
             'slug:el' => 'artoskeyasmata',
         ]);
         CompanyType::create([
-            'name:en' => 'Construction Tools',
+            'title:en' => 'Construction Tools',
             'slug:en' => 'construction-tools',
 
-            'name:el' => 'Οικοδομικά Υλικά',
+            'title:el' => 'Οικοδομικά Υλικά',
             'slug:el' => 'oikodomikaylika',
         ]);
 //        CompanyType::create([
-//            'name:en' => 'Rentals',
+//            'title:en' => 'Rentals',
 //            'slug:en' => 'rentals',
 //
-//            'name:el' => 'Δωμάτια',
+//            'title:el' => 'Δωμάτια',
 //            'slug:el' => 'rentrooms',
 //        ]);
 //        CompanyType::create([
-//            'name:en' => 'Others',
+//            'title:en' => 'Others',
 //            'slug:en' => 'others',
 //
-//            'name:el' => 'Διάφορα',
+//            'title:el' => 'Διάφορα',
 //            'slug:el' => 'diafora',
 //        ]);
     }

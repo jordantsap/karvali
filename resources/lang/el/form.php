@@ -45,4 +45,8 @@ return [
     'website' => 'Ιστοσελίδα',
     'langinputs' => 'Για μετάφραση',
     'imginputs' => 'Εικόνες',
+    'comcat' => 'Κατηγορία Καταστήματος',
+    'amenities' => 'Ανέσεις',
+    'pleaseselect' => 'Επιλέξτε',
+    'active' => 'Ενεργό',
 ];

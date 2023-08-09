@@ -19,22 +19,39 @@
                         <div class="row">
 
                             <div class="col-xs-1">
-                                <label for="active"> Active
+                                <label for="active"> {{__('form.active')}}
                                     &nbsp<input type="checkbox" name="active" value="1" class="minimal">
                                 </label>
                             </div>
                             <div class="col-xs-2 form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type">Κατηγορία Καταστήματος</label>
+                                <label for="type">{{__("form.comcat")}}</label>
                                 @if ($errors->has('accommodation_type_id'))
                                     <strong class="text-danger">{{ $errors->first('accommodation_type_id') }}</strong>
                                 @endif
                                 <div class="">
                                     <select id="accommodation_type_id" value="{{ old('accommodation_type_id') }}"
                                             name="accommodation_type_id" class="form-control" required>
-                                        <option value="{{ old('accommodation_type_id') }}">Επιλέξτε</option>
+                                        <option value="{{ old('accommodation_type_id') }}">{{__('form.pleaseselect')}}</option>
                                         @foreach($types as $type)
                                             <option
                                                 value="{{ $type->id }} {{ old('accommodation_type_id') }}" {{old('accommodation_type_id')?"selected":""}}>{{ $type->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 form-group{{ $errors->has('amenity_id') ? ' has-error' : '' }}">
+                                <label for="type">{{__('form.amenities')}}</label>
+                                @if ($errors->has('amenity_id'))
+                                    <strong class="text-danger">{{ $errors->first('amenity_id') }}</strong>
+                                @endif
+                                <div class="">
+                                    <select id="amenities" value="{{ old('amenities') }}"
+                                            name="amenities[]" class="form-control" required multiple>
+                                        {{--                                        <option value="{{ old('amenity_id') }}">Επιλέξτε</option>--}}
+                                        @foreach($amenities as $amenity)
+                                            <option
+                                                value="{{ $amenity->id }} {{ old('amenities') }}" {{old('amenities')?"selected":""}}>
+                                                {{ $amenity->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -54,6 +71,11 @@
                                            id="telephone" placeholder="Τηλέφωνο Επιχείρησης">
                                 </div>
 
+                        </div>
+
+
+                        <div class="row">
+
                             <div class="col-xs-3 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email">E-Mail</label>
                                 @if ($errors->has('email'))
@@ -67,11 +89,6 @@
                       </span>
                                 </div>
                             </div>
-
-                        </div>
-
-
-                        <div class="row">
 
                             <div class="col-xs-3 form-group{{ $errors->has('website') ? ' has-error' : '' }}">
                                 <label for="website">Ιστοσελίδα</label>

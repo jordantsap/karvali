@@ -19,7 +19,7 @@ class CreateProductTypeTranslationsTable extends Migration
             $table->string('locale')->index();
 
             // The actual fields to store the content of your entity. You can add whatever you need.
-            $table->string('name');
+            $table->string('title');
             $table->string('slug')->unique();
 
             $table->unique(['product_type_id', 'locale']);

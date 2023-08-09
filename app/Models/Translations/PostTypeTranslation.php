@@ -9,7 +9,7 @@ class PostTypeTranslation extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['title', 'slug'];
 
     /**
      * Return the sluggable configuration array for this model.

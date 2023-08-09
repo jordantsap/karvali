@@ -46,5 +46,8 @@ return [
     'website' => 'Website link',
     'langinputs' => 'For translation',
     'imginputs' => 'Images',
-
+    'comcat' => 'Company Category',
+    'amenities' => 'Amenities',
+    'pleaseselect' => 'Please Select',
+    'active' => 'Active',
 ];

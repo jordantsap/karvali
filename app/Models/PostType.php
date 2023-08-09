@@ -12,11 +12,11 @@ class PostType extends Model implements TranslatableContract
 
   use Translatable;
 
-  protected $fillable = ['name', 'slug'];
+  protected $fillable = ['title', 'slug'];
 
 
   protected $translatedAttributes = [
-    'name',
+    'title',
     'slug',
   ];
 

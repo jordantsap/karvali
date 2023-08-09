@@ -11,10 +11,10 @@ class ProductType extends Model implements TranslatableContract
 {
   use Translatable, HasFactory;
 
-  protected $fillable = ['name', 'slug'];
+  protected $fillable = ['title', 'slug'];
 
   protected $translatedAttributes = [
-    'name',
+    'title',
     'slug',
   ];
 

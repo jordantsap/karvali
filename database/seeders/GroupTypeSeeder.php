@@ -18,38 +18,38 @@ class GroupTypeSeeder extends Seeder
     {
         DB::table('group_types')->truncate();
         GroupType::create([
-            'name:en' => 'Cultural',
+            'title:en' => 'Cultural',
             'slug:en' => 'cultural',
 
-            'name:el' => 'Πολιτιστικός',
+            'title:el' => 'Πολιτιστικός',
             'slug:el' => 'politistikos',
         ]);
         GroupType::create([
-            'name:en' => 'Landscaping',
+            'title:en' => 'Landscaping',
             'slug:en' => 'landscaping',
 
-            'name:el' => 'Εξωραΐστικός',
+            'title:el' => 'Εξωραΐστικός',
             'slug:el' => 'ekswraistikos',
         ]);
         GroupType::create([
-            'name:en' => 'Environmental',
+            'title:en' => 'Environmental',
             'slug:en' => 'environmental',
 
-            'name:el' => 'Περιβαλοντολογικός',
+            'title:el' => 'Περιβαλοντολογικός',
             'slug:el' => 'perivalontologikos',
         ]);
         GroupType::create([
-            'name:en' => 'Dancing',
+            'title:en' => 'Dancing',
             'slug:en' => 'dancing',
 
-            'name:el' => 'Χoρευτικός',
+            'title:el' => 'Χoρευτικός',
             'slug:el' => 'xoreytikos',
         ]);
         GroupType::create([
-            'name:en' => 'Sports',
+            'title:en' => 'Sports',
             'slug:en' => 'sports',
 
-            'name:el' => 'Αθλητικός',
+            'title:el' => 'Αθλητικός',
             'slug:el' => 'athlitikos',
         ]);
     }

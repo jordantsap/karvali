@@ -10,6 +10,14 @@ class EventTranslation extends Model
     use Sluggable;
 
   protected $translationForeignKey = 'event_id';
+
+  protected $fillable = [
+    'title',
+    'slug',
+    'meta_description',
+    'meta_keywords',
+    'description',
+  ];
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -28,12 +36,4 @@ class EventTranslation extends Model
     {
         return 'slug';
     }
-
-  protected $fillable = [
-    'title',
-    'slug',
-    'meta_description',
-    'meta_keywords',
-    'description',
-  ];
 }

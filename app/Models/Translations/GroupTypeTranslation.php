@@ -24,7 +24,7 @@ class GroupTypeTranslation extends Model
     }
 
   protected $fillable = [
-    'name',
+    'title',
     'slug',
     'meta_description',
     'meta_keywords',

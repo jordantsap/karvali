@@ -19,68 +19,68 @@ class PostTypeSeeder extends Seeder
         DB::table('post_types')->truncate();
 
         PostType::create([
-            'name:en' => 'Political',
+            'title:en' => 'Political',
             'slug:en' => 'politics',
 
 
-            'name:el' => 'Πολιτικές',
+            'title:el' => 'Πολιτικές',
             'slug:el' => 'politikes',
         ]);
         PostType::create([
-            'name:en' => 'Educational',
+            'title:en' => 'Educational',
             'slug:en' => 'education',
 
-            'name:el' => 'Εκπαιδευτικές',
+            'title:el' => 'Εκπαιδευτικές',
             'slug:el' => 'ekpedeytikes',
         ]);
         PostType::create([
-            'name:en' => 'Local',
+            'title:en' => 'Local',
             'slug:en' => 'local',
 
-            'name:el' => 'Τοπικές',
+            'title:el' => 'Τοπικές',
             'slug:el' => 'topikes',
         ]);
         PostType::create([
-            'name:en' => 'Country Based',
+            'title:en' => 'Country Based',
             'slug:en' => 'countrybased',
 
-            'name:el' => 'Κρατικές',
+            'title:el' => 'Κρατικές',
             'slug:el' => 'kratikes',
         ]);
         PostType::create([
-            'name:en' => 'Sports',
+            'title:en' => 'Sports',
             'slug:en' => 'sports',
 
 
-            'name:el' => 'Αθλητικές',
+            'title:el' => 'Αθλητικές',
             'slug:el' => 'athlitikes',
         ]);
         PostType::create([
-            'name:en' => 'Technological',
+            'title:en' => 'Technological',
             'slug:en' => 'technological',
 
-            'name:el' => 'Τεχνολογικές',
+            'title:el' => 'Τεχνολογικές',
             'slug:el' => 'texnologikes',
         ]);
         PostType::create([
-            'name:en' => 'Work',
+            'title:en' => 'Work',
             'slug:en' => 'work',
 
-            'name:el' => 'Εργασιακές',
+            'title:el' => 'Εργασιακές',
             'slug:el' => 'ergasiakes',
         ]);
         PostType::create([
-            'name:en' => 'World',
+            'title:en' => 'World',
             'slug:en' => 'world',
 
-            'name:el' => 'Παγκόσμιες',
+            'title:el' => 'Παγκόσμιες',
             'slug:el' => 'pagkosmies',
         ]);
         PostType::create([
-            'name:en' => 'Others',
+            'title:en' => 'Others',
             'slug:en' => 'others',
 
-            'name:el' => 'Διάφορα',
+            'title:el' => 'Διάφορα',
             'slug:el' => 'diafora',
         ]);
     }

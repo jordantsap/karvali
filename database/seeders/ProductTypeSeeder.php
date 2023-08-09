@@ -18,109 +18,109 @@ class ProductTypeSeeder extends Seeder
     {
         DB::table('product_types')->truncate();
         ProductType::create([
-            'name:en' => 'Coffee',
+            'title:en' => 'Coffee',
             'slug:en' => 'coffee',
 
-            'name:el' => 'Καφές',
+            'title:el' => 'Καφές',
             'slug:el' => 'kafes',
         ]);
         ProductType::create([
-            'name:en' => 'Alcohol',
+            'title:en' => 'Alcohol',
             'slug:en' => 'alcohol',
 
-            'name:el' => 'Αλκοόλ',
+            'title:el' => 'Αλκοόλ',
             'slug:el' => 'alkool',
         ]);
         ProductType::create([
-            'name:en' => 'Hand Made',
+            'title:en' => 'Hand Made',
             'slug:en' => 'handmade',
 
-            'name:el' => 'Χειροποίητα',
+            'title:el' => 'Χειροποίητα',
             'slug:el' => 'xeiropoihta',
         ]);
         ProductType::create([
-            'name:en' => 'Organic',
+            'title:en' => 'Organic',
             'slug:en' => 'organic',
 
-            'name:el' => 'Βιολογικά',
+            'title:el' => 'Βιολογικά',
             'slug:el' => 'viologika',
         ]);
         ProductType::create([
-            'name:en' => 'Sweets',
+            'title:en' => 'Sweets',
             'slug:en' => 'sweets',
 
-            'name:el' => 'Γλυκά',
+            'title:el' => 'Γλυκά',
             'slug:el' => 'glyka',
         ]);
         ProductType::create([
-            'name:en' => 'Fast Food',
+            'title:en' => 'Fast Food',
             'slug:en' => 'fastfood',
 
-            'name:el' => 'Γρήγορο Φαγητό',
+            'title:el' => 'Γρήγορο Φαγητό',
             'slug:el' => 'grygorofagito',
         ]);
         ProductType::create([
-            'name:en' => 'Fruits',
+            'title:en' => 'Fruits',
             'slug:en' => 'fruits',
 
-            'name:el' => 'Φρούτα',
+            'title:el' => 'Φρούτα',
             'slug:el' => 'frouta',
         ]);
         ProductType::create([
-            'name:en' => 'Traditional',
+            'title:en' => 'Traditional',
             'slug:en' => 'traditional',
 
-            'name:el' => 'Παραδοσιακό',
+            'title:el' => 'Παραδοσιακό',
             'slug:el' => 'paradosiako',
         ]);
         ProductType::create([
-            'name:en' => 'Pharma',
+            'title:en' => 'Pharma',
             'slug:en' => 'pharma',
 
-            'name:el' => 'Φαρμακευτικά',
+            'title:el' => 'Φαρμακευτικά',
             'slug:el' => 'farmakeytika',
         ]);
         ProductType::create([
-            'name:en' => 'Agriculture',
+            'title:en' => 'Agriculture',
             'slug:en' => 'agriculture',
 
-            'name:el' => 'Αγροτικά',
+            'title:el' => 'Αγροτικά',
             'slug:el' => 'agrotika',
         ]);
         ProductType::create([
-            'name:en' => 'Service',
+            'title:en' => 'Service',
             'slug:en' => 'service',
 
-            'name:el' => 'Υπηρεσία',
+            'title:el' => 'Υπηρεσία',
             'slug:el' => 'ypiresia',
         ]);
         ProductType::create([
-            'name:en' => 'Building Materials',
+            'title:en' => 'Building Materials',
             'slug:en' => 'buildingmaterials',
 
-            'name:el' => 'Οικοδομικά υλικά',
+            'title:el' => 'Οικοδομικά υλικά',
             'slug:el' => 'ykodomikaylika',
         ]);
         ProductType::create([
-            'name:en' => 'Electronics',
+            'title:en' => 'Electronics',
             'slug:en' => 'electronics',
 
-            'name:el' => 'Ηλεκτρονικά',
+            'title:el' => 'Ηλεκτρονικά',
             'slug:el' => 'hlektronika',
         ]);
 //        ProductType::create([
-//            'name:en' => 'Free',
+//            'title:en' => 'Free',
 //            'slug:en' => 'free',
 //
-//            'name:el' => 'Δωρεάν',
+//            'title:el' => 'Δωρεάν',
 //            'slug:el' => 'dwrean'
 //        ]);
 
 //        ProductType::create([
-//            'name:en' => 'Others',
+//            'title:en' => 'Others',
 //            'slug:en' => 'others',
 //
-//            'name:el' => 'Διάφορα',
+//            'title:el' => 'Διάφορα',
 //            'slug:el' => 'diafora',
 //        ]);
     }

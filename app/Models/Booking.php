@@ -15,7 +15,7 @@ class Booking extends Model implements TranslatableContract
     protected $fillable = ['name', 'slug'];
 
     protected $translatedAttributes = [
-        'name',
+        'title',
         'slug',
     ];
 

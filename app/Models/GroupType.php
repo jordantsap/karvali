@@ -11,7 +11,7 @@ class GroupType extends Model implements TranslatableContract
     use Translatable;
 
     protected $translatedAttributes = [
-      'name',
+      'title',
       'slug',
       'meta_description',
       'meta_keywords',

@@ -2,13 +2,13 @@
   <div class="container-fluid">
 
     <div class="row-fluid">
-      <div class="col-xs-10 col-xs-offset-2 bg-info">
+      <div class="col-xs-10 col-xs-offset-1 bg-info">
         <div class="col-xs-12">
           <h1 class="page-header">{{ __('page.popularheader') }}</h1></div>
       </div>
     </div>
 
-    <aside class="col-xs-2">
+    <aside class="col-xs-12 col-sm-2 col-lg-2">
       <ul class="bg-info nav nav-tabs nav-stacked" role="tablist">
         <li role="presentation" class="list-group-item bg-info"><i class="animated infinite pulse fas fa-3x fa-fire"></i>
           <h3 class="animated tada delay-1s text-center">{{__('page.popularheader')}}</h3>
@@ -28,7 +28,7 @@
       </ul>
     </aside>
 
-    <div class="col-xs-10 bg-info">
+    <div class="col-xs-12 col-sm-10 col-lg-10 bg-info">
       <!-- Tab panes -->
       <div class="tab tab-content">
         <div role="tabpanel" class="tab-pane active" id="companiestab">

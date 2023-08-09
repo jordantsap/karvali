@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-2 form-group{{ $errors->has('amenity_id') ? ' has-error' : '' }}">
-                                <label for="type">{{__('form.amenityid')}}</label>
+                                <label for="type">{{__('form.amenities')}}</label>
                                 @if ($errors->has('amenity_id'))
                                     <strong class="text-danger">{{ $errors->first('amenity_id') }}</strong>
                                 @endif

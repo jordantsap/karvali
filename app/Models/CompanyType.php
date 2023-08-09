@@ -17,7 +17,7 @@ class CompanyType extends Model implements TranslatableContract
 
 
     protected $translatedAttributes = [
-      'name',
+      'title',
       'slug',
     ];
 
