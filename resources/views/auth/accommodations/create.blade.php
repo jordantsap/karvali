@@ -39,18 +39,18 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-2 form-group{{ $errors->has('amenity_id') ? ' has-error' : '' }}">
+                            <div class="col-xs-2 form-group{{ $errors->has('amenities[]') ? ' has-error' : '' }}">
                                 <label for="type">{{__('form.amenities')}}</label>
-                                @if ($errors->has('amenity_id'))
-                                    <strong class="text-danger">{{ $errors->first('amenity_id') }}</strong>
+                                @if ($errors->has('amenities[]'))
+                                    <strong class="text-danger">{{ $errors->first('amenities[]') }}</strong>
                                 @endif
                                 <div class="">
-                                    <select id="amenities" value="{{ old('amenities') }}"
+                                    <select id="amenities" value="{{ old('amenities[]') }}"
                                             name="amenities[]" class="form-control" required multiple>
-                                        {{--                                        <option value="{{ old('amenity_id') }}">Επιλέξτε</option>--}}
+                                        {{--                                        <option value="{{ old('amenities[]') }}">Επιλέξτε</option>--}}
                                         @foreach($amenities as $amenity)
                                             <option
-                                                value="{{ $amenity->id }} {{ old('amenities') }}" {{old('amenities')?"selected":""}}>
+                                                value="{{ $amenity->id }} {{ old('amenities[]') }}" {{old('amenities[]')?"selected":""}}>
                                                 {{ $amenity->title }}</option>
                                         @endforeach
                                     </select>

@@ -32,4 +32,8 @@ class Image extends Model
     {
         return $this->morphedByMany(Accommodation::class, 'imageable');
     }
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'imageable');
+    }
 }

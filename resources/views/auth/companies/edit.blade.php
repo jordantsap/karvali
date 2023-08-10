@@ -10,11 +10,48 @@
   </section>
   <section class="content">
     <div class="box">
-      <form method="post" action="{{ route('companies.update', $company->id) }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('owner.companies.update', $company->id) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="box-body">
           <div class="row">
+              <div class="col-xs-12">
+                  <div class="col-xs-2 form-group">
+                      <label for="active"> Active
+                          <input type="checkbox" name="active" value="1" @if ($company->active == 1)
+                              {{'checked'}}
+                              @endif>
+                      </label>
+                  </div>
+                  <div class="col-xs-4 form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
+                      <label for="telephone">Τηλέφωνο</label>
+                      @if ($errors->has('telephone'))
+                          <strong class="text-danger">{{ $errors->first('telephone') }}</strong>
+                      @endif
+                      <div class="input-group">
+                          <input type="text" class="form-control" value="{{ $company->telephone }}" id="telephone" name="telephone" placeholder="Τηλέφωνο" >
+                          <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-user"></span>
+                </span>
+                      </div>
+                  </div>
+                  <div class="col-xs-6 text-center{{ $errors->has('days') ? ' has-error' : '' }}">
+                      <label for="days">Days of Operation and Time Ranges</label>
+                      <br>
+                      @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
+                          <div class="row">
+                              <label class="col-xs-4">
+                                  <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, [$company->days]) ? 'checked' : '' }}>
+                                  {{ $day }}
+                              </label>
+                              <div class="col-xs-8">
+                                  Opening Time: <input type="time" name="opening_times[]">
+                                  Closing Time: <input type="time" name="closing_times[]">
+                              </div>
+                          </div>
+                      @endforeach
+                  </div>
+              </div>
             <div class="col-xs-8">
               <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                 <label for="title">Επωνυμία</label>
@@ -29,18 +66,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-4 form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
-              <label for="telephone">Τηλέφωνο</label>
-              @if ($errors->has('telephone'))
-                <strong class="text-danger">{{ $errors->first('telephone') }}</strong>
-              @endif
-              <div class="input-group">
-                <input type="text" class="form-control" value="{{ $company->telephone }}" id="telephone" name="telephone" placeholder="Τηλέφωνο" >
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-user"></span>
-                </span>
-              </div>
-            </div>
+
           </div>
 
           <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
@@ -70,14 +96,6 @@
           </div>
 
             <div class="row">
-              <div class="col-xs-2 form-group">
-                <label for="active"> Active
-                  <input type="checkbox" name="active" value="1" @if ($company->active == 1)
-                    {{'checked'}}
-                  @endif>
-                </label>
-              </div>
-
               <div class="col-xs-6 form-group{{ $errors->has('manager') ? ' has-error' : '' }}">
                 <label for="manager">Όνομα Υπευθύνου</label>
                 @if ($errors->has('manager'))
@@ -101,7 +119,7 @@
                     @foreach ($categories as $category)
                       <option value="{{$category->id}}" @if( $company->company_type == $category->id){{'selected'}}
                       @else None
-                      @endif>{{$category->name}}</option>
+                      @endif>{{$category->title}}</option>
                     @endforeach
                   </select>
                   <span class="input-group-addon">
@@ -176,54 +194,6 @@
                   <div class="input-group">
                     <input type="file" value="{{asset('images/companies/'.$company->image3)}}" name="image3">
                     <p class="help-block">Image 3.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-6 text-center{{ $errors->has('days') ? ' has-error' : '' }}">
-                <label for="days" class="bold">Ημερες εργασιας</label>
-                @if ($errors->has('days'))
-                  <strong class="text-danger">{{ $errors->first('days') }}</strong>
-                @endif
-                <br>
-                <label class="checkbox-inline">
-                  <input type="checkbox" multiple name="days[]" value="Weekdays" {{ $company->days == 'Weekdays' ? 'checked' : ''}}> Καθημερινα
-                </label>
-                <label class="checkbox-inline">
-                  <input type="checkbox" multiple name="days[]" value="Saturday" {{ $company->days == 'Suturday' ? 'checked' : ''}}> Σαββατο
-                </label>
-                <label class="checkbox-inline">
-                  <input type="checkbox" multiple name="days[]" value="Sunday" {{$company->days == 'Sunday' ? 'checked' : ''}}> Κυριακη
-                </label>
-              </div>
-              <div class="col-xs-3">
-                <div class="form-group{{ $errors->has('morningtime') ? ' has-error' : '' }}">
-                  <label for="morningtime">Πρωινές Ώρες</label>
-                  @if ($errors->has('morningtime'))
-                    <strong class="text-danger">{{ $errors->first('morningtime') }}</strong>
-                  @endif
-                  <div class="input-group">
-                    <input type="time" class="form-control" value="{{ $company->morningtime }}" id="morningtime" name="morningtime" placeholder="Πρωινές Ώρες" >
-                    <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-xs-3">
-                <div class="form-group{{ $errors->has('afternoontime') ? ' has-error' : '' }}">
-                  <label for="afternoontime">Απογευματινές ώρες</label>
-                  @if ($errors->has('afternoontime'))
-                    <strong class="text-danger">{{ $errors->first('afternoontime') }}</strong>
-                  @endif
-                  <div class="input-group">
-                    <input type="time" class="form-control" value="{{ $company->afternoontime }}" id="afternoontime" name="afternoontime" placeholder="Απογευματινές Ώρες" >
-                    <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </span>
                   </div>
                 </div>
               </div>
@@ -310,29 +280,7 @@
 									</label>
 								</div>
 
-								<div class="col-xs-6 form-group text-center{{ $errors->has('creditcard') ? ' has-error' : '' }}">
-									<label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>
-									@if ($errors->has('creditcard'))
-	  								<strong class="text-danger">{{ $errors->first('creditcard') }}</strong>
-	  							@endif
-									<br>
-									<label class="checkbox-inline">
-										<input type="checkbox" name="creditcard[]" value="Nocard"
-                    {{ $company->creditcard == 'Nocard' ? 'checked' : ''}}> Not
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" name="creditcard[]" value="Visa"
-                    {{ $company->creditcard == 'Visa' ? 'checked' : ''}}> Visa
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" name="creditcard[]" value="Mastercard"
-                    {{ $company->creditcard == 'Mastercard' ? 'checked' : ''}}> Mastercard
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" name="creditcard[]" value="American Express"
-                    {{ $company->creditcard == 'American Express' ? 'checked' : ''}}> American Express
-									</label>
-								</div>
+
                 <div class="col-xs-3 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
 									<label for="delivery" class="bold">Delivery:</label>
 									@if ($errors->has('pos'))

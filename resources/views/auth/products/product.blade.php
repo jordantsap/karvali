@@ -7,8 +7,8 @@
   <section class="content-header">
     <h1>
       Product : {{$product->title}}
-      @can ('update_products', App\Models\Product::class)
-        <small><a class="btn btn-primary" href="{{route('products.edit', $product->id)}}">Edit</a>
+      @can ('update-products', App\Models\Product::class)
+        <small><a class="btn btn-primary" href="{{route('owner.products.edit', $product->id)}}">Edit</a>
       @endcan
             - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
     </h1>
@@ -35,7 +35,7 @@
         <div class="form-group col-xs-4">
           <label for="category">Category</label>
           <div class="form-control" name="category" id="category" disabled>
-            @if( ! empty($product->category)){{ $product->category->name }}
+            @if( ! empty($product->category)){{ $product->category->title }}
                 @else Null
             @endif
           </div>
@@ -126,6 +126,24 @@
             <img width="200" height="200" src="{{asset('images/products/'.$product->image3)}}" alt="{{$product->title}}">
           </div>
         </div>
+          @if($product->images)
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label for="image3"> <h1>{{__('Λοιπές Εικόνες')}}</h1></label>
+                      </div>
+                      @foreach($product->images as $upload)
+                          <div class="col-xs-1 col-md-3">
+                              <a href="{{ asset($upload->path) }}" data-lightbox="product-images">
+                                  <img width="100%" height="100%" src="{{ asset($upload->path) }}" alt="{{$upload->id}}">
+                              </a>
+                          </div>
+                      @endforeach
+                      @else
+                          No images available
+                  </div>
+              </div>
+          @endif
       </div>
 
       <div class="row">

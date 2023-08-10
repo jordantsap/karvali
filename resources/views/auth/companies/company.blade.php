@@ -7,8 +7,8 @@
   <section class="content-header">
     <h1>
       Company : {{$company->title}}
-      @can ('update_companies', App\Models\Company::class)
-        <small><a class="btn btn-primary" href="{{route('companies.edit', $company->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+      @can ('update-companies', App\Models\Company::class)
+        <small><a class="btn btn-primary" href="{{route('owner.companies.edit', $company->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
       @endcan
     </h1>
   </section>
@@ -53,7 +53,7 @@
           <div class="form-group col-xs-4">
             <label for="category">Category</label>
             <div class="form-control" name="category" id="category" disabled>
-              @if( ! empty($company->category)){{ $company->category->name }}
+              @if( ! empty($company->category)){{ $company->category->title }}
                   @else Null
               @endif
             </div>
@@ -98,15 +98,25 @@
           <div class="col-xs-6 text-center">
             <label for="days" class="bold">Ημερες εργασιας</label>
             <br>
-            <label class="checkbox-inline">
-              <input type="checkbox" name="days[]" value="Weekdays" {{ $company->days == 'Weekdays' ? "checked" : ""}}> Καθημερινα
-            </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" name="days[]" value="Saturday" {{ $company->days == 'Suturday' ? 'checked' : ''}}> Σαββατο
-            </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" name="days[]" value="Sunday" {{$company->days == 'Sunday' ? 'checked' : ''}}> Κυριακη
-            </label>
+              @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $index => $day)
+                  <label class="checkbox-inline">
+                      <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, [$company->days]) ? 'checked' : '' }}> {{ $day }}
+                  </label>
+
+                  <!-- Opening and closing time inputs -->
+                  Opening Time: <input type="time" name="opening_times[]" value="{{ $company->opening_times[$index] }}">
+                  Closing Time: <input type="time" name="closing_times[]" value="{{ $company->closing_times[$index] }}">
+                  <br>
+              @endforeach
+{{--            <label class="checkbox-inline">--}}
+{{--              <input type="checkbox" multiple {{ $company->days == "Weekdays" ? "checked" : ""}}> Καθημερινα--}}
+{{--            </label>--}}
+{{--            <label class="checkbox-inline">--}}
+{{--              <input type="checkbox" multiple {{ [$company->days] == "Saturday" ? 'checked' : ''}}> Σαββατο--}}
+{{--            </label>--}}
+{{--            <label class="checkbox-inline">--}}
+{{--              <input type="checkbox" multiple {{$company->days == "Sunday" ? 'checked' : ''}}> Κυριακη--}}
+{{--            </label>--}}
           </div>
           <div class="col-xs-3">
             <div class="form-group">
@@ -196,26 +206,26 @@
               </label>
             </div>
 
-            <div class="col-xs-6 form-group text-center">
-              <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>
-              <br>
-              <label class="checkbox-inline">
-                <input type="checkbox" name="creditcard[]" value="Nocard"
-                {{ $company->creditcard == 'Nocard' ? 'checked' : ''}}> Not
-              </label>
-              <label class="checkbox-inline">
-                <input type="checkbox" name="creditcard[]" value="Visa"
-                {{ $company->creditcard == 'Visa' ? 'checked' : ''}}> Visa
-              </label>
-              <label class="checkbox-inline">
-                <input type="checkbox" name="creditcard[]" value="Mastercard"
-                {{ $company->creditcard == 'Mastercard' ? 'checked' : ''}}> Mastercard
-              </label>
-              <label class="checkbox-inline">
-                <input type="checkbox" name="creditcard[]" value="American Express"
-                {{ $company->creditcard == 'American Express' ? 'checked' : ''}}> American Express
-              </label>
-            </div>
+{{--            <div class="col-xs-6 form-group text-center">--}}
+{{--              <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>--}}
+{{--              <br>--}}
+{{--              <label class="checkbox-inline">--}}
+{{--                <input type="checkbox" name="creditcard[]" value="Nocard"--}}
+{{--                {{ $company->creditcard == 'Nocard' ? 'checked' : ''}}> Not--}}
+{{--              </label>--}}
+{{--              <label class="checkbox-inline">--}}
+{{--                <input type="checkbox" name="creditcard[]" value="Visa"--}}
+{{--                {{ $company->creditcard == 'Visa' ? 'checked' : ''}}> Visa--}}
+{{--              </label>--}}
+{{--              <label class="checkbox-inline">--}}
+{{--                <input type="checkbox" name="creditcard[]" value="Mastercard"--}}
+{{--                {{ $company->creditcard == 'Mastercard' ? 'checked' : ''}}> Mastercard--}}
+{{--              </label>--}}
+{{--              <label class="checkbox-inline">--}}
+{{--                <input type="checkbox" name="creditcard[]" value="American Express"--}}
+{{--                {{ $company->creditcard == 'American Express' ? 'checked' : ''}}> American Express--}}
+{{--              </label>--}}
+{{--            </div>--}}
             <div class="col-xs-3 form-group">
               <label for="delivery" class="bold">Delivery:</label>
               <br>

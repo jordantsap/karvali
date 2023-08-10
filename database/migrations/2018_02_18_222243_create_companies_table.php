@@ -24,8 +24,8 @@ class CreateCompaniesTable extends Migration
              $table->string('image2')->nullable();
              $table->string('image3')->nullable();
              $table->string('days');
-             $table->string('morningtime');
-             $table->string('afternoontime');
+             $table->string('opening_times');
+             $table->string('closing_times');
              $table->string('telephone')->nullable();
              $table->string('website')->nullable();
              $table->string('email')->nullable();

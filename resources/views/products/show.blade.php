@@ -1,7 +1,7 @@
 @extends('layouts.main')
-@section('title', $product->category->name.' '.$product->title )
-@section('meta_description', $product->category->name.' '.$product->meta_description)
-@section('meta_keywords', $product->meta_keywords.' '. $product->category->name)
+@section('title', $product->category->title.' '.$product->title )
+@section('meta_description', $product->category->title.' '.$product->meta_description)
+@section('meta_keywords', $product->meta_keywords.' '. $product->category->title)
 
 @section('head-js')
   <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c1ce62ff6809e0011a91cbd&product=inline-share-buttons' async='async'></script>

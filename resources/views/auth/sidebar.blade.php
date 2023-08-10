@@ -7,10 +7,10 @@
 </li>
 
 <li>
-    <a href="{{ route('owner.product.index') }}"><i class="fas fa-shopping-bag"></i> <span>Products List</span></a>
+    <a href="{{ route('owner.products.index') }}"><i class="fas fa-shopping-bag"></i> <span>Products List</span></a>
 </li>
 <li>
-    <a href="{{ route('owner.product.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Product</span></a>
+    <a href="{{ route('owner.products.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Product</span></a>
 </li>
 
 @endrole

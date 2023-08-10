@@ -41,7 +41,7 @@ class AccommodationFactory extends Factory
             'user_id' => rand(1, 5),
             'total_rooms' => rand(1, 10),
             'accommodation_type_id' => rand(1, 10),
-            'amenity_id' => rand(1, 10),
+//            'amenity_id' => rand(1, 10),
         ];
     }
 }

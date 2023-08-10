@@ -13,7 +13,7 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('companies', CompanyController::class);
 
-        Route::resource('product', \App\Http\Controllers\Owner\ProductController::class);
+        Route::resource('products', \App\Http\Controllers\Owner\ProductController::class);
 
         Route::resource('accommodation', \App\Http\Controllers\Owner\AccommodationController::class);
 

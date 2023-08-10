@@ -7,7 +7,7 @@
       <h1>
         Products
 {{--        @can ('create_products', App\Models\Product::class)--}}
-          <small><a class="btn btn-primary" href="{{route('owner.product.create')}}">Add New</a></small>
+          <small><a class="btn btn-primary" href="{{route('owner.products.create')}}">Add New</a></small>
 {{--        @endcan--}}
       </h1>
     </section>
@@ -26,7 +26,7 @@
                     <th>Title</th>
                     <th>Logo</th>
                     <th>Description</th>
-{{--                    @can ('view_products','update_products', App\Models\Product::class)--}}
+{{--                    @can ('view-products','update-products', App\Models\Product::class)--}}
                       <th>Actions</th>
 {{--                    @endcan--}}
                   </tr>
@@ -38,7 +38,7 @@
                       <td>{{$product->id}}</td>
                       <td>{{$product->active?"yes":'no'}}</td>
                       <td>
-                        @if( ! empty($product->category)){{ $product->category->name }}
+                        @if( ! empty($product->category)){{ $product->category->title }}
                         @else None
                         @endif
                       </td>
@@ -47,13 +47,13 @@
                       <td>{{Str::limit($product->description, 20)}}</td>
                       <td>
 {{--                        @can ('update', App\Models\Product::class)--}}
-                          <a class="btn btn-primary" href="{{route('owner.product.edit', $product->id)}}">Edit</a> -
+                          <a class="btn btn-primary" href="{{route('owner.products.edit', $product->id)}}">Edit</a> -
 {{--                        @endcan--}}
 {{--                        @can ('view', App\Models\Product::class)--}}
-                          <a class="btn btn-primary" href="{{route('owner.product.show', $product->id)}}">View</a>
+                          <a class="btn btn-primary" href="{{route('owner.products.show', $product->id)}}">View</a>
 {{--                        @endcan--}}
 {{--                        @can ('delete', App\Models\Product::class)--}}
-                                <form action="{{ route('owner.product.destroy', $product->id) }}"
+                                <form action="{{ route('owner.products.destroy', $product->id) }}"
                                       method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}

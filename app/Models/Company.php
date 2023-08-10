@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
@@ -34,8 +35,8 @@ class Company extends Model implements TranslatableContract
     'image2',
     'image3',
     'days',
-    'morningtime',
-    'afternoontime',
+    'opening_times',
+    'closing_times',
     'telephone',
     'website',
     'email',
@@ -87,4 +88,9 @@ class Company extends Model implements TranslatableContract
     {
         return $query->where('active', 1);
     }
+    public function getWeekDaysAttribute()
+    {
+        return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    }
+
 }

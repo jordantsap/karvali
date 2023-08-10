@@ -32,57 +32,61 @@
                         <select id="company_type" value="{{ old('company_type') }}" name="company_type" class="form-control" >
                             <option value="{{ old('company_type') }}">Επιλέξτε</option>
                             @foreach($companytypes as $companytype)
-                                <option value="{{ $companytype->id }} {{ old('company_type') }}" {{old('company_type')?"selected":""}}>{{ $companytype->name }}</option>
+                                <option value="{{ $companytype->id }} {{ old('company_type') }}" {{old('company_type')?"selected":""}}>
+                                    {{ $companytype->title }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-3 text-center{{ $errors->has('days') ? ' has-error' : '' }}">
-                    <label for="days" class="bold">Ημερες εργασιας</label>
-                    @if ($errors->has('days'))
-                        <strong class="text-danger">{{ $errors->first('days') }}</strong>
-                    @endif
+                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">
+                    <label for="days_and_times">Days and Time Ranges of Open Market</label>
                     <br>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" multiple name="days[]" value="Weekdays" {{ old('days') == 'Weekdays' ? 'checked' : ''}}> Καθημερινα
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" multiple name="days[]" value="Saturday" {{ old('days') == 'Suturday' ? 'checked' : ''}}> Σαββατο
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" multiple name="days[]" value="Sunday" {{ old('days') == 'Sunday' ? 'checked' : ''}}> Κυριακη
-                    </label>
-                </div>
-
-                <div class="col-xs-2 form-group{{ $errors->has('morningtime') ? ' has-error' : '' }}">
-                    <label for="morningtime">Πρωινές Ώρες</label>
-                    @if ($errors->has('morningtime'))
-                        <strong class="text-danger">{{ $errors->first('morningtime') }}</strong>
-                    @endif
-                    <div class="input-group">
-                        <input type="time" class="form-control" value="{{ old('morningtime') }}" id="morningtime" name="morningtime" placeholder="" >
-                        <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                    </div>
-                </div>
-
-                <div class="col-xs-2 form-group{{ $errors->has('afternoontime') ? ' has-error' : '' }}">
-                    <label for="afternoontime">Απογευματινές ώρες</label>
-                    @if ($errors->has('afternoontime'))
-                        <strong class="text-danger">{{ $errors->first('afternoontime') }}</strong>
-                    @endif
-                    <div class="input-group">
-                        <input type="time" class="form-control" value="{{ old('afternoontime') }}" id="afternoontime" name="afternoontime" placeholder="" >
-                        <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                    </div>
+{{--                    @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)--}}
+{{--                        <label>{{ $day }}</label>--}}
+{{--                        <input type="checkbox" name="days[]" value="{{ $day }}">--}}
+{{--                        {{__('form.Opening Time')}}: <input type="time" name="opening_times[]">--}}
+{{--                        {{__('form.Closing Time')}}: <input type="time" name="closing_times[]">--}}
+{{--                        <br>--}}
+{{--                    @endforeach--}}
+                    @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
+                        <label>{{ $day }}</label>
+                        <input type="checkbox" name="days[]" value="{{ $day }}">
+                        Opening Time: <input type="time" name="opening_times[]">
+                        Closing Time: <input type="time" name="closing_times[]">
+                        <br>
+                    @endforeach
                 </div>
 
                 <div class="col-xs-2 form-group">
                     <label for="telephone">Τηλέφωνο</label>
                     <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control" id="telephone" placeholder="Τηλέφωνο Επιχείρησης" >
+                </div>
+                <div class="col-xs-2 form-group{{ $errors->has('pos') ? ' has-error' : '' }}">
+                    <label for="pos" class="bold">POS:</label>
+                    @if ($errors->has('pos'))
+                        <strong class="text-danger">{{ $errors->first('pos') }}</strong>
+                    @endif
+                    <br>
+                    <label class="radio-inline">
+                        <input type="radio" name="pos" value="No" {{ old('pos') == 'No' ? 'checked' : ''}} > No
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="pos" value="Yes" {{ old('pos') == 'Yes' ? 'checked' : ''}} > Yes
+                    </label>
+                </div>
+
+                <div class="col-xs-2 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
+                    <label for="delivery" class="bold">Delivery:</label>
+                    @if ($errors->has('delivery'))
+                        <strong class="text-danger">{{ $errors->first('delivery') }}</strong>
+                    @endif
+                    <br>
+                    <label class="radio-inline">
+                        <input type="radio" name="delivery" value="No" {{ old('delivery') == 'No' ? 'checked' : ''}} > No
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="delivery" value="Yes" {{ old('delivery') == 'Yes' ? 'checked' : ''}} > Yes
+                    </label>
                 </div>
 
             </div>
@@ -146,110 +150,87 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-xs-2 form-group{{ $errors->has('pos') ? ' has-error' : '' }}">
-                    <label for="pos" class="bold">POS:</label>
-                    @if ($errors->has('pos'))
-                        <strong class="text-danger">{{ $errors->first('pos') }}</strong>
-                    @endif
-                    <br>
-                    <label class="radio-inline">
-                        <input type="radio" name="pos" value="No" {{ old('pos') == 'No' ? 'checked' : ''}} > No
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="pos" value="Yes" {{ old('pos') == 'Yes' ? 'checked' : ''}} > Yes
-                    </label>
-                </div>
-
-                <div class="col-xs-7 form-group text-center{{ $errors->has('creditcard') ? ' has-error' : '' }}">
-                    <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>
-                    @if ($errors->has('creditcard'))
-                        <strong class="text-danger">{{ $errors->first('creditcard') }}</strong>
-                    @endif
-                    <br>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="creditcard[]" value="Νone" {{ old('creditcard') == 'Νone' ? 'checked' : ''}}> None
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="creditcard[]" value="Visa" {{ old('creditcard') == 'Visa' ? 'checked' : ''}}> Visa
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="creditcard[]" value="Μastercard" {{ old('creditcard') == 'Mastercard' ? 'checked' : ''}}> Mastercard
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="creditcard[]" value="Αmerican express" {{ old('creditcard') == 'American Express' ? 'checked' : ''}}> American Express
-                    </label>
-                </div>
-                <div class="col-xs-3 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
-                    <label for="delivery" class="bold">Delivery:</label>
-                    @if ($errors->has('delivery'))
-                        <strong class="text-danger">{{ $errors->first('delivery') }}</strong>
-                    @endif
-                    <br>
-                    <label class="radio-inline">
-                        <input type="radio" name="delivery" value="No" {{ old('delivery') == 'No' ? 'checked' : ''}} > No
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="delivery" value="Yes" {{ old('delivery') == 'Yes' ? 'checked' : ''}} > Yes
-                    </label>
-                </div>
-            </div>
+{{--            <div class="row">--}}
 
 
-            <div class="row">
-            <div class="col-xs-6 form-group">
-              <label for="title">Title</label>
-              <input type="text" value="{{ old('title') }}" name="title" class="form-control" id="title" placeholder="Enter Title" >
-            </div>
-              <div class="col-xs-3 form-group{{ $errors->has('manager') ? ' has-error' : '' }}">
-                  <label for="manager">Όνομα Υπευθύνου</label>
-                  @if ($errors->has('manager'))
-                      <strong class="text-danger">{{ $errors->first('manager') }}</strong>
-                  @endif
-                  <div class="input-group">
-                      <input type="text" class="form-control" value="{{ old('manager') }}" id="manager" name="manager" placeholder="Manager Name" >
-                      <span class="input-group-addon">
+{{--                <div class="col-xs-7 form-group text-center{{ $errors->has('creditcard') ? ' has-error' : '' }}">--}}
+{{--                    <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>--}}
+{{--                    @if ($errors->has('creditcard'))--}}
+{{--                        <strong class="text-danger">{{ $errors->first('creditcard') }}</strong>--}}
+{{--                    @endif--}}
+{{--                    <br>--}}
+{{--                    <label class="checkbox-inline">--}}
+{{--                        <input type="checkbox" name="creditcard[]" value="None" {{ old('creditcard') == 'Νone' ? 'checked' : ''}}> None--}}
+{{--                    </label>--}}
+{{--                    <label class="checkbox-inline">--}}
+{{--                        <input type="checkbox" name="creditcard[]" value="Visa" {{ old('creditcard') == 'Visa' ? 'checked' : ''}}> Visa--}}
+{{--                    </label>--}}
+{{--                    <label class="checkbox-inline">--}}
+{{--                        <input type="checkbox" name="creditcard[]" value="Mastercard" {{ old('creditcard') == 'Mastercard' ? 'checked' : ''}}> Mastercard--}}
+{{--                    </label>--}}
+{{--                    <label class="checkbox-inline">--}}
+{{--                        <input type="checkbox" name="creditcard[]" value="American Express" {{ old('creditcard') == 'American Express' ? 'checked' : ''}}> American Express--}}
+{{--                    </label>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+            @foreach(config('translatable.locales') as $locale => $lang)
+
+                <div class="row">
+                    <div class="col-xs-6 form-group">
+                        <label for="title">{{__('form.title').' - '.$lang}}</label>
+                        <input type="text" value="{{ old('title') }}" name="{{$locale}}[title]" class="form-control" id="title" placeholder="Enter Title" >
+                    </div>
+                    <div class="col-xs-3 form-group{{ $errors->has('manager') ? ' has-error' : '' }}">
+                        <label for="manager">{{__("form.Όνομα Υπευθύνου"). ' - ' . $lang}}</label>
+                        @if ($errors->has('manager'))
+                            <strong class="text-danger">{{ $errors->first('manager') }}</strong>
+                        @endif
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="{{ old('manager') }}" id="manager" name="{{$locale}}[manager]" placeholder="Manager Name" >
+                            <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user"></span>
                   </span>
-                  </div>
-              </div>
-          </div>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
-            <label for="meta_description">Meta Description</label>
-            @if ($errors->has('meta_description'))
-              <strong class="text-danger">{{ $errors->first('meta_description') }}</strong>
-            @endif
-            <div class="input-group">
-              <input type="text" class="form-control" value="{{ old('meta_description') }}" id="manager" name="meta_description" placeholder="Meta Description" >
-              <span class="input-group-addon">
+                <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
+                    <label for="meta_description">{{__('form.Meta Description'). ' - ' . $lang}}</label>
+                    @if ($errors->has('meta_description'))
+                        <strong class="text-danger">{{ $errors->first('meta_description') }}</strong>
+                    @endif
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="{{$locale}}[meta_description]" value="{{ old('meta_description') }}" id="manager" placeholder="Meta Description" >
+                        <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
               </span>
-            </div>
-          </div>
+                    </div>
+                </div>
 
-          <div class="form-group{{ $errors->has('meta_keywords') ? ' has-error' : '' }}">
-            <label for="meta_keywords">Meta Keywords</label>
-            @if ($errors->has('meta_keywords'))
-              <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
-            @endif
-            <div class="input-group">
-              <input type="text" class="form-control" value="{{ old('meta_keywords') }}" id="meta_keywords" name="meta_keywords" placeholder="Meta keywords comma separated" >
-              <span class="input-group-addon">
+                <div class="form-group{{ $errors->has('meta_keywords') ? ' has-error' : '' }}">
+                    <label for="meta_keywords">{{__('form.Meta Keywords').' - '.$lang}}</label>
+                    @if ($errors->has('meta_keywords'))
+                        <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
+                    @endif
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="{{ old('meta_keywords') }}" id="meta_keywords" name="{{$locale}}[meta_keywords]" placeholder="Meta keywords comma separated" >
+                        <span class="input-group-addon">
                 <span class="glyphicon glyphicon-user"></span>
               </span>
-            </div>
-          </div>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="textarea" name="description" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" >{{old('description')}}</textarea>
-            </div>
+                <div class="form-group">
+                    <label for="description">{{__('form.Description').' - '.$lang}}</label>
+                    <textarea class="textarea" name="{{$locale}}[description]" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" >{{old('description')}}</textarea>
+                </div>
+            @endforeach
 
 
             <div class="col-xs-12">
 
-                <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
+                <div class="col-xs-3  form-group{{ $errors->has('header') ? ' has-error' : '' }}">
                     <label for="header">header</label>
                     @if ($errors->has('header'))
                         <strong class="text-danger">{{ $errors->first('header') }}</strong>

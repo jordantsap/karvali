@@ -37,7 +37,13 @@
         <div class="col-xs-3">
           <h3>{{__('single.pos')}} <div class="divider"></div>{{ $company->pos }}</h3>
 
-          <h3>{{__('single.creditcards')}} <div class="divider"></div>{{ $company->creditcard }}</h3>
+          <h3>{{__('single.days')}} <div class="divider"></div>
+              @foreach (array($company->days) as $day)
+                  <label class="checkbox-inline">
+                      <input type="checkbox" value="{{ $day }}" {{ explode(',', $company->days) ? 'checked' : '' }}> {{ $day }}
+                  </label>
+              @endforeach
+          </h3>
 
           <h3>{{__('single.productdelivery')}} <div class="divider"></div>{{ $company->delivery }}</h3>
 

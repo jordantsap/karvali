@@ -7,8 +7,8 @@
         <section class="content-header">
             <h1>
                 Product : {{$product->title}}
-                @can ('update_products', App\Models\Product::class)
-                    <small><a class="btn btn-primary" href="{{route('products.edit', $product->id)}}">Edit</a>
+                @can ('update-products', App\Models\Product::class)
+                    <small><a class="btn btn-primary" href="{{route('owner.products.edit', $product->id)}}">Edit</a>
                         @endcan
                         - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
             </h1>
