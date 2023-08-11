@@ -27,7 +27,7 @@
                   <th>Title</th>
                   <th>Manager</th>
                   <th>Logo</th>
-                  @can ('view_companies','update_companies', App\Company::class)
+                  @can ('view-companies','update-companies', App\Company::class)
                     <th>Actions</th>
                   @endcan
                 </tr>
@@ -46,14 +46,14 @@
                     <td>{{$company->manager}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/companies/'.$company->logo)}}" alt="{{$company->title}}"></td>
                     <td>
-                    @can ('update_companies', App\Company::class)
-                      <a class="btn btn-primary" href="{{route('companies.edit', $company->id)}}">Edit</a> -
+                    @can ('update-companies', App\Models\Company::class)
+                      <a class="btn btn-primary" href="{{route('owner.companies.edit', $company->id)}}">Edit</a> -
                     @endcan
-                    @can ('view_companies', App\Company::class)
-                      <a class="btn btn-primary" href="{{route('companies.show', $company->id)}}">View</a>
+                    @can ('view-companies', App\Models\Company::class)
+                      <a class="btn btn-primary" href="{{route('owner.companies.show', $company->id)}}">View</a>
                       @endcan
-                        @can ('delete_companies', App\Models\Company::class)
-                            <form action="{{ route('companies.destroy', $company->id) }}"
+                        @can ('delete-companies', App\Models\Company::class)
+                            <form action="{{ route('owner.companies.destroy', $company->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}

@@ -296,9 +296,9 @@
                               <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
                           @endif
                           <div>
-                              {{--                                            @if ( old('imgfile'))--}}
-                              {{--                                                <input type="file" name="imgfile[]" id="imgfile" multiple>--}}
-                              {{--                                            @endif--}}
+                                                                          @if ( old('imgfile'))
+                                                                              <input type="file" name="imgfile[]" id="imgfile" multiple>
+                                                                          @endif
                               <input type="file" name="imgfile[]" id="imgfile" multiple>
                           </div>
                           <p class="help-block">

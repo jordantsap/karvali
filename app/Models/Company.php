@@ -92,5 +92,60 @@ class Company extends Model implements TranslatableContract
     {
         return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     }
+    public function getDaysArray()
+    {
+        return [
+            'mon' => 'Monday',
+            'tue' => 'Tuesday',
+            'wed' => 'Wednesday',
+            'thu' => 'Thursday',
+            'fri' => 'Friday',
+            'sat' => 'Saturday',
+            'sun' => 'Sunday',
+        ];
+    }
+
+    public function getOpeningTime($day)
+    {
+        $openingTimes = explode(',', $this->opening_times);
+        return isset($openingTimes[$this->getDayIndex($day)]) ? $openingTimes[$this->getDayIndex($day)] : '';
+    }
+
+    public function getClosingTime($day)
+    {
+        $closingTimes = explode(',', $this->closing_times);
+        return isset($closingTimes[$this->getDayIndex($day)]) ? $closingTimes[$this->getDayIndex($day)] : '';
+    }
+
+    private function getDayIndex($day)
+    {
+        $daysArray = $this->getDaysArray();
+        return array_search($day, array_keys($daysArray));
+    }
+    // Company.php
+
+    public function getDecodedOpeningTimesAttribute()
+    {
+        return json_decode($this->opening_times, true) ?? [];
+    }
+
+    public function getDecodedClosingTimesAttribute()
+    {
+        return json_decode($this->closing_times, true) ?? [];
+    }
+
+    public function getOpeningTimeForDay($day)
+    {
+        return $this->decodedOpeningTimes[$day] ?? '';
+    }
+
+    public function getClosingTimeForDay($day)
+    {
+        return $this->decodedClosingTimes[$day] ?? '';
+    }
+    public function getDaysWithTimes()
+    {
+        return $this->orderBy('days')->get();
+    }
 
 }

@@ -98,15 +98,32 @@
           <div class="col-xs-6 text-center">
             <label for="days" class="bold">Ημερες εργασιας</label>
             <br>
-              @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $index => $day)
+              @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
                   <label class="checkbox-inline">
-                      <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, [$company->days]) ? 'checked' : '' }}> {{ $day }}
+                      <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, $company->days) ? 'checked' : '' }}> {{ $day }}
                   </label>
 
-                  <!-- Opening and closing time inputs -->
-                  Opening Time: <input type="time" name="opening_times[]" value="{{ $company->opening_times[$index] }}">
-                  Closing Time: <input type="time" name="closing_times[]" value="{{ $company->closing_times[$index] }}">
+                  <!-- Display opening and closing times for each day -->
+                  Opening Time: <input type="time" name="opening_times[]" value="{{ $company->opening_times[$loop->index] ?? '' }}">
+                  Closing Time: <input type="time" name="closing_times[]" value="{{ $company->closing_times[$loop->index] ?? '' }}">
                   <br>
+
+{{--                      <label class="checkbox-inline">--}}
+{{--                          <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, json_decode($company->days)) ? 'checked' : '' }}> {{ $day }}--}}
+{{--                      </label>--}}
+
+{{--                      <!-- Opening and closing time inputs -->--}}
+{{--                      Opening Time: <input type="time" name="opening_times[]" value="{{ json_decode($company->getOpeningTime($day)) }}">--}}
+{{--                      Closing Time: <input type="time" name="closing_times[]" value="{{ json_decode($company->getClosingTime($day)) }}">--}}
+{{--                      <br>--}}
+{{--                  <label class="checkbox-inline">--}}
+{{--                      <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, explode('[""]', $company->days)) ? 'checked' : '' }}> {{ $day }}--}}
+{{--                  </label>--}}
+
+{{--                  <!-- Opening and closing time inputs -->--}}
+{{--                  Opening Time: <input type="time" name="opening_times[]" value="{{ $company->getOpeningTime([$day]) }}">--}}
+{{--                  Closing Time: <input type="time" name="closing_times[]" value="{{ $company->getClosingTime([$day]) }}">--}}
+{{--                  <br>--}}
               @endforeach
 {{--            <label class="checkbox-inline">--}}
 {{--              <input type="checkbox" multiple {{ $company->days == "Weekdays" ? "checked" : ""}}> Καθημερινα--}}

@@ -119,13 +119,12 @@ class ProductController extends Controller
      * @param Product $product
      * @return Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $product = Product::withTranslation()
-            ->whereTranslation('slug', $product->slug)->first();
-        $productTypes = ProductType::withTranslation()->get();
+        $product = Product::withTranslation()->find($id);
+        $categories = ProductType::withTranslation()->get();
 
-        return view('auth.products.edit', compact(['product', 'productTypes']));
+        return view('auth.products.edit', compact(['product', 'categories']));
     }
 
     /**
@@ -137,7 +136,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        dd($request->all());
+
+        $product->update($request->all());
+
+//        $product->amenities()->sync($request->input('amenities', []));
+
+
+//        toastr()->addSuccess('Accommodation Updated successfully.');
+//
+//        return redirect(route('owner.accommodation.show', $accommodation->id));
     }
 
     /**
