@@ -38,26 +38,26 @@ class DatabaseSeeder extends Seeder
       DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
       app()['cache']->forget('spatie.permission.cache');
-
+            // SYSTEM SEEDERS
+//          $this->call(DaysTableSeeder::class);
+//          $this->call(SessionsTableSeeder::class);
           $this->call(PermissionTableSeeder::class);
           $this->call(RoleTableSeeder::class);
           $this->call(UsersTableSeeder::class);
-//
           $this->call(AccommodationTypeSeeder::class);
           $this->call(PostTypeSeeder::class);
           $this->call(RoomTypeSeeder::class);
           $this->call(CompanyTypeSeeder::class);
           $this->call(ProductTypeSeeder::class);
-//
-          $this->call(VenueSeeder::class);
-          $this->call(AccommodationSeeder::class);
-          $this->call(RoomSeeder::class);
           $this->call(AmenitySeeder::class);
+//
 
-          $this->call(EventsTableSeeder::class);
-          $this->call(CompaniesTableSeeder::class);
-          $this->call(PostsTableSeeder::class);
-          $this->call(ProductsTableSeeder::class);
+//          $this->call(CompanyOpeningHoursSeeder::class);
+//          $this->call(VenueSeeder::class);
+//          $this->call(EventsTableSeeder::class);
+//          $this->call(AccommodationSeeder::class);
+//          $this->call(RoomSeeder::class);
+
 
           // just for reference
 //          $this->call(GroupTypeSeeder::class);

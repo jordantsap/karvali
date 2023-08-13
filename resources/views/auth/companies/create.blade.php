@@ -32,30 +32,54 @@
                         <select id="company_type" value="{{ old('company_type') }}" name="company_type" class="form-control" >
                             <option value="{{ old('company_type') }}">Επιλέξτε</option>
                             @foreach($companytypes as $companytype)
-                                <option value="{{ $companytype->id }} {{ old('company_type') }}" {{old('company_type')?"selected":""}}>
+                                <option value="{{ $companytype->id }}" {{old('company_type')?"selected":""}}>
                                     {{ $companytype->title }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">
-                    <label for="days_and_times">Days and Time Ranges of Open Market</label>
-                    <br>
-{{--                    @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)--}}
-{{--                        <label>{{ $day }}</label>--}}
-{{--                        <input type="checkbox" name="days[]" value="{{ $day }}">--}}
-{{--                        {{__('form.Opening Time')}}: <input type="time" name="opening_times[]">--}}
-{{--                        {{__('form.Closing Time')}}: <input type="time" name="closing_times[]">--}}
-{{--                        <br>--}}
-{{--                    @endforeach--}}
-                    @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
-                        <label>{{ $day }}</label>
-                        <input type="checkbox" name="days[]" value="{{ $day }}">
-                        Opening Time: <input type="time" name="opening_times[]">
-                        Closing Time: <input type="time" name="closing_times[]">
-                        <br>
-                    @endforeach
-                </div>
+
+{{--                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">--}}
+{{--                    <h4>Working Days and Hours:</h4>--}}
+
+{{--                    <table class="table">--}}
+{{--                        <thead>--}}
+{{--                        <th>Day Name</th>--}}
+{{--                        <th>All Day</th>--}}
+{{--                        <th>Morning--}}
+{{--                            Start Time--}}
+{{--                            End Time--}}
+{{--                        </th>--}}
+{{--                        <th>Afternoon--}}
+{{--                            Start Time--}}
+{{--                            End Time--}}
+{{--                        </th>--}}
+{{--                        </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody>--}}
+{{--                        @foreach ($days as $day)--}}
+{{--                            <tr>--}}
+{{--                                <td>{{ $day->name }}</td>--}}
+{{--                                <td>--}}
+{{--                                    <input type="checkbox" class="toggle-checkbox allday-checkbox" data-toggle="allday-{{ $day->name }}">--}}
+{{--                                    <input type="time" name="working_days[{{ $day->name }}][start_time]" class="allday-{{ $day->name }} allday-input" placeholder="Start Time">--}}
+{{--                                    <input type="time" name="working_days[{{ $day->name }}][end_time]" class="allday-{{ $day->name }} allday-input" placeholder="End Time">--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <input type="checkbox" class="toggle-checkbox morning-checkbox" data-toggle="morning-{{ $day->name }}">--}}
+{{--                                    <input type="time" name="working_days[{{ $day->name }}][start_time]" class="morning-{{ $day->name }} morning-input" placeholder="Start Time">--}}
+{{--                                    <input type="time" name="working_days[{{ $day->name }}][end_time]" class="morning-{{ $day->name }} morning-input" placeholder="End Time">--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <input type="checkbox" class="toggle-checkbox afternoon-checkbox" data-toggle="afternoon-{{ $day->name }}">--}}
+{{--                                    <input type="time" name="working_days[{{ $day->name }}][start_time]" class="afternoon-{{ $day->name }} afternoon-input" placeholder="Start Time">--}}
+{{--                                    <input type="time" name="working_days[{{ $day->name }}][end_time]" class="afternoon-{{ $day->name }} afternoon-input" placeholder="End Time">--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+{{--                        @endforeach--}}
+{{--                        </tbody>--}}
+{{--                    </table>--}}
+{{--                </div>--}}
 
                 <div class="col-xs-2 form-group">
                     <label for="telephone">Τηλέφωνο</label>
@@ -239,8 +263,10 @@
                         @if ( old('header'))
                             <img src="{{ old('header') }}" alt="">
                         @endif
-                        <input type="file" name="header" value="{{ old('header') }}" >
-                        <p class="help-block">Help text here.</p>
+                        <input type="file" id="header" name="header" value="{{ old('header') }}" >
+                        <p class="help-block">
+                            <img id="headerPreview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                        </p>
                     </div>
                 </div>
 
@@ -253,8 +279,10 @@
                         @if ( old('logo'))
                             <img src="{{ old('logo') }}" alt="">
                         @endif
-                        <input type="file" name="logo" value="{{ old('logo') }}" >
-                        <p class="help-block">Help text here.</p>
+                        <input type="file" name="logo" id="logo" value="{{ old('logo') }}" >
+                        <p class="help-block">
+                            <img id="logoPreview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                        </p>
                     </div>
                 </div>
                 <div class="col-xs-3 form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
@@ -266,8 +294,10 @@
                         @if ( old('image1'))
                             <img src="{{ old('image1') }}" alt="">
                         @endif
-                        <input type="file" name="image1" value="{{ old('image1') }}" >
-                        <p class="help-block">Help text here.</p>
+                        <input type="file" name="image1" id="image1" value="{{ old('image1') }}" >
+                        <p class="help-block">
+                            <img id="image1Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                        </p>
                     </div>
                 </div>
                 <div class="col-xs-3 form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
@@ -279,8 +309,10 @@
                         @if ( old('image2'))
                             <img src="{{ old('image2') }}" alt="">
                         @endif
-                        <input type="file" name="image2" value="{{ old('image2') }}" >
-                        <p class="help-block">Help text here.</p>
+                        <input type="file" id="image2" name="image2" value="{{ old('image2') }}" >
+                        <p class="help-block">
+                            <img id="image2Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                        </p>
                     </div>
                 </div>
                 <div class="col-xs-3 form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
@@ -292,9 +324,33 @@
                         @if ( old('image3'))
                             <img src="{{ old('image3') }}" alt="">
                         @endif
-                        <input type="file" name="image3" value="{{ old('image3') }}">
-                        <p class="help-block">Help text here.</p>
+                        <input type="file" id="image3" name="image3" value="{{ old('image3') }}">
+                        <p class="help-block">
+                            <img id="image3Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
+                        </p>
                     </div>
+                </div>
+                <div class="col-xs-4 col-lg-offset-4">
+                    <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                        <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                        @if ($errors->has('imgfile'))
+                            <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
+                        @endif
+                        <div>
+                            {{--                                            @if ( old('imgfile'))--}}
+                            {{--                                                <input type="file" name="imgfile[]" id="imgfile" multiple>--}}
+                            {{--                                            @endif--}}
+                            <input type="file" name="imgfile[]" id="imgfile" multiple>
+                        </div>
+                        <p class="help-block">
+                        {{__('You can only select up to 5 files.')}}
+                        <div id="imgfilePreviewContainer">
+                            {{__('Preview')}}
+                        </div>
+
+                        </p>
+                    </div>
+
                 </div>
             </div>
 

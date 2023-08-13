@@ -37,6 +37,7 @@ class CompanyFactory extends Factory
       'image2' => 'noimage.jpg',
       'image3' => 'noimage.jpg',
       'days' => '',
+      'schedule' => ['gdfgdas', 'hgfdhfgs'],
       'opening_times' => $this->faker->time($format = 'H:i', $min = 'now'), // '20:49:42'
       'closing_times' => $this->faker->time($format = 'H:i', $min = 'now'),
       'telephone' => '2510-867512',

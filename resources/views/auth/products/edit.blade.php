@@ -134,7 +134,7 @@
                                 @endif
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="{{$lang}}[meta_keywords]"
-                                           value="{{ $product->meta_keywords }}" id="title"
+                                           value="{{ $product->meta_keywords }}" id="meta_keywords"
                                            placeholder="{{ $product->meta_keywords }}">
                                     <span class="input-group-addon">
                 <span class="glyphicon glyphicon-home"></span>

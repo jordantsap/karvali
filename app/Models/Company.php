@@ -34,9 +34,10 @@ class Company extends Model implements TranslatableContract
     'image1',
     'image2',
     'image3',
-    'days',
-    'opening_times',
-    'closing_times',
+//    'days',
+    'schedule',
+//    'opening_times',
+//    'closing_times',
     'telephone',
     'website',
     'email',
@@ -65,6 +66,10 @@ class Company extends Model implements TranslatableContract
         return $this->hasMany('App\Models\Product');
     }
 
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 
     public function comments()
     {
@@ -105,47 +110,17 @@ class Company extends Model implements TranslatableContract
         ];
     }
 
-    public function getOpeningTime($day)
-    {
-        $openingTimes = explode(',', $this->opening_times);
-        return isset($openingTimes[$this->getDayIndex($day)]) ? $openingTimes[$this->getDayIndex($day)] : '';
+    public function sessions() {
+        return $this->belongsToMany(Session::class, 'company_session_day')
+            ->withPivot('day_id');
+    }
+    public function openingHours() {
+        return $this->hasMany(CompanyOpeningHours::class);
     }
 
-    public function getClosingTime($day)
-    {
-        $closingTimes = explode(',', $this->closing_times);
-        return isset($closingTimes[$this->getDayIndex($day)]) ? $closingTimes[$this->getDayIndex($day)] : '';
-    }
-
-    private function getDayIndex($day)
-    {
-        $daysArray = $this->getDaysArray();
-        return array_search($day, array_keys($daysArray));
-    }
-    // Company.php
-
-    public function getDecodedOpeningTimesAttribute()
-    {
-        return json_decode($this->opening_times, true) ?? [];
-    }
-
-    public function getDecodedClosingTimesAttribute()
-    {
-        return json_decode($this->closing_times, true) ?? [];
-    }
-
-    public function getOpeningTimeForDay($day)
-    {
-        return $this->decodedOpeningTimes[$day] ?? '';
-    }
-
-    public function getClosingTimeForDay($day)
-    {
-        return $this->decodedClosingTimes[$day] ?? '';
-    }
-    public function getDaysWithTimes()
-    {
-        return $this->orderBy('days')->get();
-    }
+    protected $casts = [
+        'days' => 'array',
+        'schedule' => 'array',
+    ];
 
 }

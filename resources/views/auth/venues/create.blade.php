@@ -24,15 +24,20 @@
                                 </label>
                             </div>
 
-                            <div class="col-xs-4 form-group">
+                            <div class="col-xs-3 form-group">
                                 <label for="telephone">Τηλέφωνο</label>
                                 <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control" id="telephone" placeholder="Τηλέφωνο Επιχείρησης" >
                             </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-6 text-center{{ $errors->has('days') ? ' has-error' : '' }}">
+                            <div class="col-xs-3 form-group">
+                                <label for="entrance">{{__('form.entranceprice')}}</label>
+                                <div class="input-group">
+                                    <input type="text" value="{{ old('entrance') }}" class="form-control" id="entrance" name="entrance" placeholder="{{__('form.entranceprice')}}" required>
+                                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-euro"></span>
+                  </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 text-center{{ $errors->has('days') ? ' has-error' : '' }}">
                                 <label for="days" class="bold">Ημερες εργασιας</label>
                                 @if ($errors->has('days'))
                                     <strong class="text-danger">{{ $errors->first('days') }}</strong>
@@ -49,29 +54,50 @@
                                 </label>
                             </div>
 
-                            <div class="col-xs-3 form-group{{ $errors->has('morningtime') ? ' has-error' : '' }}">
-                                <label for="morningtime">Πρωινές Ώρες</label>
-                                @if ($errors->has('morningtime'))
-                                    <strong class="text-danger">{{ $errors->first('morningtime') }}</strong>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-xs-2 form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">
+                                <label for="start_time">{{__('Ωρα έναρξης')}}</label>
+                                @if ($errors->has('start_time'))
+                                    <strong class="text-danger">{{ $errors->first('start_time') }}</strong>
                                 @endif
                                 <div class="input-group">
-                                    <input type="time" class="form-control" value="{{ old('morningtime') }}" id="morningtime" name="morningtime" placeholder="" >
-                                    <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </span>
+                                    <input type="time" class="form-control" value="{{ old('start_time') }}" id="start_time" name="start_time" placeholder="" >
+
                                 </div>
                             </div>
 
-                            <div class="col-xs-3 form-group{{ $errors->has('afternoontime') ? ' has-error' : '' }}">
-                                <label for="afternoontime">Απογευματινές ώρες</label>
-                                @if ($errors->has('afternoontime'))
-                                    <strong class="text-danger">{{ $errors->first('afternoontime') }}</strong>
+                            <div class="col-xs-2 form-group{{ $errors->has('end_time') ? ' has-error' : '' }}">
+                                <label for="end_time">Ώρα Λήξης</label>
+                                @if ($errors->has('end_time'))
+                                    <strong class="text-danger">{{ $errors->first('end_time') }}</strong>
                                 @endif
                                 <div class="input-group">
-                                    <input type="time" class="form-control" value="{{ old('afternoontime') }}" id="afternoontime" name="afternoontime" placeholder="" >
-                                    <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                    </span>
+                                    <input type="time" class="form-control" value="{{ old('end_time') }}" id="end_time" name="end_time" placeholder="" >
+
+                                </div>
+                            </div>
+                            <div class="col-xs-2 form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
+                                <label for="start_date">{{__('Ημερομηνία έναρξης')}}</label>
+                                @if ($errors->has('start_date'))
+                                    <strong class="text-danger">{{ $errors->first('start_date') }}</strong>
+                                @endif
+                                <div class="input-group">
+                                    <input type="date" class="form-control" value="{{ old('start_date') }}" id="start_date" name="start_date" placeholder="" >
+
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2 form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
+                                <label for="end_date">Ημερομηνία Λήξης</label>
+                                @if ($errors->has('end_date'))
+                                    <strong class="text-danger">{{ $errors->first('end_date') }}</strong>
+                                @endif
+                                <div class="input-group">
+                                    <input type="date" class="form-control" value="{{ old('end_date') }}" id="end_date" name="end_date" placeholder="" >
+
                                 </div>
                             </div>
                         </div>
@@ -258,7 +284,7 @@
                                 @if ( old('header'))
                                     <img src="{{ old('header') }}" alt="">
                                 @endif
-                                <input type="file" name="header" value="{{ old('header') }}" >
+                                <input type="file" id="header" name="header" value="{{ old('header') }}" >
                                 <p class="help-block">
                                     <img id="headerPreview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
                                 </p>
@@ -274,7 +300,7 @@
                                     @if ( old('logo'))
                                         <img src="{{ old('logo') }}" alt="">
                                     @endif
-                                    <input type="file" name="logo" value="{{ old('logo') }}" >
+                                    <input type="file" name="logo" id="logo" value="{{ old('logo') }}" >
                                     <p class="help-block">
                                         <img id="logoPreview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
                                     </p>
@@ -289,7 +315,7 @@
                                     @if ( old('image1'))
                                         <img src="{{ old('image1') }}" alt="">
                                     @endif
-                                    <input type="file" name="image1" value="{{ old('image1') }}" >
+                                    <input type="file" name="image1" id="image1" value="{{ old('image1') }}" >
                                     <p class="help-block">
                                         <img id="image1Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
                                     </p>
@@ -304,7 +330,7 @@
                                     @if ( old('image2'))
                                         <img src="{{ old('image2') }}" alt="">
                                     @endif
-                                    <input type="file" name="image2" value="{{ old('image2') }}" >
+                                    <input type="file" id="image2" name="image2" value="{{ old('image2') }}" >
                                     <p class="help-block">
                                         <img id="image2Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
                                     </p>
@@ -319,7 +345,7 @@
                                     @if ( old('image3'))
                                         <img src="{{ old('image3') }}" alt="">
                                     @endif
-                                    <input type="file" name="image3" value="{{ old('image3') }}">
+                                    <input type="file" name="image3" id="image3" value="{{ old('image3') }}">
                                     <p class="help-block">
                                         <img id="image3Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;">
                                     </p>

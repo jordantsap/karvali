@@ -20,10 +20,10 @@ class Venue extends Model implements TranslatableContract
         'manager',
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
     protected $fillable = [
         'user_id',
@@ -34,6 +34,11 @@ class Venue extends Model implements TranslatableContract
         'image1',
         'image2',
         'image3',
+        'entrance',
+        'start_date',
+        'start_time',
+        'end_date',
+        'end_time',
         'telephone',
         'website',
         'email',

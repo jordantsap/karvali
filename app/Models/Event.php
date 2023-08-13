@@ -18,11 +18,10 @@ class Event extends Model implements TranslatableContract
       'meta_keywords',
       'description',
     ];
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-  // use Searchable;
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
   protected $fillable = [
     // 'group_id',

@@ -41,12 +41,12 @@
                       @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as $day)
                           <div class="row">
                               <label class="col-xs-4">
-                                  <input type="checkbox" name="days[]" value="{{ $day }}" {{ in_array($day, [$company->days]) ? 'checked' : '' }}>
+                                  <input type="checkbox" name="days[]" {{ in_array($day, [$company->days]) ? 'checked' : '' }}>
                                   {{ $day }}
                               </label>
                               <div class="col-xs-8">
-                                  Opening Time: <input type="time" name="opening_times[]">
-                                  Closing Time: <input type="time" name="closing_times[]">
+                                  Opening Time: <input type="time" name="opening_times[]" value="{{ $company->schedule[$day]['opening_time'] }}">
+                                  Closing Time: <input type="time" name="closing_times[]" value="{{ $company->schedule[$day]['closing_time'] }}">
                               </div>
                           </div>
                       @endforeach

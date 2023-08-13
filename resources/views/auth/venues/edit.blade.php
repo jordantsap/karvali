@@ -12,7 +12,7 @@
   <section class="content">
 
     <div class="box">
-      <form action="{{ route('owner.events.update', $venue->id) }}" method="post" role="form" enctype="multipart/form-data">
+      <form action="{{ route('owner.venues.update', $venue->id) }}" method="post" role="form" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
         <div class="box-body">
@@ -261,8 +261,9 @@
                     @if ($errors->has('header'))
                         <strong class="text-danger">{{ $errors->first('header') }}</strong>                @endif
                     <div class="input-group">
-                        <input type="file" value="{{ asset('images/events/',$venue->header) }}" name="header">
-                        <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
+                        <input type="file" value="{{ asset($venue->header) }}" name="header" id="header">
+                        <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                            <img id="headerPreview" src="#" alt="Header Preview" style="display: none; max-width: 300px;"></p>
                     </div>
                 </div>
 
@@ -273,8 +274,9 @@
                         @if ($errors->has('logo'))
                             <strong class="text-danger">{{ $errors->first('logo') }}</strong>                @endif
                         <div class="input-group">
-                            <input type="file" value="{{ asset('images/events/',$venue->logo) }}" name="logo">
-                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
+                            <input type="file" value="{{ asset('images/venues/',$venue->logo) }}" id="logo" name="logo">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="logoPreview" src="#" alt="Logo Preview" style="display: none; max-width: 300px;"></p>
                         </div>
                     </div>
                 </div>
@@ -284,8 +286,10 @@
                         @if ($errors->has('image1'))
                             <strong class="text-danger">{{ $errors->first('image1') }}</strong>                @endif
                         <div class="input-group">
-                            <input type="file" value="{{ asset('images/events/',$venue->image1) }}" name="image1">
-                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
+                            <input type="file" value="{{ asset('images/venues/',$venue->image1) }}" id="image1" name="image1">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="image1Preview" src="#" alt="Image Preview 1" style="display: none; max-width: 300px;">
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -295,21 +299,48 @@
                         @if ($errors->has('image2'))
                             <strong class="text-danger">{{ $errors->first('image2') }}</strong>                @endif
                         <div class="input-group">
-                            <input type="file" value="{{ asset('images/events/',$venue->image2) }}" name="image2">
-                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
+                            <input type="file" value="{{ asset('images/venues/',$venue->image2) }}" id="image2" name="image2">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="image2Preview" src="#" alt="Image Preview 2" style="display: none; max-width: 300px;"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
-                        <label for="image3">Εικόνες Σελίδας Συλλόγου</label>
+                        <label for="image3">Εικόνες Σελίδας</label>
                         @if ($errors->has('image3'))
                             <strong class="text-danger">{{ $errors->first('image3') }}</strong>                @endif
                         <div class="input-group">
-                            <input type="file" value="{{ asset('images/events/',$venue->image3) }}" name="image3" multiple>
-                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
+                            <input type="file" value="{{ asset('images/venues/',$venue->image3) }}" id="image3" name="image3">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="image3Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;"></p>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-lg-offset-4">
+                        <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                            <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                            @if ($errors->has('imgfile'))
+                                <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
+                            @endif
+                            <div>
+                                @if ( old('imgfile'))
+                                    <input type="file" name="imgfile[]" id="imgfile" value="{{old('imgfile')}}" multiple>
+                                @endif
+                                <input type="file" name="imgfile[]" id="imgfile" multiple>
+                            </div>
+                            <p class="help-block">
+                            {{__('You can only select up to 5 files.')}}
+                            <div id="imgfilePreviewContainer">
+                                {{__('Preview')}}
+                            </div>
+
+                            </p>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
           <div class="row">

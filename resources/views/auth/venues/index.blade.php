@@ -44,7 +44,7 @@
                         <a class="btn btn-primary" href="{{route('owner.venues.edit', $venue->id)}}">Edit</a> -
 {{--                      @endcan--}}
 {{--                      @can ('view_events', App\Event::class)--}}
-                        <a class="btn btn-primary" href="{{route('owner.venues.show', $venue->slug)}}">View</a>
+                        <a class="btn btn-primary" href="{{route('owner.venues.show', $venue->id)}}">View</a>
 {{--                      @endcan--}}
 {{--                      @can ('delete_events', App\Models\Event::class)--}}
                           <form action="{{ route('owner.venues.destroy', $venue->id) }}"

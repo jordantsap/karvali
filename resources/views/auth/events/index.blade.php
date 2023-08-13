@@ -6,8 +6,8 @@
     <section class="content-header">
       <h1>
         Events
-        @can ('create_events', App\Event::class)
-          <small><a class="btn btn-primary" href="{{route('owner.event.create')}}">New</a></small>
+        @can ('create-events', App\Models\Event::class)
+          <small><a class="btn btn-primary" href="{{route('owner.events.create')}}">New</a></small>
         @endcan
       </h1>
     </section>
@@ -41,13 +41,13 @@
                     <td>{{Str::limit($event->description, 20)}}</td>
                     <td>
 {{--                    @can ('update_events', App\Event::class)--}}
-                        <a class="btn btn-primary" href="{{route('events.edit', $event->id)}}">Edit</a> -
+                        <a class="btn btn-primary" href="{{route('owner.events.edit', $event->id)}}">Edit</a> -
 {{--                      @endcan--}}
 {{--                      @can ('view_events', App\Event::class)--}}
-                        <a class="btn btn-primary" href="{{route('events.show', $event->id)}}">View</a>
+                        <a class="btn btn-primary" href="{{route('owner.events.show', $event->id)}}">View</a>
 {{--                      @endcan--}}
 {{--                      @can ('delete_events', App\Models\Event::class)--}}
-                          <form action="{{ route('events.destroy', $event->id) }}"
+                          <form action="{{ route('owner.events.destroy', $event->id) }}"
                                 method="POST">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}

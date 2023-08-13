@@ -12,7 +12,5 @@ Remove unwanted seeders from [DatabaseSeeder file](/database/seeders/DatabaseSee
 [Seeder for users to login Here](/database/seeders/UsersTableSeeder.php)
 
 Company:
-title, description
-hotels
-Room bookings
-capacity field
+title, description,
+operation_daytime

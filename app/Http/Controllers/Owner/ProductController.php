@@ -136,16 +136,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        dd($request->all());
+        var_dump($request->all());
 
         $product->update($request->all());
 
-//        $product->amenities()->sync($request->input('amenities', []));
+        $product->amenities()->sync($request->input('amenities', []));
 
 
-//        toastr()->addSuccess('Accommodation Updated successfully.');
-//
-//        return redirect(route('owner.accommodation.show', $accommodation->id));
+        toastr()->addSuccess('Product Updated successfully.');
+
+        return redirect(route('owner.products.show', $product->id));
     }
 
     /**

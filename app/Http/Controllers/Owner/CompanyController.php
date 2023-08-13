@@ -6,10 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Models\Accommodation;
 use App\Models\Company;
+use App\Models\CompanyOpeningHours;
 use App\Models\CompanyType;
+use App\Models\Day;
 use App\Models\Image as ImageModel;
+use App\Models\Session;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -18,7 +27,7 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -32,11 +41,13 @@ class CompanyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
         $companytypes = CompanyType::withTranslation()->get();
+//        $days = Day::get();
+//        $sessions = Session::all();
 
         return view('auth.companies.create', compact('companytypes'));
     }
@@ -44,12 +55,12 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
      */
-    public function store(Request $request, Company $company)
+    public function store(StoreCompanyRequest $request, Company $company)
     {
-//        var_dump($request->all());
+//        dd($request->all());
 
         $company = new Company();
         $company->active = $request->active;
@@ -68,13 +79,27 @@ class CompanyController extends Controller
         $company->user_id = auth()->id();
         $company->header = $request->header;
         $company->logo = $request->logo;
-        $company->image1 = $request->image1;
-        $company->image2 = $request->image2;
-        $company->image3 = $request->image3;
+//        $company->image1 = $request->image1;
+//        $company->image2 = $request->image2;
+//        $company->image3 = $request->image3;
+        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
 
-        $company->days = json_encode($request->input('days'));
-        $company->opening_times = json_encode($request->input('opening_times'));
-        $company->closing_times = json_encode($request->input('closing_times'));
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName);
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $company->{$fieldName} = $imagePath;
+            }
+        }
+
+//        $company->days = json_encode($request->input('days'));
+//        $company->opening_times = json_encode($request->input('opening_times'));
+//        $company->closing_times = json_encode($request->input('closing_times'));
 
         $company->save();
 
@@ -113,12 +138,14 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
+     * @param Company $company
+     * @return Response
      */
     public function show(Company $company)
     {
-        $companytypes = CompanyType::withTranslation()->get();
+        $companytypes = CompanyType::withTranslation()->first();
+//        $sessions = $company->sessions();
+//        $days = $company->openingHours->day();
 
         return view('auth.companies.company',compact(['company','companytypes']));
     }
@@ -126,8 +153,8 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
+     * @param Company $company
+     * @return Response
      */
     public function edit(Company $company)
     {
@@ -140,21 +167,26 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Company $company
+     * @return Response
      */
     public function update(Request $request, Company $company)
     {
+//        return $request->all();
+
         $company->update($request->all());
+
+        toastr()->addSuccess('Company updated successfully.');
+
         return  view('auth.companies.company', array('company' => $company));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
+     * @param Company $company
+     * @return Response
      */
     public function destroy(Company $company)
     {
