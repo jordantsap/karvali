@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Image as ImageModel;
 use App\Models\Venue;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -15,7 +19,7 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -29,26 +33,30 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
-        return view('auth.events.create');
+        $venues = Venue::where('user_id', auth()->user()->id)
+            ->withTranslation()
+            ->get();
+
+        return view('auth.events.create', compact('venues'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
         $event = new Event();
         $event->user_id = auth()->id();
+        $event->venue_id = $request->venue_id;
         $event->active = $request->active;
-//        $event->accommodation_type_id = $request->accommodation_type_id;
         $event->website = $request->website;
         $event->telephone = $request->telephone;
         $event->facebook = $request->facebook;
@@ -82,8 +90,8 @@ class EventController extends Controller
             foreach ($images as $image) {
 //                return $image;
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/venues', $imageName); // You can specify a custom directory
-                $location = public_path("images/venues/" . $imageName);
+                $imagePath = $image->storeAs('images/events', $imageName); // You can specify a custom directory
+                $location = public_path("images/events/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
                 // Save the image path to the database with polymorphic relationship
                 $upload = new ImageModel(['path' => $imagePath]);
@@ -105,48 +113,51 @@ class EventController extends Controller
 
         toastr()->addSuccess('Venue was saved successfully.');
 
-        return redirect(route('owner.venues.show', $event->id));
+        return redirect(route('owner.events.show', $event->id));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return Response
      */
     public function show(Event $event)
     {
-        return view('auth.events.show', compact('event'));
+        return view('auth.events.event', compact('event'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return Response
      */
     public function edit(Event $event)
     {
-        //
+        return view('auth.events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Event $event
+     * @return Response
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $event->update($request->all());
+        toastr()->addSuccess('Event was Updated successfully.');
+
+        return redirect(route('owner.events.show', $event->id));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return Response
      */
     public function destroy(Event $event)
     {

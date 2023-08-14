@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Venue;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -32,6 +33,7 @@ class CreateEventsTable extends Migration
             $table->string('email')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
+            $table->foreignIdFor(Venue::class);
             //$table->string('address');
             // $table->float('lat', 10, 6);
             // $table->float('lng', 10, 6);

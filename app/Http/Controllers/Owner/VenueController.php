@@ -21,7 +21,8 @@ class VenueController extends Controller
     public function index()
     {
         return view('auth.venues.index', [
-            'venues' => Venue::where('user_id', auth()->user()->id)->withTranslation()
+            'venues' => Venue::where('user_id', auth()->user()->id)
+                ->withTranslation()
                 ->paginate()
         ]);
     }

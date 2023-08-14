@@ -14,6 +14,7 @@ class EventTranslation extends Model
   protected $fillable = [
     'title',
     'slug',
+    'manager',
     'meta_description',
     'meta_keywords',
     'description',

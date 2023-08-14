@@ -19432,7 +19432,7 @@
         /**
          *
      *
-     *@property mixed $title*/
+     *@property mixed $title*@property mixed $venue_id*/
         class Request {
                     /**
          *

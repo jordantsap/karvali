@@ -23,6 +23,7 @@ class CreateEventTranslationsTable extends Migration
             $table->string('slug')->unique();
             $table->string('meta_description');
             $table->string('meta_keywords');
+            $table->string('manager')->nullable();
             $table->longText('description');
 
             $table->unique(['event_id', 'locale']);

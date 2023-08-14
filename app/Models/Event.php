@@ -14,6 +14,7 @@ class Event extends Model implements TranslatableContract
     protected $translatedAttributes = [
       'title',
       'slug',
+      'manager',
       'meta_description',
       'meta_keywords',
       'description',
@@ -24,7 +25,7 @@ class Event extends Model implements TranslatableContract
 //    }
 
   protected $fillable = [
-    // 'group_id',
+     'venue_id',
     'user_id',
     'active',
     'header',
@@ -71,6 +72,11 @@ class Event extends Model implements TranslatableContract
       {
           return $this->morphMany('App\Models\Advert', 'advertable');
       }
+
+    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 
     public function scopeActive($query)
     {

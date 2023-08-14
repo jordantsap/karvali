@@ -36,4 +36,8 @@ class Image extends Model
     {
         return $this->morphedByMany(Product::class, 'imageable');
     }
+    public function events()
+    {
+        return $this->morphedByMany(Event::class, 'imageable');
+    }
 }

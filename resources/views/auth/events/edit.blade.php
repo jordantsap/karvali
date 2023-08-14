@@ -12,48 +12,10 @@
   <section class="content">
 
     <div class="box">
-      <form action="{{ route('events.update', $event->id) }}" method="post" role="form" enctype="multipart/form-data">
+      <form action="{{ route('owner.events.update', $event->id) }}" method="post" role="form" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
         <div class="box-body">
-            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-              <label for="title">Ονομασία Εκδήλωσης - Διοργανωτή</label>
-              @if ($errors->has('title'))
-                <strong class="text-danger">{{ $errors->first('title') }}</strong>
-              @endif
-              <div class="input-group">
-                <input type="text" value="{{ $event->title }}" class="form-control" name="title" id="title" placeholder="Enter Name" required>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-home"></span>
-                </span>
-              </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
-              <label for="meta_description">Meta Description</label>
-              @if ($errors->has('meta_description'))
-                <strong class="text-danger">{{ $errors->first('meta_description') }}</strong>
-              @endif
-              <div class="input-group">
-                <input type="text" value="{{ $event->meta_description }}" class="form-control" name="meta_description" id="meta_description" placeholder="meta_description" required>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-home"></span>
-                </span>
-              </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('meta_keywords') ? ' has-error' : '' }}">
-              <label for="meta_keywords">Meta Keywords</label>
-              @if ($errors->has('meta_keywords'))
-                <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
-              @endif
-              <div class="input-group">
-                <input type="text" value="{{ $event->meta_keywords }}" class="form-control" name="meta_keywords" id="title" placeholder="meta_keywords" required>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-home"></span>
-                </span>
-              </div>
-            </div>
 
             <div class="row">
               <div class="col-xs-2 form-group">
@@ -144,63 +106,6 @@
             </div>
           </div>
 
-          <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
-            <label for="header">header</label>
-            @if ($errors->has('header'))
-            <strong class="text-danger">{{ $errors->first('header') }}</strong>                @endif
-            <div class="input-group">
-              <input type="file" value="{{ asset('images/events/',$event->header) }}" name="header">
-              <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-3">
-              <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
-                <label for="logo">Λογότυπο</label>
-                @if ($errors->has('logo'))
-                <strong class="text-danger">{{ $errors->first('logo') }}</strong>                @endif
-                <div class="input-group">
-                  <input type="file" value="{{ asset('images/events/',$event->logo) }}" name="logo">
-                  <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
-                <label for="image1">Εικόνα Αρχικης</label>
-                @if ($errors->has('image1'))
-                <strong class="text-danger">{{ $errors->first('image1') }}</strong>                @endif
-                <div class="input-group">
-                  <input type="file" value="{{ asset('images/events/',$event->image1) }}" name="image1">
-                  <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
-                <label for="image2">Εικόνα Λίστας Συλλόγων</label>
-                @if ($errors->has('image2'))
-                <strong class="text-danger">{{ $errors->first('image2') }}</strong>                @endif
-                <div class="input-group">
-                  <input type="file" value="{{ asset('images/events/',$event->image2) }}" name="image2">
-                  <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
-                <label for="image3">Εικόνες Σελίδας Συλλόγου</label>
-                @if ($errors->has('image3'))
-                <strong class="text-danger">{{ $errors->first('image3') }}</strong>                @endif
-                <div class="input-group">
-                  <input type="file" value="{{ asset('images/events/',$event->image3) }}" name="image3" multiple>
-                  <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class="row">
 
               <div class="col-xs-6">
@@ -263,15 +168,56 @@
 
           </div><!--row-->
 
-          <div class="row">
+            @foreach(config('translatable.locales') as $locale=>$lang)
+                <h1>({{$lang}})</h1>
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                    <label for="title">Ονομασία Εκδήλωσης - ({{$lang}})</label>
+                    @if ($errors->has('title'))
+                        <strong class="text-danger">{{ $errors->first('title') }}</strong>
+                    @endif
+                    <div class="input-group">
+                        <input type="text" value="{{ $event->title }}" class="form-control" name="{{$locale}}[title]" id="title" placeholder="Enter Name" required>
+                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-home"></span>
+                </span>
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
+                    <label for="meta_description">Meta Description - ({{$lang}}</label>
+                    @if ($errors->has('meta_description'))
+                        <strong class="text-danger">{{ $errors->first('meta_description') }}</strong>
+                    @endif
+                    <div class="input-group">
+                        <input type="text" value="{{ $event->meta_description }}" class="form-control" name="{{$locale}}[meta_description]" id="meta_description" placeholder="meta_description" required>
+                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-home"></span>
+                </span>
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('meta_keywords') ? ' has-error' : '' }}">
+                    <label for="meta_keywords">Meta Keywords - ({{$lang}})</label>
+                    @if ($errors->has('meta_keywords'))
+                        <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
+                    @endif
+                    <div class="input-group">
+                        <input type="text" value="{{ $event->meta_keywords }}" class="form-control" name="{{$locale}}[meta_keywords]" id="title" placeholder="meta_keywords" required>
+                        <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-home"></span>
+                </span>
+                    </div>
+                </div>
+            @endforeach
+            <div class="row">
             <div class="col-xs-12">
               <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                <label for="description">Περιγραφή</label>
+                <label for="description">Περιγραφή - ({{$lang}}</label>
                 @if ($errors->has('description'))
                   <strong class="text-danger">{{ $errors->first('description') }}</strong>
                 @endif
                 <div class="input-group">
-                  <textarea name="description" placeholder="Description" id="description" class="form-control" rows="5" required>{{ $event->description }}</textarea>
+                  <textarea name="{{$locale}}[description]" placeholder="Description" id="description" class="form-control" rows="5" required>{{ $event->description }}</textarea>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-info-sign"></span>
                   </span>
@@ -279,6 +225,96 @@
               </div>
             </div>
           </div>
+
+
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="form-group{{ $errors->has('header') ? ' has-error' : '' }}">
+                        <label for="header">header</label>
+                        @if ($errors->has('header'))
+                            <strong class="text-danger">{{ $errors->first('header') }}</strong>
+                        @endif
+                        <div class="input-group">
+                            <input type="file" id="header" value="{{ asset('images/events/',$event->header) }}" name="header">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="headerPreview" src="#" alt="Header Preview" style="display: none; max-width: 300px;"></p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+                        <label for="logo">Λογότυπο</label>
+                        @if ($errors->has('logo'))
+                            <strong class="text-danger">{{ $errors->first('logo') }}</strong>                @endif
+                        <div class="input-group">
+                            <input type="file" id="logo" value="{{ asset('images/events/',$event->logo) }}" name="logo">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="logoPreview" src="#" alt="Logo Preview" style="display: none; max-width: 300px;"></p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
+                        <label for="image1">Εικόνα Αρχικης</label>
+                        @if ($errors->has('image1'))
+                            <strong class="text-danger">{{ $errors->first('image1') }}</strong>                @endif
+                        <div class="input-group">
+                            <input type="file" id="image1" value="{{ asset('images/events/',$event->image1) }}" name="image1">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="image1Preview" src="#" alt="Image Preview 1" style="display: none; max-width: 300px;"></p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
+                        <label for="image2">Εικόνα Λίστας Συλλόγων</label>
+                        @if ($errors->has('image2'))
+                            <strong class="text-danger">{{ $errors->first('image2') }}</strong>                @endif
+                        <div class="input-group">
+                            <input type="file" id="image2" value="{{ asset('images/events/',$event->image2) }}" name="image2">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="image2Preview" src="#" alt="Image Preview 2" style="display: none; max-width: 300px;"></p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
+                        <label for="image3">Εικόνες Σελίδας</label>
+                        @if ($errors->has('image3'))
+                            <strong class="text-danger">{{ $errors->first('image3') }}</strong>                @endif
+                        <div class="input-group">
+                            <input type="file" id="image3" value="{{ asset('images/events/',$event->image3) }}" name="image3">
+                            <p class="help-block">Επιτρέπονται όλα τα είδη εικόνων.
+                                <img id="image3Preview" src="#" alt="Image Preview 3" style="display: none; max-width: 300px;"></p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-lg-offset-4">
+                        <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
+                            <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                            @if ($errors->has('imgfile'))
+                                <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
+                            @endif
+                            <div>
+                                @if ( old('imgfile'))
+                                    <input type="file" name="imgfile[]" id="imgfile" value="{{old('imgfile')}}" multiple>
+                                @endif
+                                <input type="file" name="imgfile[]" id="imgfile" multiple>
+                            </div>
+                            <p class="help-block">
+                            {{__('You can only select up to 5 files.')}}
+                            <div id="imgfilePreviewContainer">
+                                {{__('Preview')}}
+                            </div>
+
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
           <div class="row">
             <div class="col-xs-6">
               <button type="submit" class="btn btn-primary btn-block">Submit</button>
