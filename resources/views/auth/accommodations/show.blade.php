@@ -8,7 +8,7 @@
             <h1>
                 Accommodation : {{$accommodation->title}}
                 @can ('update-accommodation', App\Models\Accommodation::class)
-                    <small><a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->slug)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
+                    <small><a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->id)}}">Edit</a> - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
                 @endcan
             </h1>
         </section>
@@ -137,7 +137,7 @@
                     <div class="form-group">
                         <label for="header">header</label>
                         <div class="input-group">
-                            <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->header)}}" alt="{{$accommodation->title}}">
+                            <img width="200" height="200" src="{{asset($accommodation->header)}}" alt="{{$accommodation->title}}">
                         </div>
                     </div>
 
@@ -145,25 +145,25 @@
                         <div class="col-xs-3 form-group">
                             <label for="logo">Λογότυπο</label>
                             <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->logo)}}" alt="{{$accommodation->title}}">
+                                <img width="200" height="200" src="{{asset($accommodation->logo)}}" alt="{{$accommodation->title}}">
                             </div>
                         </div>
                         <div class="col-xs-3 form-group">
                             <label for="image1">Εικόνα Αρχικης Σελίδας</label>
                             <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->image1)}}" alt="{{$accommodation->title}}">
+                                <img width="200" height="200" src="{{asset($accommodation->image1)}}" alt="{{$accommodation->title}}">
                             </div>
                         </div>
                         <div class="col-xs-3 form-group">
                             <label for="image2">Εικόνα 2</label>
                             <div class="col-xs-3 input-group">
-                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->image2)}}" alt="{{$accommodation->title}}">
+                                <img width="200" height="200" src="{{asset($accommodation->image2)}}" alt="{{$accommodation->title}}">
                             </div>
                         </div>
                         <div class="col-xs-3 form-group">
                             <label for="image3">Εικόνες 3</label>
                             <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/accommodations/'.$accommodation->image3)}}" alt="{{$accommodation->title}}">
+                                <img width="200" height="200" src="{{asset($accommodation->image3)}}" alt="{{$accommodation->title}}">
                             </div>
                         </div>
 
@@ -183,7 +183,11 @@
                                     </div>
                                 @endforeach
                                 @else
-                                    No images available
+                                    <div class="container">
+                                        <div class="row">
+                                            No images available
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     @endif

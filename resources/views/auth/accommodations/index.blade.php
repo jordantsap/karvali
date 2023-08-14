@@ -47,10 +47,10 @@
                     <td><img width="150px" height="150px" src="{{asset('images/accommodations/'.$accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
                     <td>
                     @can ('update-accommodation', [Auth()->user(), $accommodation])
-                      <a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->slug)}}">Edit</a> -
+                      <a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->id)}}">Edit</a> -
                     @endcan
                     @can ('view-accommodation', [Auth()->user(), $accommodation])
-                      <a class="btn btn-primary" href="{{route('owner.accommodation.show', $accommodation->slug)}}">View</a>
+                      <a class="btn btn-primary" href="{{route('owner.accommodation.show', $accommodation->id)}}">View</a>
                       @endcan
                         @can ('delete-accommodation', [Auth()->user(), App\Models\Accommodation::class])
                             <form action="{{ route('owner.accommodation.destroy', $accommodation->slug) }}"

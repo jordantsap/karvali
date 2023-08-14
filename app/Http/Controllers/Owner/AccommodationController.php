@@ -70,11 +70,21 @@ class AccommodationController extends Controller
         $accommodation->twitter = $request->twitter;
         $accommodation->email = $request->email;
         $accommodation->total_rooms = $request->total_rooms;
-        $accommodation->header = $request->header;
-        $accommodation->logo = $request->logo;
-        $accommodation->image1 = $request->image1;
-        $accommodation->image2 = $request->image2;
-        $accommodation->image3 = $request->image3;
+
+        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName);
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $accommodation->{$fieldName} = $imagePath;
+            }
+        }
 
         $accommodation->save();
 
@@ -137,10 +147,10 @@ class AccommodationController extends Controller
      * @param Accommodation $accommodation
      * @return Application|Factory|View
      */
-    public function edit($slug)
+    public function edit(Accommodation $accommodation)
     {
-        $accommodation = Accommodation::withTranslation()
-            ->whereTranslation('slug', $slug)->first();
+//        $accommodation = Accommodation::withTranslation()
+//            ->whereTranslation('slug', $slug)->first();
         $accommodationTypes = AccommodationType::withTranslation()->get();
         $amenities = Amenity::withTranslation()->get();
 
@@ -156,9 +166,26 @@ class AccommodationController extends Controller
      */
     public function update(Request $request, Accommodation $accommodation)
     {
-        $accommodation->update($request->all());
+        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
+//        dd($request->except($imageFields));
+        $accommodation->update($request->except($imageFields));
 
         $accommodation->amenities()->sync($request->input('amenities', []));
+
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName);
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $accommodation->{$fieldName} = $imagePath;
+            }
+        }
+        $accommodation->save();
 
 
         toastr()->addSuccess('Accommodation Updated successfully.');
