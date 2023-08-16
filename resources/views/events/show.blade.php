@@ -7,7 +7,7 @@
 @section('meta_keywords', __('head.event').', '.' '.$event->meta_keywords)
 
 @section('content')
-  <img src="{{ asset('images/events/'.$event->header) }}" alt="{{ $event->title }}" width="100%"
+  <img src="{{ asset($event->header) }}" alt="{{ $event->title }}" width="100%"
     height="350px">
 <div class="container">
   <div id="events">
@@ -20,7 +20,7 @@
 
     <div class="row">
       <div class="col-xs-8">
-        <img src="{{ asset('images/events/'.$event->logo) }}" alt="{{ $event->title }}" width="100%"
+        <img src="{{ asset($event->logo) }}" alt="{{ $event->title }}" width="100%"
           height="260px">
       </div>
 
@@ -89,22 +89,22 @@
     <div class="row"><br>
       <div class="col-xs-4">
         <a data-lightbox="event" data-title="{{$event->title}}" data-alt="{{$event->title}}"
-          href="{{ asset('images/events/'.$event->image1) }}">
-          <img src="{{ asset('images/events/'.$event->image1) }}" title="{{ $event->title }}"
+          href="{{ asset($event->image1) }}">
+          <img src="{{ asset($event->image1) }}" title="{{ $event->title }}"
             class="img-responsive img-rounded" alt="{{$event->title}}">
         </a>
       </div>
       <div class="col-xs-4">
         <a data-lightbox="event" data-title="{{$event->title}}" data-alt="{{$event->title}}"
-          href="{{ asset('images/events/'.$event->image2) }}">
-          <img src="{{ asset('images/events/'.$event->image2) }}" title="{{ $event->title }}"
+          href="{{ asset($event->image2) }}">
+          <img src="{{ asset($event->image2) }}" title="{{ $event->title }}"
             class="img-responsive img-rounded" alt="{{$event->title}}">
         </a>
       </div>
       <div class="col-xs-4">
         <a data-lightbox="event" data-title="{{$event->title}}" data-alt="{{$event->title}}"
-          href="{{ asset('images/events/'.$event->image3) }}">
-          <img src="{{ asset('images/events/'.$event->image3) }}" title="{{ $event->title }}"
+          href="{{ asset($event->image3) }}">
+          <img src="{{ asset($event->image3) }}" title="{{ $event->title }}"
             class="img-responsive img-rounded" alt="{{$event->title}}">
         </a>
       </div>

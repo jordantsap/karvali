@@ -44,7 +44,6 @@ class Company extends Model implements TranslatableContract
     'facebook',
     'twitter',
     'active',
-    'pos',
     'creditcard',
     // 'description',
   ];

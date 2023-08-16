@@ -236,6 +236,8 @@
                                     @if ($errors->has('header'))
                                         <strong class="text-danger">{{ $errors->first('header') }}</strong>
                                     @endif
+                                    <img width="200" height="200" src="{{asset($accommodation->header)}}"
+                                         alt="{{$accommodation->title}}">
                                     <div class="input-group">
                                         @if ( old('header'))
                                             <img src="{{ old('header') }}" alt="">
@@ -273,6 +275,8 @@
                             <div class="col-xs-3">
                                 <div class="form-group{{ $errors->has('image1') ? ' has-error' : '' }}">
                                     <label for="image1">{{__('Εικόνα 1')}}</label>
+                                    <img width="200" height="200" src="{{asset($accommodation->image1)}}"
+                                         alt="{{$accommodation->title}}">
                                     @if ($errors->has('image1'))
                                         <strong class="text-danger">{{ $errors->first('image1') }}</strong>
                                     @endif
@@ -290,6 +294,8 @@
                             <div class="col-xs-3">
                                 <div class="form-group{{ $errors->has('image2') ? ' has-error' : '' }}">
                                     <label for="image2">{{__('Εικόνα 2')}}</label>
+                                    <img width="200" height="200" src="{{asset($accommodation->image2)}}"
+                                         alt="{{$accommodation->title}}">
                                     @if ($errors->has('image2'))
                                         <strong class="text-danger">{{ $errors->first('image2') }}</strong>
                                     @endif
@@ -307,6 +313,8 @@
                             <div class="col-xs-3">
                                 <div class="form-group{{ $errors->has('image3') ? ' has-error' : '' }}">
                                     <label for="image3">{{__('Εικόνες σελίδας Καταστήματος')}}</label>
+                                    <img width="200" height="200" src="{{asset($accommodation->image3)}}"
+                                         alt="{{$accommodation->title}}">
                                     @if ($errors->has('image3'))
                                         <strong class="text-danger">{{ $errors->first('image3') }}</strong>
                                     @endif
@@ -325,6 +333,16 @@
                                 <div class="col-xs-4 col-lg-offset-4">
                                     <div class="form-group{{ $errors->has('imgfile') ? ' has-error' : '' }}">
                                         <label for="imgfile">{{__('Γενικές Εικόνες')}}</label>
+                                        @if($accommodation->images)
+                                            @foreach($accommodation->images as $upload)
+                                                <div class="col-xs-1 col-md-3">
+                                                    <a href="{{ asset($upload->path) }}" data-lightbox="accommodation-images">
+                                                        <img width="100%" height="100%" src="{{ asset($upload->path) }}" alt="{{$accommodation->title}}">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+
+                                        @endif
                                         @if ($errors->has('imgfile'))
                                             <strong class="text-danger">{{ $errors->first('imgfile') }}</strong>
                                         @endif

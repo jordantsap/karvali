@@ -1,3 +1,5 @@
+@if (auth()->user()->currentMembership && auth()->user()->currentMembership->end_date > now())
+
 @role('Company/Products Owner')
 <li>
     <a href="{{ route('owner.companies.index') }}"><i class="fas fa-shopping-bag"></i> <span>Company List</span></a>
@@ -43,3 +45,5 @@
 <li><a href="{{ route('owner.events.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Event</span></a>
 
 @endrole
+
+@endif

@@ -23,19 +23,19 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
               15%/συναλλαγή.
             </li>
-            <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
-              Συλλόγου.
-            </li>
-            <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
-              Εκδήλωσης.
-            </li>
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
+{{--              Συλλόγου.--}}
+{{--            </li>--}}
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
+{{--              Εκδήλωσης.--}}
+{{--            </li>--}}
           </ul>
         </div>
         <div class="col-footer text-center">
           <div class="col-xs-9">
-            <a href="{{url('freepackage')}}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
+            <a href="{{ route('register.membership', ['membership_title' => 'free']) }}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
           </div>
           <div class="col-xs-1">
             <a href="/information-guides/advertisement-packages#freepack" id="btn" class="btn btn-info" title="Περισσότερες Πληροφορίες" href=""><i class="fas fa-2x fa-info"></i></a>
@@ -64,19 +64,19 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
               10%/συναλλαγή.
             </li>
-            <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
-              Συλλόγου.
-            </li>
-            <li class="list-group-item">
-              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία
-              Εκδήλωσης.
-            </li>
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
+{{--              Συλλόγου.--}}
+{{--            </li>--}}
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
+{{--              Εκδήλωσης.--}}
+{{--            </li>--}}
           </ul>
         </div>
         <div class="col-footer text-center">
           <div class="col-xs-9">
-            <a href="{{url('mainpackage')}}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
+            <a href="{{ route('register.membership', ['membership_title' => 'main']) }}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
           </div>
           <div class="col-xs-1">
             <a href="/information-guides/advertisement-packages#mainpack" id="btn" class="btn btn-info" title="Περισσότερες Πληροφορίες" href=""><i class="fas fa-2x fa-info"></i></a>
@@ -105,15 +105,15 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
               5%/συναλλαγή.
             </li>
-            <li class="list-group-item">
-              <i class="fas fa-users"></i> Δυνατότητα Δημιουργίας Συλλόγου.</li>
-            <li class="list-group-item">
-              <i class="fas fa-calendar-alt"></i> Δυνατότητα Δημιουργίας Εκδήλωσης.</li>
-          </ul>
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-users"></i> Δυνατότητα Δημιουργίας Συλλόγου.</li>--}}
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-calendar-alt"></i> Δυνατότητα Δημιουργίας Εκδήλωσης.</li>--}}
+{{--          </ul>--}}
         </div>
         <div class="col-footer text-center">
           <div class="col-xs-9">
-            <a href="{{url('mediumpackage')}}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
+            <a href="{{ route('register.membership', ['membership_title' => 'medium']) }}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
           </div>
           <div class="col-xs-1">
             <a href="/information-guides/advertisement-packages#mediumpack" id="btn" class="btn btn-info" title="Περισσότερες Πληροφορίες"><i class="fas fa-2x fa-info"></i></a>
@@ -144,15 +144,15 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες χωρίς εξτρα
               χρέωση
             </li>
-            <li class="list-group-item">
-              <i class="fas fa-users"></i> Δημιουργία απεριορίστων Συλλόγων.</li>
-            <li class="list-group-item">
-              <i class="fas fa-calendar-alt"></i> Δημιουργία απεριορίστων Εκδηλώσεων.</li>
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-users"></i> Δημιουργία απεριορίστων Συλλόγων.</li>--}}
+{{--            <li class="list-group-item">--}}
+{{--              <i class="fas fa-calendar-alt"></i> Δημιουργία απεριορίστων Εκδηλώσεων.</li>--}}
           </ul>
         </div>
         <div class="col-footer text-center">
           <div class="col-xs-9">
-            <a href="{{url('advancedpackage')}}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
+            <a href="{{ route('register.membership', ['membership_title' => 'big']) }}" id="btn" title="Εγγραφή Χρήστη" class="btn btn-block btn-lg btn-primary">{{ __('Εγγραφή') }}</a>
           </div>
           <div class="col-xs-1">
             <a href="/information-guides/advertisement-packages#advancedpack" id="btn" class="btn btn-info" title="Περισσότερες Πληροφορίες"><i class="fas fa-2x fa-info"></i></a>

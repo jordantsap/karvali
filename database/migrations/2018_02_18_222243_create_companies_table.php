@@ -34,7 +34,6 @@ class CreateCompaniesTable extends Migration
              $table->string('facebook')->nullable();
              $table->string('twitter')->nullable();
              // $table->string('address');
-             $table->string('pos');
              $table->string('creditcard')->nullable();
              // $table->longText('description');
              $table->boolean('active')->default(0)->nullable();

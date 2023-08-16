@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <a href="{{ route('front.event.show',$event->slug) }}">
-                <img class="img-responsive" style="width:100%;height:150px;" src="{{ asset('images/events/'.$event->logo) }}"
+                <img class="img-responsive" style="width:100%;height:150px;" src="{{ asset($event->logo) }}"
                   alt="{{ $event->title }}">
               </a>
             </div>

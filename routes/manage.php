@@ -6,7 +6,7 @@ use App\Http\Controllers\Owner\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth', 'verified'])
+Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
     ->name('owner')
     ->prefix('owner')
     ->as('owner.')->group(function () {

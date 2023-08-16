@@ -85,19 +85,6 @@
                     <label for="telephone">Τηλέφωνο</label>
                     <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control" id="telephone" placeholder="Τηλέφωνο Επιχείρησης" >
                 </div>
-                <div class="col-xs-2 form-group{{ $errors->has('pos') ? ' has-error' : '' }}">
-                    <label for="pos" class="bold">POS:</label>
-                    @if ($errors->has('pos'))
-                        <strong class="text-danger">{{ $errors->first('pos') }}</strong>
-                    @endif
-                    <br>
-                    <label class="radio-inline">
-                        <input type="radio" name="pos" value="No" {{ old('pos') == 'No' ? 'checked' : ''}} > No
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="pos" value="Yes" {{ old('pos') == 'Yes' ? 'checked' : ''}} > Yes
-                    </label>
-                </div>
 
                 <div class="col-xs-2 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
                     <label for="delivery" class="bold">Delivery:</label>

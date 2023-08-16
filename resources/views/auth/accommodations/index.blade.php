@@ -44,7 +44,7 @@
                     </td>
                     <td>{{Str::limit($accommodation->title,10)}}</td>
                     <td>{{$accommodation->manager}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/accommodations/'.$accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
+                    <td><img width="150px" height="150px" src="{{asset($accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
                     <td>
                     @can ('update-accommodation', [Auth()->user(), $accommodation])
                       <a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->id)}}">Edit</a> -
@@ -53,7 +53,7 @@
                       <a class="btn btn-primary" href="{{route('owner.accommodation.show', $accommodation->id)}}">View</a>
                       @endcan
                         @can ('delete-accommodation', [Auth()->user(), App\Models\Accommodation::class])
-                            <form action="{{ route('owner.accommodation.destroy', $accommodation->slug) }}"
+                            <form action="{{ route('owner.accommodation.destroy', $accommodation->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}

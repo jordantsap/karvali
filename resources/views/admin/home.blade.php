@@ -30,16 +30,23 @@
         </div>
       </div>
       <div class="box-body">
-        use purifyer into controllers
         <br>
-        orderBy likes
-          @if(auth()->user()->has('companies') || auth()->user()->companies()->count())
+          @if(auth()->user()->currentMembership && auth()->user()->currentMembership->end_date > now())
+              <p>You have an {{ auth()->user()->currentMembership->plan->status }} subscription.</p>
+              <p>Plan: {{ auth()->user()->currentMembership->plan->name }}</p>
+              <p>Start Date: {{ auth()->user()->currentMembership->start_date }}</p>
+              <p>End Date: {{ auth()->user()->currentMembership->end_date }}</p>
+          @else
+              <p>You do not have an active subscription.</p>
+          @endif
+
+          @if(auth()->user()->companies()->count())
               has companies
           @endif
           @if(auth()->user()->has('accommodations')->count())
               has accommodations
           @endif
-          @if(auth()->user()->has('venues'))
+          @if(auth()->user()->venues()->count())
               has venues
           @endif
 

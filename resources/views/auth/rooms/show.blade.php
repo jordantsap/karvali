@@ -50,7 +50,8 @@
                         <div class="form-group col-xs-4">
                             <label for="category">Category</label>
                             <div class="form-control" name="category" id="category" disabled>
-                                @if( ! empty($room->category)){{ $room->category->name }}
+                                @if( $room->roomType)
+                                    {{ $room->roomType->title }}
                                 @else Null
                                 @endif
                             </div>
@@ -85,11 +86,11 @@
                                     <strong class="text-danger">{{ $errors->first('accommodation_id') }}</strong>
                                 @endif
                                 <div class="input-group">
-                                    <select id="accommodation_id" value="{{ $room->accommodation_id }}" name="accommodation_id" class="form-control" required>
+                                    <select id="accommodation_id" value="{{ $room->accommodation->id }}" name="accommodation_id" class="form-control" required>
                                         <option value="">Επιλέξτε</option>
-                                        @foreach(auth()->user()->accommodations as $company)
-                                            <option value="{{ $company->id }}" {{$room->accommodation_id == $company->id? "selected" : ''}}>{{ $company->title }}</option>
-                                        @endforeach
+                                        @if($room->accommodation)
+                                            <option value="{{ $room->accommodation->id }}" {{$room->accommodation_id == $room->accommodation->id? "selected" : ''}} required>{{ $room->accommodation->title }}</option>
+                                        @endif
                                     </select>
                                     <span class="input-group-addon">
                 <span class="glyphicon glyphicon-list"></span>
@@ -102,7 +103,7 @@
                     <div class="form-group">
                         <label for="header">header</label>
                         <div class="input-group">
-                            <img width="100%" height="200" src="{{asset('images/rooms/'.$room->header)}}" alt="{{$room->title}}">
+                            <img width="100%" height="200" src="{{asset($room->header)}}" alt="{{$room->title}}">
                         </div>
                     </div>
 
@@ -110,25 +111,25 @@
                         <div class="col-xs-3 form-group">
                             <label for="logo">Λογότυπο</label>
                             <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/rooms/'.$room->logo)}}" alt="{{$room->title}}">
+                                <img width="200" height="200" src="{{asset($room->logo)}}" alt="{{$room->title}}">
                             </div>
                         </div>
                         <div class="col-xs-3 form-group">
                             <label for="image1">Εικόνα Αρχικης Σελίδας</label>
                             <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/rooms/'.$room->image1)}}" alt="{{$room->title}}">
+                                <img width="200" height="200" src="{{asset($room->image1)}}" alt="{{$room->title}}">
                             </div>
                         </div>
                         <div class="col-xs-3 form-group">
                             <label for="image2">Εικόνα 2</label>
                             <div class="col-xs-3 input-group">
-                                <img width="200" height="200" src="{{asset('images/rooms/'.$room->image2)}}" alt="{{$room->title}}">
+                                <img width="200" height="200" src="{{asset($room->image2)}}" alt="{{$room->title}}">
                             </div>
                         </div>
                         <div class="col-xs-3 form-group">
                             <label for="image3">Εικόνες 3</label>
                             <div class="input-group">
-                                <img width="200" height="200" src="{{asset('images/rooms/'.$room->image3)}}" alt="{{$room->title}}">
+                                <img width="200" height="200" src="{{asset($room->image3)}}" alt="{{$room->title}}">
                             </div>
                         </div>
                     </div>
@@ -140,12 +141,12 @@
                                 </div>
                                 @foreach($room->images as $upload)
                                     <div class="col-xs-1 col-md-3">
-                                        <a href="{{ asset($upload->path) }}" data-lightbox="accommodation-images">
-                                            <img width="100%" height="100%" src="{{ asset($upload->path) }}" alt="{{$upload->id}}">
+                                        <a href="{{ asset($upload->path) }}" data-lightbox="room-images">
+                                            <img width="100%" height="100%" src="{{ asset($upload->path) }}" alt="{{$room->title}}">
                                         </a>
                                     </div>
                                 @endforeach
-                                dsfagedthfyuhdj
+
                                 @else
                                     No more images available
                             </div>

@@ -51,8 +51,7 @@
 
   @include('home.services')
 
-{{--  @include('home.packages')--}}
-
+  @include('home.packages')
 
    @include('home/blog')
 

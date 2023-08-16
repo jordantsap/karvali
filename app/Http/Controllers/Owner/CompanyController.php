@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Models\Accommodation;
@@ -74,23 +75,20 @@ class CompanyController extends Controller
         $company->twitter = $request->twitter;
         $company->email = $request->email;
         $company->facebook = $request->facebook;
-        $company->pos = $request->pos;
         $company->delivery = $request->delivery;
         $company->user_id = auth()->id();
         $company->header = $request->header;
-        $company->logo = $request->logo;
-//        $company->image1 = $request->image1;
-//        $company->image2 = $request->image2;
-//        $company->image3 = $request->image3;
-        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
+
+
+        $imageFields = GetInputs::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
                 $image = $request->file($fieldName);
 
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/accommodations', $imageName);
-                $location = public_path("images/accommodations/" . $imageName);
+                $imagePath = $image->storeAs('images/companies', $imageName);
+                $location = public_path("images/companies/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
 
                 $company->{$fieldName} = $imagePath;
@@ -190,6 +188,8 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        Company::where('id',$company->id)->delete();
+        toastr()->addSuccess('Company was deleted successfully.');
+        return redirect(route('owner.companies.index'));
     }
 }

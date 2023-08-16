@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\AccommodationType;
@@ -52,8 +53,6 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-//        return $request->input('amenities', []);;
-
         $room = new Room();
         $room->active = $request->active;
         $room->accommodation_id = $request->accommodation_id;
@@ -62,7 +61,21 @@ class RoomController extends Controller
         $room->capacity = $request->capacity;
         $room->price = $request->price;
         $room->beds = $request->beds;
-        // images
+
+        $imageFields = GetInputs::imageFields();
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/rooms', $imageName);
+                $location = public_path("images/rooms/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $room->{$fieldName} = $imagePath;
+            }
+        }
 
         $room->save();
         $room->amenities()->sync($request->input('amenities', []));
@@ -108,7 +121,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        $room = Room::where('id',$room->id)->first();
+        $room = Room::with('accommodation')->where('id',$room->id)->first();
 
         return view('auth.rooms.show', compact('room'));
     }
@@ -137,7 +150,45 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        $room->update($request->all());
+        $imageFields = GetInputs::imageFields();
+
+        $room->update($request->except($imageFields));
+
+        $room->amenities()->sync($request->input('amenities', []));
+
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/rooms', $imageName);
+                $location = public_path("images/rooms/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $room->{$fieldName} = $imagePath;
+            }
+        }
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $room->images()->delete();
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/rooms', $imageName); // You can specify a custom directory
+                $location = public_path("images/rooms/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $room->images()->save($upload);
+//                $image->sync([$upload]);
+
+            }
+        }
+
+        $room->save();
+
 
         toastr()->addSuccess('Room was Updated successfully.');
 
@@ -152,6 +203,8 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        Room::where('id',$room->id)->delete();
+        toastr()->addSuccess('Room was deleted successfully.');
+        return redirect(route('owner.rooms.index'));
     }
 }

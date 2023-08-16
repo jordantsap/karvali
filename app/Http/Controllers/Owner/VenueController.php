@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
 use App\Models\GroupType;
@@ -62,7 +63,9 @@ class VenueController extends Controller
         $venue->end_date = $request->end_date;
         $venue->start_time = $request->start_time;
         $venue->end_time = $request->end_time;
-        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
+
+
+        $imageFields = GetInputs::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {

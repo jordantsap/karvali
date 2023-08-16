@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
+use App\Models\Membership;
+use App\Models\Plan;
 use App\Models\Role;
+use App\Models\Subscription;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -49,12 +52,18 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function showRegistrationForm()
+    public function showRegistrationForm($membership_title = null)
     {
-        $roles =Role::whereIn('id', [3, 4, 5])->get();
+//        dd($membership_title);
+        $roles = Role::whereIn('id', [3, 4, 5])
+//            ->withTranslation()
+            ->get();
+//        $memberships = Membership::get();
+        $plans = Plan::withTranslation()->get();
 
-        return view('auth.register',compact('roles'));
+        return view('auth.register', compact('roles','plans', 'membership_title'));
     }
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -70,6 +79,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 //            'role' => [ 'required', 'integer'],
+//            'membership_id' => [ 'required', 'integer'],
         ]);
     }
 
@@ -85,13 +95,24 @@ class RegisterController extends Controller
             'fullname' => $data['fullname'],
             'username' => $data['username'],
             'email' => $data['email'],
+            'plan_id' => $data['plan_id'],
             'password' => Hash::make($data['password']),
 //            'role' => $data['role'],
 //            'email_verified_at' => now(),
         ]);
         $user->assignRole($data['role']);
-//        event(new Registered($user));
-//        event(new UserRegistered($user));
+
+        // Create subscription
+        $plan = Plan::find($data['plan_id']);
+        Membership::create([
+            'user_id' => $user->id,
+            'plan_id' => $plan->id,
+            'start_date' => now(),
+            'end_date' => now()->addDays($plan->duration),
+            'status' => 'active',
+        ]);
+        event(new Registered($user));
+        event(new UserRegistered($user));
 
         return $user;
     }

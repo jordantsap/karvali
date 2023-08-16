@@ -170,18 +170,6 @@
 {{--                    </div>--}}
 
 {{--                    <div class="row">--}}
-                        <div class="col-xs-3 form-group">
-                            <label for="pos" class="bold">POS:</label>
-                            <br>
-                            <label class="radio-inline">
-                                <input type="radio" name="pos" value="No" {{ $company->pos == 'No' ? 'checked' : ''}}>
-                                No
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="pos" value="Yes" {{ $company->pos == 'Yes' ? 'checked' : ''}}>
-                                Yes
-                            </label>
-                        </div>
 
                         {{--            <div class="col-xs-6 form-group text-center">--}}
                         {{--              <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>--}}

@@ -160,55 +160,6 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-xs-2 form-group{{ $errors->has('pos') ? ' has-error' : '' }}">
-                                <label for="pos" class="bold">POS:</label>
-                                @if ($errors->has('pos'))
-                                    <strong class="text-danger">{{ $errors->first('pos') }}</strong>
-                                @endif
-                                <br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="pos" value="No" {{ old('pos') == 'No' ? 'checked' : ''}} > No
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="pos" value="Yes" {{ old('pos') == 'Yes' ? 'checked' : ''}} > Yes
-                                </label>
-                            </div>
-
-                            <div class="col-xs-7 form-group text-center{{ $errors->has('creditcard') ? ' has-error' : '' }}">
-                                <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>
-                                @if ($errors->has('creditcard'))
-                                    <strong class="text-danger">{{ $errors->first('creditcard') }}</strong>
-                                @endif
-                                <br>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="creditcard[]" value="Νone" {{ old('creditcard') == 'Νone' ? 'checked' : ''}}> None
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="creditcard[]" value="Visa" {{ old('creditcard') == 'Visa' ? 'checked' : ''}}> Visa
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="creditcard[]" value="Μastercard" {{ old('creditcard') == 'Mastercard' ? 'checked' : ''}}> Mastercard
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="creditcard[]" value="Αmerican express" {{ old('creditcard') == 'American Express' ? 'checked' : ''}}> American Express
-                                </label>
-                            </div>
-                            <div class="col-xs-3 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
-                                <label for="delivery" class="bold">Delivery:</label>
-                                @if ($errors->has('delivery'))
-                                    <strong class="text-danger">{{ $errors->first('delivery') }}</strong>
-                                @endif
-                                <br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="delivery" value="No" {{ old('delivery') == 'No' ? 'checked' : ''}} > No
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="delivery" value="Yes" {{ old('delivery') == 'Yes' ? 'checked' : ''}} > Yes
-                                </label>
-                            </div>
-                        </div>
-
                         <div class="col-xs-12 text-center">
                             <h3>{{__('form.langinputs')}}</h3>
                             <hr>

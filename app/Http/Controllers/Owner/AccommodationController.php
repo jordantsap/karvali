@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAccommodationRequest;
 use App\Models\Accommodation;
@@ -71,7 +72,7 @@ class AccommodationController extends Controller
         $accommodation->email = $request->email;
         $accommodation->total_rooms = $request->total_rooms;
 
-        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
+        $imageFields = GetInputs::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -166,8 +167,8 @@ class AccommodationController extends Controller
      */
     public function update(Request $request, Accommodation $accommodation)
     {
-        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
-//        dd($request->except($imageFields));
+        $imageFields = GetInputs::imageFields();
+
         $accommodation->update($request->except($imageFields));
 
         $accommodation->amenities()->sync($request->input('amenities', []));
@@ -185,6 +186,24 @@ class AccommodationController extends Controller
                 $accommodation->{$fieldName} = $imagePath;
             }
         }
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $accommodation->images()->delete();
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName); // You can specify a custom directory
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $accommodation->images()->save($upload);
+//                $image->sync([$upload]);
+
+            }
+        }
+
         $accommodation->save();
 
 
@@ -202,7 +221,9 @@ class AccommodationController extends Controller
     public function destroy(Accommodation $accommodation)
     {
         Accommodation::where('id',$accommodation->id)->delete();
+
         toastr()->addSuccess('Accommodation was deleted successfully.');
+
         return redirect(route('owner.accommodation.index'));
     }
 }

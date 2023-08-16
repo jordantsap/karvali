@@ -39,7 +39,7 @@
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
                                     <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">
-                                        <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;" src="{{ asset('images/accommodations/'.$accommodation->logo) }}" alt="{{ $accommodation->title }}">
+                                        <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;" src="{{ asset($accommodation->logo) }}" alt="{{ $accommodation->title }}">
                                     </a>
                                 </div>
                                 <div class="card-body text-center">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.companies-category', $accommodation->accommodationType->slug)}}">
+                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug)}}">
                                                     {{$accommodation->accommodationType->title}}
                                                 </a></h3>
                                         </div>

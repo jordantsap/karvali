@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Image as ImageModel;
@@ -67,7 +68,8 @@ class EventController extends Controller
         $event->start_time = $request->start_time;
         $event->end_time = $request->end_time;
         $event->entrance = $request->entrance;
-        $imageFields = ['header', 'logo', 'image1', 'image2', 'image3'];
+
+        $imageFields = GetInputs::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -161,6 +163,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        Event::where('id',$event->id)->delete();
+        toastr()->addSuccess('The Event was deleted successfully.');
+        return redirect(route('owner.event.index'));
     }
 }

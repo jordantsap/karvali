@@ -2,7 +2,7 @@
 
 #2
 composer install  
-(if gives error about null translatable locale value, change the config('translatable.locale') to match any locale you use)  
+(if gives error about null translatable locale value, change the env('APP_LANG') to match any locale you use)  
 
 php artisan migrate --seed  for clean project or  
 php artisan migrate:fresh --seed if your db has records  
@@ -14,3 +14,7 @@ Remove unwanted seeders from [DatabaseSeeder file](/database/seeders/DatabaseSee
 Company:
 title, description,
 operation_daytime
+
+free plan 1 time foreach listing 0/m 1 listing unlimited sublisting, orders/bookings:/10%
+plan 2 10/month 1 listing unlimited sublisting
+plan 3 20/m unlimited listings

@@ -17,7 +17,7 @@
                     @foreach ($accommodationTypes as $accommodationType)
                         <li class="list-group-item">
                             <a href="{{ route('front.accommodation-types.show', $accommodationType->slug)}}">
-                                <h4 class="animated slideInUp">{{$accommodationType->title}}</h4></a>
+                                <h4 class="animated slideInUp">{{$accommodationType->title}} - {{$accommodationType->accommodations->count()}}</h4></a>
                         </li>
                     @endforeach
                 </div>
@@ -28,7 +28,7 @@
                         @foreach ($companytypes as $companytype)
                             <li class="list-group-item">
                                 <a href="{{ route('front.companies-category', $companytype->slug)}}">
-                                    <h4 class="animated slideInUp">{{$companytype->title}}</h4></a>
+                                    <h4 class="animated slideInUp">{{$companytype->title}} - ({{$companytype->companies->count()}})</h4></a>
                             </li>
                         @endforeach
                     </div>
@@ -39,7 +39,7 @@
                         @foreach ($producttypes as $producttype)
                             <li class="list-group-item">
                                 <a href="{{ route('front.products-category', $producttype->slug)}}"><h4
-                                        class="animated slideInUp">{{$producttype->title}}</h4></a>
+                                        class="animated slideInUp">{{$producttype->title}} {{$producttype->products->count()}}</h4></a>
                             </li>
                         @endforeach
                     </div>
@@ -50,7 +50,7 @@
                         @foreach ($venues as $venue)
                             <li class="list-group-item">
                                 <a href="{{ route('front.venues', $venue->slug)}}"><h4
-                                        class="animated slideInUp">{{$venue->title}}</h4></a>
+                                        class="animated slideInUp">{{$venue->title}} - ({{$venue->events->count()}})</h4></a>
                             </li>
                         @endforeach
 

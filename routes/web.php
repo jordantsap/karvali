@@ -9,11 +9,11 @@ Route::get('search', 'SearchController@getresults')->name('searchresults');
 
 // Route::view('/register', 'errors.404')->name('register-error');
 // Auth::routes();
+  Route::get('register/{membership_title?}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.membership');
  Auth::routes(['verify' => true]);
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 //Route::middleware(['guest'])->group(function() {
-//  Route::get('/register', [App\Http\Controllers\Auth\AuthRequestController::class, 'create'])->name('auth-request');
 //  Route::post('/register', 'Auth\AuthRequestController@store')->name('register');
 //  Route::get('login', 'Auth\LoginController@showLoginForm')->name('logform');
 //  Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -61,8 +61,8 @@ Route::as('front.')->group(function () {
     Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
 
-    Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
-        ->name('accommodationtype.show');
+//    Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
+//        ->name('accommodationtype.show');
 
 Route::view('calendar','calendar');
 

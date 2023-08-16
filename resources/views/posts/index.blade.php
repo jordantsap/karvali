@@ -1,4 +1,4 @@
-﻿front.@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', __('head.poststitle'))
 @section('meta_description', __('meta.postspagedescription'))
 @section('meta_keywords', __('meta.postspagekeywords'))

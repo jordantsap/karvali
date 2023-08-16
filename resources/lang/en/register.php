@@ -28,4 +28,5 @@ return [
     'additionallabel' => 'More information',
     'additionalplaceholder' => 'Use the site for additional information about you or your listing',
     'newsletter' => 'I agree to send you news of the page',
+    'plan' => 'Select Plan',
 ];

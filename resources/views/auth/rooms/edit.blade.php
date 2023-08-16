@@ -44,7 +44,7 @@
                                         <select id="room_type" value="{{ old('room_type') }}" name="room_type" class="form-control" required>
                                             <option value="">Επιλέξτε</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{$category->id}}" @if( $room->category == $category->id){{'selected'}}
+                                                <option value="{{$category->id}}" @if( $room->roomType->id == $category->id){{'selected'}}
                                                 @else None
                                                     @endif>{{$category->title}}</option>
                                             @endforeach
@@ -107,10 +107,10 @@
                                         <strong class="text-danger">{{ $errors->first('accommodation_id') }}</strong>
                                     @endif
                                     <div class="input-group">
-                                        <select id="accommodation_id" value="{{ $room->accommodation_id }}" name="accommodation_id" class="form-control" required>
+                                        <select id="accommodation_id" name="accommodation_id" class="form-control" required>
                                             <option value="">Επιλέξτε</option>
                                             @if(auth()->user()->has('accommodations'))
-                                                <option value="{{ auth()->user()->accommodations }}" {{$room->accommodation_id == $room->id? "selected disabled" : ''}}>{{ $room->accommodation->title }}</option>
+                                                <option value="{{ $room->accommodation->id }}" {{$room->accommodation->id == $room->id? "selected" : ''}}>{{ $room->accommodation->title }}</option>
                                             @endif
                                         </select>
                                         <span class="input-group-addon">

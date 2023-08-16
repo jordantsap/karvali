@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\Image as ImageModel;
@@ -59,11 +60,23 @@ class ProductController extends Controller
         $product->user_id = auth()->id();
         $product->company_id = $request->company_id;
         $product->product_type = $request->product_type;
-        $product->header = $request->header;
-        $product->logo = $request->logo;
-        $product->image1 = $request->image1;
-        $product->image2 = $request->image2;
-        $product->image3 = $request->image3;
+
+
+
+        $imageFields = GetInputs::imageFields();
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/events', $imageName);
+                $location = public_path("images/events/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $product->{$fieldName} = $imagePath;
+            }
+        }
 
         $product->save();
 
@@ -136,11 +149,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        var_dump($request->all());
+//        var_dump($request->all());
 
         $product->update($request->all());
 
-        $product->amenities()->sync($request->input('amenities', []));
+//        $product->amenities()->sync($request->input('amenities', []));
 
 
         toastr()->addSuccess('Product Updated successfully.');

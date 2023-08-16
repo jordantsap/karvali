@@ -50,6 +50,8 @@ class DatabaseSeeder extends Seeder
           $this->call(CompanyTypeSeeder::class);
           $this->call(ProductTypeSeeder::class);
           $this->call(AmenitySeeder::class);
+          $this->call(MembershipSeeder::class);
+          $this->call(PlanSeeder::class);
 //
 
 //          $this->call(CompanyOpeningHoursSeeder::class);

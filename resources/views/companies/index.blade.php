@@ -43,7 +43,7 @@
                                 <div class="card h-100">
                                     <a href="{{ route('front.company', $company->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
-                                            src="{{ asset('images/companies/' . $company->logo) }}"
+                                            src="{{ asset($company->logo) }}"
                                             alt="{{ $company->title }}">
                                     </a>
                                 </div>
@@ -65,7 +65,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <h3><b>{{ __('page.category') }}</b> <a
-                                                    href="{{ route('front.companies-category', $company->category->slug) }}">{{ $company->category->name }}</a>
+                                                    href="{{ route('front.companies-category', $company->category->slug) }}">{{ $company->category->title }}</a>
                                             </h3>
                                         </div>
                                     </div>
