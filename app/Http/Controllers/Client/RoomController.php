@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
+use App\Models\Booking;
 use App\Models\Room;
 
 class RoomController extends Controller
@@ -16,39 +17,16 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        return view('rooms.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function show($slug)
     {
-        //
-    }
+        $room = Room::with('roomType')
+        ->whereTranslation('slug', $slug)->first();
+        $bookings = Booking::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreRoomRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreRoomRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Room $room)
-    {
-        //
+        return view('rooms.show', compact('room','bookings'));
     }
 
     /**

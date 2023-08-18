@@ -27,10 +27,10 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('entrance')->nullable();
-            $table->string('start_date');
-            $table->string('end_date');
-            $table->string('start_time');
-            $table->string('end_time');
+//            $table->string('start_date');
+//            $table->string('end_date');
+//            $table->string('start_time');
+//            $table->string('end_time');
             //$table->string('address');
             // $table->float('lat', 10, 6);
             // $table->float('lng', 10, 6);

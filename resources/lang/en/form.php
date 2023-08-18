@@ -50,4 +50,8 @@ return [
     'amenities' => 'Amenities',
     'pleaseselect' => 'Please Select',
     'active' => 'Active',
+    'metadescription' => 'Meta Description S.E.O.',
+    'metakeywords' => 'Meta Keyword S.E.O.',
+    'managername' => 'Manager Name',
+    'delivery' => 'Delivery',
 ];

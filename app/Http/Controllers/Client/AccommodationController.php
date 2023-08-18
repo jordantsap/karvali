@@ -52,7 +52,8 @@ class AccommodationController extends Controller
      */
     public function show($slug)
     {
-        $accommodation = Accommodation::whereTranslation('slug',$slug)->first();
+        $accommodation = Accommodation::with('rooms')
+            ->whereTranslation('slug',$slug)->first();
 //        $room = Room::where('accommodation_id',$accommodation->id)->get();;
         // New Code
 //        if ($accommodation->translate()->where('slug', $slug)->first()->locale != app()->getLocale()) {

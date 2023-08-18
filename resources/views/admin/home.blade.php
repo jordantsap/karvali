@@ -43,7 +43,7 @@
           @if(auth()->user()->companies()->count())
               has companies
           @endif
-          @if(auth()->user()->has('accommodations')->count())
+          @if(auth()->user()->accommodations()->count())
               has accommodations
           @endif
           @if(auth()->user()->venues()->count())

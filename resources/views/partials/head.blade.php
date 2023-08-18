@@ -41,7 +41,7 @@
 
     <!--FA ICONS-->
     <script src="https://kit.fontawesome.com/4faf185009.js"></script>
-    
+
     <!----link href="{ { asset('css/normalize.css') } }" rel="stylesheet"---->
 
     {{-- <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script> --}}
@@ -52,4 +52,5 @@
      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
    <![endif]-->
    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c1ce62ff6809e0011a91cbd&product=inline-share-buttons' async='async'></script>
+
 </head>

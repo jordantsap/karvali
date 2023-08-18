@@ -149,7 +149,43 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $event->update($request->all());
+        $imageFields = GetInputs::imageFields();
+
+        $event->update($request->except($imageFields));
+
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/events', $imageName);
+                $location = public_path("images/events/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $event->{$fieldName} = $imagePath;
+            }
+        }
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $event->images()->delete();
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/events', $imageName); // You can specify a custom directory
+                $location = public_path("images/events/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $event->images()->save($upload);
+//                $image->sync([$upload]);
+
+            }
+        }
+
+        $event->save();
+
         toastr()->addSuccess('Event was Updated successfully.');
 
         return redirect(route('owner.events.show', $event->id));

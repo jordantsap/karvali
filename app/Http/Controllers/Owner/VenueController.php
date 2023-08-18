@@ -59,10 +59,10 @@ class VenueController extends Controller
         $venue->twitter = $request->twitter;
         $venue->email = $request->email;
         $venue->entrance = $request->entrance;
-        $venue->start_date = $request->start_date;
-        $venue->end_date = $request->end_date;
-        $venue->start_time = $request->start_time;
-        $venue->end_time = $request->end_time;
+//        $venue->start_date = $request->start_date;
+//        $venue->end_date = $request->end_date;
+//        $venue->start_time = $request->start_time;
+//        $venue->end_time = $request->end_time;
 
 
         $imageFields = GetInputs::imageFields();
@@ -122,7 +122,7 @@ class VenueController extends Controller
      */
     public function show(Venue $venue)
     {
-//        $venue = Venue::withTranslation()->whereTranslation('slug',$slug)->first();
+        $venue = Venue::with('events')->withTranslation()->find($venue->id)->first();
 
         return view('auth.venues.show', compact('venue'));
     }
@@ -149,13 +149,41 @@ class VenueController extends Controller
      */
     public function update(Request $request, Venue $venue)
     {
-//        dd($request->all());
-        $venue->update($request->all());
-//        foreach (config('translatable.locales') as $locale => $lang) {
-//            $venue->translateOrNew($locale)->title = $request->{$locale}['title'];
-//        }
+        $imageFields = GetInputs::imageFields();
 
-//        $venue->save();
+        $venue->update($request->except($imageFields));
+
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName);
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $venue->{$fieldName} = $imagePath;
+            }
+        }
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $venue->images()->delete();
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/venues', $imageName); // You can specify a custom directory
+                $location = public_path("images/venues/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $venue->images()->save($upload);
+//                $image->sync([$upload]);
+
+            }
+        }
+        $venue->save();
 
         toastr()->addSuccess('Venue was Updated successfully.');
 

@@ -12,7 +12,7 @@ class Booking extends Model implements TranslatableContract
     use HasFactory, Translatable;
 
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['title', 'slug'];
 
     protected $translatedAttributes = [
         'title',

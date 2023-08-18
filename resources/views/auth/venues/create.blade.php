@@ -56,51 +56,51 @@
 
                         </div>
 
-                        <div class="row">
+{{--                        <div class="row">--}}
 
-                            <div class="col-xs-2 form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">
-                                <label for="start_time">{{__('Ωρα έναρξης')}}</label>
-                                @if ($errors->has('start_time'))
-                                    <strong class="text-danger">{{ $errors->first('start_time') }}</strong>
-                                @endif
-                                <div class="input-group">
-                                    <input type="time" class="form-control" value="{{ old('start_time') }}" id="start_time" name="start_time" placeholder="" >
+{{--                            <div class="col-xs-2 form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">--}}
+{{--                                <label for="start_time">{{__('Ωρα έναρξης')}}</label>--}}
+{{--                                @if ($errors->has('start_time'))--}}
+{{--                                    <strong class="text-danger">{{ $errors->first('start_time') }}</strong>--}}
+{{--                                @endif--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="time" class="form-control" value="{{ old('start_time') }}" id="start_time" name="start_time" placeholder="" >--}}
 
-                                </div>
-                            </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="col-xs-2 form-group{{ $errors->has('end_time') ? ' has-error' : '' }}">
-                                <label for="end_time">Ώρα Λήξης</label>
-                                @if ($errors->has('end_time'))
-                                    <strong class="text-danger">{{ $errors->first('end_time') }}</strong>
-                                @endif
-                                <div class="input-group">
-                                    <input type="time" class="form-control" value="{{ old('end_time') }}" id="end_time" name="end_time" placeholder="" >
+{{--                            <div class="col-xs-2 form-group{{ $errors->has('end_time') ? ' has-error' : '' }}">--}}
+{{--                                <label for="end_time">Ώρα Λήξης</label>--}}
+{{--                                @if ($errors->has('end_time'))--}}
+{{--                                    <strong class="text-danger">{{ $errors->first('end_time') }}</strong>--}}
+{{--                                @endif--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="time" class="form-control" value="{{ old('end_time') }}" id="end_time" name="end_time" placeholder="" >--}}
 
-                                </div>
-                            </div>
-                            <div class="col-xs-2 form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
-                                <label for="start_date">{{__('Ημερομηνία έναρξης')}}</label>
-                                @if ($errors->has('start_date'))
-                                    <strong class="text-danger">{{ $errors->first('start_date') }}</strong>
-                                @endif
-                                <div class="input-group">
-                                    <input type="date" class="form-control" value="{{ old('start_date') }}" id="start_date" name="start_date" placeholder="" >
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-xs-2 form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">--}}
+{{--                                <label for="start_date">{{__('Ημερομηνία έναρξης')}}</label>--}}
+{{--                                @if ($errors->has('start_date'))--}}
+{{--                                    <strong class="text-danger">{{ $errors->first('start_date') }}</strong>--}}
+{{--                                @endif--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="date" class="form-control" value="{{ old('start_date') }}" id="start_date" name="start_date" placeholder="" >--}}
 
-                                </div>
-                            </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="col-xs-2 form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
-                                <label for="end_date">Ημερομηνία Λήξης</label>
-                                @if ($errors->has('end_date'))
-                                    <strong class="text-danger">{{ $errors->first('end_date') }}</strong>
-                                @endif
-                                <div class="input-group">
-                                    <input type="date" class="form-control" value="{{ old('end_date') }}" id="end_date" name="end_date" placeholder="" >
+{{--                            <div class="col-xs-2 form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">--}}
+{{--                                <label for="end_date">Ημερομηνία Λήξης</label>--}}
+{{--                                @if ($errors->has('end_date'))--}}
+{{--                                    <strong class="text-danger">{{ $errors->first('end_date') }}</strong>--}}
+{{--                                @endif--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="date" class="form-control" value="{{ old('end_date') }}" id="end_date" name="end_date" placeholder="" >--}}
 
-                                </div>
-                            </div>
-                        </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="row">
                             <div class="col-xs-3 form-group{{ $errors->has('website') ? ' has-error' : '' }}">

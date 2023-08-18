@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Event;
+use App\Models\Venue;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Str;
 
@@ -28,11 +29,11 @@ class EventFactory extends Factory
             'slug' => $this->faker->slug,
             'meta_description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'meta_keywords' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
-            'header' => 'noimage.jpg',
-            'logo' => 'logo.jpg',
-            'image1' => 'noimage.jpg',
-            'image2' => 'noimage.jpg',
-            'image3' => 'noimage.jpg',
+            'header' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'logo' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'image1' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'image2' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'image3' => $this->faker->imageUrl(640, 480, 'animals', true),
             'start_date' => $this->faker->date($format = 'Y-m-d', $min = 'now'),
             'start_time' => '12:60', //time($format = 'H:i:s', $max = 'now') // '20:49:42'
             'end_date' => $this->faker->date($format = 'Y-m-d', $min = 'now'),
@@ -48,7 +49,7 @@ class EventFactory extends Factory
             // 'lng' => $this->faker->longitude($min = 24, $max = 25),
             'description' => $this->faker->realText($maxNbChars = 500, $indexSize = 3),
             'user_id' => rand(1, 2),
-            // 'group_id' => factory('App\Group')->create()->id,
+             'venue_id' => Venue::factory()->create()->id,
         ];
     }
 }

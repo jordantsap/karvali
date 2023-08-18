@@ -9,7 +9,7 @@
 
 @section('content')
 
-<img width="100%" height="350px" src="{{ asset('images/venues/'.$venue->header) }}"
+<img width="100%" height="350px" src="{{ asset($venue->header) }}"
   title="{{ $venue->title }}" class="" alt="{{$venue->title}}">
 <h1 class="text-center">{{ $venue->title }}</h1>
 <div class="divider"></div>
@@ -19,7 +19,7 @@
 
     <div class="row">
       <div class="col-xs-6">
-        <img src="{{ asset('images/venues/'.$venue->logo) }}" width="100%" height="250"
+        <img src="{{ asset($venue->logo) }}" width="100%" height="250"
           alt="{{ $venue->title }}" title="{{ $venue->title }}">
         </div>
 
@@ -104,17 +104,17 @@
               <div class="row">
                 <div class="col-xs-4">
                   <a data-lightbox="company" data-title="{{$venue->title}}" data-alt="{{$venue->title}}" href="{{ asset('images/companies/'.$venue->image1) }}">
-                    <img src="{{ asset('images/venues/'.$venue->image1) }}" title="{{ $venue->title }}" class="img-responsive img-rounded" alt="{{$venue->title}}">
+                    <img src="{{ asset($venue->image1) }}" title="{{ $venue->title }}" class="img-responsive img-rounded" alt="{{$venue->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a data-lightbox="company" data-title="{{$venue->title}}" data-alt="{{$venue->title}}" href="{{ asset('images/companies/'.$venue->image2) }}">
-                    <img src="{{ asset('images/venues/'.$venue->image2) }}" title="{{ $venue->title }}" class="img-responsive img-rounded" alt="{{$venue->title}}">
+                    <img src="{{ asset($venue->image2) }}" title="{{ $venue->title }}" class="img-responsive img-rounded" alt="{{$venue->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
                   <a data-lightbox="company" data-title="{{$venue->title}}" data-alt="{{$venue->title}}" href="{{ asset('images/companies/'.$venue->image3) }}">
-                    <img src="{{ asset('images/venues/'.$venue->image3) }}" title="{{ $venue->title }}" class="img-responsive img-rounded" alt="{{$venue->title}}">
+                    <img src="{{ asset($venue->image3) }}" title="{{ $venue->title }}" class="img-responsive img-rounded" alt="{{$venue->title}}">
                   </a>
                 </div>
               </div>
@@ -132,19 +132,20 @@
                 <ul class="list-group">
                   <li class="list-group-item"><h2>{{ $venue->title }}</h2>
                   </li>
-                  <li class="list-group-item"><img src="{{ asset('images/venues/'.$venue->logo) }}" width="100%" height="100px" alt="{{$venue->title}}" title"{{$venue->title}}"></li>
+                  <li class="list-group-item">
+                      <img src="{{ asset($venue->logo) }}" width="100%" height="100px" alt="{{$venue->title}}" title"{{$venue->title}}"></li>
                   {{-- <li class="list-group-item bold">Κατηγορία: <a href="{{ route('products-category', $venue->producttype->id)}}">{{ $venue->producttype->name }}</a></li> --}}
                   <li class="list-group-item"><h3>Τιμή: {{ $venue->price }}</h3></li>
           <li class="list-group-item">
             <h3>{{ $venue->description }}</h3>
           </li>
           <li class="list-group-item">
-            <a href="{{route('product', $venue->slug) }}" class="btn btn-default btn-block">Show</a>
+            <a href="{{route('venue', $venue->slug) }}" class="btn btn-default btn-block">Show</a>
           </li>
           </ul>
         </div>
         @endforeach @else
-        <p class="text-center">No published products</p>
+        <p class="text-center">No published Events</p>
         @endif
 
       </div>

@@ -18,6 +18,6 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->truncate();
         // $products = factory(App\Models\Product::class, 15)->create();
-        Product::factory()->count(5)->create();
+        Product::factory()->count(20)->create();
     }
 }

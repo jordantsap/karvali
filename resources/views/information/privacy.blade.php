@@ -130,8 +130,8 @@ __('meta.privacypagedescription')) @section('meta_keywords', __('meta.privacypag
 
         <p>Εάν έχετε οποιεσδήποτε ερωτήσεις σχετικά με αυτήν την Πολιτική Απορρήτου,
           παρακαλούμε επικοινωνήστε μαζί μας μέσω
-          <a href="mailto:jordantsap@hotmail.gr">email</a> ή
-          <a href="tel:6984262910">τηλεφώνου</a> 6984262910.</p>
+          <a href="mailto:{{env('MY_EMAIL')}}">email</a> ή
+          <a href="tel:{{env('MY_MOBILE')}}">τηλεφώνου</a> {{env('MY_MOBILE')}}.</p>
 
 
       </div>

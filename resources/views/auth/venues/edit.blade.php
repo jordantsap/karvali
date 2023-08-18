@@ -51,60 +51,60 @@
               </div>
             </div>
 
-          <div class="row">
-            <div class="col-xs-3 form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
-              <label for="start_date">{{__('form.startdate')}}</label>
-              @if ($errors->has('start_date'))
-                <strong class="text-danger">{{ $errors->first('start_date') }}</strong>
-              @endif
-              <div class="input-group">
-                <input type="date" value="{{ $venue->start_date }}" class="form-control" id="start_date" name="start_date" placeholder="Ημερομηνία Εκδήλωσης" required>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">
-                <label for="start_time">{{__('form.starttime')}}</label>
-                @if ($errors->has('start_time'))
-                  <strong class="text-danger">{{ $errors->first('start_time') }}</strong>
-                @endif
-                <div class="input-group">
-                  <input type="time" value="{{ $venue->start_time }}" class="form-control" id="start_time" name="start_time" placeholder="" required>
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-3 form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
-              <label for="start_date">{{__('form.enddate')}}</label>
-              @if ($errors->has('end_date'))
-                <strong class="text-danger">{{ $errors->first('end_date') }}</strong>
-              @endif
-              <div class="input-group">
-                <input type="date" value="{{ $venue->end_date }}" class="form-control" id="end_date" name="end_date" placeholder="Ημερομηνία Λήξης" required>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="form-group{{ $errors->has('end_time') ? ' has-error' : '' }}">
-                <label for="end_time">{{__('form.endtime')}}</label>
-                @if ($errors->has('end_time'))
-                  <strong class="text-danger">{{ $errors->first('end_time') }}</strong>
-                @endif
-                <div class="input-group">
-                  <input type="time" value="{{ $venue->end_time }}" class="form-control" id="end_time" name="end_time" placeholder="" required>
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+{{--          <div class="row">--}}
+{{--            <div class="col-xs-3 form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">--}}
+{{--              <label for="start_date">{{__('form.startdate')}}</label>--}}
+{{--              @if ($errors->has('start_date'))--}}
+{{--                <strong class="text-danger">{{ $errors->first('start_date') }}</strong>--}}
+{{--              @endif--}}
+{{--              <div class="input-group">--}}
+{{--                <input type="date" value="{{ $venue->start_date }}" class="form-control" id="start_date" name="start_date" placeholder="Ημερομηνία Εκδήλωσης" required>--}}
+{{--                <span class="input-group-addon">--}}
+{{--                  <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                </span>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-xs-3">--}}
+{{--              <div class="form-group{{ $errors->has('start_time') ? ' has-error' : '' }}">--}}
+{{--                <label for="start_time">{{__('form.starttime')}}</label>--}}
+{{--                @if ($errors->has('start_time'))--}}
+{{--                  <strong class="text-danger">{{ $errors->first('start_time') }}</strong>--}}
+{{--                @endif--}}
+{{--                <div class="input-group">--}}
+{{--                  <input type="time" value="{{ $venue->start_time }}" class="form-control" id="start_time" name="start_time" placeholder="" required>--}}
+{{--                  <span class="input-group-addon">--}}
+{{--                    <span class="glyphicon glyphicon-time"></span>--}}
+{{--                  </span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-xs-3 form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">--}}
+{{--              <label for="start_date">{{__('form.enddate')}}</label>--}}
+{{--              @if ($errors->has('end_date'))--}}
+{{--                <strong class="text-danger">{{ $errors->first('end_date') }}</strong>--}}
+{{--              @endif--}}
+{{--              <div class="input-group">--}}
+{{--                <input type="date" value="{{ $venue->end_date }}" class="form-control" id="end_date" name="end_date" placeholder="Ημερομηνία Λήξης" required>--}}
+{{--                <span class="input-group-addon">--}}
+{{--                  <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--                </span>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-xs-3">--}}
+{{--              <div class="form-group{{ $errors->has('end_time') ? ' has-error' : '' }}">--}}
+{{--                <label for="end_time">{{__('form.endtime')}}</label>--}}
+{{--                @if ($errors->has('end_time'))--}}
+{{--                  <strong class="text-danger">{{ $errors->first('end_time') }}</strong>--}}
+{{--                @endif--}}
+{{--                <div class="input-group">--}}
+{{--                  <input type="time" value="{{ $venue->end_time }}" class="form-control" id="end_time" name="end_time" placeholder="" required>--}}
+{{--                  <span class="input-group-addon">--}}
+{{--                    <span class="glyphicon glyphicon-time"></span>--}}
+{{--                  </span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--          </div>--}}
 
 
             <div class="row">

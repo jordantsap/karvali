@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,7 @@ Route::resource('/checkout', 'Client\CheckoutController');
 Route::get('/guestcheckout', 'Client\CheckoutController@index')->name('guestcheckout.index')->middleware('guest');
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
 
+Route::get('/rooms/available-dates', [CalendarController::class,'getAvailableDates']);
 
 Route::as('front.')->group(function () {
 
@@ -64,7 +66,8 @@ Route::as('front.')->group(function () {
 //    Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
 //        ->name('accommodationtype.show');
 
-Route::view('calendar','calendar');
+//Route::view('calendar','calendar');
+
 
     Route::resource('amenities', 'Client\CompanyController@index');
 

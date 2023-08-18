@@ -57,4 +57,16 @@ class Room extends Model implements TranslatableContract
     {
         return $this->belongsTo(RoomType::class);
     }
+
+
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
+
+    public function likes()
+    {
+        return $this->morphMany('App\Models\Like', 'likeable');
+    }
 }

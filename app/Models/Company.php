@@ -69,6 +69,10 @@ class Company extends Model implements TranslatableContract
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+    public function schedules(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Schedule::class, 'scheduleable');
+    }
 
     public function comments()
     {
@@ -87,34 +91,13 @@ class Company extends Model implements TranslatableContract
         return $this->morphMany('App\Models\Advert', 'advertable');
     }
 
-
     public function scopeActive($query)
     {
         return $query->where('active', 1);
     }
-    public function getWeekDaysAttribute()
-    {
-        return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    }
-    public function getDaysArray()
-    {
-        return [
-            'mon' => 'Monday',
-            'tue' => 'Tuesday',
-            'wed' => 'Wednesday',
-            'thu' => 'Thursday',
-            'fri' => 'Friday',
-            'sat' => 'Saturday',
-            'sun' => 'Sunday',
-        ];
-    }
 
-    public function sessions() {
-        return $this->belongsToMany(Session::class, 'company_session_day')
-            ->withPivot('day_id');
-    }
-    public function openingHours() {
-        return $this->hasMany(CompanyOpeningHours::class);
+    public function periods() {
+        return $this->belongsToMany(DayPeriod::class);
     }
 
     protected $casts = [

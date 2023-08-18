@@ -31,8 +31,8 @@ class PlanSeeder extends Seeder
             'duration' => 30,
 //            'start_date' => now(),
 //            'end_date' => now()->addDays(30),
-            'plan_id' => rand(1, 5),
-            'user_id' => rand(1, 8),
+//            'plan_id' => rand(1, 5),
+//            'user_id' => rand(1, 8),
         ]);
         Plan::create([
             'name:en' => 'Main',
@@ -47,8 +47,8 @@ class PlanSeeder extends Seeder
             'duration' => 30,
 //            'start_date' => now(),
 //            'end_date' => now()->addDays(30),
-            'plan_id' => rand(1, 5),
-            'user_id' => rand(1, 8),
+//            'plan_id' => rand(1, 5),
+//            'user_id' => rand(1, 8),
         ]);
         Plan::create([
             'name:en' => 'Medium',
@@ -63,8 +63,8 @@ class PlanSeeder extends Seeder
             'duration' => 30,
 //            'start_date' => now(),
 //            'end_date' => now()->addDays(30),
-            'plan_id' => rand(1, 5),
-            'user_id' => rand(1, 8),
+//            'plan_id' => rand(1, 5),
+//            'user_id' => rand(1, 8),
         ]);
         Plan::create([
             'name:en' => 'Big',
@@ -79,8 +79,8 @@ class PlanSeeder extends Seeder
             'duration' => 30,
 //            'start_date' => now(),
 //            'end_date' => now()->addDays(30),
-            'plan_id' => rand(1, 5),
-            'user_id' => rand(1, 8),
+//            'plan_id' => rand(1, 5),
+//            'user_id' => rand(1, 8),
         ]);
     }
 }

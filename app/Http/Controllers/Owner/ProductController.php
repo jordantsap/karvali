@@ -149,12 +149,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-//        var_dump($request->all());
+        $imageFields = GetInputs::imageFields();
 
-        $product->update($request->all());
+        $product->update($request->except($imageFields));
 
 //        $product->amenities()->sync($request->input('amenities', []));
 
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/products', $imageName);
+                $location = public_path("images/products/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $product->{$fieldName} = $imagePath;
+            }
+        }
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $product->images()->delete();
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName); // You can specify a custom directory
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $product->images()->save($upload);
+//                $image->sync([$upload]);
+
+            }
+        }
+
+        $product->save();
 
         toastr()->addSuccess('Product Updated successfully.');
 

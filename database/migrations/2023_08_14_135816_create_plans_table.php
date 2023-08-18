@@ -18,8 +18,8 @@ return new class extends Migration
 
             $table->decimal('price', 10, 2);
             $table->integer('duration'); // Duration in days, months, etc.
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('plan_id')->constrained();
+//            $table->foreignId('user_id')->constrained();
+//            $table->foreignId('plan_id')->constrained();
 //            $table->date('start_date');
 //            $table->date('end_date');
             $table->timestamps();

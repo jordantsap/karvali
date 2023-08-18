@@ -17,10 +17,8 @@ class Plan extends Model implements TranslatableContract
         'status',
     ];
     protected $fillable = [
-        'user_id',
-        'plan_id',
-//        'start_date',
-//        'end_date',
+//        'user_id',
+//        'plan_id',
         'price',
         'duration'
     ];

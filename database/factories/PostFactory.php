@@ -29,7 +29,7 @@ class PostFactory extends Factory
             'meta_keywords' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'slug' => $this->faker->slug,
             'post_type' => rand(1, 6),
-            'image' => 'noimage.jpg', //$this->faker->imageUrl($width = 640, $height = 480),
+            'image' => $this->faker->imageUrl($width = 640, $height = 480),
             'description' => $this->faker->realText($maxNbChars = 500, $indexSize = 2),
             'user_id' => rand(1, 2),
         ];

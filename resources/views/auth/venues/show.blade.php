@@ -42,48 +42,48 @@
               </div>
           </div>
 
-          <div class="row">
-              <div class="col-xs-3 form-group">
-                  <label for="start_date">Ημερομηνία Έναρξης</label>
-                  <div class="input-group">
-                      <input type="date" value="{{ $venue->start_date }}" class="form-control" id="start_date" name="start_date">
-                      <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-              </span>
-                  </div>
-              </div>
-              <div class="col-xs-3">
-                  <div class="form-group">
-                      <label for="start_time">Ώρα Έναρξης</label>
-                      <div class="input-group">
-                          <input type="time" value="{{ $venue->start_time }}" class="form-control" id="start_time" name="start_time">
-                          <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-                </span>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xs-3 form-group">
-                  <label for="start_date">Ημερομηνία Λήξης</label>
-                  <div class="input-group">
-                      <input type="date" value="{{ $venue->end_date }}" class="form-control" id="end_date" name="end_date">
-                      <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-              </span>
-                  </div>
-              </div>
-              <div class="col-xs-3">
-                  <div class="form-group">
-                      <label for="end_time">Ώρα Λήξης</label>
-                      <div class="input-group">
-                          <input type="time" value="{{ $venue->end_time }}" class="form-control" id="end_time" name="end_time" disabled>
-                          <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-                </span>
-                      </div>
-                  </div>
-              </div>
-          </div>
+{{--          <div class="row">--}}
+{{--              <div class="col-xs-3 form-group">--}}
+{{--                  <label for="start_date">Ημερομηνία Έναρξης</label>--}}
+{{--                  <div class="input-group">--}}
+{{--                      <input type="date" value="{{ $venue->start_date }}" class="form-control" id="start_date" name="start_date">--}}
+{{--                      <span class="input-group-addon">--}}
+{{--                <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--              </span>--}}
+{{--                  </div>--}}
+{{--              </div>--}}
+{{--              <div class="col-xs-3">--}}
+{{--                  <div class="form-group">--}}
+{{--                      <label for="start_time">Ώρα Έναρξης</label>--}}
+{{--                      <div class="input-group">--}}
+{{--                          <input type="time" value="{{ $venue->start_time }}" class="form-control" id="start_time" name="start_time">--}}
+{{--                          <span class="input-group-addon">--}}
+{{--                  <span class="glyphicon glyphicon-time"></span>--}}
+{{--                </span>--}}
+{{--                      </div>--}}
+{{--                  </div>--}}
+{{--              </div>--}}
+{{--              <div class="col-xs-3 form-group">--}}
+{{--                  <label for="start_date">Ημερομηνία Λήξης</label>--}}
+{{--                  <div class="input-group">--}}
+{{--                      <input type="date" value="{{ $venue->end_date }}" class="form-control" id="end_date" name="end_date">--}}
+{{--                      <span class="input-group-addon">--}}
+{{--                <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--              </span>--}}
+{{--                  </div>--}}
+{{--              </div>--}}
+{{--              <div class="col-xs-3">--}}
+{{--                  <div class="form-group">--}}
+{{--                      <label for="end_time">Ώρα Λήξης</label>--}}
+{{--                      <div class="input-group">--}}
+{{--                          <input type="time" value="{{ $venue->end_time }}" class="form-control" id="end_time" name="end_time" disabled>--}}
+{{--                          <span class="input-group-addon">--}}
+{{--                  <span class="glyphicon glyphicon-time"></span>--}}
+{{--                </span>--}}
+{{--                      </div>--}}
+{{--                  </div>--}}
+{{--              </div>--}}
+{{--          </div>--}}
           <div class="row">
 
               <div class="col-xs-6">

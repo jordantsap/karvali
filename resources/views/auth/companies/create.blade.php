@@ -24,7 +24,7 @@
                     </label>
                 </div>
                 <div class="col-xs-2 form-group{{ $errors->has('company_type') ? ' has-error' : '' }}">
-                    <label for="company_type">Κατηγορία Καταστήματος</label>
+                    <label for="company_type">{{__('form.categorytype')}}</label>
                     @if ($errors->has('company_type'))
                         <strong class="text-danger">{{ $errors->first('company_type') }}</strong>
                     @endif
@@ -41,7 +41,6 @@
 
 {{--                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">--}}
 {{--                    <h4>Working Days and Hours:</h4>--}}
-
 {{--                    <table class="table">--}}
 {{--                        <thead>--}}
 {{--                        <th>Day Name</th>--}}
@@ -59,21 +58,33 @@
 {{--                        <tbody>--}}
 {{--                        @foreach ($days as $day)--}}
 {{--                            <tr>--}}
-{{--                                <td>{{ $day->name }}</td>--}}
+{{--                                <td>{{ ucfirst($day) }}</td>--}}
 {{--                                <td>--}}
-{{--                                    <input type="checkbox" class="toggle-checkbox allday-checkbox" data-toggle="allday-{{ $day->name }}">--}}
-{{--                                    <input type="time" name="working_days[{{ $day->name }}][start_time]" class="allday-{{ $day->name }} allday-input" placeholder="Start Time">--}}
-{{--                                    <input type="time" name="working_days[{{ $day->name }}][end_time]" class="allday-{{ $day->name }} allday-input" placeholder="End Time">--}}
+{{--                                    <input type="checkbox" class="toggle-checkbox allday-checkbox" data-toggle="allday-{{ $day }}">--}}
+{{--                                    <label for="opening_time">Opening Time</label>--}}
+{{--                                    <label for="opening_hour">Opening Hour:</label>--}}
+{{--                                    <select class="form-control" name="opening_hour">--}}
+{{--                                        @for ($hour = 0,30; $hour <= 14; $hour++)--}}
+{{--                                            <option step="30" value="{{ $hour }}">{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00</option>--}}
+{{--                                        @endfor--}}
+{{--                                    </select>--}}
+{{--                                    <br>--}}
+{{--                                    <label for="closing_hour">Closing Hour:</label>--}}
+{{--                                    <select name="closing_hour" class="form-control">--}}
+{{--                                        @for ($hour = 14; $hour <= 24; $hour++)--}}
+{{--                                            <option value="{{ $hour }}">{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00</option>--}}
+{{--                                        @endfor--}}
+{{--                                    </select>--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
-{{--                                    <input type="checkbox" class="toggle-checkbox morning-checkbox" data-toggle="morning-{{ $day->name }}">--}}
-{{--                                    <input type="time" name="working_days[{{ $day->name }}][start_time]" class="morning-{{ $day->name }} morning-input" placeholder="Start Time">--}}
-{{--                                    <input type="time" name="working_days[{{ $day->name }}][end_time]" class="morning-{{ $day->name }} morning-input" placeholder="End Time">--}}
+{{--                                    <input type="checkbox" class="toggle-checkbox morning-checkbox" data-toggle="morning-{{ $day }}">--}}
+{{--                                    <input type="time" name="working_days[{{ $day }}][start_time]" class="morning-{{ $day }} morning-input" placeholder="Start Time">--}}
+{{--                                    <input type="time" name="working_days[{{ $day }}][end_time]" class="morning-{{ $day }} morning-input" placeholder="End Time">--}}
 {{--                                </td>--}}
 {{--                                <td>--}}
-{{--                                    <input type="checkbox" class="toggle-checkbox afternoon-checkbox" data-toggle="afternoon-{{ $day->name }}">--}}
-{{--                                    <input type="time" name="working_days[{{ $day->name }}][start_time]" class="afternoon-{{ $day->name }} afternoon-input" placeholder="Start Time">--}}
-{{--                                    <input type="time" name="working_days[{{ $day->name }}][end_time]" class="afternoon-{{ $day->name }} afternoon-input" placeholder="End Time">--}}
+{{--                                    <input type="checkbox" class="toggle-checkbox afternoon-checkbox" data-toggle="afternoon-{{ $day }}">--}}
+{{--                                    <input type="time" name="working_days[{{ $day }}][start_time]" class="afternoon-{{ $day }} afternoon-input" placeholder="Start Time">--}}
+{{--                                    <input type="time" name="working_days[{{ $day }}][end_time]" class="afternoon-{{ $day }} afternoon-input" placeholder="End Time">--}}
 {{--                                </td>--}}
 {{--                            </tr>--}}
 {{--                        @endforeach--}}
@@ -82,12 +93,12 @@
 {{--                </div>--}}
 
                 <div class="col-xs-2 form-group">
-                    <label for="telephone">Τηλέφωνο</label>
+                    <label for="telephone">{{__('form.telephone')}}</label>
                     <input type="text" value="{{ old('telephone') }}" name="telephone" class="form-control" id="telephone" placeholder="Τηλέφωνο Επιχείρησης" >
                 </div>
 
                 <div class="col-xs-2 form-group{{ $errors->has('delivery') ? ' has-error' : '' }}">
-                    <label for="delivery" class="bold">Delivery:</label>
+                    <label for="delivery" class="bold">{{__('form.delivery')}}:</label>
                     @if ($errors->has('delivery'))
                         <strong class="text-danger">{{ $errors->first('delivery') }}</strong>
                     @endif
@@ -104,7 +115,7 @@
 
             <div class="row">
                 <div class="col-xs-6 form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-                    <label for="website">Ιστοσελίδα</label>
+                    <label for="website">{{__('form.website')}}</label>
                     @if ($errors->has('website'))
                         <strong class="text-danger">{{ $errors->first('website') }}</strong>
                     @endif
@@ -161,30 +172,6 @@
 
             </div>
 
-{{--            <div class="row">--}}
-
-
-{{--                <div class="col-xs-7 form-group text-center{{ $errors->has('creditcard') ? ' has-error' : '' }}">--}}
-{{--                    <label for="creditcard" class="bold">Χρεωστικές Κάρτες:</label>--}}
-{{--                    @if ($errors->has('creditcard'))--}}
-{{--                        <strong class="text-danger">{{ $errors->first('creditcard') }}</strong>--}}
-{{--                    @endif--}}
-{{--                    <br>--}}
-{{--                    <label class="checkbox-inline">--}}
-{{--                        <input type="checkbox" name="creditcard[]" value="None" {{ old('creditcard') == 'Νone' ? 'checked' : ''}}> None--}}
-{{--                    </label>--}}
-{{--                    <label class="checkbox-inline">--}}
-{{--                        <input type="checkbox" name="creditcard[]" value="Visa" {{ old('creditcard') == 'Visa' ? 'checked' : ''}}> Visa--}}
-{{--                    </label>--}}
-{{--                    <label class="checkbox-inline">--}}
-{{--                        <input type="checkbox" name="creditcard[]" value="Mastercard" {{ old('creditcard') == 'Mastercard' ? 'checked' : ''}}> Mastercard--}}
-{{--                    </label>--}}
-{{--                    <label class="checkbox-inline">--}}
-{{--                        <input type="checkbox" name="creditcard[]" value="American Express" {{ old('creditcard') == 'American Express' ? 'checked' : ''}}> American Express--}}
-{{--                    </label>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
             @foreach(config('translatable.locales') as $locale => $lang)
 
                 <div class="row">
@@ -193,7 +180,7 @@
                         <input type="text" value="{{ old('title') }}" name="{{$locale}}[title]" class="form-control" id="title" placeholder="Enter Title" >
                     </div>
                     <div class="col-xs-3 form-group{{ $errors->has('manager') ? ' has-error' : '' }}">
-                        <label for="manager">{{__("form.Όνομα Υπευθύνου"). ' - ' . $lang}}</label>
+                        <label for="manager">{{__('form.managername'). ' - ' . $lang}}</label>
                         @if ($errors->has('manager'))
                             <strong class="text-danger">{{ $errors->first('manager') }}</strong>
                         @endif
@@ -207,7 +194,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
-                    <label for="meta_description">{{__('form.Meta Description'). ' - ' . $lang}}</label>
+                    <label for="meta_description">{{__('form.metadescription'). ' - ' . $lang}}</label>
                     @if ($errors->has('meta_description'))
                         <strong class="text-danger">{{ $errors->first('meta_description') }}</strong>
                     @endif
@@ -220,7 +207,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('meta_keywords') ? ' has-error' : '' }}">
-                    <label for="meta_keywords">{{__('form.Meta Keywords').' - '.$lang}}</label>
+                    <label for="meta_keywords">{{__('form.metakeywords').' - '.$lang}}</label>
                     @if ($errors->has('meta_keywords'))
                         <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
                     @endif
@@ -233,7 +220,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">{{__('form.Description').' - '.$lang}}</label>
+                    <label for="description">{{__('form.description').' - '.$lang}}</label>
                     <textarea class="textarea" name="{{$locale}}[description]" placeholder="Place some text here" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" >{{old('description')}}</textarea>
                 </div>
             @endforeach

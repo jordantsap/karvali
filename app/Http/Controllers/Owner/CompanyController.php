@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Helpers\DayTimeHelper;
 use App\Helpers\GetInputs;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
@@ -9,9 +10,8 @@ use App\Models\Accommodation;
 use App\Models\Company;
 use App\Models\CompanyOpeningHours;
 use App\Models\CompanyType;
-use App\Models\Day;
 use App\Models\Image as ImageModel;
-use App\Models\Session;
+use App\Models\Schedule;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,6 +22,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Spatie\OpeningHours\Day;
+use Spatie\OpeningHours\OpeningHours;
 
 class CompanyController extends Controller
 {
@@ -47,10 +49,10 @@ class CompanyController extends Controller
     public function create()
     {
         $companytypes = CompanyType::withTranslation()->get();
-//        $days = Day::get();
+        $days = DayTimeHelper::getDaysArray();
 //        $sessions = Session::all();
 
-        return view('auth.companies.create', compact('companytypes'));
+        return view('auth.companies.create', compact('companytypes','days'));
     }
 
     /**
@@ -67,9 +69,9 @@ class CompanyController extends Controller
         $company->active = $request->active;
         $company->company_type = $request->company_type;
 //        $company->days = json_encode($request->input('days'));
-//        $company->creditcard = json_encode($request->input('creditcard'));
 //        $company->morningtime = '$request->morningtime';
 //        $company->afternoontime = '$request->afternoontime';
+//        $company->creditcard = json_encode($request->input('creditcard'));
         $company->telephone = $request->telephone;
         $company->website = $request->website;
         $company->twitter = $request->twitter;
@@ -143,6 +145,7 @@ class CompanyController extends Controller
     {
         $companytypes = CompanyType::withTranslation()->first();
 //        $sessions = $company->sessions();
+//        $days = Day::days();
 //        $days = $company->openingHours->day();
 
         return view('auth.companies.company',compact(['company','companytypes']));
@@ -171,9 +174,42 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-//        return $request->all();
+        $imageFields = GetInputs::imageFields();
 
-        $company->update($request->all());
+        $company->update($request->except($imageFields));
+
+
+        foreach ($imageFields as $fieldName) {
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/accommodations', $imageName);
+                $location = public_path("images/accommodations/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+
+                $company->{$fieldName} = $imagePath;
+            }
+        }
+        // Handle multiple image uploads with polymorphic relationship
+        if ($request->hasFile('imgfile')) {
+            $company->images()->delete();
+            $images = $request->file('imgfile');
+            foreach ($images as $image) {
+//                return $image;
+                $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/companies', $imageName); // You can specify a custom directory
+                $location = public_path("images/companies/" . $imageName);
+                Image::make($image)->resize(800, 400)->save($location);
+                // Save the image path to the database with polymorphic relationship
+                $upload = new ImageModel(['path' => $imagePath]);
+                $company->images()->save($upload);
+//                $image->sync([$upload]);
+
+            }
+        }
+
+        $company->save();
 
         toastr()->addSuccess('Company updated successfully.');
 
