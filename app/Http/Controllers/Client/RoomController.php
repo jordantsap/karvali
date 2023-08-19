@@ -17,16 +17,16 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('rooms.index');
+//        return view('rooms.index');
     }
 
     public function show($slug)
     {
         $room = Room::with('roomType')
         ->whereTranslation('slug', $slug)->first();
-        $bookings = Booking::all();
+//        $bookings = Booking::whereRelation('room','room_id', $slug)->get();
 
-        return view('rooms.show', compact('room','bookings'));
+        return view('rooms.show', compact('room'));
     }
 
     /**

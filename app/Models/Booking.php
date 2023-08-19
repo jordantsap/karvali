@@ -11,8 +11,19 @@ class Booking extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;
 
-
-    protected $fillable = ['title', 'slug'];
+    protected $dates = ['check_in_date', 'check_out_date','check_in_time','check_out_time'];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'check_out_date' => 'date:d-m-Y',
+        'check_in_date' => 'date:d-m-Y',
+//        'check_out_time' => 'date:d-m-Y',
+//        'check_in_time' => 'date:d-m-Y',
+    ];
+    protected $fillable = ['check_in_date', 'check_out_date','check_in_time','check_out_time','room_id'];
 
     protected $translatedAttributes = [
         'title',
@@ -22,5 +33,10 @@ class Booking extends Model implements TranslatableContract
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
     }
 }

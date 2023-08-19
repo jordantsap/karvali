@@ -13,7 +13,7 @@ class StoreBookingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreBookingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'check_in' => 'required',//|date_format:d-m-Y H:i:s',
+            'check_out' => 'required',//|date_format:d-m-Y H:i:s',
         ];
     }
 }

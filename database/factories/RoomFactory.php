@@ -21,8 +21,11 @@ class RoomFactory extends Factory
     {
         return [
             'active'=> '1',
+            'beds'=> '1',
+            'adults'=> '1',
+            'kids'=> '1',
             'accommodation_id'=> Accommodation::factory()->create()->id,
-            'room_type_id'=> rand(1,6),
+            'room_type_id'=> RoomType::factory()->create()->id,
             'title' => $this->faker->company,
             'slug' =>$this->faker->slug,
             'meta_description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),

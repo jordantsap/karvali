@@ -18,7 +18,7 @@ class RoomTypeSeeder extends Seeder
     public function run()
     {
         DB::table('room_types')->truncate();
-
+        RoomType::factory()->count(5)->create();
         RoomType::create([
             'title:en' => 'Single',
             'slug:en' => 'singleen',

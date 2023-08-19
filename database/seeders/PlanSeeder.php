@@ -22,10 +22,12 @@ class PlanSeeder extends Seeder
             'name:en' => 'Free',
             'slug:en' => 'free',
             'status:en' => "Active",
+            'description:en' => 'description here',
 
             'name:el' => 'Δωρεάν',
             'slug:el' => 'dwrean',
             'status:el' => "Ενεργό",
+            'description:el' => "Περιγραφη εδω",
 
             'price' => 0,
             'duration' => 30,
@@ -38,10 +40,12 @@ class PlanSeeder extends Seeder
             'name:en' => 'Main',
             'slug:en' => 'main',
             'status:en' => "Active",
+            'description:en' => 'description here',
 
             'name:el' => 'Κύριο',
             'slug:el' => 'kyrio',
             'status:el' => "Ενεργό",
+            'description:el' => 'εδω περιγραφη',
 
             'price' => 19.99,
             'duration' => 30,
@@ -54,10 +58,12 @@ class PlanSeeder extends Seeder
             'name:en' => 'Medium',
             'slug:en' => 'medium',
             'status:en' => "Active",
+            'description:en' => 'description here',
 
             'name:el' => 'Μεσαίο',
             'slug:el' => 'mesaio',
             'status:el' => "Ενεργό",
+            'description:el' => 'εδω περιγραφη',
 
             'price' => 19.99,
             'duration' => 30,
@@ -70,10 +76,12 @@ class PlanSeeder extends Seeder
             'name:en' => 'Big',
             'slug:en' => 'big',
             'status:en' => "Active",
+            'description:en' => 'description here',
 
             'name:el' => 'Μεγάλο',
             'slug:el' => 'megalo',
             'status:el' => "Ενεργό",
+            'description:el' => 'εδω περιγραφη',
 
             'price' => 19.99,
             'duration' => 30,

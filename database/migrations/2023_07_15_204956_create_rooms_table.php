@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('image1')->nullable();
             $table->string('beds')->nullable();
+            $table->string('adults')->nullable();
+            $table->string('kids')->nullable();
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
             $table->unsignedInteger('capacity')->default(1);

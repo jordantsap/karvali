@@ -137,6 +137,7 @@
                 </div>
 
                 @if(count($accommodation->rooms->where('active',1)) > 0)
+                    <h1 class="text-center">Rooms</h1>
                     <table class="table">
                         <thead>
                         <tr>

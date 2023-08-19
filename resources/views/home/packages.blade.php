@@ -23,14 +23,6 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
               15%/συναλλαγή.
             </li>
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
-{{--              Συλλόγου.--}}
-{{--            </li>--}}
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
-{{--              Εκδήλωσης.--}}
-{{--            </li>--}}
           </ul>
         </div>
         <div class="col-footer text-center">
@@ -64,14 +56,6 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
               10%/συναλλαγή.
             </li>
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
-{{--              Συλλόγου.--}}
-{{--            </li>--}}
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-times-circle"></i> Το πακέτο δεν περιέχει Δημιουργία--}}
-{{--              Εκδήλωσης.--}}
-{{--            </li>--}}
           </ul>
         </div>
         <div class="col-footer text-center">
@@ -105,11 +89,6 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες με χρέωση
               5%/συναλλαγή.
             </li>
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-users"></i> Δυνατότητα Δημιουργίας Συλλόγου.</li>--}}
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-calendar-alt"></i> Δυνατότητα Δημιουργίας Εκδήλωσης.</li>--}}
-{{--          </ul>--}}
         </div>
         <div class="col-footer text-center">
           <div class="col-xs-9">
@@ -144,10 +123,6 @@
               <i class="fas fa-euro-sign"></i> Πωλήσεις και παραγγελίες χωρίς εξτρα
               χρέωση
             </li>
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-users"></i> Δημιουργία απεριορίστων Συλλόγων.</li>--}}
-{{--            <li class="list-group-item">--}}
-{{--              <i class="fas fa-calendar-alt"></i> Δημιουργία απεριορίστων Εκδηλώσεων.</li>--}}
           </ul>
         </div>
         <div class="col-footer text-center">

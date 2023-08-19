@@ -15,6 +15,7 @@ class Plan extends Model implements TranslatableContract
         'name',
         'slug',
         'status',
+        'description',
     ];
     protected $fillable = [
 //        'user_id',

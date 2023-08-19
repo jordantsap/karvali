@@ -47,7 +47,7 @@
 
   @include('home.about')
 
-{{--  @include('home/popular')--}}
+  @include('home/popular')
 
   @include('home.services')
 

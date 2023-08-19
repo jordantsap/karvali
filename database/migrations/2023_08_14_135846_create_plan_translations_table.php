@@ -21,6 +21,7 @@ return new class extends Migration
             // The actual fields to store the content of your entity. You can add whatever you need.
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->text('description');
             $table->string('status');
 
             $table->unique(['plan_id', 'locale']);

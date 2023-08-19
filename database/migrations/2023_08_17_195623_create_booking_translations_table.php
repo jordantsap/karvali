@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('booking_translations', function (Blueprint $table) {
             $table->id();
-
-            $table->date('check_in_date');
-            $table->date('check_out_date');
-            $table->time('check_in_time');
-            $table->time('check_out_time');
-            $table->foreignIdFor(\App\Models\Room::class);
+            $table->string('title');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('booking_translations');
     }
 };

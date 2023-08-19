@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookingRequest;
 use App\Http\Requests\UpdateBookingRequest;
 use App\Models\Booking;
+use App\Models\Room;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
@@ -24,20 +27,38 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($roomId)
     {
-        //
+        $room = Room::findOrFail($roomId);
+
+        return view('bookings.create', compact('room'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreBookingRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreBookingRequest $request)
+    public function store(StoreBookingRequest $request, Room $room)
     {
-        //
+        // Validate input, handle form submission, and create booking
+        // You can access the room ID, start time, and end time from the request
+        $roomId = $request->input('room_id');
+        $room = Room::find($roomId);
+        $startDate = $request->input('check_in');
+        $endDate = $request->input('check_out');
+
+        Booking::create([
+            'room_id' => $roomId,
+            'check_in' => Carbon::createFromFormat('d-m-Y H:i:s', $startDate),
+            'check_out' => $endDate,//Carbon::createFromFormat('d-m-Y H:i:s', $request->input('check_out')),
+
+            // other booking details
+        ]);
+
+        // Redirect back with a success message
+        return redirect(route('front.room.show', compact('room')))->with('success', 'Booking created successfully!');
     }
 
     /**

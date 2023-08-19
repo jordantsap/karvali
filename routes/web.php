@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\Client\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,8 +48,10 @@ Route::resource('/checkout', 'Client\CheckoutController');
 Route::get('/guestcheckout', 'Client\CheckoutController@index')->name('guestcheckout.index')->middleware('guest');
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
 
-Route::get('/rooms/available-dates', [CalendarController::class,'getAvailableDates']);
+Route::get('/rooms/available-dates', [CalendarController::class,'getAvailableDates'])->name('available.rooms');
+Route::post('fullcalendar/action', [CalendarController::class, 'action']);
 
+//---------------------------------------------------
 Route::as('front.')->group(function () {
 
     Route::get('accommodations/', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
@@ -58,7 +61,7 @@ Route::as('front.')->group(function () {
         ->name('accommodation-types.show');
 
     Route::get('rooms/', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
-    Route::get('rooms/{room}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
+    Route::get('rooms/{room:slug}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
 
     Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
@@ -68,6 +71,11 @@ Route::as('front.')->group(function () {
 
 //Route::view('calendar','calendar');
 
+
+    Route::get('/bookings/create/{roomId}', [BookingController::class,'create'])->name('bookings.create');
+
+
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 
     Route::resource('amenities', 'Client\CompanyController@index');
 
