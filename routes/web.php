@@ -59,9 +59,21 @@ Route::as('front.')->group(function () {
 
     Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])
         ->name('accommodation-types.show');
+    Route::get('/accommodations/{accommodationId}/available-dates', 'AccommodationController@getAvailableDates')->name('accommodations.available-dates');
 
-    Route::get('rooms/', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
+
+
+
+    Route::get('rooms', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
     Route::get('rooms/{room:slug}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
+
+    Route::get('bookings', [\App\Http\Controllers\Client\BookingController::class, 'viewRooms'])->name('rooms');
+    Route::get('/rooms/{room}/book', 'Client\BookingController@createBookingForm')->name('bookings.create');
+    Route::post('/rooms/{room}/book', 'Client\BookingController@storeBooking')->name('bookings.store');
+
+
+//    Route::get('/bookings/create/', [BookingController::class, 'createBookingForm'])->name('bookings.create');
+//    Route::post('/bookings/store', [BookingController::class, 'storeBooking'])->name('bookings.store');
 
     Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
@@ -69,36 +81,39 @@ Route::as('front.')->group(function () {
 //    Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
 //        ->name('accommodationtype.show');
 
-//Route::view('calendar','calendar');
 
-
-    Route::get('/bookings/create/{roomId}', [BookingController::class,'create'])->name('bookings.create');
-
-
-    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+    Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
 
     Route::resource('amenities', 'Client\CompanyController@index');
 
     Route::get('markets', 'Client\CompanyController@index')->name('companies');
+
     Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::class, 'show'])->name('company');
 
+
     Route::get('products', [\App\Http\Controllers\Client\ProductController::class, 'index'])->name('products');
+
     Route::get('{product:slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 
+
     Route::get('venues', [App\Http\Controllers\Client\VenueController::class, 'index'])->name('venues');
+
     Route::get('venue/{slug}', [App\Http\Controllers\Client\VenueController::class, 'show'])->name('venue.show');
 
-//Route::get('venues', 'Client\GroupController@index')->name('venues');
-
     Route::get('news', [App\Http\Controllers\Client\PostController::class, 'index'])->name('news');
+
     Route::get('post/{slug}', [App\Http\Controllers\Client\PostController::class, 'show'])->name('news.show');
 
     Route::get('{posttype}/news-type', 'Client\PostController@category')->name('posts-category');
+
     Route::get('{grouptype}/venues-type', 'Client\GroupController@category')->name('venues-category');
+
     Route::get('{companytype}/markets-type', 'Client\CompanyController@category')->name('companies-category');
+
     Route::get('{producttype}/products-type', [App\Http\Controllers\Client\ProductController::class,'category'])->name('products-category');
 
-    Route::get('events', 'Client\EventController@index')->name('events');
+
+    Route::get('events', 'Client\EventController@index')->name('events.index');
     Route::get('event/{event}', 'Client\EventController@show')->name('event.show');
 
     Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');

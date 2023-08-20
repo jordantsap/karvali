@@ -18,8 +18,8 @@ class Booking extends Model implements TranslatableContract
      * @var array
      */
     protected $casts = [
-        'check_out_date' => 'date:d-m-Y',
         'check_in_date' => 'date:d-m-Y',
+        'check_out_date' => 'date:d-m-Y',
 //        'check_out_time' => 'date:d-m-Y',
 //        'check_in_time' => 'date:d-m-Y',
     ];
@@ -30,10 +30,10 @@ class Booking extends Model implements TranslatableContract
         'slug',
     ];
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
 
     public function room()
     {

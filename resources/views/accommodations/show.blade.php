@@ -137,52 +137,76 @@
                 </div>
 
                 @if(count($accommodation->rooms->where('active',1)) > 0)
-                    <h1 class="text-center">Rooms</h1>
-                    <table class="table">
-                        <thead>
+                    <h1 class="text-center">{{__('page.rooms')}}</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>RoomType</th>
+{{--                        <th>Dates available</th>--}}
+                        <th>Beds</th>
+                        <th>Adults</th>
+                        <th>Kids</th>
+                        <th>Capacity</th>
+                        <th>Price</th>
+                        <th>Header</th>
+                        <th>Logo</th>
+                        <th>Image1</th>
+                        <th>Image2</th>
+                        <th>Image3</th>
+                        <th>General Images</th>
+                        <th>Go To</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                @foreach($accommodation->rooms as $room)
+                    <tr>
+                        <td>{{$room->title}}</td>
+                        <td>{{$room->roomType->title}}</td>
+{{--                        <td>{{{$availableDates}}}</td>--}}
+                        <td>{{$room->beds}}</td>
+                        <td>{{$room->adults}}</td>
+                        <td>{{$room->kids}}</td>
+                        <td>{{$room->capacity}}</td>
+                        <td>{{$room->price}}</td>
+                        <td><img class="img-responsive" src="{{asset($room->header)}}" alt=""></td>
+                        <td><img class="img-responsive"  src="{{asset($room->logo)}}" alt=""></td>
+                        <td><img class="img-responsive"  src="{{asset($room->image1)}}" alt=""></td>
+                        <td><img class="img-responsive" src="{{asset($room->image2)}}" alt=""></td>
+                        <td><img class="img-responsive" src="{{asset($room->image3)}}" alt=""></td>
+                        <td>
+                            @if($room->images())
+                                @foreach($room->images as $image)
+                                    <img class="img-responsive" src="{{asset($image->path)}}" alt="">
+                                @endforeach
+                            @endif()
+                        </td>
+                        <td><a href="{{ route('front.room.show', $room->slug) }}">{{ $room->title }}</a></td>
+                    </tr>
+                @endforeach
+                    </tbody>
+                        <tfoot>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">{{__('form.title')}}</th>
-                            <th scope="col">{{("Room Type")}}</th>
-                            <th scope="col">Logo</th>
-                            <th scope="col">{{__('form.description')}}</th>
+                            <th>Title</th>
+                            <th>RoomType</th>
+{{--                            <th>Dates available</th>--}}
+                            <th>Beds</th>
+                            <th>Adults</th>
+                            <th>Kids</th>
+                            <th>Capacity</th>
+                            <th>Price</th>
+                            <th>Header</th>
+                            <th>Logo</th>
+                            <th>Image1</th>
+                            <th>Image2</th>
+                            <th>Image3</th>
+                            <th>General Images</th>
+                            <th>Go To</th>
                         </tr>
-                        </thead>
+                        </tfoot>
+                </table>
+                    <div id="calendar"></div>
 
-                        @foreach($accommodation->rooms->where('active',1) as $room)
-                            <tbody>
-                            <tr>
-                                <td>{{$room->id}}</td>
-                                <td>{{$room->title}}</td>
-{{--                                <td>{{$room->slug}}</td>--}}
-                                <td>
-                                    @if( ! empty($room->roomType)){{ $room->roomType->title }}
-                                    @else None
-                                    @endif
-                                </td>
-                                <td><img width="150px" height="150px" src="{{asset($room->logo)}}" alt="{{$room->title}}"></td>
-                                <td>{{\Str::limit($room->description, 20)}}</td>
-                                <td>
-                                    {{--                        @can ('view', App\Models\Product::class)--}}
-                                    <a class="btn btn-primary" href="{{route('front.room.show', $room->slug)}}">View</a>
-                                    {{--                        @endcan--}}
-                                    @can ('update-products', App\Models\Product::class)
-                                    <a class="btn btn-primary" href="{{route('admin.rooms.edit', $room->slug)}}">Edit</a> -
-                                    {{--                        @endcan--}}
-                                    {{--                        @can ('delete', App\Models\Product::class)--}}
-                                    <form action="{{ route('admin.rooms.destroy', $room->id) }}"
-                                          method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <br>
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                    </form>
-                                    @endcan
-                                </td>
-                            </tr>
-                            </tbody>
-                        @endforeach
-                    </table>
                 @else
                     <p class="text-center">{{ __('single.norooms') }}</p>
                 @endif
@@ -245,3 +269,39 @@
 
 @endsection
 {{--@include('modals.roomModal')--}}
+@section('extra-js')
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            {{--events={!! json_encode($events) !!};--}}
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar:{
+                    center: 'dayGridMonth,dayGridWeek,dayGridDay',
+                },
+                buttonText:{
+                    today:    'today',
+                    month:    'month',
+                    week:     'week',
+                    dayGrid:      'day',
+                    list:     'list'
+                },
+                selectable: true,
+                selectHelper: true,
+                select:function(start, end, allDAys){
+                    console.log(start, end, allDAys);
+                },
+                droppable: true,
+                events: {!! json_encode($availableDates) !!},
+            {{--{--}}
+            {{--        url: '{{ route('front.calendar.index') }}',--}}
+            {{--        method: 'GET'--}}
+            {{--    }--}}
+            });
+            calendar.render();
+        });
+    </script>
+@endsection

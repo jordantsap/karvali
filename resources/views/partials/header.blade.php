@@ -41,7 +41,7 @@
                   <a href="{{ route('front.venues') }}">{{ __('header.venues') }}</a>
                 </li>
                 <li>
-                  <a href="{{ route('front.events') }}">{{ __('header.events') }}</a>
+                  <a href="{{ route('front.events.index') }}">{{ __('header.events') }}</a>
                 </li>
                 <li>
                   <a href="{{ route('front.news') }}">{{ __('header.posts') }}</a>

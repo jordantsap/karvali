@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
+use App\Models\Accommodation;
 use App\Models\Booking;
 use App\Models\Room;
+use App\Models\RoomType;
 
 class RoomController extends Controller
 {
@@ -17,16 +19,19 @@ class RoomController extends Controller
      */
     public function index()
     {
-//        return view('rooms.index');
+        $rooms = Room::all();
+        $accommodations = Accommodation::all();
+        $roomTypes = RoomType::all();
+        return view('rooms.index',compact('rooms','accommodations','roomTypes'));
     }
 
     public function show($slug)
     {
         $room = Room::with('roomType')
         ->whereTranslation('slug', $slug)->first();
-//        $bookings = Booking::whereRelation('room','room_id', $slug)->get();
+        $bookings = Booking::where('room_id', $room->id)->get();
 
-        return view('rooms.show', compact('room'));
+        return view('rooms.show', compact('room', 'bookings'));
     }
 
     /**

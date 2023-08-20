@@ -8,6 +8,7 @@ return [
     'categoriesheader' => 'Find by Category',
     'tags' => 'Find by interests',
     'posts' => 'Blog posts and News',
+    'rooms' => 'Rooms for booking',
     'homeposts' => 'Blog post and news',
     'companies' => 'Nea Karvali Markets',
     'events' => 'Nea Karvali Events',

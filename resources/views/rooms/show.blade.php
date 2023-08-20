@@ -131,17 +131,42 @@
             </div>
           </div>
             <div class="row">
-                <h1 class="text-center">Calendar</h1>
-{{--                <div id="calendar"></div>--}}
-                @if($room->bookings)
-                    <h2>Available Time Slots:</h2>
-                    <ul>
-                        @foreach ($room->availableTimeSlots() as $timeSlot)
-                            <li>{{ $timeSlot['start'] }} - {{ $timeSlot['end'] }}</li>
-                            <a href="{{ route('front.bookings.create', ['roomId' => $room->id]) }}">Book this room</a>
-                        @endforeach
-                    </ul>
-                @endif
+{{--                <h1 class="text-center">Calendar</h1>--}}
+
+                <h2>{{ $room->title }}'s Bookings</h2>
+
+                <h3>Booked Times:</h3>
+                <ul>
+                    @foreach($room->bookings as $booking)
+                        <li>{{ \Carbon\Carbon::parse($booking->check_in_date)->format('d-m-Y') }} to {{ \Carbon\Carbon::parse($booking->check_out_date)->format('d-m-Y') }}</li>
+{{--                        <li>{{ $booking->check_in_time }} to {{ $booking->check_out_time }}</li>--}}
+{{--                        <li><a href="{{ route('front.bookings.create', $room) }}">Book this room</a></li>--}}
+                    @endforeach
+                </ul>
+
+                <div id="calendar"></div>
+
+                <h3>Book this room:</h3>
+                <form method="POST" action="{{ route('front.bookings.store', $room) }}">
+                    @csrf
+                    <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}" required><br>
+
+                    <label for="check_in_date">Check in Date:</label>
+                    <input type="date" id="check_in_date" name="check_in_date" required><br>
+
+                    <label for="check_in_time">Check in Time:</label>
+                    <input type="time" id="check_in_time" name="check_in_time" required><br>
+
+                    <label for="check_out_date">Check out Date:</label>
+                    <input type="date" id="check_out_date" name="check_out_date" required><br>
+
+                    <label for="check_out_time">Check out Time:</label>
+                    <input type="time" id="check_out_time" name="check_out_time" required><br>
+
+                    <button type="submit">Book</button>
+                </form>
+
+
 
             </div>
 
@@ -170,7 +195,7 @@
                 <form action="{{ route('comment.store') }}" method="post" role="form">
                   {{ csrf_field() }}
                   <input type="hidden" name="commentable_id" value="{{$room->id}}">
-                  <input type="hidden" name="commentable_type" value="App\Group">
+                  <input type="hidden" name="commentable_type" value="App\Models\Room">
                   <div class="form-group">
                     <label for="email">Email</label>
                     @if (Auth::user())
@@ -194,7 +219,50 @@
 	</div>
 @endsection
 
+
 @section('extra-js')
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    end: 'today prev,next',
+                    start: 'title',
+                    center: 'dayGridMonth,dayGridWeek,dayGridDay',
+                },
+                buttonText: {
+                    today: 'Today',
+                    dayGridMonth: 'Month',
+                    dayGridWeek: 'Week',
+                    dayGridDay: 'Day',
+                },
+                selectable: true,
+                selectHelper: true,
+                select:function(start, end, allDAys){
+                    console.log(start, end, allDAys);
+                },
+                droppable: true,
+                events: [
+                        @foreach ($bookings as $booking)
+                    {
+                        title: 'Booking',
+                        start: '{{ $booking->check_in_date }}',
+                        end: '{{ $booking->check_out_date }}',
+                    },
+                    @endforeach
+                ],
+            });
+
+            calendar.render();
+        });
+    </script>
+@endsection
+
+{{--@section('extra-js')--}}
 
 {{--    <script>--}}
 
@@ -286,5 +354,5 @@
         {{--    setInterval(function() { $(".success").fadeOut(); }, 1000);--}}
         {{--}--}}
 {{--    </script>--}}
-@endsection
+{{--@endsection--}}
 

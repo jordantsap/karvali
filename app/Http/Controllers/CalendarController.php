@@ -9,35 +9,23 @@ use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
-//    public function getAvailableDates(Request $request)
-//    {
-//        $events = array();
-//        $bookings = Booking::all();
-//
-//        foreach ($bookings as $booking) {
-//            // Format the data for each room as an event
-//            $events[] = [
-//                'title' => $booking->title, // Use room name as event title
-//                'start_date' => $booking->start_date, // Use available date field from your Room model
-//                'end_date' => $booking->end_date, // Use available date field from your Room model
-//                // Add other event properties if needed
-//            ];
-//        }
-//
-//        return view('rooms.show', ['bookings', $bookings]);
-//    }
-//    public function index(Request $request)
-//    {
-//        if($request->ajax())
-//        {
-//            $data = Event::all();
-////            whereDate('start', '>=', $request->start)
-////                ->whereDate('end',   '<=', $request->end)
-////                ->get(['id', 'title', 'start', 'end']);
-//            return response()->json($data);
-//        }
-//        return view('auth.rooms.show',compact('data'));
-//    }
+    public function index(Request $request)
+    {
+        $events = [];
+        $rooms = Room::with('events')->get(); // Retrieve rooms with their associated events
+
+        foreach ($rooms as $room) {
+            foreach ($room->events as $event) {
+                $events[] = [
+                    'title' => $room->name,
+                    'start' => $event->start_date . ' ' . $event->start_time,
+                    'end' => $event->end_date . ' ' . $event->end_time,
+                ];
+            }
+        }
+
+        return response()->json($events);
+    }
     public function getAvailableDates(Request $request)
     {
         if($request->ajax())

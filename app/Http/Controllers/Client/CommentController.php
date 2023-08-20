@@ -50,7 +50,7 @@ class CommentController extends Controller
         $comment = new Comment;
 
         $comment->user_id = $request->user_id;
-        $comment->comment = $request->comment;
+        $comment->comment = $request->input('comment');
         $comment->commentable_id = $request->commentable_id;
         $comment->commentable_type = $request->commentable_type;
 
