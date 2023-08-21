@@ -23,7 +23,7 @@ class Booking extends Model implements TranslatableContract
 //        'check_out_time' => 'date:d-m-Y',
 //        'check_in_time' => 'date:d-m-Y',
     ];
-    protected $fillable = ['check_in_date', 'check_out_date','check_in_time','check_out_time','room_id'];
+    protected $fillable = ['check_in_date', 'check_out_date','check_in_time','check_out_time','room_id','adults','children'];
 
     protected $translatedAttributes = [
         'title',

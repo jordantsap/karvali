@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('booking_translations', function (Blueprint $table) {
             $table->id();
+            $table->integer('booking_id')->unsigned();
             $table->string('title');
             $table->string('slug');
+
+            $table->string('locale')->index();
+
+            $table->unique(['booking_id', 'locale']);
             $table->timestamps();
         });
     }

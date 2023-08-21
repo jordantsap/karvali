@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('check_out_date');
             $table->time('check_in_time');
             $table->time('check_out_time');
+            $table->bigInteger('adults');
+            $table->bigInteger('children')->nullable();
             $table->foreignIdFor(\App\Models\Room::class);
             $table->timestamps();
         });

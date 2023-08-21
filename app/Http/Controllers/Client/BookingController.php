@@ -39,9 +39,9 @@ class BookingController extends Controller
 
         $this->validate($request, [
             'room_id' => 'required',
-            'check_in_time' => 'required',
+            'children' => 'nullable',
             'check_in_date' => 'required',
-            'check_out_time' => 'required',
+            'adults' => 'required',
             'check_out_date' => 'required',
             // Add more validation rules as needed
         ]);
