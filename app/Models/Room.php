@@ -108,4 +108,38 @@ class Room extends Model implements TranslatableContract
         return $availableTimeSlots;
     }
 
+    public function isAvailable($checkInDate, $checkOutDate)
+    {
+        $existingBookings = $this->bookings()
+            ->where(function ($query) use ($checkInDate, $checkOutDate) {
+                $query->whereBetween('check_in_date', [$checkInDate, $checkOutDate])
+                    ->orWhereBetween('check_out_date', [$checkInDate, $checkOutDate])
+                    ->orWhere(function ($subquery) use ($checkInDate, $checkOutDate) {
+                        $subquery->where('check_in_date', '<', $checkInDate)
+                            ->where('check_out_date', '>', $checkOutDate);
+                    });
+            })
+            ->count();
+
+        return $existingBookings === 0;
+    }
+    public function getAvailableDates()
+    {
+        $bookedDates = $this->bookings->pluck(['check_in_date','check_out_date'])->flatten();
+
+        $startDate = now()->startOfDay();
+        $endDate = now()->addYear()->endOfDay();
+
+        $allDates = [];
+
+        while ($startDate <= $endDate) {
+            $allDates[] = $startDate->format('d-M-Y');
+            $startDate->addDay();
+        }
+
+        $availableDates = array_diff($allDates, $bookedDates->toArray());
+
+        return $availableDates;
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\Accommodation;
 use App\Models\AccommodationType;
 use App\Models\Booking;
 use App\Models\Room;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -64,46 +65,53 @@ class AccommodationController extends Controller
      */
     public function show($slug)
     {
-        $accommodation = Accommodation::whereTranslation('slug', $slug)->first();
-        $availableDates = $this->getAvailableDates($accommodation->id);
-
-        return view('accommodations.show', compact('accommodation', 'availableDates'));
-    }
-    public function getAvailableDates($accommodationId)
-    {
-        // Retrieve the accommodation and its rooms
-        $accommodation = Accommodation::findOrFail($accommodationId);
+        $accommodation = Accommodation::with('accommodationType')->whereTranslation('slug', $slug)->first();
         $rooms = $accommodation->rooms;
-
-        // Fetch all bookings for the rooms of the accommodation
-        $bookings = Booking::whereIn('room_id', $rooms->pluck('id')->toArray())
-            ->get();
-
-        // Convert bookings into an array of available dates
-        $availableDates = [];
-
+//
+        $availableEvents = [];
         foreach ($rooms as $room) {
-            $roomBookings = $bookings->where('room_id', $room->id);
+            $availableDates = $this->getAvailableDates($room->id, Carbon::now(), Carbon::now()->addMonths(6));
 
-            // Example logic to determine available dates
-            // You need to implement your own logic here
-            $roomAvailableDates = [];
-
-            // Push available dates for this room
-            foreach ($roomBookings as $booking) {
-                // Example logic: Convert booking dates to available dates
-                $roomAvailableDates[] = [
-                    'id' => $booking->id,
-                    'title' => 'Available',
-                    'start' => $booking->check_out_date,
-                    'end' => $booking->check_in_date,
+            foreach ($availableDates as $date) {
+                $availableEvents[] = [
+                    'title' => $room->title,
+                    'start' => $date,
+                    'end' => $date,
                 ];
             }
+        }
+//        return $availableEvents;
+        return view('accommodations.show', compact('accommodation', 'rooms', 'availableEvents'));
+    }
+    private function getAvailableDates($roomId, $startDate, $endDate)
+    {
+        $bookedDates = Booking::where('room_id', $roomId)
+            ->where('check_out_date', '>', $startDate)
+            ->where('check_in_date', '<', $endDate)
+            ->get();
 
-            $availableDates = array_merge($availableDates, $roomAvailableDates);
+        $reservedDates = [];
+        foreach ($bookedDates as $booking) {
+            $checkin = Carbon::parse($booking->checkin_date);
+            $checkout = Carbon::parse($booking->checkout_date);
+
+            $datesInRange = $checkin->copy();
+            while ($datesInRange->lt($checkout)) {
+                $reservedDates[] = $datesInRange->format('m-d-Y');
+                $datesInRange->addDay();
+            }
         }
 
-        return response()->json($availableDates);
+        $availableDates = [];
+        $currentDate = Carbon::parse($startDate);
+        while ($currentDate->lte($endDate)) {
+            if (!in_array($currentDate->format('Y-m-d'), $reservedDates)) {
+                $availableDates[] = $currentDate->copy()->format('Y-m-d');
+            }
+            $currentDate->addDay();
+        }
+
+        return $availableDates;
     }
 
 }

@@ -29,7 +29,7 @@ class RoomController extends Controller
     {
         $room = Room::with('roomType')
         ->whereTranslation('slug', $slug)->first();
-        $bookings = Booking::where('room_id', $room->id)->get();
+        $bookings = Booking::where('room_id', $room)->get();
 
         return view('rooms.show', compact('room', 'bookings'));
     }

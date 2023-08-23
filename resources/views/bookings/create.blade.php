@@ -1,11 +1,9 @@
-@extends('layouts.app')
 
-@section('content')
     <div class="container">
         <div class="row">
-            <h1>Book Room: {{ $room->name }}</h1>
+{{--            <h1>Book Room: {{ ($room->title) }}</h1>--}}
 
-            <form method="POST" action="{{ route('front.bookings.store', $room) }}">
+            <form method="POST" action="{{ route('front.bookings.store', $room->id) }}">
                 @csrf
                 <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}" required><br>
                 <label for="check_in_date">Check in Date:</label>
@@ -24,4 +22,3 @@
             </form>
         </div>
     </div>
-@endsection

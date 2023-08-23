@@ -67,22 +67,16 @@ Route::as('front.')->group(function () {
     Route::get('rooms', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
     Route::get('rooms/{room:slug}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
 
-    Route::get('bookings', [\App\Http\Controllers\Client\BookingController::class, 'viewRooms'])->name('rooms');
-    Route::get('/rooms/{room}/book', 'Client\BookingController@createBookingForm')->name('bookings.create');
-    Route::post('/rooms/{room}/book', 'Client\BookingController@storeBooking')->name('bookings.store');
+    Route::redirect('/rooms/{room}/book', '/rooms');//Client\BookingController@create')->name('bookings.create');
+    Route::post('/rooms/{room}/book', 'Client\BookingController@store')->name('bookings.store');
 
+//    Route::get('/available-dates', 'Client\BookingController@getAvailableRooms')->name('available-rooms');
 
-//    Route::get('/bookings/create/', [BookingController::class, 'createBookingForm'])->name('bookings.create');
-//    Route::post('/bookings/store', [BookingController::class, 'storeBooking'])->name('bookings.store');
 
     Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
 
-//    Route::get('accommodation-types', [\App\Http\Controllers\Client\AccommodationTypeController::class, 'index'])
-//        ->name('accommodationtype.show');
-
-
-    Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
+//    Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
 
     Route::resource('amenities', 'Client\CompanyController@index');
 

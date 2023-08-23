@@ -66,16 +66,16 @@ switch(type){
 </script>
 
 {{--<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>--}}
-<script>
-    // $(document).ready(function(){
-    //     // initialize both timepickers at once
-    //     var timepicker = $('input.timepicker').timepicker({
-    //         timeFormat: 'hh:mm p',
-    //         // year, month, day and seconds are not important
-    //         minTime: new Date(0, 0, 0, 8, 0, 0),
-    //         maxTime: new Date(0, 0, 0, 18, 0, 0),
-    //         // items in the dropdown are separated by at interval minutes
-    //         interval: 10,
-    //     });
-    // });
-</script>
+{{--<script>--}}
+{{--    // $(document).ready(function(){--}}
+{{--    //     // initialize both timepickers at once--}}
+{{--    //     var timepicker = $('input.timepicker').timepicker({--}}
+{{--    //         timeFormat: 'hh:mm p',--}}
+{{--    //         // year, month, day and seconds are not important--}}
+{{--    //         minTime: new Date(0, 0, 0, 8, 0, 0),--}}
+{{--    //         maxTime: new Date(0, 0, 0, 18, 0, 0),--}}
+{{--    //         // items in the dropdown are separated by at interval minutes--}}
+{{--    //         interval: 10,--}}
+{{--    //     });--}}
+{{--    // });--}}
+{{--</script>--}}

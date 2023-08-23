@@ -37,12 +37,12 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $categories = RoomType::all();
+//        $categories = RoomType::all();
         $roomTypes = RoomType::all();
         $accommodations = Accommodation::where('user_id', auth()->id())->get();
         $amenities = Amenity::withTranslation()->get();
 
-        return view('auth.rooms.create', compact('accommodations', 'categories', 'roomTypes','amenities'));
+        return view('auth.rooms.create', compact('accommodations', 'roomTypes','amenities'));
     }
 
     /**
@@ -57,10 +57,11 @@ class RoomController extends Controller
         $room->active = $request->active;
         $room->accommodation_id = $request->accommodation_id;
         $room->room_type_id = $request->room_type_id;
-//        $room->amenity_id = $request->input('amenities', []);
         $room->capacity = $request->capacity;
         $room->price = $request->price;
         $room->beds = $request->beds;
+        $room->adults = $request->adults;
+        $room->kids = $request->kids;
 
         $imageFields = GetInputs::imageFields();
 

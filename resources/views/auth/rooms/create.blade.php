@@ -120,6 +120,32 @@
         </span>
                                 </div>
                             </div>
+<div class="col-xs-3 form-group{{ $errors->has('adults') ? ' has-error' : '' }}">
+                                <label for="adults">{{ __('form.adults')}}</label>
+                                @if ($errors->has('adults'))
+                                    <strong class="text-danger">{{ $errors->first('adults') }}</strong>
+                                @endif
+                                <div class="input-group">
+                                    <input type="number" class="form-control" value="{{ old('adults') }}"
+                                           id="adults" name="adults" placeholder="{{ __('form.adults')}}">
+                                    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+        </span>
+                                </div>
+                            </div>
+<div class="col-xs-3 form-group{{ $errors->has('kids') ? ' has-error' : '' }}">
+                                <label for="kids">{{ __('form.kids')}}</label>
+                                @if ($errors->has('kids'))
+                                    <strong class="text-danger">{{ $errors->first('kids') }}</strong>
+                                @endif
+                                <div class="input-group">
+                                    <input type="number" class="form-control" value="{{ old('kids') }}"
+                                           id="kids" name="kids" placeholder="{{ __('form.kids')}}">
+                                    <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+        </span>
+                                </div>
+                            </div>
 
                         </div>
 

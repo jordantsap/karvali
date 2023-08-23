@@ -103,18 +103,18 @@
 
               <div class="row">
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$hotel->title}}" data-alt="{{$hotel->title}}" href="{{ asset('images/companies/'.$hotel->image1) }}">
-                    <img src="{{ asset('images/companies/'.$hotel->image1) }}" title="{{ $hotel->title }}" class="img-responsive img-rounded" alt="{{$hotel->title}}">
+                  <a data-lightbox="company" data-title="{{$hotel->title}}" data-alt="{{$hotel->title}}" href="{{ asset('images/hotels/'.$hotel->image1) }}">
+                    <img src="{{ asset('images/hotels/'.$hotel->image1) }}" title="{{ $hotel->title }}" class="img-responsive img-rounded" alt="{{$hotel->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$hotel->title}}" data-alt="{{$hotel->title}}" href="{{ asset('images/companies/'.$hotel->image2) }}">
-                    <img src="{{ asset('images/companies/'.$hotel->image2) }}" title="{{ $hotel->title }}" class="img-responsive img-rounded" alt="{{$hotel->title}}">
+                  <a data-lightbox="company" data-title="{{$hotel->title}}" data-alt="{{$hotel->title}}" href="{{ asset('images/hotels/'.$hotel->image2) }}">
+                    <img src="{{ asset('images/hotels/'.$hotel->image2) }}" title="{{ $hotel->title }}" class="img-responsive img-rounded" alt="{{$hotel->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$hotel->title}}" data-alt="{{$hotel->title}}" href="{{ asset('images/companies/'.$hotel->image3) }}">
-                    <img src="{{ asset('images/companies/'.$hotel->image3) }}" title="{{ $hotel->title }}" class="img-responsive img-rounded" alt="{{$hotel->title}}">
+                  <a data-lightbox="company" data-title="{{$hotel->title}}" data-alt="{{$hotel->title}}" href="{{ asset('images/hotels/'.$hotel->image3) }}">
+                    <img src="{{ asset('images/hotels/'.$hotel->image3) }}" title="{{ $hotel->title }}" class="img-responsive img-rounded" alt="{{$hotel->title}}">
                   </a>
                 </div>
               </div>

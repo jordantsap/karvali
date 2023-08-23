@@ -1,7 +1,7 @@
 ﻿@extends('layouts.main')
-@section('title', $accommodation->title.' '.$accommodation->title)
-@section('meta_description', '$accommodation->name'.' '.__('head.hotel').' '.$accommodation->meta_description)
-@section('meta_keywords', $accommodation->meta_keywords.'  '. '$accommodation->name'.' '.__('head.hotel'))
+@section('title', $accommodation->accommodationType ? $accommodation->accommodationType->title:''.' '.$accommodation->title)
+@section('meta_description', $accommodation->title.' '.__('head.hotel').' '.$accommodation->meta_description)
+@section('meta_keywords', $accommodation->meta_keywords.'  '. $accommodation->title.' '.__('head.hotel'))
 
 @section('head-js')
     <script type='text/javascript'
@@ -29,6 +29,7 @@
                 <div class="col-xs-6">
                     <div class="col-xs-9">
                         <h3>{{__('single.manager')}} {{ $accommodation->manager }}</h3>
+                        <h3>{{__('single.category')}} {{ $accommodation->accommodationType?$accommodation->accommodationType->title:'' }}</h3>
                         <h3>{{__('single.telephone')}} {{ $accommodation->telephone }}</h3>
                     </div>
 
@@ -89,7 +90,6 @@
                 </div>
             </div>
 
-
             <div class="row center-block">
                 <br>
 
@@ -102,7 +102,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="row">
                 <div class="col-xs-4">
@@ -138,78 +137,114 @@
 
                 @if(count($accommodation->rooms->where('active',1)) > 0)
                     <h1 class="text-center">{{__('page.rooms')}}</h1>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>RoomType</th>
-{{--                        <th>Dates available</th>--}}
-                        <th>Beds</th>
-                        <th>Adults</th>
-                        <th>Kids</th>
-                        <th>Capacity</th>
-                        <th>Price</th>
-                        <th>Header</th>
-                        <th>Logo</th>
-                        <th>Image1</th>
-                        <th>Image2</th>
-                        <th>Image3</th>
-                        <th>General Images</th>
-                        <th>Go To</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                @foreach($accommodation->rooms as $room)
-                    <tr>
-                        <td>{{$room->title}}</td>
-                        <td>{{$room->roomType->title}}</td>
-{{--                        <td>{{{$availableDates}}}</td>--}}
-                        <td>{{$room->beds}}</td>
-                        <td>{{$room->adults}}</td>
-                        <td>{{$room->kids}}</td>
-                        <td>{{$room->capacity}}</td>
-                        <td>{{$room->price}}</td>
-                        <td><img class="img-responsive" src="{{asset($room->header)}}" alt=""></td>
-                        <td><img class="img-responsive"  src="{{asset($room->logo)}}" alt=""></td>
-                        <td><img class="img-responsive"  src="{{asset($room->image1)}}" alt=""></td>
-                        <td><img class="img-responsive" src="{{asset($room->image2)}}" alt=""></td>
-                        <td><img class="img-responsive" src="{{asset($room->image3)}}" alt=""></td>
-                        <td>
-                            @if($room->images())
-                                @foreach($room->images as $image)
-                                    <img class="img-responsive" src="{{asset($image->path)}}" alt="">
-                                @endforeach
-                            @endif()
-                        </td>
-                        <td><a href="{{ route('front.room.show', $room->slug) }}">{{ $room->title }}</a></td>
-                    </tr>
-                @endforeach
-                    </tbody>
-                        <tfoot>
-                        <tr>
-                            <th>Title</th>
-                            <th>RoomType</th>
-{{--                            <th>Dates available</th>--}}
-                            <th>Beds</th>
-                            <th>Adults</th>
-                            <th>Kids</th>
-                            <th>Capacity</th>
-                            <th>Price</th>
-                            <th>Header</th>
-                            <th>Logo</th>
-                            <th>Image1</th>
-                            <th>Image2</th>
-                            <th>Image3</th>
-                            <th>General Images</th>
-                            <th>Go To</th>
-                        </tr>
-                        </tfoot>
-                </table>
-                    <div id="calendar"></div>
 
+                    @foreach($accommodation->rooms as $room)
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4">
+                                    <img class="col-xs-6 img-responsive" src="{{asset($room->header)}}" alt="">
+                                    <img class="col-xs-6 img-responsive" src="{{asset($room->logo)}}" alt="">
+                                <img class="col-xs-6 img-responsive" src="{{asset($room->image1)}}" alt="">
+                                <img class="col-xs-6 img-responsive" src="{{asset($room->image2)}}" alt="">
+                                <img class="col-xs-6 img-responsive" src="{{asset($room->image3)}}" alt="">
+                                @if($room->images)
+                                    @foreach($room->images as $upload)
+                                        <img class="col-xs-6 img-responsive" src="{{asset($upload->path)}}" alt="">
+                                    @endforeach
+                                @else No general images
+                                @endif
+                            </div>
+                            <div class="col-xs-4">
+                                {{__('Room Type: ').$room->roomType->title}} <br>
+                                {{--                                {{$availableDates}}--}}
+                                {{__('Beds: ').$room->beds}}<br>
+                                {{__('Adults: ').$room->adults}}<br>
+                                {{__('Kids: ').$room->kids}}<br>
+                                {{__('Capacity: ').$room->capacity}}<br>
+                                {{__('Price: ').$room->price}}<br>
+                                @if($room->amenities())
+                                    @foreach($room->amenities as $amenity)
+                                        {{$amenity->title}}<br>
+                                    @endforeach
+                                @else No amenities
+                                @endif
+                                {{ __('Description: ').Str::limit($room->description, 100) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <h4 class="card-title"><a
+                                        href="{{ route('front.room.show',$room->slug) }}">{{ Str::limit($room->title, 15) }}</a>
+                                </h4>
+
+                                {{--                                <p>{{ __('page.date') }} {{ date('d-M-Y', strtotime($room->start_date))--}}
+                                {{--                }} - {{ __('page.from') }}:{{ $room->start_time }} - {{ __('page.until')--}}
+                                {{--                }}: {{$room->end_time}}</p>--}}
+                                {{__('bookings.create')}}
+                                <form method="POST" action="{{ route('front.bookings.store', $room->id) }}">
+                                    @csrf
+                                    <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}" required>
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input class="form-control" type="text" id="title" name="title"
+                                               placeholder="Enter your name here" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="check_in_date">Check in date</label>
+                                        <select name="check_in_date" class="form-control" id="check_in_date">
+                                            <option value="">Select Check-in Date</option>
+                                            @foreach ($room->getAvailableDates() as $date)
+                                                <option value="{{ $date }}">{{ $date }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="check_out_date">Check out date</label>
+                                        <select name="check_out_date" class="form-control" id="check_out_date">
+                                            <option value="">Select Check-Out Date</option>
+                                            @foreach ($room->getAvailableDates() as $date)
+                                                <option value="{{ $date }}">{{ $date }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="adults">adults</label>
+                                        <input type="number" min="1" value="1" class="form-control" name="adults" id="adults"
+                                               placeholder="adults">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="children">children</label>
+                                        <input type="number" class="form-control" name="children" id="children"
+                                               placeholder="children">
+                                    </div>
+                                    {{--                                <div class="form-group">--}}
+                                    {{--                                    <label for="recurring_until">Recurring until</label>--}}
+                                    {{--                                    <input class="form-control date {{ $errors->has('recurring_until') ? 'is-invalid' : '' }}" type="date" name="recurring_until" id="recurring_until" value="{{ old('recurring_until') }}">--}}
+                                    {{--                                    @if($errors->has('recurring_until'))--}}
+                                    {{--                                        <div class="invalid-feedback">--}}
+                                    {{--                                            {{ $errors->first('recurring_until') }}--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    @endif--}}
+                                    {{--                                </div>--}}
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+
+                                @if(count($room->bookings))
+                                <h2>{{ $room->title }}'s Bookings</h2>
+                                <ul class="list-group">
+                                    @foreach($room->bookings as $booking)
+                                        <li class="list-group-item">{{__("Date from: "). \Carbon\Carbon::parse($booking->check_in_date)->format('d-M-Y') }}
+                                            to {{ \Carbon\Carbon::parse($booking->check_out_date)->format('d-M-Y') }}
+                                            {{ __("Time from: "). \Carbon\Carbon::parse($booking->check_in_time)->format('H:i A') }}
+                                            to {{ \Carbon\Carbon::parse($booking->check_out_time)->format('H:i A') }}</li>
+                                        {{--                        <li><a href="{{ route('front.bookings.create', $room) }}">Book this room</a></li>--}}
+                                    @endforeach
+                                </ul>
+                                @endif
+                        </div>
+                    @endforeach
                 @else
                     <p class="text-center">{{ __('single.norooms') }}</p>
                 @endif
+{{--                                    <div id="calendar"></div>--}}
 
             </div>
             {{-- comments --}}
@@ -238,7 +273,7 @@
                     <form action="{{ route('comment.store') }}" method="post" role="form">
                         {{ csrf_field() }}
                         <input type="hidden" name="commentable_id" value="{{$accommodation->id}}">
-                        <input type="hidden" name="commentable_type" value="App\Company">
+                        <input type="hidden" name="commentable_type" value="App\Models\Accommodation">
                         <div class="form-group">
                             <label for="email">Email</label>
                             @if (Auth::user())
@@ -267,41 +302,93 @@
         </div>
     </div>
 
+
+    {{--@include('modals.roomModal')--}}
 @endsection
-{{--@include('modals.roomModal')--}}
 @section('extra-js')
 
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-    <script>
+{{--        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>--}}
+{{--        <script>--}}
+{{--            document.addEventListener('DOMContentLoaded', function() {--}}
+{{--                var calendarEl = document.getElementById('calendar');--}}
 
-        document.addEventListener('DOMContentLoaded', function() {
-            {{--events={!! json_encode($events) !!};--}}
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                headerToolbar:{
-                    center: 'dayGridMonth,dayGridWeek,dayGridDay',
-                },
-                buttonText:{
-                    today:    'today',
-                    month:    'month',
-                    week:     'week',
-                    dayGrid:      'day',
-                    list:     'list'
-                },
-                selectable: true,
-                selectHelper: true,
-                select:function(start, end, allDAys){
-                    console.log(start, end, allDAys);
-                },
-                droppable: true,
-                events: {!! json_encode($availableDates) !!},
-            {{--{--}}
-            {{--        url: '{{ route('front.calendar.index') }}',--}}
-            {{--        method: 'GET'--}}
-            {{--    }--}}
+{{--                var calendar = new FullCalendar.Calendar(calendarEl, {--}}
+{{--                    initialView: 'dayGridMonth',--}}
+{{--                    headerToolbar:{--}}
+{{--                        center: 'dayGridMonth,dayGridWeek,dayGridDay',--}}
+{{--                    },--}}
+{{--                    buttonText:{--}}
+{{--                        today:    'today',--}}
+{{--                        month:    'month',--}}
+{{--                        week:     'week',--}}
+{{--                        dayGrid:      'day',--}}
+{{--                        list:     'list'--}}
+{{--                    },--}}
+{{--                    selectable: true,--}}
+{{--                    selectHelper: true,--}}
+{{--                    select:function(start, end, allDAys){--}}
+{{--                        console.log(start, end, allDAys);--}}
+{{--                    },--}}
+{{--                    droppable: true,--}}
+{{--                    events: {--}}
+{{--                        url: '/available-rooms',--}}
+{{--                        method: 'GET',--}}
+{{--                        failure: function() {--}}
+{{--                            alert('Failed to fetch rooms!');--}}
+{{--                        },--}}
+{{--                    },--}}
+{{--                    eventContent: function(arg) {--}}
+{{--                        return {--}}
+{{--                            html: arg.event.title // this can be the room name--}}
+{{--                        };--}}
+{{--                    }--}}
+{{--                });--}}
+
+{{--                calendar.render();--}}
+{{--            });--}}
+{{--        </script>--}}
+    <script>
+        $('#bookRoom').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var roomId = button.data('room-id');
+            var modal = $(this);
+            modal.find('#room_id').val(roomId);
+            modal.find('.modal-title').text('Booking of a room ' + button.parents('tr').children('.room-name').text());
+
+            $('#submitBooking').click(() => {
+                modal.find('button[type="submit"]').trigger('click');
             });
-            calendar.render();
         });
+
+
+        {{--document.addEventListener('DOMContentLoaded', function() {--}}
+        {{--    --}}{{--events={!! json_encode($rooms) !!};--}}
+        {{--    var calendarEl = document.getElementById('calendar');--}}
+        {{--    var calendar = new FullCalendar.Calendar(calendarEl, {--}}
+        //         initialView: 'dayGridMonth',
+        //         headerToolbar:{
+        //             center: 'dayGridMonth,dayGridWeek,dayGridDay',
+        //         },
+        //         buttonText:{
+        //             today:    'today',
+        //             month:    'month',
+        //             week:     'week',
+        //             dayGrid:      'day',
+        //             list:     'list'
+        //         },
+        //         selectable: true,
+        //         selectHelper: true,
+        //         select:function(start, end, allDAys){
+        //             console.log(start, end, allDAys);
+        //         },
+        //         droppable: true,
+        {{--        events: {!! json_encode($availableDates) !!},--}}
+        {{--    --}}{{--{--}}
+        {{--    --}}{{--        url: '{{ route('front.calendar.index') }}',--}}
+        {{--    --}}{{--        method: 'GET'--}}
+        {{--    --}}{{--    }--}}
+        {{--    });--}}
+        {{--    calendar.render();--}}
+        {{--});--}}
     </script>
 @endsection

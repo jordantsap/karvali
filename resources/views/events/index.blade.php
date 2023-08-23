@@ -13,7 +13,8 @@
       <div class="row">
 
         <div class="col-xs-10">
-          @if(count($events) > 0) @foreach ($events as $event)
+          @if(count($events) > 0)
+                @foreach ($events as $event)
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <a href="{{ route('front.event.show',$event->slug) }}">
@@ -44,7 +45,9 @@
           </div>
           <br>
           <div class="divider"></div>
-          <br> @endforeach @else
+          <br>
+                @endforeach
+            @else
           <div class="col-xs-12 noresults">
             <h1><b>{{__('page.noresults')}}</b></h1>
           </div>

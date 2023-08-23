@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Booking extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;
 
-    protected $dates = ['check_in_date', 'check_out_date','check_in_time','check_out_time'];
+    protected $dates = ['check_in_date', 'check_out_date'];
     /**
      * The attributes that should be cast.
      *
@@ -23,9 +24,9 @@ class Booking extends Model implements TranslatableContract
 //        'check_out_time' => 'date:d-m-Y',
 //        'check_in_time' => 'date:d-m-Y',
     ];
-    protected $fillable = ['check_in_date', 'check_out_date','check_in_time','check_out_time','room_id','adults','children'];
+    protected $fillable = ['check_in_date', 'check_out_date','room_id','adults','children', 'status'];
 
-    protected $translatedAttributes = [
+    protected array $translatedAttributes = [
         'title',
         'slug',
     ];
@@ -35,7 +36,7 @@ class Booking extends Model implements TranslatableContract
 //        return 'slug';
 //    }
 
-    public function room()
+    public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class);
     }
