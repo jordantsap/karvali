@@ -9,7 +9,7 @@
 
 @section('content')
 
-<img width="100%" height="350px" src="{{ asset('images/companies/'.$company->header) }}"
+<img width="100%" height="350px" src="{{ asset($company->header) }}"
   title="{{ $company->title }}" class="" alt="{{$company->title}}">
 <h1 class="text-center">{{ $company->title }}</h1>
 <div class="divider"></div>
@@ -19,7 +19,7 @@
 
     <div class="row">
       <div class="col-xs-6">
-        <img src="{{ asset('images/companies/'.$company->logo) }}" width="100%" height="250"
+        <img src="{{ asset($company->logo) }}" width="100%" height="250"
           alt="{{ $company->title }}" title="{{ $company->title }}">
         </div>
 
@@ -122,18 +122,18 @@
 
               <div class="row">
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$company->title}}" data-alt="{{$company->title}}" href="{{ asset('images/companies/'.$company->image1) }}">
-                    <img src="{{ asset('images/companies/'.$company->image1) }}" title="{{ $company->title }}" class="img-responsive img-rounded" alt="{{$company->title}}">
+                  <a data-lightbox="company" data-title="{{$company->title}}" data-alt="{{$company->title}}" href="{{ asset($company->image1) }}">
+                    <img src="{{ asset($company->image1) }}" title="{{ $company->title }}" class="img-responsive img-rounded" alt="{{$company->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$company->title}}" data-alt="{{$company->title}}" href="{{ asset('images/companies/'.$company->image2) }}">
-                    <img src="{{ asset('images/companies/'.$company->image2) }}" title="{{ $company->title }}" class="img-responsive img-rounded" alt="{{$company->title}}">
+                  <a data-lightbox="company" data-title="{{$company->title}}" data-alt="{{$company->title}}" href="{{ asset($company->image2) }}">
+                    <img src="{{ asset($company->image2) }}" title="{{ $company->title }}" class="img-responsive img-rounded" alt="{{$company->title}}">
                   </a>
                 </div>
                 <div class="col-xs-4">
-                  <a data-lightbox="company" data-title="{{$company->title}}" data-alt="{{$company->title}}" href="{{ asset('images/companies/'.$company->image3) }}">
-                    <img src="{{ asset('images/companies/'.$company->image3) }}" title="{{ $company->title }}" class="img-responsive img-rounded" alt="{{$company->title}}">
+                  <a data-lightbox="company" data-title="{{$company->title}}" data-alt="{{$company->title}}" href="{{ asset($company->image3) }}">
+                    <img src="{{ asset($company->image3) }}" title="{{ $company->title }}" class="img-responsive img-rounded" alt="{{$company->title}}">
                   </a>
                 </div>
               </div>

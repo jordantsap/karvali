@@ -67,7 +67,8 @@ Route::as('front.')->group(function () {
     Route::get('rooms', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
     Route::get('rooms/{room:slug}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
 
-    Route::redirect('/rooms/{room}/book', '/rooms');//Client\BookingController@create')->name('bookings.create');
+    Route::redirect('/rooms/{room}/book', 'Client\BookingController@create')->name('bookings.create');
+
     Route::post('/rooms/{room}/book', 'Client\BookingController@store')->name('bookings.store');
 
 //    Route::get('/available-dates', 'Client\BookingController@getAvailableRooms')->name('available-rooms');

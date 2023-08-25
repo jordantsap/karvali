@@ -26,6 +26,7 @@
                     <h2>{{__('single.category')}} {{ $room->roomType?$room->roomType->title:'' }}</h2>
                     <h2>{{__('single.manager')}} {{ $room->manager }}</h2>
                     <h2>{{__('single.telephone')}} {{ $room->telephone }}</h2>
+                    <h2>{{__('single.price')}} {{ $room->price }}</h2>
                 </div>
                 <div class="col-xs-12">
                     {{-- <br> --}}
@@ -140,7 +141,6 @@
             <div class="row">
                 {{--                <h1 class="text-center">Calendar</h1>--}}
 
-{{--                                <div id="calendar"></div>--}}
 
                 <div class="container">
                     <h2>Check Availability</h2>
@@ -180,15 +180,6 @@
                             <input type="number" class="form-control" name="children" id="children"
                                    placeholder="children">
                         </div>
-                        {{--                                <div class="form-group">--}}
-                        {{--                                    <label for="recurring_until">Recurring until</label>--}}
-                        {{--                                    <input class="form-control date {{ $errors->has('recurring_until') ? 'is-invalid' : '' }}" type="date" name="recurring_until" id="recurring_until" value="{{ old('recurring_until') }}">--}}
-                        {{--                                    @if($errors->has('recurring_until'))--}}
-                        {{--                                        <div class="invalid-feedback">--}}
-                        {{--                                            {{ $errors->first('recurring_until') }}--}}
-                        {{--                                        </div>--}}
-                        {{--                                    @endif--}}
-                        {{--                                </div>--}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
@@ -204,11 +195,13 @@
                                 {{ __("Time from: "). \Carbon\Carbon::parse($booking->check_in_time)->format('H:i A') }}
                                 to {{ \Carbon\Carbon::parse($booking->check_out_time)->format('H:i A') }} -
                                 {{$booking->status}}</li>
-                            {{--                        <li><a href="{{ route('front.bookings.create', $room) }}">Book this room</a></li>--}}
+{{--                                                    <li><a href="{{ route('front.bookings.create', $room) }}">Book this room</a></li>--}}
                         @endforeach
                     </ul>
                 @endif
 
+
+{{--                <div id="calendar"></div>--}}
 
             </div>
 
@@ -273,11 +266,11 @@
 {{--    <script>--}}
 
 {{--        document.addEventListener('DOMContentLoaded', function () {--}}
-{{--            --}}{{--events = {!! json_encode($events) !!};--}}
+{{--            events = {!! json_encode($room->bookings) !!};--}}
 {{--            var calendarEl = document.getElementById('calendar');--}}
 {{--            var calendar = new FullCalendar.Calendar(calendarEl, {--}}
 {{--                initialView: 'dayGridMonth',--}}
-{{--                // events: events,--}}
+{{--                events: events,--}}
 {{--                headerToolbar: {--}}
 {{--                    end: 'today prev,next',--}}
 {{--                    start: 'title',--}}
@@ -301,6 +294,7 @@
 {{--        });--}}
 
 {{--    </script>--}}
+
 {{--        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>--}}
 {{--        <script>--}}
 {{--            document.addEventListener('DOMContentLoaded', function() {--}}

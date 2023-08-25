@@ -32,7 +32,7 @@
       <div class="box-body">
         <br>
           @if(auth()->user()->currentMembership && auth()->user()->currentMembership->end_date > now())
-              <p>You have an {{ auth()->user()->currentMembership->plan->status }} subscription.</p>
+              <p>You have an Active subscription.</p>
               <p>Plan: {{ auth()->user()->currentMembership->plan->name }}</p>
               <p>Start Date: {{ auth()->user()->currentMembership->start_date }}</p>
               <p>End Date: {{ auth()->user()->currentMembership->end_date }}</p>

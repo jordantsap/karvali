@@ -95,7 +95,7 @@ class RegisterController extends Controller
             'fullname' => $data['fullname'],
             'username' => $data['username'],
             'email' => $data['email'],
-            'plan_id' => $data['plan_id'],
+//            'plan_id' => $data['plan_id'],
             'password' => Hash::make($data['password']),
 //            'role' => $data['role'],
 //            'email_verified_at' => now(),
@@ -103,12 +103,12 @@ class RegisterController extends Controller
         $user->assignRole($data['role']);
 
         // Create subscription
-        $plan = Plan::find($data['plan_id']);
+//        $plan = Plan::find($data['plan_id']);
         Membership::create([
             'user_id' => $user->id,
-            'plan_id' => $plan->id,
+            'plan_id' => 1,
             'start_date' => now(),
-            'end_date' => now()->addDays($plan->duration),
+            'end_date' => now()->addDays(30),
             'status' => 'active',
         ]);
         event(new Registered($user));

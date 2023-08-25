@@ -86,7 +86,7 @@
                                             <strong class="text-danger">{{ $errors->first('title') }}</strong>
                                         @endif
                                         <div class="input-group">
-                                            <input type="text" class="form-control" name="{{$lang}}[title]"
+                                            <input type="text" class="form-control" name="{{$locale}}[title]"
                                                    value="{{ $product->title }}" id="title"
                                                    placeholder="{{ $product->title }}">
                                             <span class="input-group-addon">
@@ -133,7 +133,7 @@
                                     <strong class="text-danger">{{ $errors->first('meta_keywords') }}</strong>
                                 @endif
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="{{$lang}}[meta_keywords]"
+                                    <input type="text" class="form-control" name="{{$locale}}[meta_keywords]"
                                            value="{{ $product->meta_keywords }}" id="meta_keywords"
                                            placeholder="{{ $product->meta_keywords }}">
                                     <span class="input-group-addon">

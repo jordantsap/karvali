@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Helpers\GetInputs;
+use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Image as ImageModel;
@@ -69,7 +70,7 @@ class EventController extends Controller
         $event->end_time = $request->end_time;
         $event->entrance = $request->entrance;
 
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -149,7 +150,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         $event->update($request->except($imageFields));
 

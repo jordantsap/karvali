@@ -77,38 +77,8 @@ class Room extends Model implements TranslatableContract
         return $this->morphMany('App\Models\Like', 'likeable');
     }
 
-    public function availableTimeSlots()
-    {
-        $currentDate = Carbon::now()->format('d-m-Y');
-        $bookings = $this->bookings()->whereDate('check_in_date', $currentDate)->orderBy('check_in_date')->get();
-
-        $availableTimeSlots = [];
-        $lastEndTime = $currentDate . ' 00:00:00';
-
-        foreach ($bookings as $booking) {
-            $startTime = $booking->start_date;
-
-            if ($startTime > $lastEndTime) {
-                $availableTimeSlots[] = [
-                    'start' => $lastEndTime,
-                    'end' => $startTime,
-                ];
-            }
-
-            $lastEndTime = $booking->end_date;
-        }
-
-        if ($lastEndTime < $currentDate . ' 23:59:59') {
-            $availableTimeSlots[] = [
-                'start' => $lastEndTime,
-                'end' => $currentDate . ' 23:59:59',
-            ];
-        }
-
-        return $availableTimeSlots;
-    }
-
-    public function isAvailable($checkInDate, $checkOutDate)
+    // usage on bookingController line 38
+    public function isAvailable($checkInDate, $checkOutDate): bool
     {
         $existingBookings = $this->bookings()
             ->where(function ($query) use ($checkInDate, $checkOutDate) {
@@ -123,12 +93,13 @@ class Room extends Model implements TranslatableContract
 
         return $existingBookings === 0;
     }
-    public function getAvailableDates()
+    //usage on view::accommodation.show line 208
+    public function getAvailableDates(): array
     {
         $bookedDates = $this->bookings->pluck(['check_in_date','check_out_date'])->flatten();
 
         $startDate = now()->startOfDay();
-        $endDate = now()->addYear()->endOfDay();
+        $endDate = now()->addMonths(12)->endOfDay();
 
         $allDates = [];
 
@@ -142,4 +113,35 @@ class Room extends Model implements TranslatableContract
         return $availableDates;
     }
 
+
+//    public function availableTimeSlots()
+//    {
+//        $currentDate = Carbon::now()->format('d-m-Y');
+//        $bookings = $this->bookings()->whereDate('check_in_date', $currentDate)->orderBy('check_in_date')->get();
+//
+//        $availableTimeSlots = [];
+//        $lastEndTime = $currentDate . ' 00:00:00';
+//
+//        foreach ($bookings as $booking) {
+//            $startTime = $booking->start_date;
+//
+//            if ($startTime > $lastEndTime) {
+//                $availableTimeSlots[] = [
+//                    'start' => $lastEndTime,
+//                    'end' => $startTime,
+//                ];
+//            }
+//
+//            $lastEndTime = $booking->end_date;
+//        }
+//
+//        if ($lastEndTime < $currentDate . ' 23:59:59') {
+//            $availableTimeSlots[] = [
+//                'start' => $lastEndTime,
+//                'end' => $currentDate . ' 23:59:59',
+//            ];
+//        }
+//
+//        return $availableTimeSlots;
+//    }
 }

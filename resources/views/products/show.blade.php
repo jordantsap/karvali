@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-  <img width="100%" height="350px" src="{{ asset('images/products/'.$product->header) }}" title="{{ $product->title }}" class="" alt="{{$product->title}}">
+  <img width="100%" height="350px" src="{{ asset($product->header) }}" title="{{ $product->title }}" class="" alt="{{$product->title}}">
 	<div class="container">
 		<div id="products">
 			<div class="row">
@@ -18,7 +18,7 @@
 				</div>
 				<br>
 				<div class="col-xs-8">
-					<img src="{{ asset('images/products/'.$product->logo) }}" alt="{{ $product->title }}" width="100%" height="350px">
+					<img src="{{ asset($product->logo) }}" alt="{{ $product->title }}" width="100%" height="350px">
 				</div>
 
 
@@ -128,18 +128,18 @@
 
         <div class="row center-block">
           <div class="col-xs-4">
-            <a data-lightbox="product" data-title="{{$product->title}}" data-alt="{{$product->title}}" href="{{ asset('images/products/'.$product->image1) }}">
-              <img width="100%" height="270px" src="{{ asset('images/products/'.$product->image1) }}" title="{{ $product->title }}" class="img-responsive" alt="{{$product->title}}">
+            <a data-lightbox="product" data-title="{{$product->title}}" data-alt="{{$product->title}}" href="{{ asset($product->image1) }}">
+              <img width="100%" height="270px" src="{{ asset($product->image1) }}" title="{{ $product->title }}" class="img-responsive" alt="{{$product->title}}">
             </a>
           </div>
           <div class="col-xs-4">
-            <a data-lightbox="product" data-title="{{$product->title}}" data-alt="{{$product->title}}" href="{{ asset('images/products/'.$product->image2) }}">
-              <img width="100%" height="270px" src="{{ asset('images/products/'.$product->image2) }}" title="{{ $product->title }}" class="img-responsive" alt="{{$product->title}}">
+            <a data-lightbox="product" data-title="{{$product->title}}" data-alt="{{$product->title}}" href="{{ asset($product->image2) }}">
+              <img width="100%" height="270px" src="{{ asset($product->image2) }}" title="{{ $product->title }}" class="img-responsive" alt="{{$product->title}}">
             </a>
           </div>
           <div class="col-xs-4">
-            <a data-lightbox="product" data-title="{{$product->title}}" data-alt="{{$product->title}}" href="{{ asset('images/products/'.$product->image3) }}">
-              <img width="100%" height="270px" src="{{ asset('images/products/'.$product->image3) }}" title="{{ $product->title }}" class="img-responsive" alt="{{$product->title}}">
+            <a data-lightbox="product" data-title="{{$product->title}}" data-alt="{{$product->title}}" href="{{ asset($product->image3) }}">
+              <img width="100%" height="270px" src="{{ asset($product->image3) }}" title="{{ $product->title }}" class="img-responsive" alt="{{$product->title}}">
             </a>
           </div>
         </div>

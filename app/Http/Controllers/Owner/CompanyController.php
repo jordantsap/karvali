@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Helpers\DayTimeHelper;
 use App\Helpers\GetInputs;
+use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Models\Accommodation;
@@ -82,7 +83,7 @@ class CompanyController extends Controller
         $company->header = $request->header;
 
 
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -144,8 +145,7 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         $companytypes = CompanyType::withTranslation()->first();
-//        $sessions = $company->sessions();
-//        $days = Day::days();
+
 //        $days = $company->openingHours->day();
 
         return view('auth.companies.company',compact(['company','companytypes']));
@@ -174,7 +174,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         $company->update($request->except($imageFields));
 

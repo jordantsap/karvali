@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Helpers\GetInputs;
+use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAccommodationRequest;
 use App\Models\Accommodation;
@@ -72,7 +73,7 @@ class AccommodationController extends Controller
         $accommodation->email = $request->email;
         $accommodation->total_rooms = $request->total_rooms;
 
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -167,7 +168,7 @@ class AccommodationController extends Controller
      */
     public function update(Request $request, Accommodation $accommodation)
     {
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         $accommodation->update($request->except($imageFields));
 

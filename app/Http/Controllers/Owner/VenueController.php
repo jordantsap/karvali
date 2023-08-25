@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
-use App\Helpers\GetInputs;
+use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
 use App\Models\GroupType;
@@ -65,7 +65,7 @@ class VenueController extends Controller
 //        $venue->end_time = $request->end_time;
 
 
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -149,7 +149,7 @@ class VenueController extends Controller
      */
     public function update(Request $request, Venue $venue)
     {
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         $venue->update($request->except($imageFields));
 

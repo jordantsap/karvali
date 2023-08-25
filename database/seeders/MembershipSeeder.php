@@ -24,29 +24,29 @@ class MembershipSeeder extends Seeder
             'status' => "Active",
             'start_date' => now(),
             'end_date' => now()->addDays(34),
-            'plan_id' => rand(1,5),
-            'user_id' => rand(1,7),
+            'plan_id' => rand(1,4),
+            'user_id' => 3,
         ]);
         Membership::create([
             'status' => "Active",
             'start_date' => now(),
             'end_date' => now()->addDays(34),
-            'plan_id' => rand(1,5),
-            'user_id' => rand(1,7),
+            'plan_id' => rand(1,4),
+            'user_id' => 4,
         ]);
         Membership::create([
             'status' => "Active",
             'start_date' => now(),
             'end_date' => now()->addDays(34),
-            'plan_id' => rand(1,5),
-            'user_id' => rand(1,7),
+            'plan_id' => rand(1,4),
+            'user_id' => 5,
         ]);
         Membership::create([
             'status' => "Active",
             'start_date' => now(),
             'end_date' => now()->addDays(34),
-            'plan_id' => rand(1,5),
-            'user_id' => rand(1,7),
+            'plan_id' => rand(1,4),
+            'user_id' => 6,
         ]);
     }
 }

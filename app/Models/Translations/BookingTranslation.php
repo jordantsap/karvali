@@ -10,6 +10,11 @@ class BookingTranslation extends Model
 {
     use Sluggable;
 
+    protected array $fillable = [
+        'name',
+        'slug',
+    ];
+
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -19,7 +24,7 @@ class BookingTranslation extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }

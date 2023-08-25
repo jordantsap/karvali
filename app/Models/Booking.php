@@ -8,6 +8,9 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @method static create(array $array)
+ */
 class Booking extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;
@@ -24,10 +27,10 @@ class Booking extends Model implements TranslatableContract
 //        'check_out_time' => 'date:d-m-Y',
 //        'check_in_time' => 'date:d-m-Y',
     ];
-    protected $fillable = ['check_in_date', 'check_out_date','room_id','adults','children', 'status'];
+    protected $fillable = ['check_in_date', 'check_out_date','room_id','adults','children', 'status','email'];
 
     protected array $translatedAttributes = [
-        'title',
+        'name',
         'slug',
     ];
 

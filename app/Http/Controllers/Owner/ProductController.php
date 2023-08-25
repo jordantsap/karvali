@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
-use App\Helpers\GetInputs;
+use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use App\Models\Image as ImageModel;
@@ -63,7 +63,7 @@ class ProductController extends Controller
 
 
 
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -149,7 +149,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $imageFields = GetInputs::imageFields();
+        $imageFields = GetInputsHelper::imageFields();
+//        dd($request->except($imageFields));
 
         $product->update($request->except($imageFields));
 
