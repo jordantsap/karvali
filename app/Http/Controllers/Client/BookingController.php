@@ -41,20 +41,22 @@ class BookingController extends Controller
         if (!$isRoomAvailable) {
             return redirect()->back()->withInput()->withErrors(['availability' => 'The room is not available for the selected dates.']);
         }
+        else{
+            // If room is available, create booking
+            Booking::create([
+                'room_id' => $room->id,
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'check_in_date' => $checkInDate,
+                'check_out_date' => $checkOutDate,
+                'adults' => $request->input('adults'),
+                'children' => $request->input('children'),
+                'status' => Status::PENDING,
+            ]);
 
-        // If room is available, create booking
-        Booking::create([
-            'room_id' => $room->id,
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'check_in_date' => $checkInDate,
-            'check_out_date' => $checkOutDate,
-            'adults' => $request->input('adults'),
-            'children' => $request->input('children'),
-            'status' => Status::PENDING,
-        ]);
+            return redirect()->back()->with('success', 'Booking created successfully!');
+        }
 
-        return redirect()->back()->with('success', 'Booking created successfully!');
     }
 
 }

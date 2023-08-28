@@ -55,7 +55,7 @@ class RegisterController extends Controller
     public function showRegistrationForm($membership_title = null)
     {
 //        dd($membership_title);
-        $roles = Role::whereIn('id', [3, 4, 5])
+        $roles = Role::whereIn('id', [3, 4, 5,6])
 //            ->withTranslation()
             ->get();
 //        $memberships = Membership::get();

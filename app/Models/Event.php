@@ -7,6 +7,10 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * @property mixed $venue_id
+ * @property mixed $group_id
+ */
 class Event extends Model implements TranslatableContract
   {
     use Translatable, HasFactory;
@@ -26,6 +30,7 @@ class Event extends Model implements TranslatableContract
 
   protected $fillable = [
      'venue_id',
+     'group_id',
     'user_id',
     'active',
     'header',
@@ -50,6 +55,15 @@ class Event extends Model implements TranslatableContract
     public function venue()
     {
         return $this->belongsTo(Venue::class);
+    }
+
+    public function amenities()
+    {
+        return $this->morphToMany(Amenity::class, 'amenitable');
+    }
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 
     public function user()

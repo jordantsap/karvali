@@ -8,7 +8,7 @@ return [
     'accommodation' => 'Accommodation',
     'companies' => 'Companies',
     'events' => 'Events',
-    'groups' => 'Groups',
+    'groups' => 'Clubs',
     'venues' => 'Venues',
     'posts' => 'News',
     'galleries'=>'Photos',

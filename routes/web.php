@@ -101,7 +101,7 @@ Route::as('front.')->group(function () {
 
     Route::get('{posttype}/news-type', 'Client\PostController@category')->name('posts-category');
 
-    Route::get('{grouptype}/venues-type', 'Client\GroupController@category')->name('venues-category');
+    Route::get('{grouptype}/groups-type', 'Client\GroupController@category')->name('groups-category');
 
     Route::get('{companytype}/markets-type', 'Client\CompanyController@category')->name('companies-category');
 
@@ -110,6 +110,10 @@ Route::as('front.')->group(function () {
 
     Route::get('events', 'Client\EventController@index')->name('events.index');
     Route::get('event/{event}', 'Client\EventController@show')->name('event.show');
+
+
+    Route::get('groups', 'Client\GroupController@index')->name('groups');
+    Route::get('group/{slug}', 'Client\GroupController@show')->name('group');
 
     Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');
     Route::get('today-events', [App\Http\Controllers\Client\EventDatesController::class, 'todayevents'])->name('todayevents');
@@ -120,11 +124,9 @@ Route::as('front.')->group(function () {
 // HOME PAGE ROUTE
 Route::get('/', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 });
-
 // AUTH ROUTE
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-//Route::get('group/{slug}', 'Client\GroupController@show')->name('group');
 //Route::get('{slug}/photo-album', 'Client\AlbumController@show')->name('gallery');
 //Route::get('photo-albums', 'Client\AlbumController@index')->name('galleries');

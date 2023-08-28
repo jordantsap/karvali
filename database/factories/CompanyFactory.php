@@ -36,10 +36,10 @@ class CompanyFactory extends Factory
       'image1' => $this->faker->imageUrl(640, 480, 'animals', true),
       'image2' => $this->faker->imageUrl(640, 480, 'animals', true),
       'image3' => $this->faker->imageUrl(640, 480, 'animals', true),
-      'days' => '',
-      'schedule' => ['gdfgdas', 'hgfdhfgs'],
-      'opening_times' => $this->faker->time($format = 'H:i', $min = 'now'), // '20:49:42'
-      'closing_times' => $this->faker->time($format = 'H:i', $min = 'now'),
+//      'days' => '',
+//      'schedule' => ['gdfgdas', 'hgfdhfgs'],
+//      'opening_times' => $this->faker->time($format = 'H:i', $min = 'now'), // '20:49:42'
+//      'closing_times' => $this->faker->time($format = 'H:i', $min = 'now'),
       'telephone' => '2510-867512',
       'website' => $this->faker->domainName,
       'email' => $this->faker->email,
@@ -48,7 +48,7 @@ class CompanyFactory extends Factory
       // 'address' => $this->faker->address,
       // 'lat' => $this->faker->latitude($min = 40.958023, $max = 40.97),
       // 'lng' => $this->faker->longitude($min = 24.5050, $max = 24.5280),
-      'pos' => $this->faker->randomElement($array = array ('No','Yes')),
+//      'pos' => $this->faker->randomElement($array = array ('No','Yes')),
       'creditcard' => $this->faker->randomElement($array = array ('Visa', 'Mastercard','American-Express')),
       'description' => $this->faker->realText($maxNbChars = 300, $indexSize = 2),
       'user_id' => rand(1, 2),

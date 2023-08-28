@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="row col-xs-4 col-sm-12">
                                         <h3><b>{{ __('page.category') }}</b> <a
-                                                href="{{ route('front.products-category', $product->category->slug) }}">{{ $product->category->name }}</a>
+                                                href="{{ route('front.products-category', $product->category->slug) }}">{{ $product->category->title }}</a>
                                         </h3>
                                     </div>
                                     <div class="row">

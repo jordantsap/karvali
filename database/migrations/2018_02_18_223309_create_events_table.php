@@ -33,7 +33,8 @@ class CreateEventsTable extends Migration
             $table->string('email')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
-            $table->foreignIdFor(Venue::class);
+            $table->foreignIdFor(Venue::class)->nullable();
+            $table->foreignIdFor(\App\Models\Group::class)->nullable();
             //$table->string('address');
             // $table->float('lat', 10, 6);
             // $table->float('lng', 10, 6);

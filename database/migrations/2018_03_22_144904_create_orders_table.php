@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('billing_province')->nullable();
             $table->string('billing_postalcode')->nullable();
             $table->string('billing_phone')->nullable();
-            $table->float('billing_subtotal',10,2)->nullable();
+            $table->float('billing_subtotal',15,2)->nullable();
             $table->integer('billing_tax')->nullable();
             $table->float('billing_total',10,2)->nullable();
             $table->text('billing_other_info')->nullable();

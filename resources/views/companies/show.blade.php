@@ -152,7 +152,7 @@
                   <li class="list-group-item"><h2>{{ $company->title }}</h2>
                   </li>
                   <li class="list-group-item"><img src="{{ asset('images/products/'.$company->logo) }}" width="100%" height="100px" alt="{{$company->title}}" title"{{$company->title}}"></li>
-                  {{-- <li class="list-group-item bold">Κατηγορία: <a href="{{ route('products-category', $company->producttype->id)}}">{{ $company->producttype->name }}</a></li> --}}
+                   <li class="list-group-item bold">Κατηγορία: <a href="{{ route('front.products-category', $company->category->id)}}">{{ $company->category->title }}</a></li>
                   <li class="list-group-item"><h3>Τιμή: {{ $company->price }}</h3></li>
           <li class="list-group-item">
             <h3>{{ $company->description }}</h3>

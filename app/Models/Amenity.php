@@ -7,6 +7,9 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static withTranslation()
+ */
 class Amenity extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;

@@ -143,14 +143,19 @@
 
 
                 <div class="container">
-                    <h2>Check Availability</h2>
+                    <h2>Check Availability and book room</h2>
                     <form method="POST" action="{{ route('front.bookings.store', $room->id) }}">
                         @csrf
                         <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}" required>
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input class="form-control" type="text" id="title" name="title"
+                            <label for="title">{{__('form.name')}}</label>
+                            <input class="form-control" type="text" id="name" name="name"
                                    placeholder="Enter your name here" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">{{__('form.email')}}</label>
+                            <input class="form-control" type="email" id="email" name="email"
+                                   placeholder="Enter your email here" required>
                         </div>
                         <div class="form-group">
                             <label for="check_in_date">Check in date</label>
@@ -170,15 +175,22 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="adults">adults</label>
-                            <input type="number" min="1" value="1" class="form-control" name="adults" id="adults"
-                                   placeholder="adults">
-                        </div>
-                        <div class="form-group">
-                            <label for="children">children</label>
-                            <input type="number" class="form-control" name="children" id="children"
-                                   placeholder="children">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="adults">adults</label>
+                                    <input type="number" min="1" value="1" class="form-control" name="adults"
+                                           id="adults"
+                                           placeholder="adults">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="children">children</label>
+                                    <input type="number" class="form-control" name="children" id="children"
+                                           placeholder="children">
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

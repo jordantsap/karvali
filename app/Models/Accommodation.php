@@ -20,7 +20,6 @@ class Accommodation extends Model implements TranslatableContract
         'manager',
         'description',
     ];
-//    public function getRouteKeyName()
 
     protected $fillable = [
         'user_id',

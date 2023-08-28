@@ -33,7 +33,7 @@
               <li class="list-group-item bold">
                 <h2>{{__('single.category')}}
                   <a href="{{ route('front.products-category', $product->category->slug)}}">
-                    {{ $product->category->name }}</a>
+                    {{ $product->category->title }}</a>
                 </h2>
               </li>
 

@@ -42,7 +42,7 @@
               <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item">
                 <div class="card h-100">
                   <a href="{{ route('front.companies',$company->id) }}">
-                    <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/companies/'.$company->logo) }}"
+                    <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset($company->logo) }}"
                       alt="{{ $company->title }}">
                   </a>
                 </div>
@@ -88,7 +88,7 @@
                       <div class="col-xs-12 col-sm-6 col-md-3 venues-item">
                         <div class="card h-100">
                           <a href="{{ route('front.venues',$venue->slug) }}">
-                            <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/venues/'.$venue->logo) }}"
+                            <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset($venue->logo) }}"
                               alt="{{ $venue->title }}">
                           </a>
                         </div>
@@ -136,7 +136,7 @@
               <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item">
                 <div class="card h-100">
                   <a href="{{ route('front.product',$product->translate()->slug) }}">
-                    <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset('images/products/'.$product->logo) }}"
+                    <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset($product->logo) }}"
                       alt="{{ $product->title }}">
                   </a>
                 </div>
@@ -192,7 +192,7 @@
                   @foreach ($events as $event)
                     <div class="col-xs-6 col-sm-3 portfolio-item">
                       <a href="{{ route('front.event.show',$event->slug) }}">
-                        <img class="img-responsive img-fluid rounded" src="{{ asset('images/events/'.$event->logo) }}" style="width:100%;height:200px"
+                        <img class="img-responsive img-fluid rounded" src="{{ asset($event->logo) }}" style="width:100%;height:200px"
                           alt="{{$event->title}}">
                       </a>
                       <h4 class="card-title"><a href="{{ route('front.event.show',$event->slug) }}">{{ Str::limit($event->title, 15) }}</a></h4>

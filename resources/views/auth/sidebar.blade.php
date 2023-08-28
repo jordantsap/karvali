@@ -46,4 +46,14 @@
 
 @endrole
 
+@role('Group/Event Owner')
+
+<li><a href="{{ route('owner.groups.index') }}"><i class="fas fa-shopping-bag"></i> <span>Club List</span></a></li>
+<li><a href="{{ route('owner.groups.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Club</span></a>
+
+<li><a href="{{ route('owner.clubevents.index') }}"><i class="fas fa-shopping-bag"></i> <span>Event List</span></a></li>
+<li><a href="{{ route('owner.clubevents.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Event</span></a>
+
+@endrole
+
 @endif

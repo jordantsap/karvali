@@ -6,6 +6,7 @@ use App\Models\AccommodationType;
 use App\Models\Company;
 use App\Models\CompanyType;
 use App\Models\Event;
+use App\Models\GroupType;
 use App\Models\Post;
 use App\Models\PostType;
 use App\Models\Product;
@@ -116,18 +117,18 @@ class ComposerViewsServiceProvider extends ServiceProvider
             $view->with('companytypes', $companytypes);
         });
 
-//      view()->composer(['venues.index','venues.category'], function ($view) {
-//
-//        if ( ! Cache::has('grouptypes')){
-//          $grouptypes = Cache::rememberForever('venuetypes', function(){
-//            return GroupType::withTranslation()->get();
-//          });
-//        }
-//        else {
-//          $grouptypes = GroupType::withTranslation()->get();
-//        }
-//        $view->with('grouptypes', $grouptypes);
-//      });
+      view()->composer(['groups.index','groups.category'], function ($view) {
+
+        if ( ! Cache::has('grouptypes')){
+          $grouptypes = Cache::rememberForever('venuetypes', function(){
+            return GroupType::withTranslation()->get();
+          });
+        }
+        else {
+          $grouptypes = GroupType::withTranslation()->get();
+        }
+        $view->with('grouptypes', $grouptypes);
+      });
 
         view()->composer(['posts.index', 'posts.category'], function ($view) {
             $view->with('posttypes', PostType::withTranslation()->get());

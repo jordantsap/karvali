@@ -20,10 +20,10 @@ class Group extends Model implements TranslatableContract
       'manager',
     ];
 
-  public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//  public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
     protected $fillable = [
       'user_id',

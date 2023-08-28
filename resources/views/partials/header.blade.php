@@ -46,9 +46,9 @@
                 <li>
                   <a href="{{ route('front.news') }}">{{ __('header.posts') }}</a>
                 </li>
-{{--                <li>--}}
-{{--                  <a href="{{ route('galleries') }}">{{ __('header.galleries') }}</a>--}}
-{{--                </li>--}}
+                <li>
+                  <a href="{{ route('front.groups') }}">{{ __('header.groups') }}</a>
+                </li>
                 <li>
                   <a title="Camera Views" href="{{ route('online-cameras') }}">
                     <span class="glyphicon glyphicon-camera" style="font-size:19px;" aria-hidden="true"></span>

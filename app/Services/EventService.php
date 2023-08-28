@@ -7,7 +7,7 @@ use App\Models\Room;
 use Carbon\Carbon;
 
 class EventService
-{
+{ // not used
     public function createRecurringEvents($requestData): void
     {
         $recurringUntil            = Carbon::parse($requestData['recurring_until'])->setTime(23, 59, 59);

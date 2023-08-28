@@ -35,11 +35,11 @@ class ProductController extends Controller
           ->with('products')
           ->first();
 
-//        $products = $producttype->products()
-//            ->with(['category','likes','comments'])
-//            ->active()
-//            ->paginate(8);
+        $products = $producttype->products()
+            ->with(['category','likes','comments'])
+            ->active()
+            ->paginate(8);
 //       dd($producttype);
-      return view('products.category', compact(['producttype']));
+      return view('products.category', compact(['producttype','products']));
     }
 }

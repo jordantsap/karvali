@@ -58,13 +58,18 @@ class Permission extends \Spatie\Permission\Models\Permission
             'update-venues',
             'delete-venues',
 
+            'view-groups',
+            'create-groups',
+            'update-groups',
+            'delete-groups',
+
             'view-events',
             'create-events',
             'update-events',
             'delete-events',
 
             'company-management',
-//            'group-management',
+            'group-management',
             'accommodation-management',
             'venue-management',
             'event-management',
@@ -82,12 +87,6 @@ class Permission extends \Spatie\Permission\Models\Permission
 //            'create-albums',
 //            'update-albums',
 //            'delete-albums',
-
-//            'view-groups',
-//            'create-groups',
-//            'update-groups',
-//            'delete-groups',
-
 
         ];
     }

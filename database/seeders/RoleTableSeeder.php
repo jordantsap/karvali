@@ -75,6 +75,19 @@ class RoleTableSeeder extends Seeder
             'update-events',
             'delete-events',
             ]);
+        $role = Role::create(['name' => 'Group/Event Owner']);
+        $role->givePermissionTo([
+            'group-management',
+            'view-groups',
+            'create-groups',
+            'update-groups',
+            'delete-groups',
+
+            'view-events',
+            'create-events',
+            'update-events',
+            'delete-events',
+            ]);
 
         $role = Role::create(['name' => 'Blogger']);
         $role->givePermissionTo(['view-posts', 'create-posts', 'update-posts']);

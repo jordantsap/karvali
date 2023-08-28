@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
         $accommodation_management = Role::where('name','Accommodation/Rooms Owner')->first();
 
         $venue_management = Role::where('name','Venue/Event Owner')->first();
+        $group_management = Role::where('name','Group/Event Owner')->first();
         $blog_management = Role::where('name', 'Blogger')->first();
         $customer_role = Role::where('name','Customer')->first();
 
@@ -80,17 +81,29 @@ class UsersTableSeeder extends Seeder
         $event_manager->roles()->attach($accommodation_management);
 
 
+        $venue_management = new User();
+        $venue_management->username = 'venueManager';
+        $venue_management->active = 1;
+        $venue_management->fullname = 'venueManager';
+        $venue_management->tel = '2510316852';
+        $venue_management->mobile = '6984262910';
+        $venue_management->email = 'venue@karvali.local';
+        $venue_management->password = bcrypt('123456');
+        $venue_management->email_verified_at = now();
+        $venue_management->save();
+        $venue_management->roles()->attach($venue_management);
+
         $group_manager = new User();
-        $group_manager->username = 'venueManager';
+        $group_manager->username = 'groupManager';
         $group_manager->active = 1;
         $group_manager->fullname = 'venueManager';
         $group_manager->tel = '2510316852';
         $group_manager->mobile = '6984262910';
-        $group_manager->email = 'venue@karvali.local';
+        $group_manager->email = 'group@karvali.local';
         $group_manager->password = bcrypt('123456');
         $group_manager->email_verified_at = now();
         $group_manager->save();
-        $group_manager->roles()->attach($venue_management);
+        $group_manager->roles()->attach($group_management);
 
 
         $blogger = new User();

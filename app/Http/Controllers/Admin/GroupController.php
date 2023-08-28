@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreGroupRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -46,101 +47,38 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, array(
-        'user_id' => 'Auth::user()->id',
-        'active' => 'integer',
-        'title' => 'required|min:5|max:100',
-        'slug' => 'unique:venues,title',
-        'meta_description' =>'max:160',
-        'meta_keywords' =>'',
-        'group_type' => 'required|integer',
-        'manager' => 'required',
-        'header' => 'sometimes|image',
-        'logo' => 'sometimes|image',
-        'image1' => 'sometimes|image',
-        'image2' => 'sometimes|image',
-        'image3' => 'sometimes',
-        'telephone' => 'required',
-        'website' => '',
-        'email' => 'required',
-        'facebook' => '',
-        'twitter' => '',
-        //'address' => 'required',
-        // 'lat' => 'required',
-        // 'lng' => 'required',
-        'description' => 'required|min:5',
-      ));
+
       $group = new Group;
 
       $group->user_id = Auth::user()->id;
-      $group->title = $request->title;
-        $group->description = $request->description;
         $group->active = $request->active;
-        $group->meta_description = $request->input('meta_description');
-        $group->meta_keywords = $request->input('meta_keywords');
-      $group->slug = Str::slug($request->title, '-');
-      $group->header = $request->header;
-      $group->logo = $request->logo;
-        $group->image1 = $request->image1;
-        $group->image2 = $request->image2;
-        $group->image3 = $request->image3;
         $group->group_type = $request->group_type;
         $group->telephone = $request->telephone;
         $group->website = strtolower($request->website);
         $group->email = strtolower($request->email);
         $group->facebook = strtolower($request->facebook);
         $group->twitter = strtolower($request->twitter);
-        $group->manager = $request->manager;
         //$group->address = $request->address;
       // $group->lat = $request->input('lat');
       // $group->lng = $request->input('lng');
 
-
-        if ($request->hasFile('header')) {
-            $header = $request->file('header');
-            $filename = time() . '.' . $header->getClientOriginalExtension();
-            $location = public_path("images/venues/" . $filename);
-            Image::make($header)->resize(800, 400)->save($location);
-            $group->header = $filename;
-          }
-
-          if ($request->hasFile('logo')) {
-              $logo = $request->file('logo');
-              $filename = time() . '.' . $logo->getClientOriginalExtension();
-              $location = public_path("images/venues/" . $filename);
-              Image::make($logo)->resize(800, 400)->save($location);
-              $group->logo = $filename;
-            }
-
-          if ($request->hasFile('image1')) {
-              $image1 = $request->file('image1');
-              $filename = time() . '.' . $image1->getClientOriginalExtension();
-              $location = public_path("images/venues/" . $filename);
-              Image::make($image1)->resize(800, 400)->save($location);
-              $group->image1 = $filename;
-            }
-
-            if ($request->hasFile('image2')) {
-                $image2 = $request->file('image2');
-                $filename = time() . '.' . $image2->getClientOriginalExtension();
-                $location = public_path("images/venues/" . $filename);
-                Image::make($image2)->resize(800, 400)->save($location);
-                $group->image2 = $filename;
-              }
-
-              if ($request->hasFile('image3')) {
-                  $image3 = $request->file('image3');
-                  $filename = time() . '.' . $image3->getClientOriginalExtension();
-                  $location = public_path("images/venues/" . $filename);
-                  Image::make($image3)->resize(800, 400)->save($location);
-                  $group->image3 = $filename;
-                }
         $group->save();
+
+
+        foreach (config('translatable.locales') as $locale => $lang) {
+            $group->translateOrNew($locale)->title = $request->{$locale}['title'];
+            $group->translateOrNew($locale)->meta_description = $request->{$locale}['meta_description'];
+            $group->translateOrNew($locale)->meta_keywords = $request->{$locale}['meta_keywords'];
+            $group->translateOrNew($locale)->manager = $request->{$locale}['manager'];
+            $group->translateOrNew($locale)->description = $request->{$locale}['description'];
+        }
+        $group->save();
+
         $notification = array(
         'message' => 'Group added successfully',
         'alert-type' => 'info'
         );
-        return redirect(route('teams.show',$group->id))->with($notification);
+        return redirect(route('admin.groups.show',$group->id))->with($notification);
     }
 
     /**

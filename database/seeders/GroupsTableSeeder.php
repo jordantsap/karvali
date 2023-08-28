@@ -18,6 +18,6 @@ class GroupsTableSeeder extends Seeder
     {
         DB::table('venues')->truncate();
         // $venues = factory(App\Models\Group::class, 15)->create();
-        Group::factory()->count(12)->create();
+        Group::factory()->count(5)->create();
     }
 }

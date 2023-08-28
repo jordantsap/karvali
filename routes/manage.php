@@ -25,7 +25,11 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
 
         Route::resource('venues', \App\Http\Controllers\Owner\VenueController::class);
 
+        Route::resource('groups', \App\Http\Controllers\Owner\GroupController::class);
+
         Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
+
+        Route::resource('clubevents', \App\Http\Controllers\Owner\ClubEventController::class);
 //
 //        Route::post('tmp-upload/', [\App\Http\Controllers\FilePondController::class, 'tmpUpload'])->name('tmpUpload');
 //        Route::delete('tmp-delete', [\App\Http\Controllers\FilePondController::class,'tpmDelete'])->name('tmpDelete');
@@ -48,6 +52,7 @@ Route::prefix('manage')->as('admin.')->middleware(['auth'])->group(callback: fun
     Route::resource('newsletters', 'Admin\NewsletterController');
     // Route::post('albums/{photo}', 'Admin\AlbumPhotoController@store')->name('albumphotos.store');
     Route::resource('albums', 'Admin\AlbumController');
+    Route::resource('groups', 'Admin\GroupController');
     Route::resource('posts', 'Admin\PostController');
     Route::resource('events', 'Admin\EventController');
     Route::resource('companies', 'Admin\CompanyController');

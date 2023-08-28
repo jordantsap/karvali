@@ -159,8 +159,8 @@ class VenueController extends Controller
                 $image = $request->file($fieldName);
 
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/accommodations', $imageName);
-                $location = public_path("images/accommodations/" . $imageName);
+                $imagePath = $image->storeAs('images/venues', $imageName);
+                $location = public_path("images/venues/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
 
                 $venue->{$fieldName} = $imagePath;

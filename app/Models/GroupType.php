@@ -19,10 +19,10 @@ class GroupType extends Model implements TranslatableContract
     ];
     // protected $guarded = ['name', 'slug'];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
     public function groups()
     {

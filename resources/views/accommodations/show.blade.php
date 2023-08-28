@@ -140,7 +140,7 @@
 
                     @foreach($accommodation->rooms as $room)
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-2">
                                 @foreach(\App\Helpers\GetInputsHelper::imageFields() as $image)
                                     <a data-lightbox="room-images" data-title="{{$room->title}}" data-alt="{{$room->title}}"
                                        href="{{ asset($room->$image) }}">
@@ -151,7 +151,7 @@
                             </div>
                             @if(count($room->images) > 0)
                                     <h1>Main images</h1>
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     @foreach($room->images as $upload)
                                         <a data-lightbox="room" data-title="{{$room->title}}" data-alt="{{$room->title}}"
                                            href="{{ asset($upload->path) }}">
@@ -179,7 +179,7 @@
                                     @endif
                                     {{ __('Description: ').Str::limit($room->description, 100) }}
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-4">
                                     <h4 class="card-title"><a
                                             href="{{ route('front.room.show',$room->slug) }}">{{ Str::limit($room->title, 15) }}</a>
                                     </h4>
@@ -202,34 +202,42 @@
                                             <input class="form-control" type="email" id="email" name="email"
                                                    placeholder="Enter your email here" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="check_in_date">Check in date</label>
-                                            <select name="check_in_date" class="form-control" id="check_in_date">
-                                                <option value="">Select Check-in Date</option>
-                                                @foreach ($room->getAvailableDates() as $date)
-                                                    <option value="{{ $date }}">{{ $date }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="row">
+                                            <div class="col-xs-6 form-group">
+                                                <label for="check_in_date">Check in date</label>
+                                                <select name="check_in_date" class="form-control" id="check_in_date">
+                                                    <option value="">Select Check-in Date</option>
+                                                    @foreach ($room->getAvailableDates() as $date)
+                                                        <option value="{{ $date }}">{{ $date }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-6 form-group">
+                                                <label for="check_out_date">Check out date</label>
+                                                <select name="check_out_date" class="form-control" id="check_out_date">
+                                                    <option value="">Select Check-Out Date</option>
+                                                    @foreach ($room->getAvailableDates() as $date)
+                                                        <option value="{{ $date }}">{{ $date }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="check_out_date">Check out date</label>
-                                            <select name="check_out_date" class="form-control" id="check_out_date">
-                                                <option value="">Select Check-Out Date</option>
-                                                @foreach ($room->getAvailableDates() as $date)
-                                                    <option value="{{ $date }}">{{ $date }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="adults">adults</label>
-                                            <input type="number" min="1" value="1" class="form-control" name="adults"
-                                                   id="adults"
-                                                   placeholder="adults">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="children">children</label>
-                                            <input type="number" class="form-control" name="children" id="children"
-                                                   placeholder="children">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label for="adults">adults</label>
+                                                    <input type="number" min="1" value="1" class="form-control" name="adults"
+                                                           id="adults"
+                                                           placeholder="adults">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label for="children">children</label>
+                                                    <input type="number" class="form-control" name="children" id="children"
+                                                           placeholder="children">
+                                                </div>
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

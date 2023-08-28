@@ -6,8 +6,8 @@
     <section class="content-header">
       <h1>
         Groups
-        @can ('create_groups', App\Group::class)
-          <small><a class="btn btn-primary" href="{{route('teams.create')}}">New Group</a></small>
+        @can ('create-groups', App\Models\Group::class)
+          <small><a class="btn btn-primary" href="{{route('owner.groups.create')}}">New Group</a></small>
         @endcan
       </h1>
     </section>

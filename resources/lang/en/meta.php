@@ -9,8 +9,8 @@ return [
     'productspagedescription' => 'Find Products and place your order from Nea Karvali. A wide variety of different items for every use',
     'productspagekeywords'=> 'local products of new carvival, products of our place, ordering products in the village of new karvali',
 
-    'groupspagedescription' => 'Associations and venues in the community of New Karvali.',
-    'groupspagekeywords'=>'new karvali venues, community venues and venues',
+    'groupspagedescription' => 'Clubs in the community of New Karvali.',
+    'groupspagekeywords'=>'new karvali venues, community Clubs',
 
     'eventspagedescription' => 'Events in Nea Karvali.',
     'eventspagekeywords'=>'local events in nea karvali, events, local events',

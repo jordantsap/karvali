@@ -25,6 +25,7 @@ class GroupController extends Controller
     {
       $group = Group::whereTranslation('slug', $slug)
       ->with(['category','likes','comments'])->first();
+
       return view('groups.show', compact('group'));
     }
 
@@ -36,6 +37,7 @@ class GroupController extends Controller
       ->first();
 
       $groups = $grouptype->groups()->with(['category','likes','comments'])->active()->paginate(8);
+
       return view('groups.category', compact('groups', 'grouptype'));
     }
 }
