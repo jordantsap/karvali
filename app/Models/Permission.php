@@ -76,10 +76,10 @@ class Permission extends \Spatie\Permission\Models\Permission
             'product-management',
             'order-management',
 
-            'view-options',
-            'create-options',
-            'update-options',
-            'delete-options',
+            'view-fields',
+            'create-fields',
+            'update-fields',
+            'delete-fields',
 
             // NOT USED
 

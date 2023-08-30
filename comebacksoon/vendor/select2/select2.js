@@ -876,12 +876,12 @@ S2.define('select2/results',[
 
     var $selected = $options.filter('[aria-selected=true]');
 
-    // Check if there are any selected options
+    // Check if there are any selected fields
     if ($selected.length > 0) {
-      // If there are selected options, highlight the first
+      // If there are selected fields, highlight the first
       $selected.first().trigger('mouseenter');
     } else {
-      // If there are no selected options, highlight the first option
+      // If there are no selected fields, highlight the first option
       // in the dropdown
       $options.first().trigger('mouseenter');
     }
@@ -4835,7 +4835,7 @@ S2.define('select2/defaults',[
         return data;
       }
 
-      // Do a recursive check for options with children
+      // Do a recursive check for fields with children
       if (data.children && data.children.length > 0) {
         // Clone the data object if there are children
         // This is required as we modify the object to remove any non-matches
@@ -5043,7 +5043,7 @@ S2.define('select2/options',[
 
 S2.define('select2/core',[
   'jquery',
-  './options',
+  './fields',
   './utils',
   './keys'
 ], function ($, Options, Utils, KEYS) {
@@ -5414,7 +5414,7 @@ S2.define('select2/core',[
     var changed = false;
     var self = this;
 
-    // Ignore any mutation events raised for elements that aren't options or
+    // Ignore any mutation events raised for elements that aren't fields or
     // optgroups. This handles the case when the select element is destroyed
     if (
       evt && evt.target && (

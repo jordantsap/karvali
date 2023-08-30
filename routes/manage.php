@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
 
         Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
 
-        Route::resource('options', \App\Http\Controllers\Owner\OptionController::class);
+        Route::resource('fields', \App\Http\Controllers\Owner\FieldController::class);
 
         Route::resource('clubevents', \App\Http\Controllers\Owner\ClubEventController::class);
 //

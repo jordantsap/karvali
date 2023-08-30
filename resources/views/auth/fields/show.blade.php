@@ -6,9 +6,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Option : {{$option->title}}
-{{--                @can ('update-options', App\Models\Option::class)--}}
-                    <small><a class="btn btn-primary" href="{{route('owner.options.edit', $option->id)}}">Edit</a>
+                Field : {{$field->title}}
+{{--                @can ('update-fields', App\Models\Option::class)--}}
+                    <small><a class="btn btn-primary" href="{{route('owner.fields.edit', $field->id)}}">Edit</a>
                         - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
 {{--                @endcan--}}
             </h1>
@@ -26,7 +26,7 @@
                             <div class="col-xs-8 form-group">
                                 <label for="title">{{__('form.title'). ' - '. $lang}}</label>
                                 <input type="text" class="form-control"
-                                       placeholder="{{ $option->title }}" readonly>
+                                       placeholder="{{ $field->title }}" readonly>
                             </div>
 
                         </div>
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label for="title">{{__('form.categorytype')}}</label>
                                 <input type="text" class="form-control"
-                                       placeholder="{{ $option->productType->title }}" readonly>
+                                       placeholder="{{ $field->productType->title }}" readonly>
                             </div>
                     <!-- /.box-body -->
                 </div>

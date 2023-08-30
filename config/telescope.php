@@ -36,9 +36,9 @@ return [
     | Telescope Storage Driver
     |--------------------------------------------------------------------------
     |
-    | This configuration options determines the storage driver that will
+    | This configuration fields determines the storage driver that will
     | be used to store Telescope's data. In addition, you may set any
-    | custom options as needed by the particular driver you choose.
+    | custom fields as needed by the particular driver you choose.
     |
     */
 

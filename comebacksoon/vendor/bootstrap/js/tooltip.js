@@ -127,8 +127,8 @@ var Tooltip = function () {
    *      [boundariesElement docs](https://popper.js.org/popper-documentation.html)
    * @param {Number|String} options.offset=0 - Offset of the tooltip relative to its reference. For more information refer to Popper.js'
    *      [offset docs](https://popper.js.org/popper-documentation.html)
-   * @param {Object} options.popperOptions={} - Popper options, will be passed directly to popper instance. For more information refer to Popper.js'
-   *      [options docs](https://popper.js.org/popper-documentation.html)
+   * @param {Object} options.popperOptions={} - Popper fields, will be passed directly to popper instance. For more information refer to Popper.js'
+   *      [fields docs](https://popper.js.org/popper-documentation.html)
    * @return {Object} instance - The generated tooltip instance
    */
   function Tooltip(reference, options) {
@@ -136,12 +136,12 @@ var Tooltip = function () {
 
     _initialiseProps.call(this);
 
-    // apply user options over default ones
+    // apply user fields over default ones
     options = _extends({}, DEFAULT_OPTIONS, options);
 
     reference.jquery && (reference = reference[0]);
 
-    // cache reference and options
+    // cache reference and fields
     this.reference = reference;
     this.options = options;
 
@@ -302,7 +302,7 @@ var Tooltip = function () {
     }
   }, {
     key: '_hide',
-    value: function _hide() /*reference, options*/{
+    value: function _hide() /*reference, fields*/{
       // don't hide if it's already hidden
       if (!this._isOpen) {
         return this;
@@ -469,7 +469,7 @@ var Tooltip = function () {
  * @callback PlacementFunction
  * @param {HTMLElement} tooltip - tooltip DOM node.
  * @param {HTMLElement} reference - reference DOM node.
- * @return {String} placement - One of the allowed placement options.
+ * @return {String} placement - One of the allowed placement fields.
  */
 
 /**

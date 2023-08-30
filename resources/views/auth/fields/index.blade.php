@@ -5,9 +5,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Your Options
+                Your fields
 {{--                @can ('create_companies', App\Company::class)--}}
-                    <small><a class="btn btn-primary" href="{{route('owner.options.create')}}">New</a></small>
+                    <small><a class="btn btn-primary" href="{{route('owner.fields.create')}}">New</a></small>
 {{--                @endcan--}}
             </h1>
         </section>
@@ -29,7 +29,7 @@
 {{--                                    @endcan--}}
                                 </tr>
                                 </thead>
-                                @foreach ($options as $option)
+                                @foreach ($fields as $option)
                                     <tbody>
                                     <tr>
                                         <td>{{$option->id}}</td>
@@ -41,13 +41,13 @@
                                         </td>
                                         <td>
 {{--                                            @can ('update_companies', App\Company::class)--}}
-                                                <a class="btn btn-primary" href="{{route('owner.options.edit', $option->id)}}">Edit</a> -
+                                                <a class="btn btn-primary" href="{{route('owner.fields.edit', $option->id)}}">Edit</a> -
 {{--                                            @endcan--}}
 {{--                                            @can ('view_companies', App\Company::class)--}}
-                                                <a class="btn btn-primary" href="{{route('owner.options.show', $option->id)}}">View</a>
+                                                <a class="btn btn-primary" href="{{route('owner.fields.show', $option->id)}}">View</a>
 {{--                                            @endcan--}}
 {{--                                            @can ('delete_companies', App\Models\Company::class)--}}
-                                                <form action="{{ route('owner.options.destroy', $option->id) }}"
+                                                <form action="{{ route('owner.fields.destroy', $option->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
@@ -69,7 +69,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                            {{$options->links()}}
+                            {{$fields->links()}}
                         </div>
                         <!-- /.box-body -->
                     </div>

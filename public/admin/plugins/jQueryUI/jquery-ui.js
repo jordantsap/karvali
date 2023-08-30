@@ -778,9 +778,9 @@ $.widget = function( name, base, prototype ) {
 
 	basePrototype = new base();
 
-	// we need to make the options hash a property directly on the new instance
+	// we need to make the fields hash a property directly on the new instance
 
-	// otherwise we'll modify the options hash on the prototype that we're
+	// otherwise we'll modify the fields hash on the prototype that we're
 
 	// inheriting from
 
@@ -1076,7 +1076,7 @@ $.widget.bridge = function( name, object ) {
 
 
 
-$.Widget = function( /* options, element */ ) {};
+$.Widget = function( /* fields, element */ ) {};
 
 $.Widget._childConstructors = [];
 
@@ -3364,7 +3364,7 @@ var accordion = $.widget( "ui.accordion", {
 
 		if ( key === "active" ) {
 
-			// _activate() will handle invalid values and update this.options
+			// _activate() will handle invalid values and update this.fields
 
 			this._activate( value );
 
@@ -4138,7 +4138,7 @@ var accordion = $.widget( "ui.accordion", {
 
 		}
 
-		// fall back from options to animation in case of partial down settings
+		// fall back from fields to animation in case of partial down settings
 
 		easing = easing || options.easing || animate.easing;
 
@@ -7674,7 +7674,7 @@ function Datepicker() {
 
 		weekHeader: "Wk", // Column header for week of the year
 
-		dateFormat: "mm/dd/yy", // See format options on parseDate
+		dateFormat: "mm/dd/yy", // See format fields on parseDate
 
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 
@@ -11582,7 +11582,7 @@ function datepicker_extendRemove(target, props) {
 
 /* Invoke the datepicker functionality.
 
-   @param  options  string - a command, optionally followed by additional parameters or
+   @param  fields  string - a command, optionally followed by additional parameters or
 
 					Object - settings for attaching new datepicker functionality
 
@@ -12052,7 +12052,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 
 
 
-		//Set a containment if given in the options
+		//Set a containment if given in the fields
 
 		this._setContainment();
 
@@ -12822,7 +12822,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 
 
 
-		// If we are not dragging yet, we won't check for options
+		// If we are not dragging yet, we won't check for fields
 
 		if ( constrainPosition ) {
 
@@ -18572,7 +18572,7 @@ $.ui.ddmanager = {
 
 
 
-		// Run through all droppables and check their positions based on specific tolerance options
+		// Run through all droppables and check their positions based on specific tolerance fields
 
 		$.each( $.ui.ddmanager.droppables[ draggable.options.scope ] || [], function() {
 
@@ -20806,13 +20806,13 @@ $.extend( $.effects, {
 
 
 
-// return an effect options object for the given parameters:
+// return an effect fields object for the given parameters:
 
 function _normalizeArguments( effect, options, speed, callback ) {
 
 
 
-	// allow passing all options as the first parameter
+	// allow passing all fields as the first parameter
 
 	if ( $.isPlainObject( effect ) ) {
 
@@ -20868,7 +20868,7 @@ function _normalizeArguments( effect, options, speed, callback ) {
 
 
 
-	// catch (effect, options, callback)
+	// catch (effect, fields, callback)
 
 	if ( $.isFunction( speed ) ) {
 
@@ -20880,7 +20880,7 @@ function _normalizeArguments( effect, options, speed, callback ) {
 
 
 
-	// add options to effect
+	// add fields to effect
 
 	if ( options ) {
 
@@ -20964,7 +20964,7 @@ function standardAnimationOption( option ) {
 
 $.fn.extend({
 
-	effect: function( /* effect, options, speed, callback */ ) {
+	effect: function( /* effect, fields, speed, callback */ ) {
 
 		var args = _normalizeArguments.apply( this, arguments ),
 
@@ -22436,7 +22436,7 @@ var effectSize = $.effects.effect.size = function( o, done ) {
 
 
 
-		// Set options
+		// Set fields
 
 		mode = $.effects.setMode( el, o.mode || "effect" ),
 
@@ -27426,7 +27426,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 
 
 
-		//Set a containment if given in the options
+		//Set a containment if given in the fields
 
 		if(o.containment) {
 
@@ -29194,7 +29194,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 
 
 
-		if(this.originalPosition) { //If we are not dragging yet, we won't check for options
+		if(this.originalPosition) { //If we are not dragging yet, we won't check for fields
 
 
 
@@ -31080,7 +31080,7 @@ var tabs = $.widget( "ui.tabs", {
 
 		if ( key === "active" ) {
 
-			// _activate() will handle invalid values and update this.options
+			// _activate() will handle invalid values and update this.fields
 
 			this._activate( value );
 

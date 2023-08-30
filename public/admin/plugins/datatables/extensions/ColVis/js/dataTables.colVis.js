@@ -70,7 +70,7 @@ var factory = function( $, DataTable ) {
 
  *   also be and API instance, table node, jQuery collection or jQuery selector.
 
- * @param {object} ColVis configuration options
+ * @param {object} ColVis configuration fields
 
  */
 

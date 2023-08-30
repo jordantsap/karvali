@@ -127,14 +127,14 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | Extra options
+     | Extra fields
      |--------------------------------------------------------------------------
      |
      | Configure some DataCollectors
      |
      */
 
-    'options' => [
+    'fields' => [
         'auth' => [
             'show_name' => true,   // Also show the users name/email in the debugbar
         ],

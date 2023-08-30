@@ -8,10 +8,10 @@
     <a href="{{ route('owner.companies.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Company</span></a>
 </li>
 <li>
-    <a href="{{ route('owner.options.index') }}"><i class="fas fa-shopping-bag"></i> <span>Options List</span></a>
+    <a href="{{ route('owner.fields.index') }}"><i class="fas fa-shopping-bag"></i> <span>Fields List</span></a>
 </li>
 <li>
-    <a href="{{ route('owner.options.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create options</span></a>
+    <a href="{{ route('owner.fields.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create fields</span></a>
 </li>
 
 <li>

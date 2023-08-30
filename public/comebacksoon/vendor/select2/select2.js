@@ -1754,17 +1754,17 @@ S2.define('select2/results',[
 
 
 
-    // Check if there are any selected options
+    // Check if there are any selected fields
 
     if ($selected.length > 0) {
 
-      // If there are selected options, highlight the first
+      // If there are selected fields, highlight the first
 
       $selected.first().trigger('mouseenter');
 
     } else {
 
-      // If there are no selected options, highlight the first option
+      // If there are no selected fields, highlight the first option
 
       // in the dropdown
 
@@ -9672,7 +9672,7 @@ S2.define('select2/defaults',[
 
 
 
-      // Do a recursive check for options with children
+      // Do a recursive check for fields with children
 
       if (data.children && data.children.length > 0) {
 
@@ -10088,7 +10088,7 @@ S2.define('select2/core',[
 
   'jquery',
 
-  './options',
+  './fields',
 
   './utils',
 
@@ -10830,7 +10830,7 @@ S2.define('select2/core',[
 
 
 
-    // Ignore any mutation events raised for elements that aren't options or
+    // Ignore any mutation events raised for elements that aren't fields or
 
     // optgroups. This handles the case when the select element is destroyed
 

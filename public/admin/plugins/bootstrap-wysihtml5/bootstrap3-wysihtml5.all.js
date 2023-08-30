@@ -9548,7 +9548,7 @@ wysihtml5.browser = (function() {
 
      *
 
-     *    v0.4.14 adds options for deep clone : wysihtml5.late-lang.object({ foo: 1 }).clone(true);
+     *    v0.4.14 adds fields for deep clone : wysihtml5.late-lang.object({ foo: 1 }).clone(true);
 
      */
 
@@ -29242,7 +29242,7 @@ function program17(depth0,data) {
 
 
 
-        // Add the toolbar to a clone of the options object so multiple instances
+        // Add the toolbar to a clone of the fields object so multiple instances
 
         // of the WYISYWG don't break because 'toolbar' is already defined
 

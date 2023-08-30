@@ -6,7 +6,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Create New Product Option
+                Create New Product Field
                 {{-- <small>it all starts here</small> --}}
             </h1>
         </section>
@@ -17,7 +17,7 @@
 
             <!-- Default box -->
             <div class="box">
-                <form method="post" action="{{ route('owner.options.store') }}">
+                <form method="post" action="{{ route('owner.fields.store') }}">
                     @csrf
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('product_type_id') ? ' has-error' : '' }}">

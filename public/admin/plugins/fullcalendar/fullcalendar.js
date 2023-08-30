@@ -388,7 +388,7 @@ function mergeOptions(target) {
 
 
 
-// overcome sucky view-option-hash and option-merging behavior messing with options it shouldn't
+// overcome sucky view-option-hash and option-merging behavior messing with fields it shouldn't
 
 function isForcedAtomicOption(name) {
 
@@ -402,7 +402,7 @@ function isForcedAtomicOption(name) {
 
 // FIX: find a different solution for view-option-hashes and have a whitelist
 
-// for options that can be recursively merged.
+// for fields that can be recursively merged.
 
 
 
@@ -434,7 +434,7 @@ fc.datepickerLang = function(langCode, dpLangCode, dpOptions) {
 
 
 
-	// transfer some simple options from datepicker to fc
+	// transfer some simple fields from datepicker to fc
 
 	fcOptions.isRTL = dpOptions.isRTL;
 
@@ -442,7 +442,7 @@ fc.datepickerLang = function(langCode, dpLangCode, dpOptions) {
 
 
 
-	// compute some more complex options from datepicker
+	// compute some more complex fields from datepicker
 
 	$.each(dpComputableOptions, function(name, func) {
 
@@ -508,7 +508,7 @@ fc.lang = function(langCode, newFcOptions) {
 
 
 
-	// provided new options for this language? merge them in
+	// provided new fields for this language? merge them in
 
 	if (newFcOptions) {
 
@@ -518,7 +518,7 @@ fc.lang = function(langCode, newFcOptions) {
 
 
 
-	// compute language options that weren't defined.
+	// compute language fields that weren't defined.
 
 	// always do this. newFcOptions can be undefined when initializing from i18n file,
 
@@ -696,7 +696,7 @@ function getMomentLocaleData(langCode) {
 
 
 
-// Initialize English by forcing computation of moment-derived options.
+// Initialize English by forcing computation of moment-derived fields.
 
 // Also, sets it as the default.
 
@@ -3288,7 +3288,7 @@ var Popover = Class.extend({
 
 
 
-	// Positions the popover optimally, using the top/left/right options
+	// Positions the popover optimally, using the top/left/right fields
 
 	position: function() {
 
@@ -5200,7 +5200,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 
 
 
-	// derived from options
+	// derived from fields
 
 	colHeadFormat: null, // TODO: move to another class. not applicable to all Grids
 
@@ -7468,7 +7468,7 @@ Grid.mixin({
 
 	// `range` can be the Event object itself, or something range-like, with at least a `start`.
 
-	// The `timeFormat` options and the grid's default format is used, but `formatStr` can override.
+	// The `timeFormat` fields and the grid's default format is used, but `formatStr` can override.
 
 	getEventTimeText: function(range, formatStr) {
 
@@ -10592,7 +10592,7 @@ var TimeGrid = Grid.extend({
 
 
 
-	// Parses various options into properties of this object
+	// Parses various fields into properties of this object
 
 	processOptions: function() {
 
@@ -12208,7 +12208,7 @@ var View = fc.View = Class.extend({
 
 	calendar: null, // owner Calendar object
 
-	options: null, // view-specific options
+	options: null, // view-specific fields
 
 	coordMap: null, // a CoordMap object for converting pixel regions to dates
 
@@ -12262,7 +12262,7 @@ var View = fc.View = Class.extend({
 
 
 
-	// for date utils, computed from options
+	// for date utils, computed from fields
 
 	nextDayThreshold: null,
 
@@ -12328,7 +12328,7 @@ var View = fc.View = Class.extend({
 
 
 
-		val = this.options[name]; // look at view-specific options first
+		val = this.options[name]; // look at view-specific fields first
 
 		if (val !== undefined) {
 
@@ -13656,7 +13656,7 @@ var View = fc.View = Class.extend({
 
 
 
-	// Build options object
+	// Build fields object
 
 	// -----------------------------------------------------------------------------------
 
@@ -13674,7 +13674,7 @@ var View = fc.View = Class.extend({
 
 
 
-	// determine language options
+	// determine language fields
 
 	if (options.lang in langOptionHash) {
 
@@ -13690,7 +13690,7 @@ var View = fc.View = Class.extend({
 
 
 
-	if (langOptions) { // if language options exist, rebuild...
+	if (langOptions) { // if language fields exist, rebuild...
 
 		options = mergeOptions({}, defaults, langOptions, instanceOptions);
 
@@ -14512,7 +14512,7 @@ var View = fc.View = Class.extend({
 
 			processSpecInput(fcViews[viewType]); // $.fullCalendar.views, lower precedence
 
-			processSpecInput(hash[viewType]); // options at initialization, higher precedence
+			processSpecInput(hash[viewType]); // fields at initialization, higher precedence
 
 			viewOptionsChain.unshift(viewOptions); // record older ancestors first
 
@@ -14546,7 +14546,7 @@ var View = fc.View = Class.extend({
 
 
 
-			// options that are specified per the view's duration, like "week" or "day"
+			// fields that are specified per the view's duration, like "week" or "day"
 
 			if (unitIsSingle && hash[unit]) {
 
@@ -14560,9 +14560,9 @@ var View = fc.View = Class.extend({
 
 			buttonText =
 
-				allButtonText[requestedViewType] || // init options, like "agendaWeek"
+				allButtonText[requestedViewType] || // init fields, like "agendaWeek"
 
-				(unitIsSingle ? allButtonText[unit] : null) || // init options, like "week"
+				(unitIsSingle ? allButtonText[unit] : null) || // init fields, like "week"
 
 				allDefaultButtonText[requestedViewType] || // late-lang data, like "agendaWeek"
 
@@ -16050,7 +16050,7 @@ function EventManager(options) { // assumed to be a calendar
 
 
 
-				// retrieve any outbound GET/POST $.ajax data from the options
+				// retrieve any outbound GET/POST $.ajax data from the fields
 
 				var customData;
 

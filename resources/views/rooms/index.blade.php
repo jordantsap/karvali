@@ -11,7 +11,7 @@
                             <label for="accommodation">Accommodation:</label>
                             <select name="accommodation" id="accommodation" class="form-control mx-sm-3">
                                 <option value="">Select Accommodation</option>
-                                <!-- Add your accommodation options here -->
+                                <!-- Add your accommodation fields here -->
                                 @foreach($accommodations as $accommodation)
                                     <option value="{{$accommodation->id}}">{{$accommodation->title}}</option>
                                 @endforeach
@@ -20,7 +20,7 @@
                             <label for="room_type">Room Type:</label>
                             <select name="room_type" id="room_type" class="form-control mx-sm-3">
                                 <option value="">Select Room Type</option>
-                                <!-- Add your room type options here -->
+                                <!-- Add your room type fields here -->
                                 @foreach($roomTypes as $roomType)
                                     <option value="{{$roomType->id}}">{{$roomType->title}}</option>
                                 @endforeach

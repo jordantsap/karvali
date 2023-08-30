@@ -4,14 +4,14 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-        {{__('Edit Option')}}: <small>{{$option->title}}</small>
+        {{__('Edit field')}}: <small>{{$field->title}}</small>
       <a class="btn btn-warning" href="javascript:history.back()">Go Back</a>
     </h1>
   </section>
 
   <section class="content">
     <div class="box">
-      <form method="post" action="{{ route('owner.options.update', $option->id) }}">
+      <form method="post" action="{{ route('owner.fields.update', $field->id) }}">
         @method('PUT')
         @csrf
         <div class="box-body">
@@ -25,7 +25,7 @@
                       <select id="product_type_id" name="product_type_id" class="form-control" >
                           <option value="">Επιλέξτε</option>
                           @foreach ($productTypes as $category)
-                              <option value="{{$category->id}}" @if( $option->productType->id == $category->id){{'selected'}}
+                              <option value="{{$category->id}}" @if( $field->productType->id == $category->id){{'selected'}}
                               @else None
                                   @endif>{{$category->title}}</option>
                           @endforeach
@@ -43,7 +43,7 @@
                               <strong class="text-danger">{{ $errors->first('title') }}</strong>
                           @endif
                           <div class="input-group">
-                              <input type="text" class="form-control" name="{{$locale}}[title]" value="{{ $option->title }}" id="title" placeholder="{{ $option->title }}">
+                              <input type="text" class="form-control" name="{{$locale}}[title]" value="{{ $field->title }}" id="title" placeholder="{{ $field->title }}">
                               <span class="input-group-addon">
                     <span class="glyphicon glyphicon-home"></span>
                   </span>
