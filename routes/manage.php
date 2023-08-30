@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
     ->name('owner')
     ->prefix('owner')
-    ->as('owner.')->group(function () {
+    ->as('owner.')->group(callback: function () {
 
         Route::resource('companies', CompanyController::class);
 
@@ -28,6 +28,8 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
         Route::resource('groups', \App\Http\Controllers\Owner\GroupController::class);
 
         Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
+
+        Route::resource('options', \App\Http\Controllers\Owner\OptionController::class);
 
         Route::resource('clubevents', \App\Http\Controllers\Owner\ClubEventController::class);
 //

@@ -42,7 +42,7 @@
 
             <tbody>
               <tr>
-                <td><img src="{{ asset('images/products/'.$item->model->logo) }}" alt="{{ $item->model->title }}" width="100px" height="100px"></td>
+                <td><img src="{{ asset($item->model->logo) }}" alt="{{ $item->model->title }}" width="100px" height="100px"></td>
                 <td>{{ $item->model->title }}<br>
                   <div class="divider"></div>
                   <a target="_blank" href="{{route('front.company',$item->model->company->slug)}}">{{ $item->model->company->title }}</a>

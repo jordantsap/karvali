@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Owner;
 use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
+use App\Models\FieldProduct;
 use App\Models\Image as ImageModel;
+use App\Models\Option;
+use App\Models\OptionProduct;
 use App\Models\Product;
 use App\Models\ProductType;
 use Illuminate\Contracts\Foundation\Application;
@@ -39,6 +42,7 @@ class ProductController extends Controller
     public function create()
     {
         $producttypes = ProductType::all();
+
         return view('auth.products.create', compact('producttypes'));
     }
 
@@ -60,8 +64,17 @@ class ProductController extends Controller
         $product->user_id = auth()->id();
         $product->company_id = $request->company_id;
         $product->product_type = $request->product_type;
+        $product->save();
 
-
+        // Save option values
+        $optionValues = $request->input('fieldvalue', []);
+        foreach ($optionValues as $optionId => $value) {
+            $optionValue = new FieldProduct();
+            $optionValue->product_id = $product->id;
+            $optionValue->field_id = $optionId;
+            $optionValue->value = $value;
+            $optionValue->save();
+        }
 
         $imageFields = GetInputsHelper::imageFields();
 
@@ -70,8 +83,8 @@ class ProductController extends Controller
                 $image = $request->file($fieldName);
 
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/events', $imageName);
-                $location = public_path("images/events/" . $imageName);
+                $imagePath = $image->storeAs('images/products', $imageName);
+                $location = public_path("images/products/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
 
                 $product->{$fieldName} = $imagePath;
@@ -122,6 +135,9 @@ class ProductController extends Controller
     public function show(Product $product)
     {
 //        $product = Product::find($id;
+        $product->load('fields');
+//        return $product->fields;
+
 
         return view('auth.products.product', compact('product'));
     }
@@ -176,8 +192,8 @@ class ProductController extends Controller
             foreach ($images as $image) {
 //                return $image;
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/accommodations', $imageName); // You can specify a custom directory
-                $location = public_path("images/accommodations/" . $imageName);
+                $imagePath = $image->storeAs('images/products', $imageName); // You can specify a custom directory
+                $location = public_path("images/products/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
                 // Save the image path to the database with polymorphic relationship
                 $upload = new ImageModel(['path' => $imagePath]);

@@ -42,7 +42,7 @@
                </div>
                <div class="card-body">
                  <div class="card-title">
-                   <a target="_blank" target="_blank" href="{{ route('front.product',$product->slug) }}">
+                   <a target="_blank" href="{{ route('front.product',$product->slug) }}">
                    <h2>{{ Str::limit($product->title, 30) }}</h2></a>
                  </div>
                  <div class="row" id="likecomment">
@@ -83,7 +83,7 @@
        </div>
 
       <div class="col-xs-9">
-{{--      	{{ $products->links() }}--}}
+      	{{ $products->links() }}
       </div>
 
      </div>

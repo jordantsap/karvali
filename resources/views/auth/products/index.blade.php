@@ -43,7 +43,7 @@
                         @endif
                       </td>
                       <td>{{$product->title}}</td>
-                      <td><img width="150px" height="150px" src="{{asset('images/products/'.$product->logo)}}" alt="{{$product->title}}"></td>
+                      <td><img width="150px" height="150px" src="{{asset($product->logo)}}" alt="{{$product->title}}"></td>
                       <td>{{Str::limit($product->description, 20)}}</td>
                       <td>
 {{--                        @can ('update', App\Models\Product::class)--}}

@@ -70,28 +70,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3">
-                    <div class="form-group{{ $errors->has('product_type') ? ' has-error' : '' }}">
-                        <label for="product_type">Κατηγορία Προϊόντος</label>
-                        @if ($errors->has('product_type'))
-                            <strong class="text-danger">{{ $errors->first('product_type') }}</strong>
-                        @endif
-                        <div class="input-group">
-                            <select id="product_type" value="{{ old('product_type') }}" name="product_type" class="form-control" required>
-                                <option value="">Επιλέξτε</option>
-                                @foreach($producttypes as $producttype)
-                                    <option value="{{ $producttype->id }}">{{ $producttype->title }}</option>
-                                @endforeach
-                            </select>
-                            <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-list"></span>
-                </span>
-                        </div>
-                    </div>
-                </div>
+                @livewire('category-field')
             </div>
 
             @foreach(config('translatable.locales') as $locale => $lang)
+                <h1>{{__($locale .' - '. $lang)}}</h1>
                 <div class="row">
                     <div class="col-xs-9">
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

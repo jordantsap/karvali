@@ -18,3 +18,8 @@ operation_daytime
 free plan 1 time foreach listing 0/m 1 listing unlimited sublisting, orders/bookings:/10%
 plan 2 10/month 1 listing unlimited sublisting
 plan 3 20/m unlimited listings
+
+Product belongs to ProductType hasmany Products 12m
+ProductType has many Options belongsTo ProductType 12m
+
+

@@ -12,7 +12,7 @@ return [
     'events' => 'Events in Nea Karvali',
     'venues' => 'Groups in Nea Karvali',
     'posts' => 'Blog Posts in Nea Karvali',
-    'products' => 'Products in Nea Karvali',
+    'products' => 'Product in Nea Karvali',
     'galleries' => 'Photo Galleries',
     'group' => 'Nea Karvali Group',
     'post' => 'Nea Karvali Post',
@@ -37,7 +37,7 @@ return [
     'eventstitle' => 'Events in Nea Karvali',
     'groupstitle' => 'Associations and venues of Nea Karvali. Club information',
     'poststitle' => 'News and news on the New Carvali website',
-    'productstitle' => 'Products and orders of the New Karvali guide',
+    'productstitle' => 'Product and orders of the New Karvali guide',
     'cameraspagetitle' => 'Watch the New Carvali site from the cameras',
     'contactheadtitle' => 'Contact the page administrator',
 ];

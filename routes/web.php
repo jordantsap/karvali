@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Client\BookingController;
+use App\Http\Controllers\Client\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +40,7 @@ Route::post('subscribers', 'Client\SubscriberController@store')->name('subscribe
 
 Route::resource('comment', 'Client\CommentController');
 Route::resource('like', 'Client\LikeController');
-Route::resource('cart', 'Client\CartController');
+Route::resource('cart', CartController::class);
 Route::post('clean-cart', 'Client\CartController@clean')->name('cart.clean');
 
 Route::resource('order', 'Client\OrderController');

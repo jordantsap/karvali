@@ -7,6 +7,12 @@
 <li>
     <a href="{{ route('owner.companies.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Company</span></a>
 </li>
+<li>
+    <a href="{{ route('owner.options.index') }}"><i class="fas fa-shopping-bag"></i> <span>Options List</span></a>
+</li>
+<li>
+    <a href="{{ route('owner.options.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create options</span></a>
+</li>
 
 <li>
     <a href="{{ route('owner.products.index') }}"><i class="fas fa-shopping-bag"></i> <span>Products List</span></a>
@@ -36,7 +42,7 @@
 <li><a href="{{ route('owner.amenities.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create amenity</span></a>
 </li>
 
-@role('Venue/Event Owner')
+@role('Venue/Events Owner')
 
 <li><a href="{{ route('owner.venues.index') }}"><i class="fas fa-shopping-bag"></i> <span>Venue List</span></a></li>
 <li><a href="{{ route('owner.venues.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Venue</span></a>
@@ -46,7 +52,7 @@
 
 @endrole
 
-@role('Group/Event Owner')
+@role('Group/Events Owner')
 
 <li><a href="{{ route('owner.groups.index') }}"><i class="fas fa-shopping-bag"></i> <span>Club List</span></a></li>
 <li><a href="{{ route('owner.groups.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Club</span></a>

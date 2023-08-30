@@ -6,7 +6,7 @@ return [
     'hotelspagedescription' => 'Find hotels of different types in Nea Karvali',
     'hotelspagekeywords' => 'hotel, accommodations, variety of hotels',
 
-    'productspagedescription' => 'Find Products and place your order from Nea Karvali. A wide variety of different items for every use',
+    'productspagedescription' => 'Find Product and place your order from Nea Karvali. A wide variety of different items for every use',
     'productspagekeywords'=> 'local products of new carvival, products of our place, ordering products in the village of new karvali',
 
     'groupspagedescription' => 'Clubs in the community of New Karvali.',

@@ -36,7 +36,7 @@
                                             <option value="">Επιλέξτε</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{$category->id}}"
-                                                        @if( $product->company_type == $category->id){{'selected'}}
+                                                        @if( $product->category->id == $category->id){{'selected'}}
                                                         @else None
                                                     @endif>{{$category->title}}</option>
                                             @endforeach

@@ -96,9 +96,9 @@ class Company extends Model implements TranslatableContract
         return $query->where('active', 1);
     }
 
-    public function periods() {
-        return $this->belongsToMany(DayPeriod::class);
-    }
+//    public function periods() {
+//        return $this->belongsToMany(DayPeriod::class);
+//    }
 
     protected $casts = [
         'days' => 'array',

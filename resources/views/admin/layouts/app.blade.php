@@ -166,5 +166,7 @@ $('ul.treeview-menu a').filter(function() {
         'showImageNumberLabel': false // Hide the image number label (1 of 3)
     });
 </script>
+@livewireScripts
+
 </body>
 </html>

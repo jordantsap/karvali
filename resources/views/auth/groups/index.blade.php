@@ -43,7 +43,7 @@
                       @endif
                     </td>
                     <td>{{$group->title}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/venues/'.$group->logo)}}" alt="{{$group->title}}"></td>
+                    <td><img width="150px" height="150px" src="{{asset($group->logo)}}" alt="{{$group->title}}"></td>
                     <td>{{Str::limit($group->description, 20)}}</td>
                     <td>
                     @can ('update-groups', App\Models\Group::class)

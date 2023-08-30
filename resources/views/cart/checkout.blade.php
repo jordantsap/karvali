@@ -127,7 +127,7 @@
           @foreach (Cart::content() as $item)
           <div class="col-xs-12">
             <div class="col-xs-6">
-              <img src="{{ asset('images/products/'.$item->model->logo) }}" class="img-responsive" alt="item">
+              <img src="{{ asset($item->model->logo) }}" class="img-responsive" alt="item">
               <div class=""><br>
                 <b>{{__('cart.productdescription')}}:</b></br>{{ Str::limit($item->model->description, 100) }}</div>
             </div>

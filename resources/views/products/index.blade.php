@@ -48,7 +48,7 @@
                                 <div class="card h-100">
                                     <a target="_blank" href="{{ route('front.product', $product->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
-                                            src="{{ asset('images/products/' . $product->logo) }}"
+                                            src="{{ asset($product->logo) }}"
                                             alt="{{ $product->title }}">
                                     </a>
                                 </div>

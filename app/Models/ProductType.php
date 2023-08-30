@@ -2,30 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductType extends Model implements TranslatableContract
 {
-  use Translatable, HasFactory;
+    use Translatable, HasFactory;
 
-  protected $fillable = ['title', 'slug'];
+    protected $fillable = ['title', 'slug'];
 
-  protected $translatedAttributes = [
-    'title',
-    'slug',
-  ];
+    protected $translatedAttributes = [
+        'title',
+        'slug',
+    ];
 
-  public function getRouteKeyName(): string
-  {
-      return 'slug';
-  }
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
 
-
-  public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
-  {
-    return $this->hasMany('App\Models\Product', 'product_type', 'id');
-  }
+    public function products(): HasMany
+    {
+        return $this->hasMany('App\Models\Product', 'product_type', 'id');
+    }
+    public function fields(): HasMany
+    {
+        return $this->hasMany(Field::class);
+    }
 }

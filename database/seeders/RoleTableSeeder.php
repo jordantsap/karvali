@@ -62,7 +62,7 @@ class RoleTableSeeder extends Seeder
             'delete-rooms',
             ]);
 
-        $role = Role::create(['name' => 'Venue/Event Owner']);
+        $role = Role::create(['name' => 'Venue/Events Owner']);
         $role->givePermissionTo([
             'venue-management',
             'view-venues',
@@ -75,7 +75,7 @@ class RoleTableSeeder extends Seeder
             'update-events',
             'delete-events',
             ]);
-        $role = Role::create(['name' => 'Group/Event Owner']);
+        $role = Role::create(['name' => 'Group/Events Owner']);
         $role->givePermissionTo([
             'group-management',
             'view-groups',

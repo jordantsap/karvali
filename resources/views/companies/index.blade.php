@@ -52,6 +52,7 @@
                                         <a
                                             href="{{ route('front.company', $company->slug) }}">{{ Str::limit($company->title, 20) }}</a>
                                     </h2>
+                                    {{$company->products->count() .' '. __('single.products')}}
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
                                             <i class="fa fa-3x fa-thumbs-up"></i><span

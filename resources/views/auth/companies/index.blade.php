@@ -44,7 +44,7 @@
                     </td>
                     <td>{{Str::limit($company->title,10)}}</td>
                     <td>{{$company->manager}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/companies/'.$company->logo)}}" alt="{{$company->title}}"></td>
+                    <td><img width="150px" height="150px" src="{{asset($company->logo)}}" alt="{{$company->title}}"></td>
                     <td>
                     @can ('update-companies', App\Models\Company::class)
                       <a class="btn btn-primary" href="{{route('owner.companies.edit', $company->id)}}">Edit</a> -

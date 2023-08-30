@@ -10,7 +10,7 @@ return [
     'posts' => 'News',
     'galleries'=>'Photos',
     'contact' => 'Contact',
-    'products' => 'Products',
+    'products' => 'Product',
     'account' => 'Account',
     'admin' => 'Administrator',
     'client' => 'Client',

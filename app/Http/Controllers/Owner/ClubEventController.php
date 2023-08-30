@@ -9,7 +9,11 @@ use App\Models\Event;
 use App\Models\Group;
 use App\Models\GroupType;
 use App\Models\Image as ImageModel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -18,7 +22,7 @@ class ClubEventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -31,7 +35,7 @@ class ClubEventController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -44,8 +48,8 @@ class ClubEventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -117,12 +121,12 @@ class ClubEventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Event $clubevent
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(Event $clubevent)
     {
-        $clubevent = Event::all();//where('user_id','==', auth()->id());
+//        $clubevent = Event::withTranslation()->get();//where('user_id','==', auth()->id());
 
         return view('auth.club-events.event', compact('clubevent'));
     }
@@ -131,7 +135,7 @@ class ClubEventController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Event $clubevent)
     {
@@ -142,9 +146,9 @@ class ClubEventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Event $event)
     {
@@ -194,7 +198,7 @@ class ClubEventController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

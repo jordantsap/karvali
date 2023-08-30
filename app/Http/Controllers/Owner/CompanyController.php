@@ -110,8 +110,8 @@ class CompanyController extends Controller
             foreach ($images as $image) {
 //                return $image;
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/accommodations', $imageName); // You can specify a custom directory
-                $location = public_path("images/accommodations/" . $imageName);
+                $imagePath = $image->storeAs('images/companies', $imageName); // You can specify a custom directory
+                $location = public_path("images/companies/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
                 // Save the image path to the database with polymorphic relationship
                 $upload = new ImageModel(['path' => $imagePath]);
@@ -184,8 +184,8 @@ class CompanyController extends Controller
                 $image = $request->file($fieldName);
 
                 $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
-                $imagePath = $image->storeAs('images/accommodations', $imageName);
-                $location = public_path("images/accommodations/" . $imageName);
+                $imagePath = $image->storeAs('images/companies', $imageName);
+                $location = public_path("images/companies/" . $imageName);
                 Image::make($image)->resize(800, 400)->save($location);
 
                 $company->{$fieldName} = $imagePath;

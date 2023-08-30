@@ -6,10 +6,13 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Model implements TranslatableContract
 {
-
     use Translatable, HasFactory;
 
     protected $translatedAttributes = [
@@ -38,6 +41,16 @@ class Product extends Model implements TranslatableContract
         'price',
     ];
 
+    public function fieldProductType(): HasManyThrough
+    {
+        return $this->hasManyThrough(Field::class, ProductType::class);
+    }
+
+    public function fields(): BelongsToMany
+    {
+        return $this->belongsToMany(Field::class)->withPivot('value');
+    }
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company', 'company_id');
@@ -58,7 +71,7 @@ class Product extends Model implements TranslatableContract
         return $this->belongsToMany('App\Models\Order');
     }
 
-    public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'imageable');
     }

@@ -76,12 +76,13 @@ class Permission extends \Spatie\Permission\Models\Permission
             'product-management',
             'order-management',
 
+            'view-options',
+            'create-options',
+            'update-options',
+            'delete-options',
+
             // NOT USED
 
-//            'view-adverts',
-//            'create-adverts',
-//            'update-adverts',
-//            'delete-adverts',
 //
 //            'view-albums',
 //            'create-albums',

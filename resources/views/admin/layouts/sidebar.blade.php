@@ -10,7 +10,7 @@
         </li>
         <li> <a>
             <i class="fas fa-tachometer-alt"></i>
-            <span> {{ auth()->user()->getRoleNames()[0] }}</a> </span></li>
+            <span> {{ auth()->user()->getRoleNames()}}</a> </span></li>
 
 {{--        <li class="dropdown">--}}
 {{--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}

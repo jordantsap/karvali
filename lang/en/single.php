@@ -22,7 +22,7 @@ return [
   'endtime'=> 'End Time',
   'entrance'=>'Entrance',
   'post'=> 'Article',
-  'products'=> 'Products',
+  'products'=> 'Product',
   'comments'=> 'Comments',
   'latestcomments'=> 'Latest Comments',
   'newcomment'=> 'Comment',
