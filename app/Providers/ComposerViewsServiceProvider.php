@@ -71,14 +71,14 @@ class ComposerViewsServiceProvider extends ServiceProvider
             }
             $view->with('accommodationTypes', $accommodationTypes);
 
-            if (!Cache::has('producttypes')) {
-                $producttypes = Cache::rememberForever('producttypes', function () {
-                    return ProductType::withTranslation()->get();
-                });
-            } else {
-                $producttypes = ProductType::withTranslation()->get();
-            }
-            $view->with('producttypes', $producttypes);
+//            if (!Cache::has('producttypes')) {
+//                $producttypes = Cache::rememberForever('producttypes', function () {
+//                    return ProductType::withTranslation()->get();
+//                });
+//            } else {
+//                $producttypes = ProductType::withTranslation()->get();
+//            }
+//            $view->with('producttypes', $producttypes);
 
             if (!Cache::has('events')) {
                 $events = Cache::rememberForever('events', function () {

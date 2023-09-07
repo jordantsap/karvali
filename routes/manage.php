@@ -2,8 +2,37 @@
 
 use App\Http\Controllers\Admin\AccommodationController;
 use App\Http\Controllers\Admin\AccommodationTypeController;
+use App\Http\Controllers\Auth\AuthRequestController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Owner\AmenityController;
+use App\Http\Controllers\Owner\ClubEventController;
 use App\Http\Controllers\Owner\CompanyController;
+use App\Http\Controllers\Owner\EventController;
+use App\Http\Controllers\Owner\FieldController;
+use App\Http\Controllers\Owner\GroupController;
+use App\Http\Controllers\Owner\ProductController;
+use App\Http\Controllers\Owner\RoomController;
+use App\Http\Controllers\Owner\RoomTypeController;
+use App\Http\Controllers\Owner\VenueController;
 use Illuminate\Support\Facades\Route;
+
+
+Route::middleware(['guest'])->group(function() {
+  Route::post('/register', [AuthRequestController::class,'store'])->name('postregister');
+  Route::get('userlogin', [LoginController::class,'showLoginForm'])->name('userlogin');
+  Route::post('login', 'Auth\LoginController@login')->name('postlogin');
+  //Password reset routes
+  Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
+  ->name('guest.password.request');
+  Route::post('email', 'Auth\ForgotPasswordController@sendResetLinkEmail')
+  ->name('guest.password.email');
+  Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')
+  ->name('guest.password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+});
+//VERIFY ROUTES
+// Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+// Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 
 
 Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
@@ -13,34 +42,26 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
 
         Route::resource('companies', CompanyController::class);
 
-        Route::resource('products', \App\Http\Controllers\Owner\ProductController::class);
+        Route::resource('products', ProductController::class);
 
         Route::resource('accommodation', \App\Http\Controllers\Owner\AccommodationController::class);
 
-        Route::resource('amenities', \App\Http\Controllers\Owner\AmenityController::class);
+        Route::resource('amenities', AmenityController::class);
 
-        Route::resource('rooms', \App\Http\Controllers\Owner\RoomController::class);
+        Route::resource('rooms', RoomController::class);
 
-        Route::resource('room-types', \App\Http\Controllers\Owner\RoomTypeController::class);
+        Route::resource('room-types', RoomTypeController::class);
 
-        Route::resource('venues', \App\Http\Controllers\Owner\VenueController::class);
+        Route::resource('venues', VenueController::class);
 
-        Route::resource('groups', \App\Http\Controllers\Owner\GroupController::class);
+        Route::resource('groups', GroupController::class);
 
-        Route::resource('events', \App\Http\Controllers\Owner\EventController::class);
+        Route::resource('events', EventController::class);
 
-        Route::resource('fields', \App\Http\Controllers\Owner\FieldController::class);
+        Route::resource('fields', FieldController::class);
 
-        Route::resource('clubevents', \App\Http\Controllers\Owner\ClubEventController::class);
-//
-//        Route::post('tmp-upload/', [\App\Http\Controllers\FilePondController::class, 'tmpUpload'])->name('tmpUpload');
-//        Route::delete('tmp-delete', [\App\Http\Controllers\FilePondController::class,'tpmDelete'])->name('tmpDelete');
-
-//        Route::get('user/{id}', 'UserController@showUser')->name('show.user');
-
+        Route::resource('clubevents', ClubEventController::class);
     });
-Route::post('accommodations/media', [\App\Http\Controllers\DropzoneController::class, 'storeMedia'])->name('projects.storeMedia');
-
 
 Route::prefix('manage')->as('admin.')->middleware(['auth'])->group(callback: function () {
     Route::get('/', 'Admin\HomeController@index');//->name('dashboard');
@@ -66,3 +87,9 @@ Route::prefix('manage')->as('admin.')->middleware(['auth'])->group(callback: fun
 });
 
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
+
+
+//        Route::post('tmp-upload/', [\App\Http\Controllers\FilePondController::class, 'tmpUpload'])->name('tmpUpload');
+//        Route::delete('tmp-delete', [\App\Http\Controllers\FilePondController::class,'tpmDelete'])->name('tmpDelete');
+
+//        Route::get('user/{id}', 'UserController@showUser')->name('show.user');

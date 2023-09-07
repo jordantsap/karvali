@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model implements TranslatableContract
   {
@@ -34,10 +33,9 @@ class Company extends Model implements TranslatableContract
     'image1',
     'image2',
     'image3',
-//    'days',
-    'schedule',
-//    'opening_times',
-//    'closing_times',
+////    'days',
+//    'schedule',
+    'openhours',
     'telephone',
     'website',
     'email',
@@ -88,7 +86,7 @@ class Company extends Model implements TranslatableContract
 
     public function adverts()
     {
-        return $this->morphMany('App\Models\Advert', 'advertable');
+        return $this->morphMany('App\Models\useless\Advert', 'advertable');
     }
 
     public function scopeActive($query)

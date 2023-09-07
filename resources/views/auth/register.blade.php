@@ -118,6 +118,6 @@
       </div>
     </div>
   </div>
-          @include('home.packages')
+{{--          @include('home.packages')--}}
 </div>
 @endsection

@@ -33,13 +33,7 @@
                                         <select id="company_type" value="{{ $product->company_type }}"
                                                 name="company_type"
                                                 class="form-control">
-                                            <option value="">Επιλέξτε</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{$category->id}}"
-                                                        @if( $product->category->id == $category->id){{'selected'}}
-                                                        @else None
-                                                    @endif>{{$category->title}}</option>
-                                            @endforeach
+                                            <option value="" readonly="readonly">{{$product->category->title}}</option>
                                         </select>
                                         <span class="input-group-addon">
                     <span class="glyphicon glyphicon-list"></span>

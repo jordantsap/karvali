@@ -187,7 +187,7 @@
                                     {{--                                <p>{{ __('page.date') }} {{ date('d-M-Y', strtotime($room->start_date))--}}
                                     {{--                }} - {{ __('page.from') }}:{{ $room->start_time }} - {{ __('page.until')--}}
                                     {{--                }}: {{$room->end_time}}</p>--}}
-                                    {{__('bookings.create')}}
+                                    {{__('page.createbookings')}}
                                     <form method="POST" action="{{ route('front.bookings.store', $room->id) }}">
                                         @csrf
                                         <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}"
@@ -197,11 +197,16 @@
                                             <input class="form-control" type="text" id="name" name="name"
                                                    placeholder="Enter your name here" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="email">{{__('form.email')}}</label>
-                                            <input class="form-control" type="email" id="email" name="email"
-                                                   placeholder="Enter your email here" required>
-                                        </div>
+                                        @if(auth()->user())
+                                            <div class="form-group">
+                                                <label for="email">{{__('form.email')}}</label>
+                                                <input class="form-control" type="email" id="email" name="email"
+                                                       value="{{auth()->user()?->email}}" placeholder="Enter your email here" disabled>
+                                            </div>
+                                        @else
+                                            <a href="{{route('login')}}">Login</a> or
+                                            <a href="{{route('register')}}">or register to make the booking</a>
+                                        @endif
                                         <div class="row">
                                             <div class="col-xs-6 form-group">
                                                 <label for="check_in_date">Check in date</label>
@@ -264,7 +269,7 @@
                 @else
                     <p class="text-center">{{ __('single.norooms') }}</p>
                 @endif
-                {{--                                    <div id="calendar"></div>--}}
+{{--                                                    <div id="calendar"></div>--}}
 
             </div>
             {{-- comments --}}
@@ -325,90 +330,41 @@
 
     {{--@include('modals.roomModal')--}}
 @endsection
-@section('extra-js')
+{{--@section('extra-js')--}}
 
-    {{--        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>--}}
-    {{--        <script>--}}
-    {{--            document.addEventListener('DOMContentLoaded', function() {--}}
-    {{--                var calendarEl = document.getElementById('calendar');--}}
+{{--            <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>--}}
+{{--            <script>--}}
+{{--                document.addEventListener('DOMContentLoaded', function() {--}}
+{{--                    var calendarEl = document.getElementById('calendar');--}}
 
-    {{--                var calendar = new FullCalendar.Calendar(calendarEl, {--}}
-    {{--                    initialView: 'dayGridMonth',--}}
-    {{--                    headerToolbar:{--}}
-    {{--                        center: 'dayGridMonth,dayGridWeek,dayGridDay',--}}
-    {{--                    },--}}
-    {{--                    buttonText:{--}}
-    {{--                        today:    'today',--}}
-    {{--                        month:    'month',--}}
-    {{--                        week:     'week',--}}
-    {{--                        dayGrid:      'day',--}}
-    {{--                        list:     'list'--}}
-    {{--                    },--}}
-    {{--                    selectable: true,--}}
-    {{--                    selectHelper: true,--}}
-    {{--                    select:function(start, end, allDAys){--}}
-    {{--                        console.log(start, end, allDAys);--}}
-    {{--                    },--}}
-    {{--                    droppable: true,--}}
-    {{--                    events: {--}}
-    {{--                        url: '/available-rooms',--}}
-    {{--                        method: 'GET',--}}
-    {{--                        failure: function() {--}}
-    {{--                            alert('Failed to fetch rooms!');--}}
-    {{--                        },--}}
-    {{--                    },--}}
-    {{--                    eventContent: function(arg) {--}}
-    {{--                        return {--}}
-    {{--                            html: arg.event.title // this can be the room name--}}
-    {{--                        };--}}
-    {{--                    }--}}
-    {{--                });--}}
+{{--                    var calendar = new FullCalendar.Calendar(calendarEl, {--}}
+{{--                        initialView: 'dayGridMonth',--}}
+{{--                        headerToolbar:{--}}
+{{--                            center: 'dayGridMonth,dayGridWeek,dayGridDay',--}}
+{{--                        },--}}
+{{--                        buttonText:{--}}
+{{--                            today:    'today',--}}
+{{--                            month:    'month',--}}
+{{--                            week:     'week',--}}
+{{--                            dayGrid:      'day',--}}
+{{--                            list:     'list'--}}
+{{--                        },--}}
+{{--                        selectable: true,--}}
+{{--                        selectHelper: true,--}}
+{{--                        select:function(start, end, allDAys){--}}
+{{--                            console.log(start, end, allDAys);--}}
+{{--                        },--}}
+{{--                        droppable: true,--}}
+{{--                        events: @json($availableEvents),--}}
+{{--                        eventContent: function(arg) {--}}
+{{--                            return {--}}
+{{--                                html: arg.event.title // this can be the room name--}}
+{{--                            };--}}
+{{--                        }--}}
+{{--                    });--}}
 
-    {{--                calendar.render();--}}
-    {{--            });--}}
-    {{--        </script>--}}
-    <script>
-        // $('#bookRoom').on('show.bs.modal', function (event) {
-        //     let button = $(event.relatedTarget);
-        //     let roomId = button.data('room-id');
-        //     let modal = $(this);
-        //     modal.find('#room_id').val(roomId);
-        //     modal.find('.modal-title').text('Booking of a room ' + button.parents('tr').children('.room-name').text());
-        //
-        //     $('#submitBooking').click(() => {
-        //         modal.find('button[type="submit"]').trigger('click');
-        //     });
-        // });
+{{--                    calendar.render();--}}
+{{--                });--}}
 
-
-        {{--document.addEventListener('DOMContentLoaded', function() {--}}
-        {{--    --}}{{--events={!! json_encode($rooms) !!};--}}
-        {{--    var calendarEl = document.getElementById('calendar');--}}
-        {{--    var calendar = new FullCalendar.Calendar(calendarEl, {--}}
-        //         initialView: 'dayGridMonth',
-        //         headerToolbar:{
-        //             center: 'dayGridMonth,dayGridWeek,dayGridDay',
-        //         },
-        //         buttonText:{
-        //             today:    'today',
-        //             month:    'month',
-        //             week:     'week',
-        //             dayGrid:      'day',
-        //             list:     'list'
-        //         },
-        //         selectable: true,
-        //         selectHelper: true,
-        //         select:function(start, end, allDAys){
-        //             console.log(start, end, allDAys);
-        //         },
-        //         droppable: true,
-        {{--        events: {!! json_encode($availableDates) !!},--}}
-        {{--    --}}{{--{--}}
-        {{--    --}}{{--        url: '{{ route('front.calendar.index') }}',--}}
-        {{--    --}}{{--        method: 'GET'--}}
-        {{--    --}}{{--    }--}}
-        {{--    });--}}
-        {{--    calendar.render();--}}
-        {{--});--}}
-    </script>
-@endsection
+{{--    </script>--}}
+{{--@endsection--}}

@@ -15,7 +15,7 @@ class DayTimeHelper
 //        });
 //    }
 
-    public function getWeekDaysAttribute()
+    public static function getWeekDaysAttribute()
     {
         return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     }

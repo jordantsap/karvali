@@ -21,7 +21,7 @@
                     @csrf
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('product_type_id') ? ' has-error' : '' }}">
-                            <label for="product_type_id">{{__("form.category")}}</label>
+                            <label for="product_type_id">{{__("form.categorytype")}}</label>
                             @if ($errors->has('product_type_id'))
                                 <strong class="text-danger">{{ $errors->first('product_type_id') }}</strong>
                             @endif

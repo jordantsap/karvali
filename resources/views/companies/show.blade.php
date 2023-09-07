@@ -181,14 +181,14 @@
                                 <td>{{$product->description}}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal">
+                                            data-target="#{{ $product->id }}">
                                         {{ __('single.addtocart') }}
                                     </button>
                                 </td>
                             </tr>
                             </tbody>
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

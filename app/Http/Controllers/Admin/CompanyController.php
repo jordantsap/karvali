@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
@@ -20,11 +26,11 @@ class CompanyController extends Controller
     /**
      * Display a listing of Company.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-      $this->authorize('view-companies', 'App\Company');
+      $this->authorize('view-companies', 'App\Models\Company');
       $companies = Company::orderBy('id', 'DESC')->paginate(10);
         return view('admin.companies.index', compact('companies'));
     }
@@ -32,7 +38,7 @@ class CompanyController extends Controller
     /**
      * Show the form for creating new Company.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -44,8 +50,8 @@ class CompanyController extends Controller
     /**
      * Store a newly created Company in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
      */
     public function store(Request $request)
     {
@@ -169,7 +175,7 @@ class CompanyController extends Controller
      * Show the form for editing Company.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -183,9 +189,9 @@ class CompanyController extends Controller
     /**
      * Update Company in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -334,7 +340,7 @@ class CompanyController extends Controller
      * Display Company.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -347,7 +353,7 @@ class CompanyController extends Controller
      * Remove Company from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

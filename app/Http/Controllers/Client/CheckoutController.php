@@ -37,7 +37,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-      if (auth()->user()) {
+      if (auth()->user() && !auth()->user()->hasRole('Customer')) {
         return redirect()->back()->with('error', 'Κάντε είσοδο στο σύστημα ως πελάτης για να πραγματοποιήσετε αγορές!');
       }
       if (Cart::instance('default')->count() == 0) {

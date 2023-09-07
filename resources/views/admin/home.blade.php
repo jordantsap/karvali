@@ -31,6 +31,13 @@
       </div>
       <div class="box-body">
         <br>
+          @role('Customer')
+          @if(auth()->user()->bookings())
+              @foreach(auth()->user()->bookings() as $booking)
+                {{$booking->user->email}}
+              @endforeach
+          @endif
+          @endrole
           @if(auth()->user()->currentMembership && auth()->user()->currentMembership->end_date > now())
               <p>You have an Active subscription.</p>
               <p>Plan: {{ auth()->user()->currentMembership->plan->name }}</p>

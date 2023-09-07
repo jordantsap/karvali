@@ -53,13 +53,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
 
-//                Route::group([
-//                    'middleware' => 'web',
-//                    'namespace' => $this->namespace,
-//                    'prefix' => $locale
-//                ], function ($router) {
-//                    require base_path('routes/web.php');
-//                });
+                Route::group([
+                    'middleware' => 'web',
+                    'namespace' => $this->namespace,
+                    'prefix' => $locale
+                ], function ($router) {
+                    require base_path('routes/testing.php');
+                });
 
                 Route::group([
                     'middleware' => 'web',

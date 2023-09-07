@@ -10,31 +10,13 @@ Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageControl
 
 Route::get('search', 'SearchController@getresults')->name('searchresults');
 
-// Route::view('/register', 'errors.404')->name('register-error');
-// Auth::routes();
-  Route::get('register/{membership_title?}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.membership');
- Auth::routes(['verify' => true]);
+Route::get('register/{membership_title?}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.member');
+
+Auth::routes(['verify' => true]);
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-//Route::middleware(['guest'])->group(function() {
-//  Route::post('/register', 'Auth\AuthRequestController@store')->name('register');
-//  Route::get('login', 'Auth\LoginController@showLoginForm')->name('logform');
-//  Route::post('login', 'Auth\LoginController@login')->name('login');
-//  //Password reset routes
-//  Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
-//  ->name('guest.password.request');
-//  Route::post('email', 'Auth\ForgotPasswordController@sendResetLinkEmail')
-//  ->name('guest.password.email');
-//  Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')
-//  ->name('guest.password.reset');;
-//  Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-//});
-//VERIFY ROUTES
-// Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-// Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-
 // EMAIL RESEND ROUTES
- Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::post('subscribers', 'Client\SubscriberController@store')->name('subscribers.store');
 
@@ -49,7 +31,7 @@ Route::resource('/checkout', 'Client\CheckoutController');
 Route::get('/guestcheckout', 'Client\CheckoutController@index')->name('guestcheckout.index')->middleware('guest');
 Route::get('/thankyou', 'Client\ConfirmationController@index')->name('confirmation.index');
 
-Route::get('/rooms/available-dates', [CalendarController::class,'getAvailableDates'])->name('available.rooms');
+Route::get('/rooms/available-dates', [CalendarController::class, 'getAvailableDates'])->name('available.rooms');
 Route::post('fullcalendar/action', [CalendarController::class, 'action']);
 
 //---------------------------------------------------
@@ -62,32 +44,23 @@ Route::as('front.')->group(function () {
         ->name('accommodation-types.show');
     Route::get('/accommodations/{accommodationId}/available-dates', 'AccommodationController@getAvailableDates')->name('accommodations.available-dates');
 
-
-
-
     Route::get('rooms', [\App\Http\Controllers\Client\RoomController::class, 'index'])->name('rooms');
     Route::get('rooms/{room:slug}', [\App\Http\Controllers\Client\RoomController::class, 'show'])->name('room.show');
 
     Route::redirect('/rooms/{room}/book', 'Client\BookingController@create')->name('bookings.create');
 
-    Route::post('/rooms/{room}/book', 'Client\BookingController@store')->name('bookings.store');
-
-//    Route::get('/available-dates', 'Client\BookingController@getAvailableRooms')->name('available-rooms');
-
+    Route::post('/rooms/{room}/book', [BookingController::class, 'store'])->name('bookings.store');
 
     Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
 
-//    Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
+    Route::get('bookings', [BookingController::class, 'index']);
 
     Route::resource('amenities', 'Client\CompanyController@index');
 
     Route::get('markets', 'Client\CompanyController@index')->name('companies');
 
     Route::get('market/{slug}', [\App\Http\Controllers\Client\CompanyController::class, 'show'])->name('company');
-
-
-    Route::get('products', [\App\Http\Controllers\Client\ProductController::class, 'index'])->name('products');
 
     Route::get('{product:slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 
@@ -106,7 +79,7 @@ Route::as('front.')->group(function () {
 
     Route::get('{companytype}/markets-type', 'Client\CompanyController@category')->name('companies-category');
 
-    Route::get('{producttype}/products-type', [App\Http\Controllers\Client\ProductController::class,'category'])->name('products-category');
+    Route::get('{producttype}/products-type', [App\Http\Controllers\Client\ProductController::class, 'category'])->name('products-category');
 
 
     Route::get('events', 'Client\EventController@index')->name('events.index');
@@ -116,18 +89,12 @@ Route::as('front.')->group(function () {
     Route::get('groups', 'Client\GroupController@index')->name('groups');
     Route::get('group/{slug}', 'Client\GroupController@show')->name('group');
 
-    Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class,'pastevents'])->name('pastevents');
+    Route::get('past-events', [App\Http\Controllers\Client\EventDatesController::class, 'pastevents'])->name('pastevents');
     Route::get('today-events', [App\Http\Controllers\Client\EventDatesController::class, 'todayevents'])->name('todayevents');
     Route::get('week-events', [App\Http\Controllers\Client\EventDatesController::class, 'weekevents'])->name('weekevents');
     Route::get('month-events', [App\Http\Controllers\Client\EventDatesController::class, 'monthevents'])->name('monthevents');
     Route::get('next-events', [App\Http\Controllers\Client\EventDatesController::class, 'upcomingevents'])->name('upcomingevents');
 
 // HOME PAGE ROUTE
-Route::get('/', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 });
-// AUTH ROUTE
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-//Route::get('{slug}/photo-album', 'Client\AlbumController@show')->name('gallery');
-//Route::get('photo-albums', 'Client\AlbumController@index')->name('galleries');

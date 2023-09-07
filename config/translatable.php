@@ -13,6 +13,7 @@ return [
     'locales' => [
         'en' => 'English',
         'el' => 'Ελληνικά',
+//        'de' => 'Deutsch',
     ],
 
     /*

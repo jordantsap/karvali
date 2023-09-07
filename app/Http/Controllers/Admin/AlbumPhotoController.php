@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\AlbumPhoto;
-use App\Models\Album;
-use Image;
 use App\Http\Controllers\Controller;
+use App\Models\unused\Album;
+use App\Models\unused\AlbumPhoto;
 use Illuminate\Http\Request;
+use Image;
 
 class AlbumPhotoController extends Controller
 {

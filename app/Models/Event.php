@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed $venue_id
@@ -84,7 +84,7 @@ class Event extends Model implements TranslatableContract
 
     public function adverts()
       {
-          return $this->morphMany('App\Models\Advert', 'advertable');
+          return $this->morphMany('App\Models\useless\Advert', 'advertable');
       }
 
     public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany

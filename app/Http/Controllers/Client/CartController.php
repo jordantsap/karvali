@@ -46,13 +46,13 @@ class CartController extends Controller
       $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
           return $cartItem->id === $request->id;
       });
-      if ($duplicates->isNotEmpty()) {
-        $notification = array(
-          'message' => __('alerts.productincart'),
-          'alert-type' => 'warning'
-        );
-          return redirect()->back()->with($notification);
-      }
+//      if ($duplicates->isNotEmpty()) {
+//        $notification = array(
+//          'message' => __('alerts.productincart'),
+//          'alert-type' => 'warning'
+//        );
+//          return redirect()->back()->with($notification);
+//      }
         Cart::instance('default')->add($request->id, $request->title, 1, $request->price)
         ->associate('App\Models\Product');
         $notification = array(

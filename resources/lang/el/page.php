@@ -72,4 +72,5 @@ return [
     'from'=> 'Έναρξη',
     'until'=> 'Λήξη',
     'description'=>'Περιγραφή',
+    'createbookings' => 'Κάντε κράτηση',
 ];

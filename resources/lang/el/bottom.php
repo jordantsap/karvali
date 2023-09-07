@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'website' => 'ΙΣΤΟΣΕΛΙΔΑ',
@@ -18,4 +18,8 @@ return [
     'newsletterheader' => 'Λήψη Ειδήσεων',
     'newslettersubscribe' => 'Εγγραφή στις ειδοποιήσεις',
     'workwithus' => 'Δούλεψε μαζί μας',
+    'login' => 'Είσοδος Χρήστη',
+    'adminlogin' => 'Είσοδος Διαχειριστή',
+    'register' => 'Εγγραφή Χρήστη',
+    'user' => 'ΧΡΗΣΤΗΣ',
 ];

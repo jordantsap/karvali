@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Album;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\unused\Album;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

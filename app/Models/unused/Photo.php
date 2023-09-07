@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\unused;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class Photo extends Model
 ];
   public function album()
   {
-      return $this->belongsTo('App\Models\Album', 'album_id');
+      return $this->belongsTo('App\Models\useless\Album', 'album_id');
   }
 }

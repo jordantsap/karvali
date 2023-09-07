@@ -34,18 +34,18 @@
                         </li>
                     @endforeach
                 </div>
-                <div class="col-xs-12 col-md-6 col-lg-3 text-center">
-                    <div class="animated slideInRight">
-                        <h3>{{ __('page.productstypes') }}</h3>
-                    </div>
-                    @foreach ($producttypes as $producttype)
-                        <li class="list-group-item">
-                            <a href="{{ route('front.products-category', $producttype->slug)}}"><h4
-                                    class="animated slideInUp">{{$producttype->title}} {{$producttype->products->count()}}</h4>
-                            </a>
-                        </li>
-                    @endforeach
-                </div>
+{{--                <div class="col-xs-12 col-md-6 col-lg-3 text-center">--}}
+{{--                    <div class="animated slideInRight">--}}
+{{--                        <h3>{{ __('page.productstypes') }}</h3>--}}
+{{--                    </div>--}}
+{{--                    @foreach ($producttypes as $producttype)--}}
+{{--                        <li class="list-group-item">--}}
+{{--                            <a href="{{ route('front.products-category', $producttype->slug)}}"><h4--}}
+{{--                                    class="animated slideInUp">{{$producttype->title}} {{$producttype->products->count()}}</h4>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
                 <div class="col-xs-12 col-md-6 col-lg-3 text-center">
                     <div class="animated slideInRight">
                         <h3>{{ __('page.venuestypes') }}</h3>

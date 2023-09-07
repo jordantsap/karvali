@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Album;
-use App\Models\AlbumPhoto;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Intervention\Image\ImageManagerStatic as Image;
-use Illuminate\Support\Str;
+use App\Models\unused\Album;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AlbumController extends Controller
 {

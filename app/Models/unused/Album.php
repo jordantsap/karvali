@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\unused;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
@@ -27,6 +27,6 @@ class Album extends Model
 
   public function photos()
   {
-      return $this->hasMany('App\Models\AlbumPhoto');
+      return $this->hasMany('App\Models\useless\AlbumPhoto');
   }
 }

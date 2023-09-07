@@ -10,7 +10,7 @@ class BookingTranslation extends Model
 {
     use Sluggable;
 
-    protected array $fillable = [
+    protected $fillable = [
         'name',
         'slug',
     ];

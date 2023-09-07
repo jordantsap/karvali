@@ -37,7 +37,7 @@
                     <td>{{$venue->id}}</td>
                     <td>{{$venue->active?"yes":'no'}}</td>
                     <td>{{$venue->title}}</td>
-                    <td><img width="150px" height="150px" src="{{asset('images/events/'.$venue->logo)}}" alt="{{$venue->title}}"></td>
+                    <td><img width="150px" height="150px" src="{{asset($venue->logo)}}" alt="{{$venue->title}}"></td>
                     <td>{{Str::limit($venue->description, 20)}}</td>
                     <td>
 {{--                    @can ('update_events', App\Event::class)--}}

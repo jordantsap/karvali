@@ -34,6 +34,23 @@
 				</div>
         <br>
 			</div>
+            <div class="col-sm-6 col-md-3">
+                <div class="panel panel-none">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">{{ __('bottom.user') }}</div>
+                    <div class="divider"></div>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="{{route('userlogin')}}">{{ __('bottom.login') }}</a></li>
+                        <li class="list-group-item"><a href="{{route('register')}}">{{ __('bottom.register') }}</a></li>
+                        <li class="list-group-item"><a href="{{route('login')}}">{{ __('bottom.adminlogin') }}</a></li>
+{{--                        <li class="list-group-item"><a href="">{{ __('bottom.customerhelp') }}</a></li>--}}
+{{--                        <li class="list-group-item"><a href="{{route('services')}}">{{ __('page.services') }}</a></li>--}}
+{{--                        <li class="list-group-item"><a href="">{{ __('bottom.sitemap') }}</a></li>--}}
+                    </ul>
+                </div>
+                <br>
+            </div>
       <br>
 			<div id="newsletters" class="col-sm-6 col-md-3">
         <br>

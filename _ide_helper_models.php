@@ -26,20 +26,20 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $advertable
- * @method static \Illuminate\Database\Eloquent\Builder|Advert newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Advert newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Advert query()
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereAdvertableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereAdvertableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereBanner($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereBannerAlt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereLinkTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert query()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereAdvertableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereAdvertableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereBannerAlt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereLinkTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Advert whereUserId($value)
  */
 	class Advert extends \Eloquent {}
 }
@@ -59,23 +59,23 @@ namespace App\Models{
  * @property string $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\AlbumPhoto> $photos
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\unused\AlbumPhoto> $photos
  * @property-read int|null $photos_count
  * @method static \Database\Factories\AlbumFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Album newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Album newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Album query()
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereAlt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereCoverImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereMetaKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Album whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album query()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereAlt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereCoverImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Album whereUpdatedAt($value)
  */
 	class Album extends \Eloquent {}
 }
@@ -91,18 +91,18 @@ namespace App\Models{
  * @property string $alt
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Album|null $album
+ * @property-read \App\Models\unused\Album|null $album
  * @method static \Database\Factories\AlbumPhotoFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto query()
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereAlbumId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereAlt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereFile($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AlbumPhoto whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto query()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereAlbumId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereAlt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\AlbumPhoto whereUpdatedAt($value)
  */
 	class AlbumPhoto extends \Eloquent {}
 }
@@ -172,7 +172,7 @@ namespace App\Models{
  * @property int|null $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Advert> $adverts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\unused\Advert> $adverts
  * @property-read int|null $adverts_count
  * @property-read \App\Models\CompanyType|null $category
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
@@ -331,7 +331,7 @@ namespace App\Models{
  * @property int|null $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Advert> $adverts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\unused\Advert> $adverts
  * @property-read int|null $adverts_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
  * @property-read int|null $comments_count
@@ -401,7 +401,7 @@ namespace App\Models{
  * @property int|null $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Advert> $adverts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\unused\Advert> $adverts
  * @property-read int|null $adverts_count
  * @property-read \App\Models\GroupType|null $category
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
@@ -625,10 +625,10 @@ namespace App\Models{
 /**
  * App\Models\Photo
  *
- * @property-read \App\Models\Album|null $album
- * @method static \Illuminate\Database\Eloquent\Builder|Photo newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Photo newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Photo query()
+ * @property-read \App\Models\unused\Album|null $album
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Photo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Photo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|unused\Photo query()
  */
 	class Photo extends \Eloquent {}
 }

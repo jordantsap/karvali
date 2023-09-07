@@ -2,9 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Advert;
+use App\Models\unused\Advert;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Str;
 
 class AdvertFactory extends Factory
 {

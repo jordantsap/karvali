@@ -2,18 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\{BelongsToMany, MorphTo};
 
 class Schedule extends Model
 {
     use HasFactory;
 
-    protected $fillable =['day_of_week','opening_time','closing_time','sessions'];
+    protected $fillable =['day_id','opening_time','closing_time','period_id'];
 
-    public function companies()
+    public function companies(): BelongsToMany
     {
         return $this->belongsToMany(Company::class);
     }

@@ -72,4 +72,5 @@ return [
     'from' => 'From',
     'until' => 'Until',
     'description' => 'Description',
+    'createbookings' => 'Create Booking',
 ];

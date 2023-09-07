@@ -7,13 +7,9 @@ use App\Helpers\GetInputs;
 use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
-use App\Models\Accommodation;
 use App\Models\Company;
-use App\Models\CompanyOpeningHours;
 use App\Models\CompanyType;
 use App\Models\Image as ImageModel;
-use App\Models\Schedule;
-use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,6 +21,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Spatie\OpeningHours\Day;
 use Spatie\OpeningHours\OpeningHours;
+use Spatie\OpeningHours\Time;
 
 class CompanyController extends Controller
 {
@@ -50,7 +47,7 @@ class CompanyController extends Controller
     public function create()
     {
         $companytypes = CompanyType::withTranslation()->get();
-        $days = DayTimeHelper::getDaysArray();
+        $days = Day::days();
 //        $sessions = Session::all();
 
         return view('auth.companies.create', compact('companytypes','days'));
@@ -64,7 +61,29 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request, Company $company)
     {
-//        dd($request->all());
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $openTimes = $request->input('open_times', []);
+        $closeTimes = $request->input('close_times', []);
+
+        $formattedOpeningHours = [];
+
+        foreach ($days as $day) {
+            if (in_array($day, $request->input('days', []))) {
+                if (isset($openTimes[$day][0]) && isset($closeTimes[$day][0])) {
+                    $formattedOpeningHours[$day] = [
+                        $openTimes[$day][0] . '-' . $closeTimes[$day][0]
+                    ];
+                } else {
+        return json_encode($openingHours);
+                    // If open and close times are not set, you might handle this case
+                    // by setting it to a default value or skipping the entry.
+                }
+            }
+        }
+
+        $openingHours = OpeningHours::create($formattedOpeningHours);
+
+
 
         $company = new Company();
         $company->active = $request->active;
@@ -72,6 +91,7 @@ class CompanyController extends Controller
 //        $company->days = json_encode($request->input('days'));
 //        $company->morningtime = '$request->morningtime';
 //        $company->afternoontime = '$request->afternoontime';
+        $company->openhours = json_encode($openingHours->forWeek());
 //        $company->creditcard = json_encode($request->input('creditcard'));
         $company->telephone = $request->telephone;
         $company->website = $request->website;
@@ -103,7 +123,7 @@ class CompanyController extends Controller
 //        $company->closing_times = json_encode($request->input('closing_times'));
 
         $company->save();
-
+//    dd( $openingHours->forWeek());
          // // Handle multiple image uploads with polymorphic relationship
         if ($request->hasFile('imgfile')) {
             $images = $request->file('imgfile');
@@ -140,15 +160,15 @@ class CompanyController extends Controller
      * Display the specified resource.
      *
      * @param Company $company
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show(Company $company)
     {
         $companytypes = CompanyType::withTranslation()->first();
 
-//        $days = $company->openingHours->day();
+        $days = Day::days();
 
-        return view('auth.companies.company',compact(['company','companytypes']));
+        return view('auth.companies.company',compact(['company','companytypes','days']));
     }
 
     /**

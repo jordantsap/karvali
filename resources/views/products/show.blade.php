@@ -13,7 +13,8 @@
 		<div id="products">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1 class="text-center">{{ $product->title }}</h1>
+					<h1 class="text-center">
+                        {{ $product->title }}</h1>
 	        <div class="divider"></div><br>
 				</div>
 				<br>

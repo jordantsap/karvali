@@ -39,58 +39,50 @@
                     </div>
                 </div>
 
-{{--                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">--}}
-{{--                    <h4>Working Days and Hours:</h4>--}}
-{{--                    <table class="table">--}}
-{{--                        <thead>--}}
-{{--                        <th>Day Name</th>--}}
-{{--                        <th>All Day</th>--}}
-{{--                        <th>Morning--}}
-{{--                            Start Time--}}
-{{--                            End Time--}}
-{{--                        </th>--}}
-{{--                        <th>Afternoon--}}
-{{--                            Start Time--}}
-{{--                            End Time--}}
-{{--                        </th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                        @foreach ($days as $day)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{ ucfirst($day) }}</td>--}}
-{{--                                <td>--}}
-{{--                                    <input type="checkbox" class="toggle-checkbox allday-checkbox" data-toggle="allday-{{ $day }}">--}}
-{{--                                    <label for="opening_time">Opening Time</label>--}}
-{{--                                    <label for="opening_hour">Opening Hour:</label>--}}
-{{--                                    <select class="form-control" name="opening_hour">--}}
-{{--                                        @for ($hour = 0,30; $hour <= 14; $hour++)--}}
-{{--                                            <option step="30" value="{{ $hour }}">{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00</option>--}}
-{{--                                        @endfor--}}
-{{--                                    </select>--}}
-{{--                                    <br>--}}
-{{--                                    <label for="closing_hour">Closing Hour:</label>--}}
-{{--                                    <select name="closing_hour" class="form-control">--}}
-{{--                                        @for ($hour = 14; $hour <= 24; $hour++)--}}
-{{--                                            <option value="{{ $hour }}">{{ str_pad($hour, 2, '0', STR_PAD_LEFT) }}:00</option>--}}
-{{--                                        @endfor--}}
-{{--                                    </select>--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    <input type="checkbox" class="toggle-checkbox morning-checkbox" data-toggle="morning-{{ $day }}">--}}
-{{--                                    <input type="time" name="working_days[{{ $day }}][start_time]" class="morning-{{ $day }} morning-input" placeholder="Start Time">--}}
-{{--                                    <input type="time" name="working_days[{{ $day }}][end_time]" class="morning-{{ $day }} morning-input" placeholder="End Time">--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    <input type="checkbox" class="toggle-checkbox afternoon-checkbox" data-toggle="afternoon-{{ $day }}">--}}
-{{--                                    <input type="time" name="working_days[{{ $day }}][start_time]" class="afternoon-{{ $day }} afternoon-input" placeholder="Start Time">--}}
-{{--                                    <input type="time" name="working_days[{{ $day }}][end_time]" class="afternoon-{{ $day }} afternoon-input" placeholder="End Time">--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-{{--                </div>--}}
+                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">
+                    <h4>Working Days and Hours:</h4>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Open Time</th>
+                            <th>Close Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as $day)
+                            <tr>
+                                <td>
+                                    <div class="day-input">
+                                        <input type="checkbox" name="days[]" value="{{ $day }}" id="{{ $day }}">
+                                        <label for="{{ $day }}">{{ ucfirst($day) }}</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="open_times[{{ $day }}][]">
+                                        <option value="">Select Open Time</option>
+                                        @for ($hour = 0; $hour < 24; $hour++)
+                                            @for ($minute = 0; $minute < 60; $minute += 15)
+                                                <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                            @endfor
+                                        @endfor
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="close_times[{{ $day }}][]">
+                                        <option value="">Select Close Time</option>
+                                        @for ($hour = 0; $hour < 24; $hour++)
+                                            @for ($minute = 0; $minute < 60; $minute += 15)
+                                                <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                            @endfor
+                                        @endfor
+                                    </select>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="col-xs-2 form-group">
                     <label for="telephone">{{__('form.telephone')}}</label>

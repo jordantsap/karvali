@@ -28,7 +28,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('user_id', auth()->user()->id)->withTranslation()
+        $products = Product::where('user_id', auth()->user()->id)
+            ->withTranslation()
             ->with('category')
             ->paginate();
         return view('auth.products.index', compact('products'));
@@ -73,6 +74,7 @@ class ProductController extends Controller
             $optionValue->product_id = $product->id;
             $optionValue->field_id = $optionId;
             $optionValue->value = $value;
+//            $optionValue->translateOrNew($locale)->value = $request->{$locale}[$value];
             $optionValue->save();
         }
 
@@ -114,7 +116,6 @@ class ProductController extends Controller
             $product->translateOrNew($locale)->slug = Str::slug($request->{$locale}['title']);
             $product->translateOrNew($locale)->meta_description = $request->{$locale}['meta_description'];
             $product->translateOrNew($locale)->meta_keywords = $request->{$locale}['meta_keywords'];
-//            $product->translateOrNew($locale)->manager = $request->{$locale}['manager'];
             $product->translateOrNew($locale)->description = $request->{$locale}['description'];
         }
 
@@ -130,14 +131,11 @@ class ProductController extends Controller
      * Display the specified resource.
      *
      * @param Product $product
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show(Product $product)
     {
-//        $product = Product::find($id;
         $product->load('fields');
-//        return $product->fields;
-
 
         return view('auth.products.product', compact('product'));
     }
@@ -151,9 +149,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::withTranslation()->find($id);
-        $categories = ProductType::withTranslation()->get();
+//        $categories = ProductType::withTranslation()->get();
 
-        return view('auth.products.edit', compact(['product', 'categories']));
+        return view('auth.products.edit', compact('product'));
     }
 
     /**
@@ -169,9 +167,6 @@ class ProductController extends Controller
 //        dd($request->except($imageFields));
 
         $product->update($request->except($imageFields));
-
-//        $product->amenities()->sync($request->input('amenities', []));
-
 
         foreach ($imageFields as $fieldName) {
             if ($request->hasFile($fieldName)) {
@@ -216,8 +211,14 @@ class ProductController extends Controller
      * @param Product $product
      * @return Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        $notification = array(
+            'message' => 'Product deleted successfully',
+            'alert-type' => 'info'
+        );
+        return back()->with($notification);
     }
 }

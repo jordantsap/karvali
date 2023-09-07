@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Advert;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\unused\Advert;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\ImageManagerStatic as Image;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AdvertController extends Controller
 {

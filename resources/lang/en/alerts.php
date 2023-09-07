@@ -8,4 +8,6 @@ return [
     'productupdated' => 'Product quantity updated!',
     'productdestroy' => 'Product removed from cart!',
     'cartclean' => 'You just emptied the cart!',
+    'orderunauth'=>'Log in as a customer to make purchases!',
+    'bookunauth'=>'Log in as a customer to make bookings!',
 ];

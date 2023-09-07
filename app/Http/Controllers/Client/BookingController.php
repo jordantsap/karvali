@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    public function index()
+    {
+        return Booking::all();
+        return view('bookings.index');
+    }
 //    public function create()
 //    {
 //        $room = Room::all();
@@ -21,6 +26,16 @@ class BookingController extends Controller
 
     public function store(Request $request, $roomId)
     {
+
+        if (!auth()->user()) {
+
+            toastr()
+                ->persistent()
+//                ->closeButton()
+                ->addError(__('alerts.bookunauth'));
+
+            return redirect()->back();
+        }
         $room = Room::findOrFail($roomId); // Assuming you have a Room model
 
         // Validate the form data
@@ -53,8 +68,12 @@ class BookingController extends Controller
                 'children' => $request->input('children'),
                 'status' => Status::PENDING,
             ]);
+            toastr()
+                ->persistent()
+//                ->closeButton()
+                ->addSuccess('Booking created successfully!');
 
-            return redirect()->back()->with('success', 'Booking created successfully!');
+            return redirect()->back();
         }
 
     }

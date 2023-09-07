@@ -75,7 +75,7 @@ class Venue extends Model implements TranslatableContract
 
     public function adverts()
     {
-        return $this->morphMany('App\Models\Advert', 'advertable');
+        return $this->morphMany('App\Models\useless\Advert', 'advertable');
     }
 
     public function scopeActive($query)

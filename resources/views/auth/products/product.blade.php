@@ -43,18 +43,23 @@
                                 @endif
                             </div>
                         </div>
-                        @if ($product->fields->count() > 0)
+                        @if ($product->has('fields'))
                             <div class="col-xs-12">
                                 <h2>Fields</h2>
 
                                 @foreach ($product->fields as $field)
-                                    <br>
-                                    <label for="category">Product field</label>
-                                    <input class="form-control" type="text" placeholder="{{ $field->title }}" readonly>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <label for="category">Product field</label>
+                                            <input class="form-control" type="text" placeholder="{{ $field->title }}" readonly>
+                                        </div>
 
-                                    <label for="category">Value</label>
-                                    <input class="form-control" type="text" placeholder="{{ $field->pivot->value }}" readonly>
-
+                                        <div class="col-xs-6">
+                                            <label for="category">Value</label>
+                                            <input class="form-control" type="text" placeholder="{{ $field->pivot->value }}" readonly>
+                                        </div>
+                                    </div>
+                                    <hr>
                                 @endforeach
                                 <hr>
                             </div>
@@ -67,7 +72,7 @@
                     <div class="row">
                         <div class="col-xs-2 form-group">
                             <label for="active"> Active
-                                <input type="checkbox" name="active" value="1" @if ($product->active == 1)
+                                <input type="checkbox" name="active" @if ($product->active == 1)
                                     {{'checked'}}
                                     @endif>
                             </label>

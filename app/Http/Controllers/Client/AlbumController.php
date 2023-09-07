@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Models\Album;
-use App\Models\AlbumPhoto;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\unused\Album;
 
 class AlbumController extends Controller
 {

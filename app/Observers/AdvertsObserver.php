@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Advert;
+use App\Models\unused\Advert;
 
 class AdvertsObserver
 {

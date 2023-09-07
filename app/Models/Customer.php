@@ -12,7 +12,7 @@ use App\Notifications\CustomerResetPasswordNotification;
 class Customer extends Authenticatable
 {
     use Notifiable;
-    // protected $guard = 'customer';
+     protected string $guard = 'customer';
     protected $table = 'customers';
   /**
    * The attributes that are mass assignable.
