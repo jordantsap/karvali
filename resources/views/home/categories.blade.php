@@ -65,7 +65,7 @@
                     </div>
                     @foreach ($events as $event)
                         <li class="list-group-item">
-                            <a href="{{ route('front.events.index', $event->slug)}}"><h4
+                            <a href="{{ route('front.event.show', $event->slug)}}"><h4
                                     class="animated slideInUp">{{$event->title}}</h4></a>
                         </li>
                     @endforeach

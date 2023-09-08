@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Owner;
 
-use App\Helpers\DayTimeHelper;
 use App\Helpers\GetInputs;
 use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
@@ -20,8 +19,6 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Spatie\OpeningHours\Day;
-use Spatie\OpeningHours\OpeningHours;
-use Spatie\OpeningHours\Time;
 
 class CompanyController extends Controller
 {
@@ -50,7 +47,7 @@ class CompanyController extends Controller
         $days = Day::days();
 //        $sessions = Session::all();
 
-        return view('auth.companies.create', compact('companytypes','days'));
+        return view('auth.companies.create', compact('companytypes', 'days'));
     }
 
     /**
@@ -61,28 +58,27 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request, Company $company)
     {
-        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-        $openTimes = $request->input('open_times', []);
-        $closeTimes = $request->input('close_times', []);
-
-        $formattedOpeningHours = [];
-
-        foreach ($days as $day) {
-            if (in_array($day, $request->input('days', []))) {
-                if (isset($openTimes[$day][0]) && isset($closeTimes[$day][0])) {
-                    $formattedOpeningHours[$day] = [
-                        $openTimes[$day][0] . '-' . $closeTimes[$day][0]
-                    ];
-                } else {
-        return json_encode($openingHours);
-                    // If open and close times are not set, you might handle this case
-                    // by setting it to a default value or skipping the entry.
-                }
-            }
-        }
-
-        $openingHours = OpeningHours::create($formattedOpeningHours);
-
+//        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+//        $openTimes = $request->input('open_times', []);
+//        $closeTimes = $request->input('close_times', []);
+//
+//        $formattedOpeningHours = [];
+//
+//        foreach ($days as $day) {
+//            if (in_array($day, $request->input('days', []))) {
+//                if (isset($openTimes[$day][0]) && isset($closeTimes[$day][0])) {
+//                    $formattedOpeningHours[$day] = [
+//                        $openTimes[$day][0] . '-' . $closeTimes[$day][0]
+//                    ];
+//                } else {
+//        return json_encode($openingHours);
+//                    // If open and close times are not set, you might handle this case
+//                    // by setting it to a default value or skipping the entry.
+//                }
+//            }
+//        }
+//
+//        $openingHours = OpeningHours::create($formattedOpeningHours);
 
 
         $company = new Company();
@@ -91,7 +87,7 @@ class CompanyController extends Controller
 //        $company->days = json_encode($request->input('days'));
 //        $company->morningtime = '$request->morningtime';
 //        $company->afternoontime = '$request->afternoontime';
-        $company->openhours = json_encode($openingHours->forWeek());
+//        $company->openhours = json_encode($openingHours->forWeek());
 //        $company->creditcard = json_encode($request->input('creditcard'));
         $company->telephone = $request->telephone;
         $company->website = $request->website;
@@ -123,8 +119,8 @@ class CompanyController extends Controller
 //        $company->closing_times = json_encode($request->input('closing_times'));
 
         $company->save();
-//    dd( $openingHours->forWeek());
-         // // Handle multiple image uploads with polymorphic relationship
+
+        // // Handle multiple image uploads with polymorphic relationship
         if ($request->hasFile('imgfile')) {
             $images = $request->file('imgfile');
             foreach ($images as $image) {
@@ -168,7 +164,7 @@ class CompanyController extends Controller
 
         $days = Day::days();
 
-        return view('auth.companies.company',compact(['company','companytypes','days']));
+        return view('auth.companies.company', compact(['company', 'companytypes', 'days']));
     }
 
     /**
@@ -181,7 +177,7 @@ class CompanyController extends Controller
     {
         $categories = CompanyType::withTranslation()->get();
 
-        return view('auth.companies.edit', compact(['company','categories']));
+        return view('auth.companies.edit', compact(['company', 'categories']));
 
     }
 
@@ -233,7 +229,7 @@ class CompanyController extends Controller
 
         toastr()->addSuccess('Company updated successfully.');
 
-        return  view('auth.companies.company', array('company' => $company));
+        return view('auth.companies.company', array('company' => $company));
     }
 
     /**
@@ -244,7 +240,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        Company::where('id',$company->id)->delete();
+        Company::where('id', $company->id)->delete();
         toastr()->addSuccess('Company was deleted successfully.');
         return redirect(route('owner.companies.index'));
     }

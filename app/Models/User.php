@@ -6,9 +6,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-/**
- * @method chargeCredits(int $totalHours, Room $room)
- */
 class User extends Authenticatable // implements MustVerifyEmail
 {
     use Notifiable, HasRoles;

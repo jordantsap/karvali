@@ -43,7 +43,7 @@ return [
     | change to any translatable.locales if error Astrotomic\Translatable\Locales::current(): Return value must be of type string, null returned
     | during running seeders
     */
-    'locale' =>  env('APP_LANG', null), // 'en' || null
+    'locale' =>  null,//env('APP_LANG', null), // 'en' || null
 
     /*
     |--------------------------------------------------------------------------

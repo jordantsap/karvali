@@ -26,7 +26,7 @@ class CreateCompaniesTable extends Migration
 //             $table->string('days')->nullable();
 //             $table->string('opening_times')->nullable();
 //             $table->string('closing_times')->nullable();
-             $table->json('openhours');
+//             $table->json('openhours');
              $table->string('telephone')->nullable();
              $table->string('website')->nullable();
              $table->string('email')->nullable();

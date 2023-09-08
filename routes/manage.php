@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Admin\AccommodationController;
 use App\Http\Controllers\Admin\AccommodationTypeController;
-use App\Http\Controllers\Auth\AuthRequestController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Client\AuthRequestController;
 use App\Http\Controllers\Owner\AmenityController;
 use App\Http\Controllers\Owner\ClubEventController;
 use App\Http\Controllers\Owner\CompanyController;
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['guest'])->group(function() {
   Route::post('/register', [AuthRequestController::class,'store'])->name('postregister');
   Route::get('userlogin', [LoginController::class,'showLoginForm'])->name('userlogin');
-  Route::post('login', 'Auth\LoginController@login')->name('postlogin');
+  Route::post('userlogin', 'Auth\LoginController@login')->name('postlogin');
   //Password reset routes
   Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
   ->name('guest.password.request');

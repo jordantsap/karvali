@@ -26,7 +26,7 @@ class RoomFactory extends Factory
             'kids'=> '1',
             'accommodation_id'=> Accommodation::factory()->create()->id,
             'room_type_id'=> RoomType::factory()->create()->id,
-            'title' => $this->faker->company,
+            'title' => $this->faker->name,
             'slug' =>$this->faker->slug,
             'meta_description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'meta_keywords' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),

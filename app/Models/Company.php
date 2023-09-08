@@ -35,7 +35,7 @@ class Company extends Model implements TranslatableContract
     'image3',
 ////    'days',
 //    'schedule',
-    'openhours',
+//    'openhours',
     'telephone',
     'website',
     'email',

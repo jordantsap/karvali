@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Models\User;
+use App\Notifications\NewUserNotification;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Notifications\NewUserNotification;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use App\Models\Role;
 use Notification;
 
 class AuthRequestController extends Controller
