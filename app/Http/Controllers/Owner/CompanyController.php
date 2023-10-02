@@ -58,29 +58,6 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request, Company $company)
     {
-//        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-//        $openTimes = $request->input('open_times', []);
-//        $closeTimes = $request->input('close_times', []);
-//
-//        $formattedOpeningHours = [];
-//
-//        foreach ($days as $day) {
-//            if (in_array($day, $request->input('days', []))) {
-//                if (isset($openTimes[$day][0]) && isset($closeTimes[$day][0])) {
-//                    $formattedOpeningHours[$day] = [
-//                        $openTimes[$day][0] . '-' . $closeTimes[$day][0]
-//                    ];
-//                } else {
-//        return json_encode($openingHours);
-//                    // If open and close times are not set, you might handle this case
-//                    // by setting it to a default value or skipping the entry.
-//                }
-//            }
-//        }
-//
-//        $openingHours = OpeningHours::create($formattedOpeningHours);
-
-
         $company = new Company();
         $company->active = $request->active;
         $company->company_type = $request->company_type;

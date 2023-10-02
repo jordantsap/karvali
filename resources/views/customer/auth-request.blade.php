@@ -11,7 +11,7 @@
         <h1 class="text-center">{{__('register.maintitle')}}<br>
           <small class="text-center">{{__('register.subtitle')}}</small>
         </h1>
-        <form class="form-group" method="POST" action="{{ route('postregister.customer') }}">
+        <form class="form-group" method="POST" action="{{ route('register') }}">
         <div class="col-xs-10">
             {{ csrf_field() }}
 
@@ -21,16 +21,7 @@
                 <li class="divider"></li>
                 <br>
               </div>
-{{--              <div class="col-xs-12 col-xs-6 form-group">--}}
-{{--                <label for="category" class="control-label">{{__('register.requestpackagelabel')}}</label>--}}
-{{--                <div class="">--}}
-{{--                  <select class="form-control" name="role">--}}
-{{--                    @foreach ($roles as $role)--}}
-{{--                      <option value="{{$role->id}}">{{$role->name}}</option>--}}
-{{--                    @endforeach--}}
-{{--                  </select>--}}
-{{--                </div>--}}
-{{--              </div>--}}
+
               <div class="col-xs-12 col-md-6 form-group{{ $errors->has("category") ? ' has-error' : '' }}">
                 <label for="category" class="control-label">{{__('register.requestcategorylabel')}}</label>
 

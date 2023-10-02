@@ -1,5 +1,5 @@
 ﻿@extends('layouts.main')
-@section('title', $accommodation->accommodationType ? $accommodation->accommodationType->title:''.' '.$accommodation->title)
+@section('title', $accommodation->accommodationType()->exists() ? $accommodation->accommodationType->title.' ' .$accommodation->title:''.' ' .$accommodation->title)
 @section('meta_description', $accommodation->title.' '.__('head.hotel').' '.$accommodation->meta_description)
 @section('meta_keywords', $accommodation->meta_keywords.'  '. $accommodation->title.' '.__('head.hotel'))
 
@@ -205,7 +205,7 @@
                                             </div>
                                         @else
                                             <a href="{{route('login')}}">Login</a> or
-                                            <a href="{{route('register')}}">or register to make the booking</a>
+                                            <a href="{{route('register')}}">register to make the booking</a>
                                         @endif
                                         <div class="row">
                                             <div class="col-xs-6 form-group">

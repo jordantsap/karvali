@@ -41,11 +41,9 @@
                     <div class="divider"></div>
                     <!-- List group -->
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="{{route('userlogin')}}">{{ __('bottom.login') }}</a></li>
-                        <li class="list-group-item"><a href="{{route('register')}}">{{ __('bottom.register') }}</a></li>
+                        <li class="list-group-item"><a href="{{route('login')}}">{{ __('bottom.login') }}</a></li>
+                        <li class="list-group-item"><a href="{{route('register.customer')}}">{{ __('bottom.register') }}</a></li>
                         <li class="list-group-item"><a href="{{route('login')}}">{{ __('bottom.adminlogin') }}</a></li>
-{{--                        <li class="list-group-item"><a href="">{{ __('bottom.customerhelp') }}</a></li>--}}
-{{--                        <li class="list-group-item"><a href="{{route('services')}}">{{ __('page.services') }}</a></li>--}}
 {{--                        <li class="list-group-item"><a href="">{{ __('bottom.sitemap') }}</a></li>--}}
                     </ul>
                 </div>
