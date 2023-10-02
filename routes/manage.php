@@ -1,44 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\AccommodationController;
-use App\Http\Controllers\Admin\AccommodationTypeController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Client\AuthRequestController;
-use App\Http\Controllers\Owner\AmenityController;
-use App\Http\Controllers\Owner\ClubEventController;
-use App\Http\Controllers\Owner\CompanyController;
-use App\Http\Controllers\Owner\EventController;
-use App\Http\Controllers\Owner\FieldController;
-use App\Http\Controllers\Owner\GroupController;
-use App\Http\Controllers\Owner\ProductController;
-use App\Http\Controllers\Owner\RoomController;
-use App\Http\Controllers\Owner\RoomTypeController;
-use App\Http\Controllers\Owner\VenueController;
+use App\Http\Controllers\Admin\{AccommodationController, AccommodationTypeController};
+use App\Http\Controllers\Owner\{AmenityController,
+    ClubEventController,
+    CompanyController,
+    EventController,
+    FieldController,
+    GroupController,
+    ProductController,
+    RoomController,
+    RoomTypeController,
+    VenueController};
 use Illuminate\Support\Facades\Route;
-
-
-Route::middleware(['guest'])->group(function() {
-  Route::post('/register', [AuthRequestController::class,'store'])->name('postregister');
-  Route::get('userlogin', [LoginController::class,'showLoginForm'])->name('userlogin');
-  Route::post('userlogin', 'Auth\LoginController@login')->name('postlogin');
-  //Password reset routes
-  Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
-  ->name('guest.password.request');
-  Route::post('email', 'Auth\ForgotPasswordController@sendResetLinkEmail')
-  ->name('guest.password.email');
-  Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')
-  ->name('guest.password.reset');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-});
-//VERIFY ROUTES
-// Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-// Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-
 
 Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
     ->name('owner')
     ->prefix('owner')
-    ->as('owner.')->group(callback: function () {
+    ->as('owner.')->group(function () {
 
         Route::resource('companies', CompanyController::class);
 

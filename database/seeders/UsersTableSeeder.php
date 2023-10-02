@@ -124,7 +124,7 @@ class UsersTableSeeder extends Seeder
         $customer->fullname = 'customer';
         $customer->tel = '2510316852';
         $customer->mobile = '6984262910';
-        $customer->email = 'customer@customer.local';
+        $customer->email = 'customer@karvali.local';
         $customer->password = bcrypt('123456');
         $customer->email_verified_at = now();
         $customer->save();

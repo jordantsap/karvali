@@ -61,7 +61,7 @@ class RegisterController extends Controller
 //        $memberships = Membership::get();
         $plans = Plan::withTranslation()->get();
 
-        return view('auth.register', compact('roles','plans', 'membership_title'));
+        return view('admin.register', compact('roles','plans', 'membership_title'));
     }
 
 

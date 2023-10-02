@@ -129,7 +129,7 @@
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li>
-                                        <a href="{{ route('register') }}">{{ __('header.register') }}</a>
+                                        <a href="{{ route('register.customer') }}">{{ __('header.register') }}</a>
                                     </li>
                                 @endguest
                                 @auth('web')
