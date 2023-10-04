@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\Client\AuthRequestController;
 use App\Http\Controllers\Client\BookingController;
 use App\Http\Controllers\Client\CartController;
 use Illuminate\Support\Facades\Auth;
@@ -10,9 +12,31 @@ Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageControl
 
 Route::get('search', 'SearchController@getresults')->name('searchresults');
 
+Route::middleware(['guest'])->group(function() {
+
+    Route::get('customer/register', [App\Http\Controllers\Client\AuthRequestController::class, 'create'])->name('register.customer');
+
+    Route::post('customer/register', [AuthRequestController::class,'store'])->name('postregister.customer');
+
+    Route::get('userlogin', [LoginController::class,'showLoginForm'])->name('userlogin');
+    Route::post('userlogin', 'Auth\LoginController@login')->name('postuserlogin');
+    //Password reset routes
+    Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
+        ->name('guest.password.request');
+    Route::post('email', 'Auth\ForgotPasswordController@sendResetLinkEmail')
+        ->name('guest.password.email');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')
+        ->name('guest.password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+});
+//VERIFY ROUTES
+// Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+// Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+
 Route::get('register/{membership_title?}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register.member');
 
 Auth::routes(['verify' => true]);
+
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // EMAIL RESEND ROUTES

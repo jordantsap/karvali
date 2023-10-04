@@ -38,11 +38,6 @@ class DatabaseSeeder extends Seeder
 
         app()['cache']->forget('spatie.permission.cache');
         // SYSTEM SEEDERS
-
-        $this->call(FieldSeeder::class);
-        $this->call(DaySeeder::class);
-//        $this->call(PeriodSeeder::class);
-
         $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(UsersTableSeeder::class);
@@ -54,8 +49,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AmenitySeeder::class);
         $this->call(MembershipSeeder::class);
         $this->call(PlanSeeder::class);
-
         $this->call(GroupTypeSeeder::class);
+
         $this->call(VenueSeeder::class);
         $this->call(EventsTableSeeder::class);
         $this->call(AccommodationSeeder::class);
@@ -66,6 +61,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(GroupsTableSeeder::class);
 
+//        $this->call(FieldSeeder::class);
+//        $this->call(DaySeeder::class);
+//        $this->call(PeriodSeeder::class);
 
         // just for reference
 //          $this->call(CompanyOpeningHoursSeeder::class);

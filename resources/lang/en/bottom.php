@@ -21,5 +21,6 @@ return [
     'login' => 'User Login',
     'adminlogin' => 'Admin Login',
     'register' => 'User Register',
+    'adminregister' => 'Admin Register',
     'user' => 'USER',
 ];

@@ -44,8 +44,8 @@ class NewUserNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line("New registration for ". $this->user)
-                    ->action('Είσοδος', route('users.show',$this->user));
+                    ->line("New registration for ". $this->user->fullname)
+                    ->action('Είσοδος', route('admin.users.show',$this->user));
     }
 
     /**
