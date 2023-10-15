@@ -75,6 +75,7 @@ class AuthRequestController extends Controller
     // return $user;
         toastr()->addSuccess('Επιτυχημένη εγγραφή, Παρακαλώ ελέγξτε το E-Mail σας για περαιτέρω λεπτομέρειες. Θα επικοινωνήσουμε όσο το δυνατόν γρηγορότερα μαζί σας!');
 
-    return redirect(url('/'));
+        return redirect()->back()->with('success', 'Registration completed successfully!');
+
     }
 }

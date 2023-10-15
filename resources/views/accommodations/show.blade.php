@@ -205,7 +205,7 @@
                                             </div>
                                         @else
                                             <a href="{{route('login')}}">Login</a> or
-                                            <a href="{{route('register')}}">register to make the booking</a>
+                                            <a href="{{route('register.customer')}}">register to make the booking</a>
                                         @endif
                                         <div class="row">
                                             <div class="col-xs-6 form-group">

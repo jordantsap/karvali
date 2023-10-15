@@ -102,9 +102,9 @@
         {{-- ACTIONS --}}
         @if(Cart::count() > 0)
         <div class="text-center">
-          <div class="btn btn-block">
-            <a href="{{route('front.products')}}" class="btn btn-primary">{{__('cart.gotoproductpage')}}</a>
-          </div>
+{{--          <div class="btn btn-block">--}}
+{{--            <a href="{{route('front.products')}}" class="btn btn-primary">{{__('cart.gotoproductpage')}}</a>--}}
+{{--          </div>--}}
           <div class="btn btn-block">
               <form action="{{ route('cart.clean')}}" method="post">
                 {{ csrf_field() }}

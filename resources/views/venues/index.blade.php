@@ -42,16 +42,16 @@
                         @foreach ($venues as $venue)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
-                                    <a href="{{ route('front.venue.show', $venue->id) }}">
+                                    <a href="{{ route('front.venue.show', $venue->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
-                                            src="{{ asset('images/venues/' . $venue->logo) }}"
+                                            src="{{ asset($venue->logo) }}"
                                             alt="{{ $venue->title }}">
                                     </a>
                                 </div>
                                 <div class="card-body text-center">
                                     <h2 class="card-title">
                                         <a
-                                            href="{{ route('front.venue.show', $venue->id) }}">{{ Str::limit($venue->title, 20) }}</a>
+                                            href="{{ route('front.venue.show', $venue->slug) }}">{{ Str::limit($venue->title, 20) }}</a>
                                     </h2>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">

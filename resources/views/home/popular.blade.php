@@ -63,7 +63,7 @@
                   <br>
                   <div class="row">
                     <div class="col-xs-12"><b>{{ __('page.category') }}</b>
-                      <a href="{{ route('front.companies-category', $company->category->slug)}}">{{$company->category->name}}</a>
+                      <a href="{{ route('front.companies-category', $company->category->slug)}}">{{$company->category->title}}</a>
                     </div>
                   </div>
                 </div>
@@ -80,7 +80,7 @@
               <div class="">
                 <div class="col-xs-12">
 
-                  <h2>{{ __('page.venueσ') }}</h2>
+                  <h2>{{ __('page.venues') }}</h2>
                   <div class="divider"></div>
                   <br>
                   <div class="row">
@@ -135,7 +135,7 @@
               @foreach ($products as $product)
               <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item">
                 <div class="card h-100">
-                  <a href="{{ route('front.product',$product->translate()->slug) }}">
+                  <a href="{{ route('front.product',$product->slug) }}">
                     <img class="img-responsive img-fluid rounded" style="width:100%;height:200px;" src="{{ asset($product->logo) }}"
                       alt="{{ $product->title }}">
                   </a>
@@ -165,7 +165,7 @@
                   <div class="row">
                     <div class="col-xs-12"><b>{{ __('page.company') }}</b>
                       <a href="{{route('front.company', $product->company->slug??'')}}">
-                        {{ Str::limit($product->company->title??'', 10) }}</a>
+                        {{ Str::limit($product->company->title, 10) }}</a>
                     </div>
                   </div>
                   <br>

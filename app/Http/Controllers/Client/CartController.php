@@ -30,7 +30,7 @@ class CartController extends Controller
           'message' => __('alerts.noproducts'),
           'alert-type' => 'warning'
         );
-          return redirect()->route('front.products')->with($notification);;
+          return redirect()->route('front.companies')->with($notification);;
       }
       return view('cart.cart');
     }

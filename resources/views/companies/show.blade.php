@@ -214,6 +214,8 @@
                                     </div>
                                 </div>
                             </div>
+{{--                            modal end--}}
+
                         @endforeach
                     </table>
                 @else

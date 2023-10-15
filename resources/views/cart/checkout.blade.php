@@ -163,9 +163,9 @@
           </div> <!--COL-XS-12-->
 
           <div class="col-xs-12"><br>
-            <div class="col-xs-6">
-              <a href="{{route('front.products')}}" class="btn btn-primary btn-block">{{__('cart.continuebuy')}}</a>
-            </div>
+{{--            <div class="col-xs-6">--}}
+{{--              <a href="{{route('front.products')}}" class="btn btn-primary btn-block">{{__('cart.continuebuy')}}</a>--}}
+{{--            </div>--}}
             <div class="col-xs-6">
               <form action="{{ route('cart.destroy', $item->rowId)}}" method="post">
                 {{ csrf_field() }}
