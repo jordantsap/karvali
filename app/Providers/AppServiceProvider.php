@@ -31,8 +31,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Request $request)
     {
         Schema::defaultStringLength(191);
-
-        app()->setLocale($request->segment(1));
+        if($request->segment(1)) {
+            app()->setLocale($request->segment(1));
+        }
 
         // \URL::forceScheme('https');
 
