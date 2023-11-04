@@ -23,7 +23,7 @@
                         &nbsp<input type="checkbox" name="active" value="1" class="minimal">
                     </label>
                 </div>
-                <div class="col-xs-2 form-group{{ $errors->has('company_type') ? ' has-error' : '' }}">
+                <div class="col-xs-12 form-group{{ $errors->has('company_type') ? ' has-error' : '' }}">
                     <label for="company_type">{{__('form.categorytype')}}</label>
                     @if ($errors->has('company_type'))
                         <strong class="text-danger">{{ $errors->first('company_type') }}</strong>
@@ -39,14 +39,15 @@
                     </div>
                 </div>
 
-                <div class="col-xs-6 {{ $errors->has('days') ? ' has-error' : '' }}">
+                <div class="col-xs-12 {{ $errors->has('days') ? ' has-error' : '' }}">
                     <h4>Working Days and Hours:</h4>
-                    <table class="table">
+                    <table class="table text-center">
                         <thead>
                         <tr>
                             <th>Day</th>
-                            <th>Open Time</th>
-                            <th>Close Time</th>
+                            <th>Morning Shift</th>
+                            <th>Afternoon Shift</th>
+                            <th>Evening Shift</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,24 +60,82 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <select name="open_times[{{ $day }}][]">
-                                        <option value="">Select Open Time</option>
-                                        @for ($hour = 0; $hour < 24; $hour++)
-                                            @for ($minute = 0; $minute < 60; $minute += 15)
-                                                <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
-                                            @endfor
-                                        @endfor
-                                    </select>
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <select name="{{ $day }}_morning_opening_time">
+                                                    <option value="">Select Open Time</option>
+                                                    @for ($hour = 0; $hour < 24; $hour++)
+                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                            <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                                        @endfor
+                                                    @endfor
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="ml-2" name="{{ $day }}_morning_closing_time">
+                                                    <option value="">Select Closing Time</option>
+                                                    @for ($hour = 0; $hour < 24; $hour++)
+                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                            <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                                        @endfor
+                                                    @endfor
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                                 <td>
-                                    <select name="close_times[{{ $day }}][]">
-                                        <option value="">Select Close Time</option>
-                                        @for ($hour = 0; $hour < 24; $hour++)
-                                            @for ($minute = 0; $minute < 60; $minute += 15)
-                                                <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
-                                            @endfor
-                                        @endfor
-                                    </select>
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <select name="{{ $day }}_afternoon_opening_time">
+                                                    <option value="">Select Open Time</option>
+                                                    @for ($hour = 0; $hour < 24; $hour++)
+                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                            <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                                        @endfor
+                                                    @endfor
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="ml-2" name="{{ $day }}_afternoon_closing_time">
+                                                    <option value="">Select Closing Time</option>
+                                                    @for ($hour = 0; $hour < 24; $hour++)
+                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                            <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                                        @endfor
+                                                    @endfor
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <select name="{{ $day }}_evening_opening_time">
+                                                    <option value="">Select Open Time</option>
+                                                    @for ($hour = 0; $hour < 24; $hour++)
+                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                            <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                                        @endfor
+                                                    @endfor
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="ml-2" name="{{ $day }}_evening_closing_time">
+                                                    <option value="">Select Closing Time</option>
+                                                    @for ($hour = 0; $hour < 24; $hour++)
+                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                            <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
+                                                        @endfor
+                                                    @endfor
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         @endforeach

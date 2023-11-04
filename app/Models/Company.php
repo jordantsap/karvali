@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -45,6 +46,8 @@ class Company extends Model implements TranslatableContract
     'creditcard',
     // 'description',
   ];
+
+    protected $appends = ['is_open_now'];
 
     public function user()
     {
@@ -102,5 +105,45 @@ class Company extends Model implements TranslatableContract
         'days' => 'array',
         'schedule' => 'array',
     ];
+
+
+    /**
+     * Get Shifts of Specified Company
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function shifts() {
+        return $this->hasMany(CompanyShift::class, 'company_id');
+    }
+
+
+    /**
+     * Check if Company is Open Now or Not
+     * @return bool
+     */
+    public function getIsOpenNowAttribute() {
+        $timeNow = Date('H:i:s'); // eg. 22.00.00
+        $today = strtolower(Carbon::now()->dayName); // eg. sunday
+
+        $today_shift = $this->shifts()->where('day',$today)
+            ->where(function ($q) use ($timeNow) {
+                $q->where(function ($q) use ($timeNow) {
+                    $q->where('morning_opening_time', '<=', $timeNow)
+                        ->where('morning_closing_time', '>=', $timeNow);
+                })
+                ->orWhere(function ($q) use ($timeNow) {
+                    $q->where('afternoon_opening_time', '<=', $timeNow)
+                        ->where('afternoon_closing_time', '>=', $timeNow);
+                })
+                ->orWhere(function ($q) use ($timeNow) {
+                    $q->where('evening_opening_time', '<=', $timeNow)
+                        ->where('evening_closing_time', '>=', $timeNow);
+                });
+            })
+            ->exists();
+        /**
+         * If record exist return true otherwise false
+         */
+        return $today_shift;
+    }
 
 }
