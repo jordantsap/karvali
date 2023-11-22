@@ -125,7 +125,7 @@
                                 </li> --}}
                                 @guest('web')
                                     <li>
-                                        <a href="{{ route('login') }}">{{ __('header.login') }}</a>
+                                        <a href="{{ route('userlogin') }}">{{ __('header.login') }}</a>
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li>

@@ -12,7 +12,7 @@
         <div class="panel-heading">{{ __('form.registerheader') }}</div>
 
         <div class="panel-body">
-          <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+          <form class="form-horizontal" method="POST" action="{{ route('postregister.customer') }}">
             {{ csrf_field() }}
 
               <div class="form-group">

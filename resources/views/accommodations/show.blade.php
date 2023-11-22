@@ -201,7 +201,7 @@
                                             <div class="form-group">
                                                 <label for="email">{{__('form.email')}}</label>
                                                 <input class="form-control" type="email" id="email" name="email"
-                                                       value="{{auth()->user()?->email}}" placeholder="Enter your email here" disabled>
+                                                       value="{{auth()->user()->email}}" placeholder="Enter your email here" disabled>
                                             </div>
                                         @else
                                             <a href="{{route('login')}}">Login</a> or

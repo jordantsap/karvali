@@ -26,7 +26,7 @@ class AuthRequestController extends Controller
      */
     public function create()
     {
-        return view('customer.register');
+        return view('auth.customer.register');
     }
 
     /**
@@ -71,11 +71,11 @@ class AuthRequestController extends Controller
         // Log in the user after registration
         Auth::login($user);
 
-    Notification::route('mail', 'jordantsap@hotmail.gr')->notify(new NewUserNotification($user));
-    // return $user;
+//    Notification::route('mail', 'jordantsap@hotmail.gr')->notify(new NewUserNotification($user));
+//     return $user;
         toastr()->addSuccess('Επιτυχημένη εγγραφή, Παρακαλώ ελέγξτε το E-Mail σας για περαιτέρω λεπτομέρειες. Θα επικοινωνήσουμε όσο το δυνατόν γρηγορότερα μαζί σας!');
 
-        return redirect()->back()->with('success', 'Registration completed successfully!');
+        return redirect()->intended()->with('success', 'Registration completed successfully!');
 
     }
 }
