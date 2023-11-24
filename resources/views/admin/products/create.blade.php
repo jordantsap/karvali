@@ -39,7 +39,7 @@
                 <select id="product_type" value="{{ old('product_type') }}" name="product_type" class="form-control" required>
                   <option value="">Επιλέξτε</option>
                   @foreach($producttypes as $producttype)
-                    <option value="{{ $producttype->id }}">{{ $producttype->name }}</option>
+                    <option value="{{ $producttype->id }}">{{ $producttype->title }}</option>
                   @endforeach
                 </select>
                 <span class="input-group-addon">

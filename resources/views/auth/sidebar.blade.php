@@ -21,6 +21,13 @@
     <a href="{{ route('owner.products.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Product</span></a>
 </li>
 
+<li>
+    <a href="{{ route('owner.attributes.index') }}"><i class="fas fa-shopping-bag"></i> <span>Attributes List</span></a>
+</li>
+<li>
+    <a href="{{ route('owner.attributes.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Attribute</span></a>
+</li>
+
 @endrole
 @role('Accommodation/Rooms Owner')
 

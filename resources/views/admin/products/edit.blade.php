@@ -46,7 +46,7 @@
                   @foreach ($categories as $category)
                     <option value="{{$category->id}}" @if( $product->product_type == $category->id){{'selected'}}
                     @else None
-                    @endif>{{$category->name}}</option>
+                    @endif>{{$category->title}}</option>
                   @endforeach
                 </select>
                 <span class="input-group-addon">

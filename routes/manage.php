@@ -38,6 +38,8 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
 
         Route::resource('fields', FieldController::class);
 
+        Route::resource('attributes', \App\Http\Controllers\Owner\AttributeController::class);
+
         Route::resource('clubevents', ClubEventController::class);
     });
 
