@@ -14,12 +14,17 @@ Route::get('search', 'SearchController@getresults')->name('searchresults');
 
 Route::middleware(['guest'])->group(function() {
 
-    Route::get('customer/register', [App\Http\Controllers\Client\AuthRequestController::class, 'create'])->name('register.customer');
+    Route::get('customer/register', [App\Http\Controllers\Client\AuthRequestController::class, 'create'])
+        ->name('register.customer');
 
-    Route::post('customer/register', [AuthRequestController::class,'store'])->name('postregister.customer');
+    Route::post('customer/register', [AuthRequestController::class,'store'])
+        ->name('postregister.customer');
 
-    Route::get('userlogin', [LoginController::class,'showLoginForm'])->name('userlogin');
-    Route::post('userlogin', 'Auth\LoginController@login')->name('postuserlogin');
+    Route::get('user/login', [App\Http\Controllers\Client\LoginController::class,'showLoginForm'])
+        ->name('userlogin');
+
+    Route::post('user/login', 'Client\LoginController@login')->name('postuserlogin');
+
     //Password reset routes
     Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')
         ->name('guest.password.request');

@@ -44,7 +44,7 @@
   @include('partials.header')
   @include('home.intro')
   @include('home.categories')
-
+  <br>
   @include('home.about')
 
   @include('home/popular')

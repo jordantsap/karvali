@@ -96,6 +96,7 @@ class CompanyController extends Controller
 //        $company->closing_times = json_encode($request->input('closing_times'));
 
         $company->save();
+        $this->createShifts($company, $request);
 
         // // Handle multiple image uploads with polymorphic relationship
         if ($request->hasFile('imgfile')) {
@@ -127,6 +128,61 @@ class CompanyController extends Controller
         toastr()->addSuccess('Company was saved successfully.');
 
         return redirect(route('owner.companies.show', $company->id));
+    }
+
+
+    /**
+     * Store Company Shifts
+     * @param $company
+     * @param $request
+     * @return void
+     */
+    private function createShifts($company, $request) {
+        if(isset($request->days) and count($request->days)) {
+            foreach ($request->days as $day) {
+
+                /**
+                 * Day Morning Shift
+                 */
+                $morning_opening = $day.'_morning_opening_time';
+                $morning_closing = $day.'_morning_closing_time';
+                if(isset($request->{$morning_opening}) and isset($request->{$morning_closing})) {
+                    $shift['morning_opening_time'] = $request->{$morning_opening};
+                    $shift['morning_closing_time'] = $request->{$morning_closing};
+                }
+                /**
+                 * Day Afternoon Shift
+                 */
+                $afternoon_opening = $day.'_afternoon_opening_time';
+                $afternoon_closing = $day.'_afternoon_closing_time';
+                if(isset($request->{$afternoon_opening}) and isset($request->{$afternoon_closing})) {
+                    $shift['afternoon_opening_time'] = $request->{$afternoon_opening};
+                    $shift['afternoon_closing_time'] = $request->{$afternoon_closing};
+                }
+
+                /**
+                 * Day Evening Shift
+                 */
+                $evening_opening = $day.'_evening_opening_time';
+                $evening_closing = $day.'_evening_closing_time';
+                if(isset($request->{$evening_opening}) and isset($request->{$evening_closing})) {
+                    $shift['evening_opening_time'] = $request->{$evening_opening};
+                    $shift['evening_closing_time'] = $request->{$evening_closing};
+                }
+
+
+                /**
+                 * If any shift exist create the Shift
+                 */
+                if(isset($shift)) {
+
+                    /**
+                     * Create Through Relationship
+                     */
+                    $company->shifts()->create([...$shift, 'day' => $day]);
+                }
+            }
+        }
     }
 
     /**
