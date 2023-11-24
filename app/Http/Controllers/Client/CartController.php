@@ -17,13 +17,13 @@ class CartController extends Controller
      */
     public function index()
     {
-      if (auth()->user()) {
-        $notification = array(
-          'message' => __('alerts.login'),
-          'alert-type' => 'warning'
-        );
-        return redirect()->back()->with($notification);
-      }
+//      if (auth()->user()) {
+//        $notification = array(
+//          'message' => __('alerts.login'),
+//          'alert-type' => 'warning'
+//        );
+//        return redirect()->back()->with($notification);
+//      }
 
       if (Cart::instance('default')->count() == 0) {
         $notification = array(

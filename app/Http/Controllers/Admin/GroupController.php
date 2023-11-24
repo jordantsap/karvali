@@ -22,7 +22,7 @@ class GroupController extends Controller
      */
     public function index(Request $request1)
     {
-      $this->authorize('view-groups', 'App\Group');
+//      $this->authorize('view-groups', 'App\Models\Group');
         $groups = Group::orderBy('id', 'DESC')->paginate(10);
         return view('admin.groups.index', compact('groups'));
     }

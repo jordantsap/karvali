@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreAttributeRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreAttributeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,14 @@ class StoreAttributeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'en.title' => 'required',
         ];
+
+        foreach (config('translatable.locales') as $locale) {
+            $rules[$locale . '.title'] = 'string';
+        }
+
+        return $rules;
     }
 }

@@ -28,8 +28,8 @@ class ProductType extends Model implements TranslatableContract
     {
         return $this->hasMany('App\Models\Product', 'product_type', 'id');
     }
-    public function fields(): HasMany
+    public function attributes(): HasMany
     {
-        return $this->hasMany(Field::class);
+        return $this->hasMany(Attribute::class);
     }
 }

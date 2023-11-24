@@ -80,10 +80,15 @@
           <li><a href="{{ route('admin.products.index') }}">
             <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Products</span></a></li>
 {{--        @endcan--}}
+        <li><a href="{{ url('admin.producttypes.index') }}">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Product Types</span></a></li>
+
+        <li><a href="{{ route('admin.attributes.index') }}">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Attributes</span></a></li>
 
 {{--        @can ('view_groups', App\Models\Group::class)--}}
-{{--            <li><a href="{{ route('teams.index') }}">--}}
-{{--                    <i class="fas fa-users" aria-hidden="true"></i> <span>Groups/Teams</span></a></li>--}}
+            <li><a href="{{ route('admin.teams.index') }}">
+                    <i class="fas fa-users" aria-hidden="true"></i> <span>Groups/Teams</span></a></li>
 {{--        @endcan--}}
 
 {{--        @can ('view_events', App\Models\Event::class)--}}

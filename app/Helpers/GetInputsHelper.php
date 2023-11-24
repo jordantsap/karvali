@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-//use Spatie\OpeningHours\Day;
+use Spatie\OpeningHours\Day;
 
 class GetInputsHelper
 {
