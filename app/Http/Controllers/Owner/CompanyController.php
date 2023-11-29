@@ -44,10 +44,10 @@ class CompanyController extends Controller
     public function create()
     {
         $companytypes = CompanyType::withTranslation()->get();
-        $days = Day::days();
+        // $days = Day::days();
 //        $sessions = Session::all();
 
-        return view('auth.companies.create', compact('companytypes', 'days'));
+        return view('auth.companies.create', compact('companytypes'));
     }
 
     /**
