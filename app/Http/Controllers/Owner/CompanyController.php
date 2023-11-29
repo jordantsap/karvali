@@ -44,8 +44,6 @@ class CompanyController extends Controller
     public function create()
     {
         $companytypes = CompanyType::withTranslation()->get();
-        // $days = Day::days();
-//        $sessions = Session::all();
 
         return view('auth.companies.create', compact('companytypes'));
     }
@@ -96,7 +94,7 @@ class CompanyController extends Controller
 //        $company->closing_times = json_encode($request->input('closing_times'));
 
         $company->save();
-        $this->createShifts($company, $request);
+//        $this->createShifts($company, $request);
 
         // // Handle multiple image uploads with polymorphic relationship
         if ($request->hasFile('imgfile')) {
@@ -195,9 +193,7 @@ class CompanyController extends Controller
     {
         $companytypes = CompanyType::withTranslation()->first();
 
-        $days = Day::days();
-
-        return view('auth.companies.company', compact(['company', 'companytypes', 'days']));
+        return view('auth.companies.company', compact(['company', 'companytypes']));
     }
 
     /**

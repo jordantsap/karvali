@@ -92,17 +92,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($days as $openingHour)
+                            @foreach(\App\Helpers\DayTimeHelper::getWeekDaysAttribute() as $openingHour)
                                 <tr>
                                     <td>{{ $openingHour }}</td>
 {{--                                    <td>{{ $openingHour->session->name }}</td>--}}
 {{--                                    <td>{{ $openingHour->start_time }}</td>--}}
 {{--                                    <td>{{ $openingHour->end_time }}</td>--}}
-{{--                                    <td>--}}
+                                    <td>
 {{--                                        @if($openingHour->session->allday)--}}
 {{--                                        {{$openingHour->session->allday}}--}}
 {{--                                        @endif--}}
-{{--                                    </td>--}}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
