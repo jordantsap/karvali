@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(GroupsTableSeeder::class);
 
-//        $this->call(FieldSeeder::class);
+        $this->call(AttributeSeeder::class);
 //        $this->call(DaySeeder::class);
 //        $this->call(PeriodSeeder::class);
 

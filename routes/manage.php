@@ -5,12 +5,12 @@ use App\Http\Controllers\Owner\{AmenityController,
     ClubEventController,
     CompanyController,
     EventController,
-    FieldController,
     GroupController,
     ProductController,
     RoomController,
     RoomTypeController,
     VenueController};
+use App\Http\Controllers\unused\FieldController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified','checkPlanAndExpiration'])

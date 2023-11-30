@@ -1,9 +1,7 @@
 <?php
 
-namespace Database\Seeders;
 
-use App\Models\Field;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\unused\Field;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

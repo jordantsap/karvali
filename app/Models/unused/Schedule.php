@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\unused;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\{BelongsToMany, MorphTo};

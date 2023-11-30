@@ -2,25 +2,25 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Field, Option, ProductType};
+use App\Models\{Attribute, Option, ProductType, unused\Field};
 use Livewire\Component;
 
 class CategoryField extends Component
 {
-    public $producttypes;
-    public $fields;
+    public $productTypes;
+    public $attributes;
 
-    public $producttype;
+    public $productType;
 
     public function mount()
     {
-        $this->producttypes = ProductType::withTranslation()->get();
-        $this->fields = collect();
+        $this->productTypes = ProductType::withTranslation()->get();
+        $this->attributes = collect();
     }
 
-    public function updatedProducttype($value): void
+    public function updatedProductType($value)
     {
-        $this->fields = Field::where('product_type_id', $value)->get();
+        $this->attributes = Attribute::where('product_type_id', $value)->get();
     }
     public function render()
     {

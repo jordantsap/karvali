@@ -47,7 +47,7 @@
                             <th>Day</th>
                             <th>Morning Shift</th>
                             <th>Afternoon Shift</th>
-                            <th>Evening Shift</th>
+                            {{-- <th>Evening Shift</th> --}}
                         </tr>
                         </thead>
                         <tbody>
@@ -66,7 +66,7 @@
                                                 <select name="{{ $day }}_morning_opening_time">
                                                     <option value="">Select Open Time</option>
                                                     @for ($hour = 0; $hour < 24; $hour++)
-                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                        @for ($minute = 0; $minute < 60; $minute += 30)
                                                             <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
                                                         @endfor
                                                     @endfor
@@ -76,7 +76,7 @@
                                                 <select class="ml-2" name="{{ $day }}_morning_closing_time">
                                                     <option value="">Select Closing Time</option>
                                                     @for ($hour = 0; $hour < 24; $hour++)
-                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                        @for ($minute = 0; $minute < 60; $minute += 30)
                                                             <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
                                                         @endfor
                                                     @endfor
@@ -92,7 +92,7 @@
                                                 <select name="{{ $day }}_afternoon_opening_time">
                                                     <option value="">Select Open Time</option>
                                                     @for ($hour = 0; $hour < 24; $hour++)
-                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                        @for ($minute = 0; $minute < 60; $minute += 30)
                                                             <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
                                                         @endfor
                                                     @endfor
@@ -102,7 +102,7 @@
                                                 <select class="ml-2" name="{{ $day }}_afternoon_closing_time">
                                                     <option value="">Select Closing Time</option>
                                                     @for ($hour = 0; $hour < 24; $hour++)
-                                                        @for ($minute = 0; $minute < 60; $minute += 15)
+                                                        @for ($minute = 0; $minute < 60; $minute += 30)
                                                             <option value="{{ sprintf('%02d:%02d', $hour, $minute) }}">{{ sprintf('%02d:%02d', $hour, $minute) }}</option>
                                                         @endfor
                                                     @endfor
@@ -111,7 +111,7 @@
                                         </tr>
                                     </table>
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <table class="table">
                                         <tr>
                                             <td>
@@ -136,7 +136,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                         </tbody>

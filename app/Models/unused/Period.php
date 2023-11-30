@@ -2,7 +2,6 @@
 
 namespace App\Models\unused;
 
-use App\Models\OpenHour;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

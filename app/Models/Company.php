@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\unused\CompanyShift;
+use App\Models\unused\Schedule;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;

@@ -6,7 +6,7 @@ use App\Models\unused\Period;
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 Route::get('/test', function (){
 
-    $weekdays = \App\Models\Day::all();
+    $weekdays = \App\Models\unused\Day::all();
     $dayPeriods = Period::get();
 
     $hours = [];

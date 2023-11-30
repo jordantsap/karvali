@@ -17,8 +17,6 @@ class AttributeTranslation extends Model
         'slug',
     ];
 
-//    protected $translationForeignKey = 'event_id';
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -33,8 +31,8 @@ class AttributeTranslation extends Model
         ];
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 }

@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Client\AuthRequestController;
 use App\Http\Controllers\Client\BookingController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\unused\CalendarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

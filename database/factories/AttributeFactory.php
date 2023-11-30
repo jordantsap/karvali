@@ -17,7 +17,9 @@ class AttributeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->name,
+            'slug' => $this->faker->slug,
+            'product_type_id' => rand(1, 5),
         ];
     }
 }

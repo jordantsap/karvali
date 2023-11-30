@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Owner;
+namespace App\Http\Controllers\unused;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFieldRequest;
 use App\Http\Requests\UpdateFieldRequest;
-use App\Models\Field;
 use App\Models\ProductType;
+use App\Models\unused\Field;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('open_hours', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(\App\Models\Day::class)->constrained('days');
+            $table->foreignId(\App\Models\unused\Day::class)->constrained('days');
 //            $table->foreignId(\App\Models\unused\Period::class)->constrained('periods');
             $table->time('open_time');
             $table->time('close_time');

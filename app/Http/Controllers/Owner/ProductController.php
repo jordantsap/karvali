@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Owner;
 
 use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Accommodation;
-use App\Models\FieldProduct;
 use App\Models\Image as ImageModel;
 use App\Models\Option;
 use App\Models\OptionProduct;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\unused\FieldProduct;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -42,9 +41,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $producttypes = ProductType::all();
+        $productTypes = ProductType::with('attributes')->get();
 
-        return view('auth.products.create', compact('producttypes'));
+        return view('auth.products.create', compact('productTypes'));
     }
 
     /**
@@ -68,7 +67,7 @@ class ProductController extends Controller
         $product->save();
 
         // Save option values
-        $optionValues = $request->input('fieldvalue', []);
+        $optionValues = $request->input('attributevalue', []);
         foreach ($optionValues as $optionId => $value) {
             $optionValue = new FieldProduct();
             $optionValue->product_id = $product->id;

@@ -180,16 +180,16 @@
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>
-                                    @if($company->is_open_now)
+                                    {{-- @if($company->is_open_now) --}}
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#{{ $product->id }}">
                                         {{ __('single.addtocart') }}
                                     </button>
-                                    @else
+                                    {{-- @else
                                         <button type="button" class="btn btn-primary" disabled>
                                             Company Closed Now
                                         </button>
-                                    @endif
+                                    @endif --}}
                                 </td>
                             </tr>
                             </tbody>

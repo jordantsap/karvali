@@ -17,9 +17,9 @@ class Attribute extends Model implements TranslatableContract
         'slug',
     ];
 
-//    protected $fillable = [
-//        'product_type_id',
-//    ];
+    protected $fillable = [
+        'product_type_id',
+    ];
 
     public function productType(): BelongsTo
     {

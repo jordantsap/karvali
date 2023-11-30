@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\unused;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DropzoneController extends Controller
