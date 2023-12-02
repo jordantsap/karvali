@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\unused\Field;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,15 +40,15 @@ class Product extends Model implements TranslatableContract
         'price',
     ];
 
-//    public function fieldProductType(): HasManyThrough
-//    {
-//        return $this->hasManyThrough(Field::class, ProductType::class);
-//    }
-//
-//    public function fields(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Field::class)->withPivot('value');
-//    }
+    public function fieldProductType(): HasManyThrough
+    {
+        return $this->hasManyThrough(Field::class, ProductType::class);
+    }
+
+    public function fields(): BelongsToMany
+    {
+        return $this->belongsToMany(Field::class)->withPivot('value');
+    }
 
     public function company()
     {

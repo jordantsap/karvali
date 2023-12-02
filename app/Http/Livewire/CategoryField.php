@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Attribute, Option, ProductType, unused\Field};
+use App\Models\{Attribute, Option, ProductType};
 use Livewire\Component;
 
 class CategoryField extends Component

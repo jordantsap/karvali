@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('field_product', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Product::class);
-            $table->foreignIdFor(\App\Models\unused\Field::class);
+            $table->foreignIdFor(\App\Models\Field::class);
             $table->string('value');
             $table->timestamps();
         });

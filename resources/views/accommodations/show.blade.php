@@ -192,21 +192,21 @@
                                         @csrf
                                         <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}"
                                                required>
-                                        <div class="form-group">
-                                            <label for="title">{{__('form.name')}}</label>
-                                            <input class="form-control" type="text" id="name" name="name"
-                                                   placeholder="Enter your name here" required>
-                                        </div>
-                                        @if(auth()->user())
-                                            <div class="form-group">
-                                                <label for="email">{{__('form.email')}}</label>
-                                                <input class="form-control" type="email" id="email" name="email"
-                                                       value="{{auth()->user()->email}}" placeholder="Enter your email here" disabled>
-                                            </div>
-                                        @else
-                                            <a href="{{route('login')}}">Login</a> or
-                                            <a href="{{route('register.customer')}}">register to make the booking</a>
-                                        @endif
+{{--                                        <div class="form-group">--}}
+{{--                                            <label for="title">{{__('form.name')}}</label>--}}
+{{--                                            <input class="form-control" type="text" id="name" name="name"--}}
+{{--                                                   placeholder="Enter your name here" required>--}}
+{{--                                        </div>--}}
+{{--                                        @if(auth()->user())--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="email">{{__('form.email')}}</label>--}}
+{{--                                                <input class="form-control" type="email" id="email" name="email"--}}
+{{--                                                       value="{{auth()->user()?->email}}" placeholder="Enter your email here">--}}
+{{--                                            </div>--}}
+{{--                                        @else--}}
+{{--                                            <a href="{{route('login')}}">Login</a> or--}}
+{{--                                            <a href="{{route('register.customer')}}">register to make the booking</a>--}}
+{{--                                        @endif--}}
                                         <div class="row">
                                             <div class="col-xs-6 form-group">
                                                 <label for="check_in_date">Check in date</label>
