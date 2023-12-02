@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\unused;
+namespace App\Models\Translations;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;

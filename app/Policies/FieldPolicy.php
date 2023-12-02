@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\unused\Field;
+use App\Models\Field;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,7 +25,7 @@ class FieldPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\unused\Field  $field
+     * @param  \App\Models\Field  $field
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, Field $field)
@@ -48,7 +48,7 @@ class FieldPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\unused\Field  $field
+     * @param  \App\Models\Field  $field
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, Field $field)
@@ -60,7 +60,7 @@ class FieldPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\unused\Field  $field
+     * @param  \App\Models\Field  $field
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, Field $field)
@@ -72,7 +72,7 @@ class FieldPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\unused\Field  $field
+     * @param  \App\Models\Field  $field
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Field $field)
@@ -84,7 +84,7 @@ class FieldPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\unused\Field  $field
+     * @param  \App\Models\Field  $field
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Field $field)

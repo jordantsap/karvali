@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Models\unused;
+namespace App\Models;
 
-use App\Models\Product;
-use App\Models\ProductType;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
