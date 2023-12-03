@@ -27,25 +27,25 @@ class BookingController extends Controller
     public function store(Request $request, $roomId)
     {
 
-        if (!auth()->user()) {
-
-            toastr()
-                ->persistent()
-//                ->closeButton()
-                ->addError(__('alerts.bookunauth'));
-
-            return redirect()->back();
-        }
+//        if (!auth()->user()) {
+//
+//            toastr()
+//                ->persistent()
+////                ->closeButton()
+//                ->addError(__('alerts.bookunauth'));
+//
+//            return redirect()->back();
+//        }
         $room = Room::findOrFail($roomId); // Assuming you have a Room model
 
         // Validate the form data
         $request->validate([
-            'name' => 'required',
+            'name' => 'nullable',
             'check_in_date' => 'required|date',
             'check_out_date' => 'required|date|after:check_in_date',
             'adults' => 'required|integer|min:1',
             'children' => 'nullable|integer|min:0',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
         ]);
 
         // Check room availability for the specified dates

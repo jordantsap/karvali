@@ -73,4 +73,5 @@ return [
     'until' => 'Until',
     'description' => 'Description',
     'createbookings' => 'Create Booking',
+    'checkavailability' => 'Check Availability',
 ];

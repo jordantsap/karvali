@@ -73,4 +73,5 @@ return [
     'until'=> 'Λήξη',
     'description'=>'Περιγραφή',
     'createbookings' => 'Κάντε κράτηση',
+    'checkavailability' => 'Ελέγξτε διαθεσιμότητα',
 ];
