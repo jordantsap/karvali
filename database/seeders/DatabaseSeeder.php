@@ -16,6 +16,7 @@ namespace Database\Seeders;
 //    ProductTypeSeeder,
 //    RoleTableSeeder,
 //    UsersTableSeeder};
+use App\Models\AttributeType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -62,6 +63,9 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupsTableSeeder::class);
 
         $this->call(AttributeSeeder::class);
+
+        $this->call(AttributeTypeSeeder::class);
+
 //        $this->call(DaySeeder::class);
 //        $this->call(PeriodSeeder::class);
 
