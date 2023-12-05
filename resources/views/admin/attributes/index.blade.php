@@ -48,7 +48,7 @@
 {{--                                            @can ('view', App\Models\AccommodationType::class)--}}
                                                 <a class="btn btn-primary" href="{{route('admin.attributes.show', $attribute->id)}}">View</a>
 {{--                                            @endcan--}}
-{{--                                            @can ('delete', [$attribute, App\Models\Attribute::class])--}}
+                                            @can ('delete', [$attribute, App\Models\Attribute::class])
                                                 <form action="{{ route('admin.attributes.destroy', $attribute->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
@@ -56,7 +56,7 @@
                                                     <br>
                                                     <button type="submit" class="btn btn-primary">Delete</button>
                                                 </form>
-{{--                                            @endcan--}}
+                                            @endcan
                                         </td>
                                     </tr>
                                     </tbody>

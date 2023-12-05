@@ -6,10 +6,10 @@
                 <strong class="text-danger">{{ $errors->first('product_type') }}</strong>
             @endif
             <div class="input-group">
-                <select wire:model="productType" id="product_type" value="{{ old('product_type') }}" name="product_type" class="form-control" required>
+                <select wire:model="producttype" id="product_type" value="{{ old('product_type') }}" name="product_type" class="form-control" required>
                     <option value="">Επιλέξτε</option>
-                    @foreach($productTypes as $productType)
-                        <option value="{{ $productType->id }}">{{ $productType->title }}</option>
+                    @foreach($producttypes as $producttype)
+                        <option value="{{ $producttype->id }}">{{ $producttype->title }}</option>
                     @endforeach
                 </select>
                 <span class="input-group-addon">
@@ -19,13 +19,13 @@
         </div>
     </div>
     <div class="">
-        @if(!is_null($attributes))
+        @if(!is_null($fields))
             <div class="col-xs-12 text-center"><h2>{{__('Options')}}</h2></div>
-            @foreach($attributes as $attribute)
+            @foreach($fields as $field)
                 <div class="col-xs-12">
-                    <label>{{ __('Attribute: ').$attribute->title }}</label>
-                    <input class="form-control" name="attribute[{{$attribute->id}}]" value="{{$attribute->title}}" readonly>
-                    <input class="form-control" name="attributevalue[{{$attribute->id}}]" required>
+                    <label>{{ __('Field: ').$field->title }}</label>
+                    <input class="form-control" name="field[{{$field->id}}]" value="{{$field->title}}" readonly>
+                    <input class="form-control" name="fieldvalue[{{$field->id}}]" required>
                 </div>
             @endforeach
         @endif

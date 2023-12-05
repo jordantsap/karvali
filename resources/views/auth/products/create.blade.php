@@ -65,8 +65,8 @@
                                 @endforeach
                             </select>
                             <span class="input-group-addon">
-                              <span class="glyphicon glyphicon-list"></span>
-                            </span>
+                  <span class="glyphicon glyphicon-list"></span>
+                </span>
                         </div>
                     </div>
                 </div>

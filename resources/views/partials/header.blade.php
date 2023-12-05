@@ -35,9 +35,9 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li>
-                          <a href="{{ route('front.products') }}">{{ __('header.products') }}</a>
-                        </li>
+                        {{--                <li>--}}
+                        {{--                  <a href="{{ route('front.products') }}">{{ __('header.products') }}</a>--}}
+                        {{--                </li>--}}
                         <li>
                             <a href="{{ route('front.venues') }}">{{ __('header.venues') }}</a>
                         </li>

@@ -23,6 +23,7 @@
   gtag('config', 'UA-129494448-1');
 </script> --}}
 
+
     @yield('home-css')
     @yield('extra-css')
     <!-- Styles -->
@@ -30,6 +31,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/media.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
+
 
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
