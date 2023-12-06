@@ -68,6 +68,14 @@ Route::as('front.')->group(function () {
     Route::get('accommodations/', [\App\Http\Controllers\Client\AccommodationController::class, 'index'])->name('accommodations');
     Route::get('accommodations/{accommodation:slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
 
+
+    // Room Search Route
+
+    Route::get('accommodation-search', [\App\Http\Controllers\Client\AccommodationController::class,'accommodationSearch'])->name('accommodation.search');
+
+    //
+
+
     Route::get('accommodation-types/{slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'category'])
         ->name('accommodation-types.show');
     Route::get('/accommodations/{accommodationId}/available-dates', 'AccommodationController@getAvailableDates')->name('accommodations.available-dates');
