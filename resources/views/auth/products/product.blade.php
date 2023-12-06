@@ -43,7 +43,7 @@
                                 @endif
                             </div>
                         </div>
-                        @if ($product->has('fields'))
+                        @if ($product->attributes)
                             <div class="col-xs-12">
                                 <h2>Fields</h2>
 

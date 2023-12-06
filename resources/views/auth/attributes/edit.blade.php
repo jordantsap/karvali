@@ -16,7 +16,7 @@
 
     <!-- Default box -->
     <div class="box">
-      <form method="POST" action="{{ route('admin.attributes.update', $attribute->id) }}">
+      <form method="POST" action="{{ route('owner.attributes.update', $attribute->id) }}">
         @method('PATCH')
         @csrf
         <div class="box-body">
@@ -44,6 +44,16 @@
                   <option value="{{$productType->id}}" @if( $productType->id == $attribute->productType->id){{'selected'}}
                   @else None
                   @endif>{{$productType->title}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group col-xs-6">
+              <label for="attribute_type">Attribute Type</label>
+              <select class="form-control" name="attribute_type" id="attribute_type">
+                @foreach ($attributeTypes as $attributeType)
+                  <option value="{{$attributeType->id}}" @if( $attributeType->id == $attribute->attributeType->id){{'selected'}}
+                  @else None
+                  @endif>{{$attributeType->title}}</option>
                 @endforeach
               </select>
             </div>

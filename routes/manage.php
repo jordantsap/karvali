@@ -20,6 +20,8 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
 
         Route::resource('companies', CompanyController::class);
 
+        Route::resource('product-attributes', \App\Http\Controllers\Owner\ProductAttributeController::class);
+
         Route::resource('products', ProductController::class);
 
         Route::resource('accommodation', \App\Http\Controllers\Owner\AccommodationController::class);

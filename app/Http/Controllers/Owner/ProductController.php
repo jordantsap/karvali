@@ -134,7 +134,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product->load('fields');
+        // change to attributes
+        $product = Product::findOrFail($product->id);
 
         return view('auth.products.product', compact('product'));
     }

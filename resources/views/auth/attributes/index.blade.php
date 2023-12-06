@@ -7,7 +7,7 @@
             <h1>
                 Attributes
 {{--                @can ('create', App\Models\Attribute::class)--}}
-                    <small><a class="btn btn-primary" href="{{route('admin.attributes.create')}}">Add New</a></small>
+                    <small><a class="btn btn-primary" href="{{route('owner.attributes.create')}}">Add New</a></small>
 {{--                @endcan--}}
             </h1>
         </section>
@@ -27,6 +27,7 @@
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th>Product type</th>
+                                    <th>Type</th>
 {{--                                    @can ('update', App\Models\AccommodationType::class)--}}
                                         <th>Actions</th>
 {{--                                    @endcan--}}
@@ -41,22 +42,23 @@
                                         <td>{{$attribute->slug}}</td>
 
                                         <td>{{$attribute->productType->title}}</td>
+                                        <td>{{$attribute->attributeType->title}}</td>
                                         <td>
 {{--                                            @can ('update', App\Models\AccommodationType::class)--}}
-                                                <a class="btn btn-primary" href="{{route('admin.attributes.edit', $attribute->id)}}">Edit</a> -
+                                                <a class="btn btn-primary" href="{{route('owner.attributes.edit', $attribute->id)}}">Edit</a> -
 {{--                                            @endcan--}}
 {{--                                            @can ('view', App\Models\AccommodationType::class)--}}
-                                                <a class="btn btn-primary" href="{{route('admin.attributes.show', $attribute->id)}}">View</a>
+                                                <a class="btn btn-primary" href="{{route('owner.attributes.show', $attribute->id)}}">View</a>
 {{--                                            @endcan--}}
-                                            @can ('delete', [$attribute, App\Models\Attribute::class])
-                                                <form action="{{ route('admin.attributes.destroy', $attribute->id) }}"
+{{--                                            @can ('delete', [$attribute, App\Models\Attribute::class])--}}
+                                                <form action="{{ route('owner.attributes.destroy', $attribute->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <br>
                                                     <button type="submit" class="btn btn-primary">Delete</button>
                                                 </form>
-                                            @endcan
+{{--                                            @endcan--}}
                                         </td>
                                     </tr>
                                     </tbody>
@@ -68,6 +70,7 @@
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th>Product type</th>
+                                    <th>Type</th>
 {{--                                    @can ('update', App\Models\AccommodationType::class)--}}
                                         <th>Actions</th>
 {{--                                    @endcan--}}

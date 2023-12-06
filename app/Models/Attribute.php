@@ -19,11 +19,21 @@ class Attribute extends Model implements TranslatableContract
 
     protected $fillable = [
         'product_type_id',
+        'attribute_type_id',
     ];
 
     public function productType(): BelongsTo
     {
         return $this->belongsTo(ProductType::class);
+    }
+
+    public function attributeType(): BelongsTo
+    {
+        return $this->belongsTo(AttributeType::class);
+    }
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
     }
 
 }

@@ -7,11 +7,12 @@
 <li>
     <a href="{{ route('owner.companies.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Company</span></a>
 </li>
+
 {{--<li>--}}
-{{--    <a href="{{ route('owner.fields.index') }}"><i class="fas fa-shopping-bag"></i> <span>Fields List</span></a>--}}
+{{--    <a href="{{ route('owner.product-attributes.index') }}"><i class="fas fa-shopping-bag"></i> <span>Product-attributes List</span></a>--}}
 {{--</li>--}}
 {{--<li>--}}
-{{--    <a href="{{ route('owner.fields.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create fields</span></a>--}}
+{{--    <a href="{{ route('owner.product-attributes.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Product Attributes</span></a>--}}
 {{--</li>--}}
 
 <li>

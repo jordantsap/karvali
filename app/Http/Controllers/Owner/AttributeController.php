@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAttributeRequest;
 use App\Http\Requests\UpdateAttributeRequest;
 use App\Models\Accommodation;
 use App\Models\Attribute;
+use App\Models\AttributeType;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,10 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        $productType = ProductType::all();
-        return view('auth.attributes.create', compact('productType'));
+        $productTypes = ProductType::all();
+        $attributeTypes = AttributeType::all();
+
+        return view('auth.attributes.create', compact('productTypes','attributeTypes'));
     }
 
     /**
@@ -43,9 +46,11 @@ class AttributeController extends Controller
      */
     public function store(StoreAttributeRequest $request, Attribute $attribute)
     {
+//        dd($request->all());
         $attribute = new Attribute();
 
         $attribute->product_type_id = $request->product_type;
+        $attribute->attribute_type_id = $request->attribute_type;
 
         $attribute->save();
 
@@ -80,7 +85,8 @@ class AttributeController extends Controller
     public function edit(Attribute $attribute)
     {
         $productTypes = ProductType::withTranslation()->get();
-        return view('auth.attributes.edit', compact('attribute', 'productTypes'));
+        $attributeTypes = AttributeType::all();
+        return view('auth.attributes.edit', compact('attribute', 'productTypes', 'attributeTypes'));
     }
 
     /**

@@ -81,7 +81,6 @@ Route::as('front.')->group(function () {
 
     Route::get('accommodations/{accommodationId}/rooms/{room}', 'RoomController@show')->name('accommodation.room.show');
 
-
     Route::get('bookings', [BookingController::class, 'index']);
 
     Route::resource('amenities', 'Client\CompanyController@index');
@@ -92,6 +91,7 @@ Route::as('front.')->group(function () {
 
     Route::get('{product:slug}/product', [App\Http\Controllers\Client\ProductController::class, 'show'])->name('product');
 
+    Route::get('products', [App\Http\Controllers\Client\ProductController::class, 'index'])->name('products');
 
     Route::get('venues', [App\Http\Controllers\Client\VenueController::class, 'index'])->name('venues');
 

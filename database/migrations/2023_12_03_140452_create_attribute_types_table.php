@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attributes', function (Blueprint $table) {
+        Schema::create('attribute_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\ProductType::class);
-
-            $table->foreignIdFor(\App\Models\AttributeType::class);
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attributes');
+        Schema::dropIfExists('attribute_types');
     }
 };

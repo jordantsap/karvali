@@ -31,6 +31,19 @@
           </div>
         </div>
 
+        <div class="col-sm-6">
+
+          <div class="form-group">
+            <label for="attribute_type">Type</label>
+            <div class="col-xs-12 input-group">
+                @if( ! empty($attribute->attributeType))
+                <input class="form-control" type="text" placeholder="{{$attribute->attributeType->title}}" value="{{$attribute->attributeType->title}}" readonly>
+                @else Null
+                @endif
+            </div>
+          </div>
+        </div>
+
       </div>
       <!-- /.box-body -->
     </div>

@@ -187,11 +187,10 @@
                                     {{--                                <p>{{ __('page.date') }} {{ date('d-M-Y', strtotime($room->start_date))--}}
                                     {{--                }} - {{ __('page.from') }}:{{ $room->start_time }} - {{ __('page.until')--}}
                                     {{--                }}: {{$room->end_time}}</p>--}}
-                                    {{__('page.createbookings')}}
+                                    {{__('page.checkavailability')}}
                                     <form method="POST" action="{{ route('front.bookings.store', $room->id) }}">
                                         @csrf
-                                        <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}"
-                                               required>
+                                        <input type="hidden" id="room_id" name="room_id" value="{{ $room->id }}" required>
 {{--                                        <div class="form-group">--}}
 {{--                                            <label for="title">{{__('form.name')}}</label>--}}
 {{--                                            <input class="form-control" type="text" id="name" name="name"--}}
