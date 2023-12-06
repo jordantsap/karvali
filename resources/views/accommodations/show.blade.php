@@ -138,7 +138,7 @@
                 @if(count($accommodation->rooms->where('active',1)) > 0)
                     <h1 class="text-center">{{__('page.rooms')}}</h1>
 
-                    @foreach($accommodation->rooms as $room)
+                    @foreach($rooms as $room)
                         <div class="row">
                             <div class="col-xs-2">
                                 @foreach(\App\Helpers\GetInputsHelper::imageFields() as $image)
@@ -194,14 +194,14 @@
                                                required>
                                         <div class="form-group">
                                             <label for="title">{{__('form.name')}}</label>
-                                            <input class="form-control" type="text" id="name" name="name"
+                                            <input class="form-control" type="text" id="name" name="name" value="{{ old('room_id') == $room->id ? old('name'):''}}"
                                                    placeholder="Enter your name here" required>
                                         </div>
                                         @if(auth()->user())
                                             <div class="form-group">
-                                                <label for="email">{{__('form.email')}}</label>
-                                                <input class="form-control" type="email" id="email" name="email"
-                                                       value="{{auth()->user()->email}}" placeholder="Enter your email here" readonly="readonly">
+                                                
+                                                <input class="form-control" type="hidden" id="email" name="email"
+                                                       value="{{auth()->user()->email}}" placeholder="Enter your email here" readonly="readonly" hidden>
                                             </div>
                                         @else
                                             <a href="{{route('login')}}">Login</a> or
@@ -213,7 +213,7 @@
                                                 <select name="check_in_date" class="form-control" id="check_in_date">
                                                     <option value="">Select Check-in Date</option>
                                                     @foreach ($room->getAvailableDates() as $date)
-                                                        <option value="{{ $date }}">{{ $date }}</option>
+                                                        <option value="{{ $date }}" {{ old('room_id') == $room->id && $date == old('check_in_date')? 'Selected':''}}>{{ $date }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -222,7 +222,7 @@
                                                 <select name="check_out_date" class="form-control" id="check_out_date">
                                                     <option value="">Select Check-Out Date</option>
                                                     @foreach ($room->getAvailableDates() as $date)
-                                                        <option value="{{ $date }}">{{ $date }}</option>
+                                                        <option value="{{ $date }}" {{ old('room_id') == $room->id && $date == old('check_out_date')? 'Selected':''}}>{{ $date }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -231,7 +231,7 @@
                                             <div class="col-xs-6">
                                                 <div class="form-group">
                                                     <label for="adults">adults</label>
-                                                    <input type="number" min="1" value="1" class="form-control" name="adults"
+                                                    <input type="number" min="1" value="{{ old('room_id') == $room->id ? old('adults'):'1'}}" class="form-control" name="adults"
                                                            id="adults"
                                                            placeholder="adults">
                                                 </div>
@@ -239,13 +239,14 @@
                                             <div class="col-xs-6">
                                                 <div class="form-group">
                                                     <label for="children">children</label>
-                                                    <input type="number" class="form-control" name="children" id="children"
+                                                    <input type="number" class="form-control" name="children" id="children" value="{{ old('room_id') == $room->id ? old('children'):''}}"
                                                            placeholder="children">
                                                 </div>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
+                                   
                                 </div>
 
                                 @if(count($room->bookings))
@@ -328,7 +329,7 @@
     </div>
 
 
-    {{--@include('modals.roomModal')--}}
+{{--@include('modals.roomModal')--}}
 @endsection
 {{--@section('extra-js')--}}
 

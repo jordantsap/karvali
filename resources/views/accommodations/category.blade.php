@@ -9,6 +9,11 @@
         <div class="container">
             <div class="row">
                 <h1 class="">{{ __('page.accommodations') }}</h1>
+
+
+                @include('accommodations.search')
+
+
                 <nav class="navbar">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#companytype-collapse"
                             aria-expanded="false">
@@ -36,6 +41,7 @@
                 <div class="row">
                     @if($accommodations)
                         @foreach ($accommodations as $accommodation)
+                            @if($accommodation->rooms->count()>0)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
                                     <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">
@@ -47,7 +53,7 @@
                                         <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
                                     </h2>
                                     <div class="">
-                                        {{__('Rooms: ') .$accommodation->rooms->count()}}
+                                        {{__('Available rooms: ') .$accommodation->rooms->count()}}
                                     </div>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
@@ -59,13 +65,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug)}}">
+                                            <!-- <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug)}}">
                                                     {{$accommodation->accommodationType->title}}
-                                                </a></h3>
+                                                </a></h3> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         @endforeach
                         <br>
                     @else

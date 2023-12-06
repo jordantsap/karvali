@@ -7,6 +7,7 @@ use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Room extends Model implements TranslatableContract
 {
@@ -37,7 +38,7 @@ class Room extends Model implements TranslatableContract
         'image3',
     ];
 
-//    public function getRouteKeyName()
+    //    public function getRouteKeyName()
 //    {
 //        return 'slug';
 //    }
@@ -78,25 +79,45 @@ class Room extends Model implements TranslatableContract
     }
 
     // usage on bookingController line 38
+    // public function isAvailable($checkInDate, $checkOutDate): bool
+    // {
+    //     $existingBookings = $this->bookings()
+    //         ->where(function ($query) use ($checkInDate, $checkOutDate) {
+    //             $query->whereBetween('check_in_date', [$checkInDate, $checkOutDate])
+    //                 ->orWhereBetween('check_out_date', [$checkInDate, $checkOutDate])
+    //                 ->orWhere(function ($subquery) use ($checkInDate, $checkOutDate) {
+    //                     $subquery->where('check_in_date', '<', $checkInDate)
+    //                         ->where('check_out_date', '>', $checkOutDate);
+    //                 });
+    //         })
+    //         ->count();
+
+    //     return $existingBookings === 0;
+    // }
+
+
     public function isAvailable($checkInDate, $checkOutDate): bool
     {
+        //DB::enableQueryLog();
         $existingBookings = $this->bookings()
-            ->where(function ($query) use ($checkInDate, $checkOutDate) {
-                $query->whereBetween('check_in_date', [$checkInDate, $checkOutDate])
-                    ->orWhereBetween('check_out_date', [$checkInDate, $checkOutDate])
-                    ->orWhere(function ($subquery) use ($checkInDate, $checkOutDate) {
-                        $subquery->where('check_in_date', '<', $checkInDate)
-                            ->where('check_out_date', '>', $checkOutDate);
-                    });
+            ->where(function ($dateQuery) use ($checkInDate, $checkOutDate) {
+                // Check for overlapping bookings
+                $dateQuery->where('check_in_date', '<', $checkOutDate)
+                    ->where('check_out_date', '>', $checkInDate);
+            })->orWhere(function ($dateQuery) use ($checkInDate, $checkOutDate) {
+                // Check for consecutive bookings
+                $dateQuery->where('check_in_date', '>', $checkOutDate);
             })
             ->count();
+            //dd(DB::getQueryLog());
 
-        return $existingBookings === 0;
+           return $existingBookings === 0;
+        
     }
     //usage on view::accommodation.show line 208
     public function getAvailableDates(): array
     {
-        $bookedDates = $this->bookings->pluck(['check_in_date','check_out_date'])->flatten();
+        $bookedDates = $this->bookings->pluck(['check_in_date', 'check_out_date'])->flatten();
 
         $startDate = now()->startOfDay();
         $endDate = now()->addMonths(12)->endOfDay();
@@ -113,8 +134,13 @@ class Room extends Model implements TranslatableContract
         return $availableDates;
     }
 
+    public function scopeCountRooms()
+    {
+        return $this->count(); // Adjust the method based on your actual implementation
+    }
 
-//    public function availableTimeSlots()
+
+    //    public function availableTimeSlots()
 //    {
 //        $currentDate = Carbon::now()->format('d-m-Y');
 //        $bookings = $this->bookings()->whereDate('check_in_date', $currentDate)->orderBy('check_in_date')->get();
@@ -144,4 +170,16 @@ class Room extends Model implements TranslatableContract
 //
 //        return $availableTimeSlots;
 //    }
+
+
+    public function scopeAvailableForDates($query, $checkInDate, $checkOutDate)
+    {
+        return $query->whereDoesntHave('bookings', function ($bookingQuery) use ($checkInDate, $checkOutDate) {
+            // Check for overlapping bookings
+            $bookingQuery->where(function ($dateQuery) use ($checkInDate, $checkOutDate) {
+                $dateQuery->where('check_in_date', '>', $checkInDate)
+                    ->where('check_out_date', '<', $checkOutDate);
+            });
+        });
+    }
 }

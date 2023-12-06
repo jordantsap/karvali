@@ -23,7 +23,7 @@
       </div>
       @endif
       @if (session()->has('errors'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger mt-2">
             <ul class="list-group">
                 @foreach ($errors->all() as $error)
                     <li class="list-group-item">{!! $error !!}</li>

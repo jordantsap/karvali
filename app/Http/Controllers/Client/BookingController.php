@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Client;
 use App\Enums\Status;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookingRequest;
+use App\Mail\BookingEmail;
 use App\Models\Booking;
 use App\Models\Room;
 use App\Services\EventService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -26,7 +28,7 @@ class BookingController extends Controller
 
     public function store(Request $request, $roomId)
     {
-
+        
 //        if (!auth()->user()) {
 //
 //            toastr()
@@ -51,8 +53,10 @@ class BookingController extends Controller
         // Check room availability for the specified dates
         $checkInDate = $request->input('check_in_date');
         $checkOutDate = $request->input('check_out_date');
-        $isRoomAvailable = $room->isAvailable($checkInDate, $checkOutDate);
-
+        $check_in_date = Carbon::parse($checkInDate);
+        $check_out_date = Carbon::parse($checkOutDate);
+        $isRoomAvailable = $room->isAvailable($check_in_date, $check_out_date);
+   
         if (!$isRoomAvailable) {
             return redirect()->back()->withInput()->withErrors(['availability' => 'The room is not available for the selected dates.']);
         }
@@ -72,7 +76,10 @@ class BookingController extends Controller
                 ->persistent()
 //                ->closeButton()
                 ->addSuccess('Booking created successfully!');
-
+            $recipientEmail = "rahul.tr@aipopuli.com";
+            $username = $request->input("name");
+            $bookingId = $room->id;
+            //Mail::to($recipientEmail)->send(new BookingEmail($username, $bookingId, $checkInDate, $checkOutDate));
             return redirect()->back();
         }
 

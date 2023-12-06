@@ -47,4 +47,5 @@ class Booking extends Model implements TranslatableContract
     {
         return $this->belongsTo(User::class);
     }
+    
 }
