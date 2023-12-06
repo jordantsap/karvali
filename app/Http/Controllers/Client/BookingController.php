@@ -79,7 +79,7 @@ class BookingController extends Controller
             $recipientEmail = "rahul.tr@aipopuli.com";
             $username = $request->input("name");
             $bookingId = $room->id;
-            //Mail::to($recipientEmail)->send(new BookingEmail($username, $bookingId, $checkInDate, $checkOutDate));
+            Mail::to($recipientEmail)->send(new BookingEmail($username, $bookingId, $checkInDate, $checkOutDate));
             return redirect()->back();
         }
 
