@@ -18,7 +18,7 @@ use Illuminate\Http\Response;
 class AccommodationController extends Controller
 {
 
-    
+
     public $sources = [
         [
             'model' => '\\App\\Models\\Room',
@@ -82,17 +82,16 @@ class AccommodationController extends Controller
                 $dateQuery->where('check_in_date', '>', $check_out_date);
             });
         })
-        ->pluck('room_id')
-        ->toArray();
+            ->pluck('room_id')
+            ->toArray();
+
+        // Get available rooms for the accommodation
+        $rooms = $accommodation->rooms->whereNotIn('id', $bookedRoomIds);
         
-    // Get available rooms for the accommodation
-         $rooms = $accommodation->rooms->whereNotIn('id', $bookedRoomIds);
-        //dd($rooms);
-        //
         $availableEvents = [];
         foreach ($rooms as $room) {
             $availableDates = $this->getAvailableDates($room->id, $check_in_date, $check_out_date);
-           
+
             foreach ($availableDates as $date) {
                 $availableEvents[] = [
                     'title' => $room->title,
@@ -111,9 +110,9 @@ class AccommodationController extends Controller
 
     public function accommodationSearch(Accommodation $accommodation, Request $request)
     {
-        
 
-        
+
+
 
         $dateRange = $request->search_date;
 
@@ -121,7 +120,7 @@ class AccommodationController extends Controller
         list($startDate, $endDate) = explode(' - ', $dateRange);
 
         // Convert string dates to Carbon instances
-        
+
 
 
         $rules = [
@@ -145,11 +144,11 @@ class AccommodationController extends Controller
             ->whereTranslation('accommodation_type_id', $slug)
             ->first();
 
-        
+
         session([
-            'check_in_date'=>$startDate,
-            'check_out_date' =>$endDate,
-        ]);             
+            'check_in_date' => $startDate,
+            'check_out_date' => $endDate,
+        ]);
 
         $accommodations = Accommodation::with([
             'rooms' => function ($roomQuery) use ($adults, $child, $startDate, $endDate) {
@@ -177,8 +176,29 @@ class AccommodationController extends Controller
             ->having('rooms_count', '>=', $requestCount) // Filter based on the room count
             ->paginate();
 
-        $request->flash();
 
+        $request->flash();
+        if (!empty($accommodations) && isset($accommodations[0])) {
+            $rooms = $accommodations[0]->rooms;
+            if ($rooms) {
+                $roomCount = $rooms->count();
+            }
+        } else {
+            // Handle the case where $accommodations is empty or null
+            toastr()
+                ->persistent()
+                ->closeButton()
+                ->addError('No Accommodations available for the selected date!!!');
+            return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        }
+
+        if ($accommodations[0]->rooms->count() > 0) {
+            return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        } else
+            toastr()
+                ->persistent()
+                ->closeButton()
+                ->addError('No Rooms available for the selected date!!!');
         return view('accommodations.category', compact(['accommodations', 'accommodationType']));
     }
 

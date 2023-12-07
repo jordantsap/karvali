@@ -12,6 +12,8 @@ use App\Services\EventService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Auth;
+use App\Models\User;
 
 class BookingController extends Controller
 {
@@ -20,7 +22,7 @@ class BookingController extends Controller
         return Booking::all();
         return view('bookings.index');
     }
-//    public function create()
+    //    public function create()
 //    {
 //        $room = Room::all();
 //        return view('bookings.create',compact('room'));
@@ -28,8 +30,8 @@ class BookingController extends Controller
 
     public function store(Request $request, $roomId)
     {
-        
-//        if (!auth()->user()) {
+
+        //        if (!auth()->user()) {
 //
 //            toastr()
 //                ->persistent()
@@ -56,11 +58,10 @@ class BookingController extends Controller
         $check_in_date = Carbon::parse($checkInDate);
         $check_out_date = Carbon::parse($checkOutDate);
         $isRoomAvailable = $room->isAvailable($check_in_date, $check_out_date);
-   
+
         if (!$isRoomAvailable) {
             return redirect()->back()->withInput()->withErrors(['availability' => 'The room is not available for the selected dates.']);
-        }
-        else{
+        } else {
             // If room is available, create booking
             Booking::create([
                 'room_id' => $room->id,
@@ -72,17 +73,59 @@ class BookingController extends Controller
                 'children' => $request->input('children'),
                 'status' => Status::PENDING,
             ]);
-            toastr()
-                ->persistent()
-//                ->closeButton()
-                ->addSuccess('Booking created successfully!');
             $recipientEmail = "rahul.tr@aipopuli.com";
             $username = $request->input("name");
             $bookingId = $room->id;
-            Mail::to($recipientEmail)->send(new BookingEmail($username, $bookingId, $checkInDate, $checkOutDate));
-            return redirect()->back();
+            //Mail::to($recipientEmail)->send(new BookingEmail($username, $bookingId, $checkInDate, $checkOutDate));
+            return redirect(route('front.bookings.booking_cart'));
         }
 
+    }
+
+    public function bookingCart()
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $user = User::find($user_id);
+            $email = $user->email;
+
+            $translation_room_id = Booking::where('email', $email)->pluck('room_id');
+            $booking_details = Booking::where('email', $email)
+            ->where('status', 'Pending')
+                ->with('room')
+                ->get();
+
+            return view('bookings.cart', compact('booking_details', 'user'));
+        } else {
+            return redirect(route('userlogin'));
+        }
+    }
+    public function confirmBooking(Request $request)
+    {
+        if (Auth::check()) {
+            $checkOutDate = $request->check_out_date;
+            $id = decrypt($request->id);
+            $checkInDate = $request->check_in_date;
+            $booking = Booking::find($id);
+            $booking->update([
+                'status' => 'Booked', 
+            ]);
+            
+            toastr()
+                ->persistent()
+
+                ->addSuccess('Booking created successfully!');
+            $recipientEmail = "rahul.tr@aipopuli.com";
+            $username = $request->input("name");
+            $bookingId = $request->booking_id;
+            Mail::to($recipientEmail)->send(new BookingEmail($username, $bookingId, $checkInDate, $checkOutDate));
+            return redirect(route('front.bookings.booking_cart'));
+           
+        }
+        else {
+            return redirect(route('userlogin'));
+        }
+            
     }
 
 }

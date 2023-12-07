@@ -69,10 +69,12 @@ Route::as('front.')->group(function () {
     Route::get('accommodations/{accommodation:slug}', [\App\Http\Controllers\Client\AccommodationController::class, 'show'])->name('accommodation.show');
 
 
+
     // Room Search Route
 
     Route::get('accommodation-search', [\App\Http\Controllers\Client\AccommodationController::class,'accommodationSearch'])->name('accommodation.search');
-
+    Route::get('booking-cart', [BookingController::class,'bookingCart'])->name('bookings.booking_cart');
+    Route::get('confirm-booking/{id}', [BookingController::class,'confirmBooking'])->name('confirm.booking');
     //
 
 
