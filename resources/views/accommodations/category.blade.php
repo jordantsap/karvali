@@ -39,7 +39,7 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if($accommodations)
+                    @if(!isset($accommodations))
                         @foreach ($accommodations as $accommodation)
                             @if($accommodation->rooms->count()>0)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">

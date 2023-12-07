@@ -175,30 +175,30 @@ class AccommodationController extends Controller
             })
             ->having('rooms_count', '>=', $requestCount) // Filter based on the room count
             ->paginate();
-
-
         $request->flash();
-        if (!empty($accommodations) && isset($accommodations[0])) {
-            $rooms = $accommodations[0]->rooms;
-            if ($rooms) {
-                $roomCount = $rooms->count();
-            }
-        } else {
-            // Handle the case where $accommodations is empty or null
-            toastr()
-                ->persistent()
-                ->closeButton()
-                ->addError('No Accommodations available for the selected date!!!');
-            return view('accommodations.category', compact(['accommodations', 'accommodationType']));
-        }
-
-        if ($accommodations[0]->rooms->count() > 0) {
-            return view('accommodations.category', compact(['accommodations', 'accommodationType']));
-        } else
-            toastr()
-                ->persistent()
-                ->closeButton()
-                ->addError('No Rooms available for the selected date!!!');
+        // if (!empty($accommodations) && isset($accommodations[0])) {
+        //     $rooms = $accommodations[0]->rooms;
+        //     if ($rooms) {
+        //         $roomCount = $rooms->count();
+        //     }
+        // } else {
+        //     // Handle the case where $accommodations is empty or null
+        //     toastr()
+        //         ->persistent()
+        //         ->closeButton()
+        //         ->addError('No Accommodations available for the selected date!!!');
+        //     return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        // }
+        // dd($roomCount);
+        // if ($accommodations[0]->rooms->count() > 0) {
+        //     return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        // } else{
+        //     toastr()
+        //         ->persistent()
+        //         ->closeButton()
+        //         ->addError('No Rooms available for the selected date!!!');
+        //          return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        // }
         return view('accommodations.category', compact(['accommodations', 'accommodationType']));
     }
 
