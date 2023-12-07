@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,44 +12,32 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected function redirectTo()
-    {
-        return url()->previous();
-    }
+    protected string $redirectTo = RouteServiceProvider::HOME;
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     public function showLoginForm()
     {
-        session(['url.intended' => url()->previous()]);
+        session()->put('previousUrl', url()->previous());
 
         return view('auth.customer.login');
     }
-
-    public function login(Request $request)
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectTo ()
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ]);
-
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            $this->authenticated($request, Auth::user());
-            return redirect()->back();
-        }
-
-        // Authentication failed...
-        return $this->sendFailedLoginResponse($request);
-    }
-    protected function authenticated(Request $request, $user)
-    {
-        // Custom logic before redirecting (optional)
-        // ...
-
-        // Redirect to the intended URL or the default path after login
-        return redirect()->intended(session('url.intended', $this->redirectPath()));
+        return session('previousUrl', '/');
     }
 
 }
