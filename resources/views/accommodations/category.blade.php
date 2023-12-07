@@ -39,7 +39,7 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if(!isset($accommodations))
+                    @if($accommodations)
                         @foreach ($accommodations as $accommodation)
                             @if($accommodation->rooms->count()>0)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
@@ -75,11 +75,11 @@
                             @endif
                         @endforeach
                         <br>
-                    @else
+                    <!-- @else
                         <div class="col-xs-12 noresults">
                             <h1><b>{{__('page.noresults')}}</b></h1>
                         </div>
-                    @endif
+                    @endif -->
 
                 </div>
 
