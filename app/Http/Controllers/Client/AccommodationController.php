@@ -47,8 +47,9 @@ class AccommodationController extends Controller
     }
 
     public function category(Accommodation $accommodation, $slug)
-    {
-
+    {   
+        $requestCount = 0;
+        $flag = 1;
         $accommodationType = AccommodationType::with('accommodations')
             ->whereTranslation('slug', $slug)
             ->first();
@@ -56,8 +57,12 @@ class AccommodationController extends Controller
         $accommodations = Accommodation::whereHas('accommodationType', function ($query) use ($slug) {
             $query->whereTranslation('slug', $slug);
         })->paginate();
+        if($accommodations[0] == null)
+        {
+            $flag = 0;
+        }
 
-        return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        return view('accommodations.category', compact(['accommodations', 'accommodationType','requestCount','flag']));
     }
 
     /**
@@ -113,7 +118,7 @@ class AccommodationController extends Controller
 
 
 
-
+        $flag = 1;
         $dateRange = $request->search_date;
 
         // Separate start and end dates
@@ -151,7 +156,7 @@ class AccommodationController extends Controller
         ]);
 
         $accommodations = Accommodation::with([
-            'rooms' => function ($roomQuery) use ($adults, $child, $startDate, $endDate) {
+            'rooms' => function ($roomQuery) use ($adults, $child, $startDate, $endDate,$requestCount) {
                 $roomQuery->whereDoesntHave('bookings', function ($bookingQuery) use ($startDate, $endDate) {
                     $bookingQuery->where(function ($dateQuery) use ($startDate, $endDate) {
                         // Check for overlapping bookings
@@ -162,7 +167,7 @@ class AccommodationController extends Controller
                         $dateQuery->where('check_in_date', '>', $endDate);
                     });
                 })
-                    ->where(function ($query) use ($adults, $child) {
+                    ->where(function ($query) use ($adults, $child,$requestCount) {
                         // Check for available capacity based on adults and children
                         $query->where('adults', '>=', $adults)
                             ->where('kids', '>=', $child);
@@ -176,6 +181,19 @@ class AccommodationController extends Controller
             ->having('rooms_count', '>=', $requestCount) // Filter based on the room count
             ->paginate();
         $request->flash();
+
+        if($accommodations[0] == null)
+        {
+            $flag = 0;
+        }
+        else if($accommodations[0]->rooms->count() == 0){
+            $flag = 0;
+        }
+        else if($requestCount == 0)
+        {
+            $flag = 0;
+        }
+
         // if (!empty($accommodations) && isset($accommodations[0])) {
         //     $rooms = $accommodations[0]->rooms;
         //     if ($rooms) {
@@ -199,7 +217,7 @@ class AccommodationController extends Controller
         //         ->addError('No Rooms available for the selected date!!!');
         //          return view('accommodations.category', compact(['accommodations', 'accommodationType']));
         // }
-        return view('accommodations.category', compact(['accommodations', 'accommodationType']));
+        return view('accommodations.category', compact(['accommodations', 'accommodationType','requestCount','flag']));
     }
 
 

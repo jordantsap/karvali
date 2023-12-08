@@ -39,9 +39,12 @@
                 <div class="divider"></div>
 
                 <div class="row">
+                    
                     @if($accommodations)
+                    
                         @foreach ($accommodations as $accommodation)
-                            @if($accommodation->rooms->count()>0)
+                        
+                            @if($accommodation->rooms->count() >= $requestCount)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
                                     <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">
@@ -75,11 +78,12 @@
                             @endif
                         @endforeach
                         <br>
-                    <!-- @else
+                        @if($flag == 0)
                         <div class="col-xs-12 noresults">
                             <h1><b>{{__('page.noresults')}}</b></h1>
                         </div>
-                    @endif -->
+                        @endif
+                    @endif
 
                 </div>
 

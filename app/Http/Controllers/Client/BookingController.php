@@ -58,6 +58,17 @@ class BookingController extends Controller
         $check_in_date = Carbon::parse($checkInDate);
         $check_out_date = Carbon::parse($checkOutDate);
         $isRoomAvailable = $room->isAvailable($check_in_date, $check_out_date);
+        if($request->input('children') == null)
+            $children  = 0;
+        else
+            $children = $request->input('children');
+
+        if($request->input('adults') > $room->adults)
+            return redirect()->back()->withInput()->withErrors(['availability' => 'You can book only '.$room->adults.' adults and '.$room->kids.' kids for the seletcted room']);
+
+        if($children > $room->adults)
+            return redirect()->back()->withInput()->withErrors(['availability' => 'You can book only '.$room->adults.' adults and '.$room->kids.' kids for the seletcted room']);
+        
 
         if (!$isRoomAvailable) {
             return redirect()->back()->withInput()->withErrors(['availability' => 'The room is not available for the selected dates.']);
@@ -91,8 +102,8 @@ class BookingController extends Controller
 
             $translation_room_id = Booking::where('email', $email)->pluck('room_id');
             $booking_details = Booking::where('email', $email)
-            ->where('status', 'Pending')
-                ->with('room')
+                //->orderBy('status','desc')
+                ->with('room.accommodation')
                 ->get();
 
             return view('bookings.cart', compact('booking_details', 'user'));
