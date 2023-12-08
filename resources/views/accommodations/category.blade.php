@@ -39,13 +39,13 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    
+
                     @if($accommodations)
-                    
+
                         @foreach ($accommodations as $accommodation)
-                        
+
                             @if($accommodation->rooms->count() >= $requestCount)
-                            <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
+                            <div class="col-sm-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
                                     <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">
                                         <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;" src="{{ asset($accommodation->logo) }}" alt="{{ $accommodation->title }}">
@@ -59,18 +59,18 @@
                                         {{__('Available rooms: ') .$accommodation->rooms->count()}}
                                     </div>
                                     <div class="row" id="likecomment">
-                                        <div class="col-xs-6 text-center">
+                                        <div class="col-sm-6 text-center">
                                             <i class="fa fa-3x fa-thumbs-up"></i><span class="badge">{{$accommodation->likes->count()}}</span>
                                         </div>
-                                        <div class="col-xs-6 text-center">
+                                        <div class="col-sm-6 text-center">
                                             <i class="fa fa-3x fa-comment"></i><span class="badge">{{$accommodation->comments->count()}}</span>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-xs-12">
-                                            <!-- <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug)}}">
+                                        <div class="col-sm-12">
+                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug)}}">
                                                     {{$accommodation->accommodationType->title}}
-                                                </a></h3> -->
+                                                </a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                         @endforeach
                         <br>
                         @if($flag == 0)
-                        <div class="col-xs-12 noresults">
+                        <div class="col-sm-12 noresults">
                             <h1><b>{{__('page.noresults')}}</b></h1>
                         </div>
                         @endif
@@ -88,7 +88,7 @@
                 </div>
 
 
-                <div class="col-xs-9">
+                <div class="col-sm-9">
                     {{ $accommodations->links() }}
                 </div>
 

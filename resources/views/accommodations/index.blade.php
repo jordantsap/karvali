@@ -9,8 +9,8 @@
     <div class="container">
         <div class="row">
             <h1 class ss="">{{ __('page.accommodations') }}</h1>
-        
-            
+
+
 
             @include('accommodations.search')
 
@@ -59,7 +59,7 @@
                                 Str::limit($accommodation->title, 20) }}</a>
                         </h2>
                         <div class="">
-              
+                            {{__('Available rooms: ') .$accommodation->rooms->count()}}
                         </div>
                         <div class="row" id="likecomment">
                             <div class="col-xs-6 text-center">
