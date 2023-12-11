@@ -36,15 +36,32 @@
                                 <input type="date" class="form-control" id="checkoutdate" placeholder="checkoutdate">
                             </div>
                             <div class="form-group">
-{{--                                <label for="exampleInputEmail1">Adults</label>--}}
+                                <label for="exampleInputEmail1">Adults</label>
                                 <input type="number" class="form-control" id="adults" placeholder="adults">
                             </div>
                             <div class="form-group">
-{{--                                <label for="exampleInputEmail1">Children</label>--}}
+                                <label for="exampleInputEmail1">Children</label>
                                 <input type="number" class="form-control" id="children" placeholder="children">
                             </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                         </form>
+                    </div>
+                    <div class="row">
+                        <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
+                            @foreach ($accommodationTypes as $accommodationType)
+                                <li>
+                                    <a href="{{ route('front.accommodation-types.show',$accommodationType->slug) }}"
+                                       class="">{{ $accommodationType->title }}&nbsp
+                                        <span class="badge">{{ $accommodationType->accommodations->where('active', 1)->count() }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                            <li>
+                                <script>
+                                    document.write('<a href="' + document.referrer + '">{{ __('page.backlink') }}</a>');
+                                </script>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
                 <div class="divider"></div>
