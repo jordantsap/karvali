@@ -79,8 +79,7 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <h2 class="card-title">
-                                        <a
-                                            href="{{ route('front.accommodation.show', $accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
+                                        <a href="{{ route('front.accommodation.show', $accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
                                     </h2>
                                     <div class="">
                                         {{__('Rooms: ') .$accommodation->rooms->count()}}
@@ -109,7 +108,7 @@
                         @endforeach
                         <br>
                     @else
-                        <div class="col-xs-12 noresults">
+                        <div class="col-sm-12 noresults">
                             <h1><b>{{ __('page.noresults') }}</b></h1>
                         </div>
                     @endif

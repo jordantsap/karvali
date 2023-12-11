@@ -80,4 +80,9 @@ class Accommodation extends Model implements TranslatableContract
     {
         return $this->morphMany('App\Models\Like', 'likeable');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }

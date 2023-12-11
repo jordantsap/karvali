@@ -16,17 +16,16 @@ use Illuminate\Http\Response;
 
 class AccommodationController extends Controller
 {
-
-    public $sources = [
-        [
-            'model'      => '\\App\\Models\\Room',
-            'date_field' => 'start_time',
-            'field'      => 'title',
-            'prefix'     => '',
-            'suffix'     => '',
-            'route'      => 'admin.rooms.edit',
-        ],
-    ];
+//    public $sources = [
+//        [
+//            'model'      => '\\App\\Models\\Room',
+//            'date_field' => 'start_time',
+//            'field'      => 'title',
+//            'prefix'     => '',
+//            'suffix'     => '',
+//            'route'      => 'admin.rooms.edit',
+//        ],
+//    ];
     /**
      * Display a listing of the resource.
      *
@@ -48,11 +47,13 @@ class AccommodationController extends Controller
     {
          $accommodationType = AccommodationType::with('accommodations')
              ->whereTranslation('slug', $slug)
+             ->withTranslation()
              ->first();
 
-        $accommodations = Accommodation::whereHas('accommodationType',function($query) use ($slug) {
-            $query->whereTranslation('slug', $slug);
-        })->paginate();
+        $accommodations = $accommodationType->accommodations()
+            ->active()
+            ->with(['accommodationType','likes','comments'])
+            ->paginate(8);
 
          return view('accommodations.category', compact(['accommodations','accommodationType']));
     }
