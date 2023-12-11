@@ -19,10 +19,10 @@ Route::middleware(['guest'])->group(function() {
     Route::post('customer/register', [AuthRequestController::class,'store'])
         ->name('postregister.customer');
 
-    Route::get('user/login', [App\Http\Controllers\Client\LoginController::class,'showLoginForm'])
+    Route::get('customer/login', [App\Http\Controllers\Client\LoginController::class,'showLoginForm'])
         ->name('userlogin');
 
-    Route::post('user/login', 'Client\LoginController@login')->name('postuserlogin');
+    Route::post('customer/login', 'Client\LoginController@login')->name('postuserlogin');
 
     //Password reset routes
     Route::get('reset', 'Auth\ForgotPasswordController@showLinkRequestForm')

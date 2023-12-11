@@ -197,8 +197,8 @@
                             <div class="modal fade" id="{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                            <img width="100%" src="{{$product->logo}}" alt="">
                                         <div class="modal-header">
+                                        <img width="100%" src="{{asset($product->logo)}}" alt="">
                                             <h5 class="modal-title" id="exampleModalLabel">{{$product->title}}</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -207,6 +207,16 @@
                                         <div class="modal-body">
                                             <form id="cartstore" action="{{ route('cart.store') }}" method="post">
                                                 {{ csrf_field() }}
+                                                <div class="container">
+                                                    @foreach($product->attributes as $attribute)
+                                                        <div class="row">
+                                                            {{$attribute->title}}
+                                                        @foreach ($product->attributes as $attribute)
+                                                                <input type="{{ $attribute->attributeType->title }}" name="{{ $attribute->attributeType->value }}" id="">
+                                                        @endforeach
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                                 <input type="hidden" name="title" value="{{ $product->title }}">
                                                 <input type="hidden" name="price" value="{{ $product->price }}">

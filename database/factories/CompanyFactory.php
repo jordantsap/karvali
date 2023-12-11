@@ -51,7 +51,7 @@ class CompanyFactory extends Factory
 //      'pos' => $this->faker->randomElement($array = array ('No','Yes')),
       'creditcard' => $this->faker->randomElement($array = array ('Visa', 'Mastercard','American-Express')),
       'description' => $this->faker->realText($maxNbChars = 300, $indexSize = 2),
-      'user_id' => rand(1, 2),
+      'user_id' => 3,
     ];
 }
 }

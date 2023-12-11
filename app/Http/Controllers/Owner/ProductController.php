@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Helpers\GetInputsHelper;
 use App\Http\Controllers\Controller;
+use App\Models\AttributeProduct;
 use App\Models\Image as ImageModel;
 use App\Models\Option;
 use App\Models\OptionProduct;
@@ -69,9 +70,9 @@ class ProductController extends Controller
         // Save option values
         $optionValues = $request->input('attributevalue', []);
         foreach ($optionValues as $optionId => $value) {
-            $optionValue = new FieldProduct();
+            $optionValue = new AttributeProduct();
             $optionValue->product_id = $product->id;
-            $optionValue->field_id = $optionId;
+            $optionValue->attribute_id = $optionId;
             $optionValue->value = $value;
 //            $optionValue->translateOrNew($locale)->value = $request->{$locale}[$value];
             $optionValue->save();

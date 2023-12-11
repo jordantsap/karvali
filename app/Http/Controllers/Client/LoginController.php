@@ -37,7 +37,7 @@ class LoginController extends Controller
      */
     public function redirectTo ()
     {
-        return session('previousUrl', '/');
+        return session()->get('previousUrl', '/');
     }
 
 }

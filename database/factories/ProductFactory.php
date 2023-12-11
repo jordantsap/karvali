@@ -42,7 +42,7 @@ class ProductFactory extends Factory
                 'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 50), // 48.8932
                 'product_type' => rand(1, 5), //ProductType::factory(),
                 'company_id' => rand(1,2),
-                'user_id' => '1',
+                'user_id' => '3',
             ];
 //        }
     }

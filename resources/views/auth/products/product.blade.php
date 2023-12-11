@@ -47,7 +47,7 @@
                             <div class="col-xs-12">
                                 <h2>Fields</h2>
 
-                                @foreach ($product->fields as $field)
+                                @foreach ($product->attributes as $field)
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <label for="category">Product field</label>
@@ -56,7 +56,7 @@
 
                                         <div class="col-xs-6">
                                             <label for="category">Value</label>
-                                            <input class="form-control" type="text" placeholder="{{ $field->pivot->value }}" readonly>
+                                            <input class="form-control" type="{{$field->attributeType->title}}" placeholder="{{ $field->attributeType->value }}" readonly>
                                         </div>
                                     </div>
                                     <hr>
