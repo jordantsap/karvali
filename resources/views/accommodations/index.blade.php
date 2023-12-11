@@ -17,35 +17,35 @@
                         <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
                     </button>
 {{--                    <!-- List group -->--}}
-                    <div class="row nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
-                        <form class="form-inline" action="" method="get">
-                            <div class="form-group">
-                                <select class="col-sm-2 form-control" aria-label="Default select example">
-                                    <option selected>Accommodation Types</option>
-                                    @foreach($accommodationTypes as $accommodationType)
-                                        <option value="{{$accommodationType->id}}">{{$accommodationType->title}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Chechin</label>
-                                <input type="date" class="form-control" id="checkindate" placeholder="checkindate">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Chechout</label>
-                                <input type="date" class="form-control" id="checkoutdate" placeholder="checkoutdate">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Adults</label>
-                                <input type="number" class="form-control" id="adults" placeholder="adults">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Children</label>
-                                <input type="number" class="form-control" id="children" placeholder="children">
-                            </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                    </div>
+{{--                    <div class="row nav navbar-nav collapse navbar-collapse" id="companytype-collapse">--}}
+{{--                        <form class="form-inline" action="" method="get">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <select class="col-sm-2 form-control" aria-label="Default select example">--}}
+{{--                                    <option selected>Accommodation Types</option>--}}
+{{--                                    @foreach($accommodationTypes as $accommodationType)--}}
+{{--                                        <option value="{{$accommodationType->id}}">{{$accommodationType->title}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputEmail1">Chechin</label>--}}
+{{--                                <input type="date" class="form-control" id="checkindate" placeholder="checkindate">--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputEmail1">Chechout</label>--}}
+{{--                                <input type="date" class="form-control" id="checkoutdate" placeholder="checkoutdate">--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputEmail1">Adults</label>--}}
+{{--                                <input type="number" class="form-control" id="adults" placeholder="adults">--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputEmail1">Children</label>--}}
+{{--                                <input type="number" class="form-control" id="children" placeholder="children">--}}
+{{--                            </div>--}}
+{{--                                <button type="submit" class="btn btn-default">Submit</button>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
                     <div class="row">
                         <ul class="nav navbar-nav collapse navbar-collapse" id="companytype-collapse">
                             @foreach ($accommodationTypes as $accommodationType)
@@ -108,7 +108,7 @@
                         @endforeach
                         <br>
                     @else
-                        <div class="col-sm-12 noresults">
+                        <div class="container noresults">
                             <h1><b>{{ __('page.noresults') }}</b></h1>
                         </div>
                     @endif

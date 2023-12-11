@@ -34,7 +34,7 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if($accommodations)
+                    @if(count($accommodations) > 0)
                         @foreach ($accommodations as $accommodation)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
@@ -66,10 +66,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
                         @endforeach
                         <br>
                     @else
-                        <div class="col-xs-12 noresults">
+                        <div class="col-sm-12 noresults">
                             <h1><b>{{__('page.noresults')}}</b></h1>
                         </div>
                     @endif
@@ -78,7 +79,7 @@
 
 
                 <div class="col-xs-9">
-                    {{ $accommodations->links() }}
+{{--                    {{ $accommodations->links() }}--}}
                 </div>
 
             </div>
