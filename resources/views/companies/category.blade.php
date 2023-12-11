@@ -1,7 +1,7 @@
 @extends('layouts.main')
-{{--@section('title', $companytype->title.' '.__('head.companycategory'))--}}
-{{--@section('meta_description', __('meta.companycategorydescription').' category.blade.php'.$companytype->name)--}}
-{{--@section('meta_keywords', $companytype->name.' '.__('meta.companycategorykeywords'))--}}
+@section('title', $companytype->title.' '.__('head.companycategory'))
+@section('meta_description', __('meta.companycategorydescription').' category.blade.php'.$companytype->name)
+@section('meta_keywords', $companytype->name.' '.__('meta.companycategorykeywords'))
 
 @section('content')
     <!-- Page Content -->
@@ -38,7 +38,7 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if($companies)
+                    @if(count($companies) > 0)
                         @foreach ($companies as $company)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
