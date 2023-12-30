@@ -34,44 +34,49 @@
                 <div class="divider"></div>
 
                 <div class="row">
-                    @if(count($accommodations) > 0)
+                    @if (count($accommodations) > 0)
                         @foreach ($accommodations as $accommodation)
                             <div class="col-xs-12 col-sm-4 col-md-3 portfolio-item">
                                 <div class="card h-100">
-                                    <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">
-                                        <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;" src="{{ asset($accommodation->logo) }}" alt="{{ $accommodation->title }}">
+                                    <a href="{{ route('front.accommodation.show', $accommodation->slug) }}">
+                                        <img class="img-responsive img-fluid rounded" style="width:100%;height:150px;"
+                                             src="{{ asset($accommodation->logo) }}"
+                                             alt="{{ $accommodation->title }}">
                                     </a>
                                 </div>
                                 <div class="card-body text-center">
                                     <h2 class="card-title">
-                                        <a href="{{ route('front.accommodation.show',$accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
+                                        <a href="{{ route('front.accommodation.show', $accommodation->slug) }}">{{ Str::limit($accommodation->title, 20) }}</a>
                                     </h2>
                                     <div class="">
-                                        {{__('Rooms: ') .$accommodation->rooms->count()}}
+                                        {{__('Rooms: ') .$accommodation->rooms->where('active',1)->count()}}
                                     </div>
                                     <div class="row" id="likecomment">
                                         <div class="col-xs-6 text-center">
-                                            <i class="fa fa-3x fa-thumbs-up"></i><span class="badge">{{$accommodation->likes->count()}}</span>
+                                            <i class="fa fa-3x fa-thumbs-up"></i>
+                                            <span class="badge">{{ count($accommodation->likes) }}</span>
                                         </div>
+
                                         <div class="col-xs-6 text-center">
-                                            <i class="fa fa-3x fa-comment"></i><span class="badge">{{$accommodation->comments->count()}}</span>
+                                            <i class="fa fa-3x fa-comment"></i>
+                                            <span class="badge">{{ count($accommodation->comments) }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <h3><b>{{ __('page.category') }}</b> <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug)}}">
-                                                    {{$accommodation->accommodationType->title}}
-                                                </a></h3>
+                                            <h3><b>{{ __('page.category') }}</b>
+                                                <a href="{{ route('front.accommodation-types.show', $accommodation->accommodationType->slug ?? '') }}">
+                                                    {{ $accommodation->accommodationType ? \Str::limit($accommodation->accommodationType->title, 10) : '#'}}</a>
+                                            </h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <br>
                         @endforeach
                         <br>
                     @else
-                        <div class="col-sm-12 noresults">
-                            <h1><b>{{__('page.noresults')}}</b></h1>
+                        <div class="container noresults">
+                            <h1><b>{{ __('page.noresults') }}</b></h1>
                         </div>
                     @endif
 
