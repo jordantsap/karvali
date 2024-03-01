@@ -19,13 +19,10 @@ class AttributeTypeSeeder extends Seeder
         DB::table('attribute_types')->truncate();
 
         AttributeType::create([
-            'title' => 'varchar',
+            'type' => 'checkbox',
         ]);
         AttributeType::create([
-            'title' => 'checkbox',
-        ]);
-        AttributeType::create([
-            'title' => 'radio',
+            'type' => 'radio',
         ]);
     }
 }

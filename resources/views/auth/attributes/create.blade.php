@@ -44,7 +44,7 @@
                                         class="form-control">
                                     <option value="{{ old('attribute_type') }}">Επιλέξτε</option>
                                     @foreach($attributeTypes as $attributeType)
-                                        <option value="{{ $attributeType->id }} {{ old('attribute_type') }}" {{old('attribute_type')?"selected":""}}>{{ $attributeType->title }}</option>
+                                        <option value="{{ $attributeType->id }} {{ old('attribute_type') }}" {{old('attribute_type')?"selected":""}}>{{ $attributeType->type }}</option>
                                     @endforeach
                                 </select>
                             </div>

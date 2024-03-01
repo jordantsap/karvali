@@ -33,7 +33,8 @@ class Attribute extends Model implements TranslatableContract
     }
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)
+            ->withPivot('value');
     }
 
 }

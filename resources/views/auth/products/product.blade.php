@@ -25,11 +25,10 @@
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title">Ονομασία:</label>
                                 <div class="input-group">
-                                    <input type="text" value="{{ $product->title }}" class="form-control" name="title"
-                                           placeholder="{{ $product->title }}">
+                                    <input type="text" value="{{ $product->title }}" class="form-control" name="title" placeholder="{{ $product->title }}">
                                     <span class="input-group-addon">
-                <span class="glyphicon glyphicon-home"></span>
-              </span>
+                                        <span class="glyphicon glyphicon-home"></span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -45,18 +44,18 @@
                         </div>
                         @if ($product->attributes)
                             <div class="col-xs-12">
-                                <h2>Fields</h2>
+                                <h2>Attributes</h2>
 
-                                @foreach ($product->attributes as $field)
+                                @foreach ($product->attributes as $attribute)
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <label for="category">Product field</label>
-                                            <input class="form-control" type="text" placeholder="{{ $field->title }}" readonly>
+                                            <label for="category">Product attribute</label>
+                                            <input class="form-control" type="text" placeholder="{{ $attribute->title }}" readonly>
                                         </div>
 
                                         <div class="col-xs-6">
-                                            <label for="category">Value</label>
-                                            <input class="form-control" type="{{$field->attributeType->title}}" placeholder="{{ $field->attributeType->value }}" readonly>
+                                            <label for="{{ $attribute->pivot->value }}">{{ $attribute->pivot->value }}</label>
+                                            <input class="" type="{{$attribute->attributeType->type}}" placeholder="{{ $attribute->pivot->value }}" readonly>
                                         </div>
                                     </div>
                                     <hr>

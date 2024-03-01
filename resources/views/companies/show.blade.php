@@ -212,7 +212,8 @@
                                                         <div class="row">
                                                             {{$attribute->title}}
                                                         @foreach ($product->attributes as $attribute)
-                                                                <input type="{{ $attribute->attributeType->title }}" name="{{ $attribute->attributeType->value }}" id="">
+                                                                <input type="{{ $attribute->attributeType->type }}" value="{{ $attribute->pivot->value }}" id="">
+                                                                <label for="{{ $attribute->pivot->value }}">{{ $attribute->pivot->value }}</label>
                                                         @endforeach
                                                         </div>
                                                     @endforeach

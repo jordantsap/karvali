@@ -42,7 +42,7 @@
                                         <td>{{$attribute->slug}}</td>
 
                                         <td>{{$attribute->productType->title}}</td>
-                                        <td>{{$attribute->attributeType->title}}</td>
+                                        <td>{{$attribute->attributeType->type}}</td>
                                         <td>
 {{--                                            @can ('update', App\Models\AccommodationType::class)--}}
                                                 <a class="btn btn-primary" href="{{route('owner.attributes.edit', $attribute->id)}}">Edit</a> -

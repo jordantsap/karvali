@@ -51,9 +51,9 @@
               <label for="attribute_type">Attribute Type</label>
               <select class="form-control" name="attribute_type" id="attribute_type">
                 @foreach ($attributeTypes as $attributeType)
-                  <option value="{{$attributeType->id}}" @if( $attributeType->id == $attribute->attributeType->id){{'selected'}}
+                  <option value="{{$attributeType->value}}" @if( $attributeType->id == $attribute->attributeType->id){{'selected'}}
                   @else None
-                  @endif>{{$attributeType->title}}</option>
+                  @endif>{{$attributeType->value}}</option>
                 @endforeach
               </select>
             </div>

@@ -37,7 +37,7 @@
             <label for="attribute_type">Type</label>
             <div class="col-xs-12 input-group">
                 @if( ! empty($attribute->attributeType))
-                <input class="form-control" type="text" placeholder="{{$attribute->attributeType->title}}" value="{{$attribute->attributeType->title}}" readonly>
+                <input class="form-control" type="text" placeholder="{{$attribute->attributeType->type}}" readonly>
                 @else Null
                 @endif
             </div>

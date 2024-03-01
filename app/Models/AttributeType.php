@@ -9,6 +9,10 @@ class AttributeType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'type',
+    ];
+
     public function attributes()
     {
         return $this->hasMany(Attribute::class);
