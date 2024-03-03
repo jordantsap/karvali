@@ -89,6 +89,7 @@ class AmenityController extends Controller
     public function update(Request $request, Amenity $amenity)
     {
         $amenity = Amenity::find($amenity->id);
+
         foreach (config('translatable.locales') as $locale => $lang) {
             $amenity->translateOrNew($locale)->title = $request->{$locale}['title'];
         }

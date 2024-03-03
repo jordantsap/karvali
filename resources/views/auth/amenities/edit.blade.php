@@ -26,9 +26,9 @@
                           @endif
                           <div class="input-group">
                               <input type="text" class="form-control" name="{{$locale}}[title]" value="{{ $amenity->title }}" id="title" placeholder="{{ $amenity->title }}">
-                              <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-home"></span>
-                  </span>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </span>
                           </div>
                       </div>
                   </div>

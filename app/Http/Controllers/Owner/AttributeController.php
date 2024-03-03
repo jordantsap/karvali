@@ -20,7 +20,7 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        $attributes = Attribute::all();
+        $attributes = Attribute::withTranslation()->get();
 
         return view('auth.attributes.index', compact('attributes'));
     }
@@ -62,7 +62,7 @@ class AttributeController extends Controller
 
         toastr()->addSuccess('Attribute was saved successfully.');
 
-        return redirect(route('owner.attributes.show', $attribute->id));
+        return redirect(route('owner.attributes.index'));
     }
 
     /**
@@ -99,6 +99,7 @@ class AttributeController extends Controller
     public function update(Request $request, Attribute $attribute)
     {
         $attribute = Attribute::find($attribute->id);
+
         foreach (config('translatable.locales') as $locale => $lang) {
             $attribute->translateOrNew($locale)->title = $request->{$locale}['title'];
         }

@@ -46,6 +46,7 @@ class AttributeController extends Controller
         $attribute = new Attribute();
 
         $attribute->product_type_id = $request->product_type;
+        $attribute->attribute_type_id = $request->attribute_type;
 
         $attribute->save();
 

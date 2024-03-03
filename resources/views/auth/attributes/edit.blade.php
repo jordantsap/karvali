@@ -26,7 +26,7 @@
 
                   <div class="col-sm-3 form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                       <label for="title" class="control-label">{{ __('form.title') }} ({{$lang}})</label>
-                      <input id="title" type="text" class="form-control" name="{{$locale}}[title]" value="{{ old('title') }}" required>
+                      <input id="title" type="text" class="form-control" name="{{$locale}}[title]" value="{{$attribute->title}} {{ old('title') }}" placeholder="{{ $attribute->title }}">
 
                       @if ($errors->has('title'))
                           <span class="help-block">
@@ -53,7 +53,7 @@
                 @foreach ($attributeTypes as $attributeType)
                   <option value="{{$attributeType->value}}" @if( $attributeType->id == $attribute->attributeType->id){{'selected'}}
                   @else None
-                  @endif>{{$attributeType->value}}</option>
+                  @endif>{{$attributeType->type}}</option>
                 @endforeach
               </select>
             </div>
