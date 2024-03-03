@@ -46,7 +46,6 @@ class AttributeController extends Controller
      */
     public function store(StoreAttributeRequest $request, Attribute $attribute)
     {
-//        dd($request->all());
         $attribute = new Attribute();
 
         $attribute->product_type_id = $request->product_type;
@@ -99,6 +98,11 @@ class AttributeController extends Controller
     public function update(Request $request, Attribute $attribute)
     {
         $attribute = Attribute::find($attribute->id);
+
+        $attribute->product_type_id = $request->product_type_id;
+        $attribute->attribute_type_id = $request->attribute_type_id;
+
+        $attribute->save();
 
         foreach (config('translatable.locales') as $locale => $lang) {
             $attribute->translateOrNew($locale)->title = $request->{$locale}['title'];

@@ -39,7 +39,7 @@
 
             <div class="form-group col-xs-6">
               <label for="product_type">Product Type</label>
-              <select class="form-control" name="product_type" id="product_type">
+              <select class="form-control" name="product_type_id" id="product_type">
                 @foreach ($productTypes as $productType)
                   <option value="{{$productType->id}}" @if( $productType->id == $attribute->productType->id){{'selected'}}
                   @else None
@@ -49,9 +49,9 @@
             </div>
             <div class="form-group col-xs-6">
               <label for="attribute_type">Attribute Type</label>
-              <select class="form-control" name="attribute_type" id="attribute_type">
+              <select class="form-control" name="attribute_type_id" id="attribute_type">
                 @foreach ($attributeTypes as $attributeType)
-                  <option value="{{$attributeType->value}}" @if( $attributeType->id == $attribute->attributeType->id){{'selected'}}
+                  <option value="{{$attributeType->id}}" @if( $attributeType->id == $attribute->attributeType->id){{'selected'}}
                   @else None
                   @endif>{{$attributeType->type}}</option>
                 @endforeach

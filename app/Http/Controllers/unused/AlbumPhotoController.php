@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\unused;
 
 use App\Http\Controllers\Controller;
 use App\Models\unused\Album;
