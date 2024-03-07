@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\Room;
 use App\Models\Venue;
+use Barryvdh\Reflection\DocBlock\Tag;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 

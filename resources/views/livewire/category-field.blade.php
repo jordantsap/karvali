@@ -25,7 +25,7 @@
                 <div class="col-xs-12">
                     <label>{{ __('Attribute: ').$attribute->title }}</label>
                     <input class="form-control" name="attribute[{{$attribute->id}}]" value="{{$attribute->title}}" readonly>
-                    <input class="form-control" name="attributevalue[{{$attribute->id}}]" required>
+                    <input class="form-control" type="{{$attribute->attributeType->type}}" name="attributevalue[{{$attribute->id}}]" required>
                 </div>
             @endforeach
         @endif

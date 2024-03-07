@@ -7,10 +7,10 @@
         <section class="content-header">
             <h1>
                 Amenity : {{$amenity->title}}
-                @can ('update-accommodation', App\Models\Accommodation::class)
+{{--                @can ('update-amenities', App\Models\Amenity::class)--}}
                     <small><a class="btn btn-primary" href="{{route('owner.amenities.edit', $amenity->id)}}">Edit</a>
                         - <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
-                @endcan
+{{--                @endcan--}}
             </h1>
         </section>
 

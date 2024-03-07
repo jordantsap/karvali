@@ -6,7 +6,7 @@
     <h1>
       Attribute : {{$attribute->title}}
 {{--      @can ('update', App\Models\Attribute::class)--}}
-        <small><a class="btn btn-primary" href="{{route('admin.attributes.edit', $attribute->id)}}">Edit</a> -
+        <small><a class="btn btn-primary" href="{{route('owner.attributes.edit', $attribute->id)}}">Edit</a> -
             <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>
 {{--      @endcan--}}
     </h1>
