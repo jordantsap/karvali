@@ -68,7 +68,7 @@
                   <select id="company_type" value="{{ old('company_type') }}" name="company_type" class="form-control" >
                     <option value="{{ old('company_type') }}">Επιλέξτε</option>
                     @foreach($companytypes as $companytype)
-                      <option value="{{ $companytype->id }} {{ old('company_type') }}" {{old('company_type')?"selected":""}}>{{ $companytype->name }}</option>
+                      <option value="{{ $companytype->id }} {{ old('company_type') }}" {{old('company_type')?"selected":""}}>{{ $companytype->title }}</option>
                     @endforeach
                   </select>
                 </div>

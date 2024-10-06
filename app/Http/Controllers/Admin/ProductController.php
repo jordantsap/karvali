@@ -22,8 +22,15 @@ class ProductController extends Controller
      */
     public function index()
     {
+      
       $this->authorize('view-products', 'App\Product');
-        $products = Product::orderBy('id', 'DESC')->paginate(9);
+
+        $products = Product::orderBy('id', 'DESC')
+      
+        ->where('user_id', auth()->user()->id)
+      
+        ->paginate(9);
+      
         return view('admin.products.index', compact('products'));
 
     }

@@ -33,19 +33,19 @@
 
         @hasanyrole('Super-Admin|Admin')
 
-        <li><a href="{{ route('admin.adverts.index') }}">
+        <!-- <li><a href="{{ route('admin.adverts.index') }}">
           <i class="fas fa-puzzle-piece"></i> <span>Adverts!</span></a>
-        </li>
+        </li> -->
 {{--        @endhasanyrole--}}
 {{--         @can ('view_albums', App\Models\Album::class)--}}
-        <li><a href="{{ route('admin.albums.index') }}">
+        <!-- <li><a href="{{ route('admin.albums.index') }}">
           <i class="fas fa-images"></i> <span>Albums</span></a>
-        </li>
+        </li> -->
 {{--         @endcan--}}
 {{--         @can ('view_albums', App\Models\AlbumPhoto::class)--}}
-        <li><a href="{{ route('admin.photos.index') }}">
+        <!-- <li><a href="{{ route('admin.photos.index') }}">
           <i class="fas fa-images"></i> <span>Album Photos</span></a>
-        </li>
+        </li> -->
 {{--         @endcan--}}
 {{--        @can ('view_roles', App\Models\Role::class)--}}
           <li><a href="{{ route('admin.roles.index') }}">
@@ -66,35 +66,31 @@
         <li><a href="{{ route('admin.accommodations.index') }}"><i class="fas fa-book"></i> <span>Accommodations</span></a></li>
 
         <li><a href="{{ route('admin.accommodation-types.index') }}"><i class="fas fa-book"></i> <span>Accommodation Types</span></a></li>
-{{--        @endhasanyrole--}}
-{{--        @role ('view', App\Models\Post::class)--}}
+
         <li><a href="{{ route('admin.posts.index') }}">
           <i class="fas fa-newspaper"></i> <span>Posts</span></a></li>
-{{--        @endcan--}}
-{{--        @can ('view', App\Models\Company::class)--}}
+
         <li><a href="{{ route('admin.companies.index') }}">
           <i class="fas fa-shopping-bag"></i> <span>Companies</span></a></li>
-{{--        @endcan--}}
 
-{{--        @can ('view', App\Models\Product::class)--}}
+        <li><a href="{{ route('admin.company-types.index') }}">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Company Types</span></a></li>
+
+
           <li><a href="{{ route('admin.products.index') }}">
             <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Products</span></a></li>
-{{--        @endcan--}}
-        <li><a href="{{ url('admin.producttypes.index') }}">
+
+        <li><a href="{{ route('admin.product-types.index') }}">
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Product Types</span></a></li>
 
         <li><a href="{{ route('admin.attributes.index') }}">
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i> <span>Attributes</span></a></li>
 
-{{--        @can ('view_groups', App\Models\Group::class)--}}
             <li><a href="{{ route('admin.teams.index') }}">
                     <i class="fas fa-users" aria-hidden="true"></i> <span>Groups/Teams</span></a></li>
-{{--        @endcan--}}
 
-{{--        @can ('view_events', App\Models\Event::class)--}}
           <li><a href="{{ route('admin.events.index') }}">
             <i class="fas fa-calendar" aria-hidden="true"></i> <span>Events</span></a></li>
-{{--        @endcan--}}
         @endhasanyrole
 
         @include('auth.sidebar')

@@ -111,8 +111,8 @@ class RegisterController extends Controller
             'end_date' => now()->addDays(30),
             'status' => 'active',
         ]);
-        event(new Registered($user));
-        event(new UserRegistered($user));
+        // event(new Registered($user));
+        // event(new UserRegistered($user));
 
         return $user;
     }

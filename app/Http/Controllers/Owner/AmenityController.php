@@ -6,14 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAmenityRequest;
 use App\Http\Requests\UpdateAmenityRequest;
 use App\Models\Amenity;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class AmenityController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,7 +29,7 @@ class AmenityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -35,8 +39,8 @@ class AmenityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAmenityRequest  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param StoreAmenityRequest $request
+     * @return Application|RedirectResponse|Redirector
      */
     public function store(Request $request)
     {
@@ -58,8 +62,8 @@ class AmenityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Amenity  $amenity
-     * @return \Illuminate\Http\Response
+     * @param Amenity $amenity
+     * @return Response
      */
     public function show(Amenity $amenity)
     {
@@ -71,8 +75,8 @@ class AmenityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Amenity  $amenity
-     * @return \Illuminate\Http\Response
+     * @param Amenity $amenity
+     * @return Response
      */
     public function edit(Amenity $amenity)
     {
@@ -82,9 +86,9 @@ class AmenityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAmenityRequest  $request
-     * @param  \App\Models\Amenity  $amenity
-     * @return \Illuminate\Http\Response
+     * @param UpdateAmenityRequest $request
+     * @param Amenity $amenity
+     * @return Response
      */
     public function update(Request $request, Amenity $amenity)
     {
@@ -105,7 +109,7 @@ class AmenityController extends Controller
      * Remove the specified accommodation from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

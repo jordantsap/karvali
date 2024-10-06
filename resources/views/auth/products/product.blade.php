@@ -55,7 +55,7 @@
 
                                         <div class="col-xs-6">
                                             <label for="{{ $attribute->pivot->value }}">{{ $attribute->pivot->value }}</label>
-                                            <input class="" type="{{$attribute->attributeType->type}}" placeholder="{{ $attribute->pivot->value }}" readonly>
+                                            <input class="" type="{{$attribute->attributeType->type}}" readonly>
                                         </div>
                                     </div>
                                     <hr>
@@ -112,13 +112,9 @@
                                             class="form-control" required>
                                         <option value="">Επιλέξτε</option>
                                         @foreach(auth()->user()->companies as $company)
-                                            <option
-                                                value="{{ $company->id }}" {{$product->company_id == $company->id? "selected" : ''}}>{{ $company->title }}</option>
+                                            <option value="{{ $company->id }}" {{$product->company_id == $company->id? "selected" : ''}}>{{ $company->title }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="input-group-addon">
-                <span class="glyphicon glyphicon-list"></span>
-              </span>
                                 </div>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ class CompanyController extends Controller
     public function index()
     {
       $this->authorize('view-companies', 'App\Models\Company');
-      $companies = Company::orderBy('id', 'DESC')->paginate(10);
+      $companies = Company::orderBy('id', 'DESC')->where('user_id', auth()->user()->id)->paginate(10);
         return view('admin.companies.index', compact('companies'));
     }
 
@@ -99,15 +99,15 @@ class CompanyController extends Controller
          $company->image1 = $request->image1;
          $company->image2 = $request->image2;
          $company->image3 = $request->image3;
-         $company->days = implode(" ",(array)$request->days);
-         $company->morningtime = $request->morningtime;
-         $company->afternoontime = $request->afternoontime;
+        //  $company->days = implode(" ",(array)$request->days);
+        //  $company->morningtime = $request->morningtime;
+        //  $company->afternoontime = $request->afternoontime;
          $company->telephone = $request->telephone;
          $company->website = $request->website;
          $company->email = $request->email;
          $company->facebook = strtolower($request->facebook);
          $company->twitter = strtolower($request->twitter);
-         $company->pos = $request->pos;
+        //  $company->pos = $request->pos;
          $company->creditcard = implode(" ",(array)$request->creditcard);
          $company->delivery = $request->input('delivery');
          $company->description = $request->description;

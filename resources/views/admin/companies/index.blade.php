@@ -46,14 +46,14 @@
                     <td>{{$company->manager}}</td>
                     <td><img width="150px" height="150px" src="{{asset('images/companies/'.$company->logo)}}" alt="{{$company->title}}"></td>
                     <td>
-                    @can ('update_companies', App\Models\Company::class)
+                    @can ('update-companies', App\Models\Company::class)
                       <a class="btn btn-primary" href="{{route('admin.companies.edit', $company->id)}}">Edit</a> -
                     @endcan
-                    @can ('view_companies', App\Models\Company::class)
+                    @can ('view-companies', App\Models\Company::class)
                       <a class="btn btn-primary" href="{{route('admin.companies.show', $company->id)}}">View</a>
                       @endcan
-                        @can ('delete_companies', App\Models\Company::class)
-                            <form action="{{ route('admincompanies.destroy', $company->id) }}"
+                        @can ('delete-companies', App\Models\Company::class)
+                            <form action="{{ route('admin.companies.destroy', $company->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -71,7 +71,7 @@
                     <th>Active</th>
                     <th>Title</th>
                     <th>Image</th>
-                    @can ('view_companies','update_companies', App\Company::class)
+                    @can ('view-companies','update-companies', App\Company::class)
                       <th>Actions</th>
                     @endcan
                   </tr>

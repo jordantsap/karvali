@@ -42,7 +42,7 @@ class StoreCompanyRequest extends FormRequest
             'twitter' => '',
             'company_type' => 'integer',
             'active' => 'integer',
-            'days' => 'required|array',
+            'days' => 'array',
             'open_times' => 'array',
             'close_times' => 'array',
 //            'open_times.*.*' => 'nullable|required_with:days.*|date_format:H:i',

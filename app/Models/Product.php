@@ -8,6 +8,7 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -37,8 +38,8 @@ class Product extends Model implements TranslatableContract
         'image1',
         'image2',
         'image3',
-        'sku',
-        'price',
+//        'sku',
+//        'price',
     ];
 
     public function attributes()

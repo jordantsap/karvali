@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  
+@livewireStyles
 
 @include('partials.head')
 @include('partials.header')
@@ -14,6 +16,8 @@
 @include('partials.bottom')
 
 @include('partials.footer')
+
+@livewireScripts
 
 </body>
 </html>

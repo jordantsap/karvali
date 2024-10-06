@@ -21,7 +21,7 @@ class AttributeFactory extends Factory
             'title' => $this->faker->name,
             'slug' => $this->faker->slug,
             'product_type_id' => rand(1, 5),
-            'attribute_type_id' => rand(1, AttributeType::count()),
+            'attribute_type_id' => rand(1, 2),
         ];
     }
 }

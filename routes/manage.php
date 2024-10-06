@@ -61,8 +61,11 @@ Route::prefix('manage')->as('admin.')->middleware(['auth'])->group(callback: fun
     Route::resource('posts', 'Admin\PostController');
     Route::resource('events', 'Admin\EventController');
     Route::resource('companies', 'Admin\CompanyController');
+    Route::resource('company-types', \App\Http\Controllers\Admin\CompanyTypeController::class);
     Route::resource('products', 'Admin\ProductController');
     Route::resource('attributes', \App\Http\Controllers\Admin\AttributeController::class);
+    Route::resource('product-types', \App\Http\Controllers\Admin\ProductTypeController::class);
+
     Route::resource('teams', 'Admin\GroupController');
     Route::resource('accommodation-types', AccommodationTypeController::class);
     Route::resource('accommodations', AccommodationController::class);

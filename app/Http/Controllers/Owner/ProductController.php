@@ -31,6 +31,7 @@ class ProductController extends Controller
         $products = Product::where('user_id', auth()->user()->id)
             ->withTranslation()
             ->with('category')
+            ->orderByDesc('created_at')
             ->paginate();
         return view('auth.products.index', compact('products'));
     }

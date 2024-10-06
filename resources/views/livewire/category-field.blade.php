@@ -1,5 +1,5 @@
 <div>
-    <div class="col-xs-3">
+    <div class="col-md-3">
         <div class="form-group{{ $errors->has('product_type') ? ' has-error' : '' }}">
             <label for="product_type">Κατηγορία Προϊόντος</label>
             @if ($errors->has('product_type'))
@@ -18,16 +18,34 @@
             </div>
         </div>
     </div>
-    <div class="">
-        @if(!is_null($attributes))
-            <div class="col-xs-12 text-center"><h2>{{__('Options')}}</h2></div>
-            @foreach($attributes as $attribute)
-                <div class="col-xs-12">
-                    <label>{{ __('Attribute: ').$attribute->title }}</label>
-                    <input class="form-control" name="attribute[{{$attribute->id}}]" value="{{$attribute->title}}" readonly>
-                    <input class="form-control" type="{{$attribute->attributeType->type}}" name="attributevalue[{{$attribute->id}}]" required>
-                </div>
-            @endforeach
-        @endif
-    </div>
+
+
+{{--        @if(!is_null($attributes))--}}
+{{--                <div class="col-xs-6">--}}
+{{--                    <label class="col-xs-3" for="product_type">Attribute</label>--}}
+{{--                    @if ($errors->has('attribute'))--}}
+{{--                        <strong class="text-danger">{{ $errors->first('attribute') }}</strong>--}}
+{{--                    @endif--}}
+{{--                    <div class="col-xs-3">--}}
+{{--                        <select wire:model="attr" id="attribute" value="{{ old('attribute') }}" name="attribute" class="form-control">--}}
+{{--                            <option value="">Επιλέξτε</option>--}}
+{{--                            @foreach($attributes as $attribute)--}}
+{{--                                <option value="{{ $attribute->id }}">{{ $attribute->title }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-xs-1">--}}
+{{--                        <button type="button" class="btn btn-danger" wire.click.prevent="add()">Add</button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                @foreach($inputs as $key =>$value)--}}
+{{--                    <div class="col-xs-4 form-group">--}}
+{{--                        <label for="telephone">{{$attributes->where('id', $attribute_arr[$key])->first()->title}}</label>--}}
+{{--                        <input type="text" placeholder="{{$attributes->where('id', $attribute_arr[$key])->first()->title}}"--}}
+{{--                               name="telephone" class="form-control"--}}
+{{--                               wire:model="attribute_values.{{$value}}">--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--        @endif--}}
+
 </div>

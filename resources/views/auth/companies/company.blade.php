@@ -77,39 +77,39 @@
                                   style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$company->description}}</textarea>
                     </div>
 
-                            <div class="row">
-                    <div class="col-xs-6 text-center">
-                        <label for="days" class="bold">Ημερες εργασιας</label>
-                        <br>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Session</th>
-                                <th>Opening Time</th>
-                                <th>Closing Time</th>
-                                <th>Noun</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach(\App\Helpers\DayTimeHelper::getWeekDaysAttribute() as $openingHour)
-                                <tr>
-                                    <td>{{ $openingHour }}</td>
-{{--                                    <td>{{ $openingHour->session->name }}</td>--}}
-{{--                                    <td>{{ $openingHour->start_time }}</td>--}}
-{{--                                    <td>{{ $openingHour->end_time }}</td>--}}
-                                    <td>
-{{--                                        @if($openingHour->session->allday)--}}
-{{--                                        {{$openingHour->session->allday}}--}}
-{{--                                        @endif--}}
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                            {{--<div class="row">
+                                <div class="col-xs-6 text-center">
+                                    <label for="days" class="bold">Ημερες εργασιας</label>
+                                    <br>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Session</th>
+                                            <th>Opening Time</th>
+                                            <th>Closing Time</th>
+                                            <th>Noun</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach(\App\Helpers\DayTimeHelper::getWeekDaysAttribute() as $openingHour)
+                                            <tr>
+                                                <td>{{ $openingHour }}</td>
+                                                <td>{{ $openingHour->session->name }}</td>
+                                                <td>{{ $openingHour->start_time }}</td>
+                                                <td>{{ $openingHour->end_time }}</td>
+                                                <td>
+                                                    @if($openingHour->session->allday)
+                                                    {{$openingHour->session->allday}}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
 
-                    </div>
-                            </div>
+                                </div>
+                            </div>--}}
 
                     <div class="row">
                         <div class="col-xs-6">
