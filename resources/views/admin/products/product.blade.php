@@ -35,7 +35,7 @@
         <div class="form-group col-xs-4">
           <label for="category">Category</label>
           <div class="form-control" name="category" id="category" disabled>
-            @if( ! empty($product->category)){{ $product->category->name }}
+            @if( ! empty($product->category)){{ $product->category->title }}
                 @else Null
             @endif
           </div>

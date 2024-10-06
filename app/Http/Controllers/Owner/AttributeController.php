@@ -72,6 +72,8 @@ class AttributeController extends Controller
      */
     public function show(Attribute $attribute)
     {
+        $attribute = Attribute::with(['productType', 'attributeType'])->find($attribute->id)->get();
+
         return view('auth.attributes.show', compact('attribute'));
     }
 

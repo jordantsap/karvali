@@ -6,8 +6,8 @@
     <section class="content-header">
       <h1>
         Events
-        @can ('create_events', App\Event::class)
-          <small><a class="btn btn-primary" href="{{route('events.create')}}">New</a></small>
+        @can ('create-events', App\Models\Event::class)
+          <small><a class="btn btn-primary" href="{{route('admin.events.create')}}">New</a></small>
         @endcan
       </h1>
     </section>
@@ -26,7 +26,7 @@
                   <th>Title</th>
                   <th>Logo</th>
                   <th>Description</th>
-                  @can ('view_events','update_events', App\Event::class)
+                  @can ('view-events','update-events', App\Models\Event::class)
                     <th>Actions</th>
                   @endcan
                 </tr>
@@ -40,14 +40,14 @@
                     <td><img width="150px" height="150px" src="{{asset('images/events/'.$event->logo)}}" alt="{{$event->title}}"></td>
                     <td>{{Str::limit($event->description, 20)}}</td>
                     <td>
-                    @can ('update_events', App\Event::class)
-                        <a class="btn btn-primary" href="{{route('events.edit', $event->id)}}">Edit</a> -
+                    @can ('update-events', App\Event::class)
+                        <a class="btn btn-primary" href="{{route('admin.events.edit', $event->id)}}">Edit</a> -
                       @endcan
-                      @can ('view_events', App\Event::class)
-                        <a class="btn btn-primary" href="{{route('events.show', $event->id)}}">View</a>
+                      @can ('view-events', App\Event::class)
+                        <a class="btn btn-primary" href="{{route('admin.events.show', $event->id)}}">View</a>
                       @endcan
-                      @can ('delete_events', App\Models\Event::class)
-                          <form action="{{ route('events.destroy', $event->id) }}"
+                      @can ('delete-events', App\Models\Event::class)
+                          <form action="{{ route('admin.events.destroy', $event->id) }}"
                                 method="POST">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
@@ -66,7 +66,7 @@
                     <th>Title</th>
                     <th>Image</th>
                     <th>Description</th>
-                    @can ('view_events','update_events', App\Event::class)
+                    @can ('view-events','update-events', App\Event::class)
                       <th>Actions</th>
                     @endcan
                   </tr>

@@ -139,7 +139,7 @@
           @if ($errors->has('header'))
             <strong class="text-danger">{{ $errors->first('header') }}</strong>
           @endif
-          <input type="file" name="header" required>
+          <input type="file" name="header">
           <p class="help-block">Example block-level help text here.</p>
         </div>
 
@@ -150,7 +150,7 @@
               @if ($errors->has('logo'))
                 <strong class="text-danger">{{ $errors->first('logo') }}</strong>
               @endif
-              <input type="file" name="logo" required>
+              <input type="file" name="logo">
               <p class="help-block">Example block-level help text here.</p>
             </div>
           </div>
@@ -160,7 +160,7 @@
               @if ($errors->has('image1'))
                 <strong class="text-danger">{{ $errors->first('image1') }}</strong>
               @endif
-              <input type="file" name="image1" required>
+              <input type="file" name="image1">
               <p class="help-block">Example block-level help text here.</p>
             </div>
           </div>
@@ -170,7 +170,7 @@
               @if ($errors->has('image2'))
                 <strong class="text-danger">{{ $errors->first('image2') }}</strong>
               @endif
-              <input type="file" name="image2" required>
+              <input type="file" name="image2">
               <p class="help-block">Example block-level help text here.</p>
             </div>
           </div>
@@ -180,7 +180,7 @@
               @if ($errors->has('image3'))
                 <strong class="text-danger">{{ $errors->first('image3') }}</strong>
               @endif
-              <input type="file" name="image3" required>
+              <input type="file" name="image3">
               <p class="help-block">Example block-level help text here.</p>
             </div>
           </div>

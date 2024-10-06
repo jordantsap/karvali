@@ -22,15 +22,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-      
+
       $this->authorize('view-products', 'App\Product');
 
         $products = Product::orderBy('id', 'DESC')
-      
+
         ->where('user_id', auth()->user()->id)
-      
+
         ->paginate(9);
-      
+
         return view('admin.products.index', compact('products'));
 
     }
@@ -151,7 +151,7 @@ class ProductController extends Controller
     public function show($id)
     {
       // dd($product);
-        $this->authorize('view-products', Product::class);
+//        $this->authorize('view-products', Product::class);
 
         $product = Product::whereTranslation('id',$id)->with('category')->withTranslation()->first();
 
@@ -316,6 +316,6 @@ class ProductController extends Controller
       'message' => 'User deleted successfully',
       'alert-type' => 'success'
       );
-      return redirect(route('prods.index'))->with($notification);
+      return redirect(route('admin.products.index'))->with($notification);
     }
 }
