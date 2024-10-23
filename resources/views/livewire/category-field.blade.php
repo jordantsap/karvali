@@ -34,8 +34,8 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-xs-1">
-                        <button type="button" class="btn btn-danger" wire.click.prevent="add()">Add</button>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-danger" wire:click.prevent="add()">Add</button>
                     </div>
                 </div>
                 @foreach($inputs as $key =>$value)
