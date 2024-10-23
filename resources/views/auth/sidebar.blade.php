@@ -32,8 +32,8 @@
 @endrole
 @role('Accommodation/Rooms Owner')
 
-<li><a href="{{ route('owner.accommodation.index') }}"><i class="fas fa-shopping-bag"></i> <span>Accommodation List</span></a></li>
-<li><a href="{{ route('owner.accommodation.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Accommodation</span></a>
+<li><a href="{{ route('owner.accommodations.index') }}"><i class="fas fa-shopping-bag"></i> <span>Accommodation List</span></a></li>
+<li><a href="{{ route('owner.accommodations.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Accommodation</span></a>
 </li>
 
 <li><a href="{{ route('owner.rooms.index') }}"><i class="fas fa-shopping-bag"></i> <span>Rooms List</span></a></li>

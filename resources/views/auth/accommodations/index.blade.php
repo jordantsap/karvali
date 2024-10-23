@@ -7,7 +7,7 @@
       <h1>
           New Accommodation
 {{--        @can ('create_companies', App\Company::class)--}}
-          <small><a class="btn btn-primary" href="{{route('owner.accommodation.create')}}">New</a></small>
+          <small><a class="btn btn-primary" href="{{route('owner.accommodations.create')}}">New</a></small>
 {{--        @endcan--}}
       </h1>
     </section>
@@ -27,9 +27,9 @@
                   <th>Title</th>
                   <th>Manager</th>
                   <th>Logo</th>
-{{--                  @can ('view_companies','update_companies', App\Company::class)--}}
+                  @can ('view-companies','update_companies', App\Company::class)
                     <th>Actions</th>
-{{--                  @endcan--}}
+                  @endcan
                 </tr>
                 </thead>
                 @foreach ($accommodations as $accommodation)
@@ -47,13 +47,13 @@
                     <td><img width="150px" height="150px" src="{{asset($accommodation->logo)}}" alt="{{$accommodation->title}}"></td>
                     <td>
                     @can ('update-accommodation', [Auth()->user(), $accommodation])
-                      <a class="btn btn-primary" href="{{route('owner.accommodation.edit', $accommodation->id)}}">Edit</a> -
+                      <a class="btn btn-primary" href="{{route('owner.accommodations.edit', $accommodation->id)}}">Edit</a> -
                     @endcan
                     @can ('view-accommodation', [Auth()->user(), $accommodation])
-                      <a class="btn btn-primary" href="{{route('owner.accommodation.show', $accommodation->id)}}">View</a>
+                      <a class="btn btn-primary" href="{{route('owner.accommodations.show', $accommodation->id)}}">View</a>
                       @endcan
                         @can ('delete-accommodation', [Auth()->user(), App\Models\Accommodation::class])
-                            <form action="{{ route('owner.accommodation.destroy', $accommodation->id) }}"
+                            <form action="{{ route('owner.accommodations.destroy', $accommodation->id) }}"
                                   method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}

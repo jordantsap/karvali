@@ -21,30 +21,8 @@
                 <li class="divider"></li>
                 <br>
               </div>
-{{--              <div class="col-xs-12 col-xs-6 form-group">--}}
-{{--                <label for="category" class="control-label">{{__('register.requestpackagelabel')}}</label>--}}
-{{--                <div class="">--}}
-{{--                  <select class="form-control" name="role">--}}
-{{--                    @foreach ($roles as $role)--}}
-{{--                      <option value="{{$role->id}}">{{$role->name}}</option>--}}
-{{--                    @endforeach--}}
-{{--                  </select>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-              <div class="col-xs-12 col-md-6 form-group{{ $errors->has("category") ? ' has-error' : '' }}">
-                <label for="category" class="control-label">{{__('register.requestcategorylabel')}}</label>
 
-                <select class="form-control" id="category" name="category" value="{{ old("category") }}">
-                  <option value="0">Διαλέξτε κατηγορία Καταχώρησης</option>
-                  <option value="company @if (count($errors)){{'selected'}}@endif">Κατάστημα</option>
-                    <option value="product @if (count($errors)){{'selected'}}@endif">Προϊόντα</option>
-                    </select>
-                    @if ($errors->has("category"))
-                      <span class="help-block">
-                        <strong>{{ $errors->first("category") }}</strong>
-                      </span>
-                    @endif
-                  </div>
+              <livewire:dropdown />
 
                   <div class="col-xs-12 form-group{{ $errors->has('requestname') ? ' has-error' : '' }}">
                     <label for="requestname" class="control-label">{{__('register.requestname')}}</label>
@@ -60,19 +38,19 @@
                     <label for="description">{{__('register.additionallabel')}}</label>
                     <textarea class="textarea" name="description" placeholder="{{__('register.additionalplaceholder')}}" style="width: 100%; height:150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('description')}}</textarea>
                   </div>
-                  {{-- <div class="col-xs-12 col-md-6 form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                    <label for="type" class="control-label">{{__('register.typelabel')}}</label>
-                    <select class="form-control" id="type" name="type" value="{{ old('type') }}">
-                      <option value="0">{{__('register.typeoption')}}</option>
-                      <option value="company @if (count($errors)){{'selected'}}@endif">Κατάστημα</option>
-                      <option value="product @if (count($errors)){{'selected'}}@endif">Προϊόντα</option>
-                    </select>
-                    @if ($errors->has('type'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('type') }}</strong>
-                    </span>
-                    @endif
-                  </div> --}}
+{{--                   <div class="col-xs-12 col-md-6 form-group{{ $errors->has('type') ? ' has-error' : '' }}">--}}
+{{--                    <label for="type" class="control-label">{{__('register.typelabel')}}</label>--}}
+{{--                    <select class="form-control" id="type" name="type" value="{{ old('type') }}">--}}
+{{--                      <option value="0">{{__('register.typeoption')}}</option>--}}
+{{--                      <option value="company @if (count($errors)){{'selected'}}@endif">Κατάστημα</option>--}}
+{{--                      <option value="product @if (count($errors)){{'selected'}}@endif">Προϊόντα</option>--}}
+{{--                    </select>--}}
+{{--                    @if ($errors->has('type'))--}}
+{{--                    <span class="help-block">--}}
+{{--                      <strong>{{ $errors->first('type') }}</strong>--}}
+{{--                    </span>--}}
+{{--                    @endif--}}
+{{--                  </div>--}}
 
             <div class="row">
               <div id="details-reg" class="col-xs-12 text-center">

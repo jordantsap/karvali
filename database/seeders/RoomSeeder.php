@@ -18,7 +18,7 @@ class RoomSeeder extends Seeder
     {
 
         DB::table('rooms')->truncate();
-        // $companies = factory(App\Models\Company::class, 12)->create();
+
         Room::factory()->count(20)->create();
     }
 }

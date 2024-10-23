@@ -48,7 +48,7 @@
 {{--                                            @can ('view', App\Models\AccommodationType::class)--}}
                                                 <a class="btn btn-primary" href="{{route('owner.room-types.show', $roomType->id)}}">View</a>
 {{--                                            @endcan--}}
-                                            @can ('delete', [$roomType, App\Models\AccommodationType::class])
+{{--                                            @ can ('delete', [$roomType, App\Models\AccommodationType::class])--}}
                                                 <form action="{{ route('owner.room-types.destroy', $roomType->id) }}"
                                                       method="POST">
                                                     {{ csrf_field() }}
@@ -56,7 +56,7 @@
                                                     <br>
                                                     <button type="submit" class="btn btn-primary">Delete</button>
                                                 </form>
-                                            @endcan
+{{--                                            @endcan--}}
                                         </td>
                                     </tr>
                                     </tbody>

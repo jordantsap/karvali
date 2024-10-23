@@ -12,7 +12,7 @@ class Attribute extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;
 
-    protected $translatedAttributes = [
+    protected array $translatedAttributes = [
         'title',
         'slug',
     ];

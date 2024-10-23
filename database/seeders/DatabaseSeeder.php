@@ -52,19 +52,20 @@ class DatabaseSeeder extends Seeder
         $this->call(PlanSeeder::class);
         $this->call(GroupTypeSeeder::class);
 
-        $this->call(VenueSeeder::class);
-        $this->call(EventsTableSeeder::class);
-        $this->call(AccommodationSeeder::class);
-        $this->call(RoomSeeder::class);
-
-        $this->call(CompaniesTableSeeder::class);
-        $this->call(ProductsTableSeeder::class);
-
-        $this->call(GroupsTableSeeder::class);
-
+        $this->call(AttributeTypeSeeder::class);
         $this->call(AttributeSeeder::class);
 
-        $this->call(AttributeTypeSeeder::class);
+//        $this->call(VenueSeeder::class);
+//        $this->call(EventsTableSeeder::class);
+//        $this->call(AccommodationSeeder::class);
+//        $this->call(RoomSeeder::class);
+
+//        $this->call(CompaniesTableSeeder::class);
+//        $this->call(ProductsTableSeeder::class);
+//
+//        $this->call(GroupsTableSeeder::class);
+//
+//
 
 //        $this->call(DaySeeder::class);
 //        $this->call(PeriodSeeder::class);

@@ -19,6 +19,7 @@ class ProductAttributeController extends Controller
     public function index()
     {
         $productAttributes = ProductAttribute::all();
+
         return view('auth.product-attributes.index',compact('productAttributes'));
     }
 

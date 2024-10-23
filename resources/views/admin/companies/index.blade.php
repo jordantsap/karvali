@@ -38,7 +38,7 @@
                     <td>{{$company->id}}</td>
                     <td>{{$company->active?"yes":'no'}}</td>
                     <td>
-                      @if( ! empty($company->category)){{ $company->category->name }}
+                      @if( ! empty($company->category)){{ $company->category->title }}
                       @else None
                       @endif
                     </td>

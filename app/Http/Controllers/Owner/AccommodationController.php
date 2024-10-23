@@ -122,7 +122,7 @@ class AccommodationController extends Controller
 //        return $accommodation->uploads();
         toastr()->addSuccess('Accommodation was saved successfully.');
 
-        return redirect(route('owner.accommodation.show', $accommodation->id));
+        return redirect(route('owner.accommodation.index'));
 
     }
 

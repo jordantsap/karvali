@@ -24,7 +24,7 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
 
         Route::resource('products', ProductController::class);
 
-        Route::resource('accommodation', \App\Http\Controllers\Owner\AccommodationController::class);
+        Route::resource('accommodations', \App\Http\Controllers\Owner\AccommodationController::class);
 
         Route::resource('amenities', AmenityController::class);
 

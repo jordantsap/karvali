@@ -13,7 +13,7 @@
 
             <!-- Default box -->
             <div class="box">
-                <form method="POST" action="{{ route('owner.accommodation.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('owner.accommodations.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="row">

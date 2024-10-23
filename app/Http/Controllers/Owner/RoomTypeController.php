@@ -90,6 +90,7 @@ class RoomTypeController extends Controller
     public function update(Request $request, RoomType $roomType)
     {
         $roomType = RoomType::find($roomType->id);
+
         foreach (config('translatable.locales') as $locale => $lang) {
             $roomType->translateOrNew($locale)->title = $request->{$locale}['title'];
         }

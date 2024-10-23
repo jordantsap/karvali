@@ -11,7 +11,7 @@
 
         <section class="content">
             <div class="box">
-                <form method="post" action="{{ route('owner.accommodation.update', $accommodation->id) }}"
+                <form method="post" action="{{ route('owner.accommodations.update', $accommodation->id) }}"
                       enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
