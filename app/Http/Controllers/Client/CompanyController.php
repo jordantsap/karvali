@@ -22,7 +22,9 @@ class CompanyController extends Controller
   public function show($slug)
   {
     $company = Company::whereTranslation('slug', $slug)
-    ->with(['products','category','likes','comments'])->firstOrFail();
+    ->with(['products','category','likes','comments', 'houses' => function ($query) {
+        $query->where('active', 1)->latest();
+    }])->firstOrFail();
 
     return view('companies.show', compact('company'));
   }

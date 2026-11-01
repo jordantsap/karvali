@@ -7,6 +7,7 @@
         <section class="content-header">
             <h1>
                 Company : {{$company->title}}
+                <small><a class="btn btn-primary" href="{{ route('owner.houses.create') }}">List a house</a></small>
                 @can ('update-companies', App\Models\Company::class)
                     <small><a class="btn btn-primary" href="{{route('owner.companies.edit', $company->id)}}">Edit</a> -
                         <a class="btn btn-warning" href="javascript:history.back()">Go Back</a></small>

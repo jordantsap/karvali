@@ -68,6 +68,31 @@ class Company extends Model implements TranslatableContract
         return $this->hasMany('App\Models\Product');
     }
 
+    public function houses()
+    {
+        return $this->hasMany(House::class);
+    }
+
+    public function scopeRentalCompanies($query)
+    {
+        return $query->whereHas('category', function ($category) {
+            $category->rentals();
+        });
+    }
+
+    public function isRentalCompany(): bool
+    {
+        $category = $this->category;
+
+        if (!$category) {
+            return false;
+        }
+
+        return $category->translations()
+            ->where('slug', CompanyType::RENTALS_SLUG)
+            ->exists();
+    }
+
     public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(Image::class, 'imageable');

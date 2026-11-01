@@ -11,6 +11,8 @@ class CompanyType extends Model implements TranslatableContract
 {
     use Translatable, HasFactory;
 
+    public const RENTALS_SLUG = 'rentals';
+
     protected $fillable = ['name', 'slug'];
 //     public $primaryKey = 'slug';
 
@@ -31,5 +33,12 @@ class CompanyType extends Model implements TranslatableContract
     public function companies()
     {
         return $this->hasMany('App\Models\Company', 'company_type');
+    }
+
+    public function scopeRentals($query)
+    {
+        return $query->whereHas('translations', function ($translation) {
+            $translation->where('slug', self::RENTALS_SLUG);
+        });
     }
 }
