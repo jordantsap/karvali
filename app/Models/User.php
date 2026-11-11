@@ -50,6 +50,11 @@ class User extends Authenticatable // implements MustVerifyEmail
         return $this->hasMany('App\Models\Company');
     }
 
+    public function houses()
+    {
+        return $this->hasManyThrough(House::class, Company::class);
+    }
+
     public function posts()
     {
         return $this->hasMany('App\Models\Post');

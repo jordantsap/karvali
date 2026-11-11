@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 Schema::disableForeignKeyConstraints();
-DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+if (DB::getDriverName() !== 'sqlite') {
+    DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+}
 
 class CreateEventsTable extends Migration
 {

@@ -150,6 +150,35 @@
             </div>
 
             <div class="row"><br>
+                <div class="col-xs-12">
+                    <h1 class="text-center">{{ __('houses.company_houses') }} {{ $company->title }}</h1>
+                    <div class="divider"></div>
+                    <br>
+                </div>
+                @forelse ($company->houses->where('active', 1) as $house)
+                    <div class="col-sm-4" style="margin-bottom: 20px;">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3><a href="{{ route('front.house.show', $house->slug) }}">{{ $house->title }}</a></h3>
+                                <p>
+                                    {{ $house->isForSale() ? __('houses.sale') : __('houses.rent') }}
+                                    · {{ $house->priceLabel() }}
+                                </p>
+                                <p>{{ $house->city }} · {{ $house->bedrooms }} {{ __('houses.bedrooms') }}</p>
+                                <a class="btn btn-primary" href="{{ route('front.house.show', $house->slug) }}">
+                                    {{ $house->isForSale() ? __('houses.make_offer') : __('houses.book_stay') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-xs-12">
+                        <p class="text-center">{{ __('houses.no_company_houses') }}</p>
+                    </div>
+                @endforelse
+            </div>
+
+            <div class="row"><br>
 
                 <div class="col-xs-12">
                     <h1 class="text-center">{{__('single.products')}} {{$company->title}}</h1>

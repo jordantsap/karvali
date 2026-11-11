@@ -108,13 +108,13 @@ class CompanyTypeSeeder extends Seeder
             'title:el' => 'Οικοδομικά Υλικά',
             'slug:el' => 'oikodomikaylika',
         ]);
-//        CompanyType::create([
-//            'title:en' => 'Rentals',
-//            'slug:en' => 'rentals',
-//
-//            'title:el' => 'Δωμάτια',
-//            'slug:el' => 'rentrooms',
-//        ]);
+        CompanyType::create([
+            'title:en' => 'Rentals',
+            'slug:en' => 'rentals',
+
+            'title:el' => 'Ενοικιάσεις',
+            'slug:el' => 'enoikiaseis',
+        ]);
 //        CompanyType::create([
 //            'title:en' => 'Others',
 //            'slug:en' => 'others',

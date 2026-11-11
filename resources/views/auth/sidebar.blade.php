@@ -7,6 +7,15 @@
 <li>
     <a href="{{ route('owner.companies.create') }}"><i class="fas fa-shopping-bag"></i> <span>Create Company</span></a>
 </li>
+<li>
+    <a href="{{ route('owner.houses.index') }}"><i class="fas fa-home"></i> <span>Houses</span></a>
+</li>
+<li>
+    <a href="{{ route('owner.houses.create') }}"><i class="fas fa-home"></i> <span>List a house</span></a>
+</li>
+<li>
+    <a href="{{ route('owner.house-bookings.index') }}"><i class="fas fa-calendar"></i> <span>House bookings</span></a>
+</li>
 
 {{--<li>--}}
 {{--    <a href="{{ route('owner.product-attributes.index') }}"><i class="fas fa-shopping-bag"></i> <span>Product-attributes List</span></a>--}}

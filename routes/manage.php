@@ -6,6 +6,8 @@ use App\Http\Controllers\Owner\{AmenityController,
     CompanyController,
     EventController,
     GroupController,
+    HouseBookingController,
+    HouseController,
     ProductController,
     RoomController,
     RoomTypeController,
@@ -19,6 +21,13 @@ Route::middleware(['auth', 'verified','checkPlanAndExpiration'])
     ->as('owner.')->group(function () {
 
         Route::resource('companies', CompanyController::class);
+
+        Route::resource('houses', HouseController::class);
+
+        Route::patch('house-bookings/{houseBooking}', [HouseBookingController::class, 'update'])
+            ->name('house-bookings.update');
+        Route::get('house-bookings', [HouseBookingController::class, 'index'])
+            ->name('house-bookings.index');
 
         Route::resource('product-attributes', \App\Http\Controllers\Owner\ProductAttributeController::class);
 

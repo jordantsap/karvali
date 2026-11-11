@@ -36,6 +36,9 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('front.houses') }}">{{ __('houses.nav') }}</a>
+                        </li>
+                        <li>
                           <a href="{{ route('front.products') }}">{{ __('header.products') }}</a>
                         </li>
                         <li>

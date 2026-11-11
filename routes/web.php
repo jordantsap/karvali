@@ -3,6 +3,8 @@
 use App\Http\Controllers\Client\AuthRequestController;
 use App\Http\Controllers\Client\BookingController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\HouseBookingController;
+use App\Http\Controllers\Client\HouseController;
 use App\Http\Controllers\unused\CalendarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +86,10 @@ Route::as('front.')->group(function () {
     Route::get('bookings', [BookingController::class, 'index']);
 
     Route::resource('amenities', 'Client\CompanyController@index');
+
+    Route::get('houses', [HouseController::class, 'index'])->name('houses');
+    Route::get('houses/{slug}', [HouseController::class, 'show'])->name('house.show');
+    Route::post('houses/{house}/book', [HouseBookingController::class, 'store'])->name('house-bookings.store');
 
     Route::get('markets', 'Client\CompanyController@index')->name('companies');
 
